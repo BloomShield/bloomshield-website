@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BrainCircuit, HeartHandshake, Microscope, ShieldCheck, UsersRound } from "lucide-react";
+import { ArrowRight, BrainCircuit, Globe2, HeartHandshake, Microscope, Network, ShieldCheck, UsersRound } from "lucide-react";
 import { CTA } from "@/components/cta";
 import { HomeEmblem } from "@/components/home-emblem";
 import { SectionHeading } from "@/components/section-heading";
@@ -8,6 +8,12 @@ const pillars = [
   { icon: UsersRound, title: "Community-led prevention", text: "We listen, co-design and work with trusted local voices so prevention feels relevant, respectful and reachable." },
   { icon: Microscope, title: "Implementation science", text: "We connect evidence, context and delivery so proven ideas can work across real communities and health systems." },
   { icon: BrainCircuit, title: "Responsible innovation", text: "We explore digital health and AI with equity, safety and human connection built in from the start." }
+];
+
+const proofPoints = [
+  { icon: Globe2, title: "Multi-country implementation experience", text: "Working across diverse communities and health systems to deliver effective, context-responsive programmes." },
+  { icon: HeartHandshake, title: "Evidence-informed partnerships", text: "Partnering with communities, health services, researchers and innovators to drive meaningful change." },
+  { icon: Network, title: "International collaborations", text: "Building global partnerships that share knowledge, strengthen systems and advance equity." }
 ];
 
 export default function Home() {
@@ -19,7 +25,21 @@ export default function Home() {
         <HomeEmblem />
       </div>
     </section>
-    <div className="border-y border-teal-900/10 bg-white"><div className="container-page grid gap-px py-5 text-center text-xs font-bold uppercase tracking-[.14em] text-teal-800 sm:grid-cols-3"><p className="py-2">Multi-country implementation experience</p><p className="border-teal-900/10 py-2 sm:border-x">Evidence-informed partnerships</p><p className="py-2">International collaborations</p></div></div>
+    <section aria-label="BloomShield experience and partnerships" className="border-y border-teal-900/10 bg-white">
+      <div className="container-page grid md:grid-cols-3">
+        {proofPoints.map(({ icon: Icon, title, text }, index) => (
+          <article className={`flex gap-4 py-7 md:px-7 md:py-9 lg:gap-5 lg:px-9 ${index > 0 ? "border-t border-teal-900/10 md:border-l md:border-t-0" : ""}`} key={title}>
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-50 to-teal-100 text-teal-800">
+              <Icon className="h-7 w-7" strokeWidth={1.7} />
+            </span>
+            <div>
+              <h2 className="text-sm font-bold uppercase leading-5 tracking-[.08em] text-teal-900">{title}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
 
     <section className="section-space"><div className="container-page"><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20"><SectionHeading eyebrow="Why BloomShield" title="Prevention should work for everyone." intro="Too often, the people at greatest risk face the greatest barriers to information, screening and timely support. BloomShield exists to help close that gap."/><div className="grid gap-5 sm:grid-cols-2"><div className="card"><HeartHandshake className="text-teal-600"/><h3 className="mt-6 text-xl font-bold">Built with communities</h3><p className="mt-3 leading-7 text-slate-600">Local knowledge shapes our priorities, language and delivery—not just our feedback forms.</p></div><div className="card sm:translate-y-8"><ShieldCheck className="text-teal-600"/><h3 className="mt-6 text-xl font-bold">Designed for adoption</h3><p className="mt-3 leading-7 text-slate-600">We plan for sustainable implementation from day one, working within real-world systems and constraints.</p></div></div></div></div></section>
 

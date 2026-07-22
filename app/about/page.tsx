@@ -1,6 +1,6 @@
 import { BarChart3, Compass, Eye, Handshake, Heart, Lightbulb, Route, Scale, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { AboutHero } from "@/components/about-hero";
 import { CTA } from "@/components/cta";
-import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 
 export const metadata = { title: "About", description: "Learn about BloomShield CIC's mission, vision, values and Cancer Care Partnership Ecosystem implementation framework." };
@@ -23,7 +23,7 @@ const ccpe = [
 
 export default function About() {
   return <>
-    <PageHero visual="about" eyebrow="About BloomShield" title="Implementation shaped by communities, evidence and care." intro="BloomShield CIC connects community wisdom, implementation science and responsible innovation to reduce inequalities in cancer prevention across diverse communities and health systems."/>
+    <AboutHero />
 
     <section className="section-space max-sm:pt-10"><div className="container-page grid gap-8 md:grid-cols-2"><div className="rounded-4xl bg-gradient-to-br from-teal-800 to-teal-900 p-10 text-white shadow-soft"><Compass className="h-10 w-10 text-emerald-300"/><p className="mt-8 text-sm font-bold uppercase tracking-widest text-emerald-300">Our mission</p><h2 className="mt-4 font-display text-3xl font-semibold">Protect lives. Prevent cancer. Empower communities.</h2><p className="mt-5 leading-7 text-white/75">We work to make cancer prevention, awareness and screening more understandable, accessible and responsive to diverse communities.</p></div><div className="rounded-4xl bg-gradient-to-br from-white to-teal-50 p-10 shadow-soft"><Eye className="h-10 w-10 text-teal-600"/><p className="mt-8 text-sm font-bold uppercase tracking-widest text-teal-600">Our vision</p><h2 className="mt-4 font-display text-3xl font-semibold">A future where everyone has a fair opportunity to prevent cancer or find it earlier.</h2><p className="mt-5 leading-7 text-slate-600">A future shaped with communities, supported by capable systems and strengthened by responsible innovation.</p></div></div></section>
 
