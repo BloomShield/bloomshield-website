@@ -11,7 +11,7 @@ export function HomeEmblem() {
           <Image src="/bloomshield-icon-only.png" alt="BloomShield shield and bloom emblem" width={260} height={260} priority className="h-full w-full scale-[1.09] object-contain"/>
           <Sparkles aria-hidden="true" className="absolute -right-6 -top-5 h-9 w-9 text-gold-400"/>
         </div>
-        <p className="mt-5 max-w-[88%] font-display text-xl font-semibold leading-snug tracking-tight text-white sm:mt-6 sm:text-2xl">Shielded by Care, <span className="text-emerald-300">Empowered to Bloom.</span></p>
+        <p className="mt-5 w-full max-w-full font-display text-xl font-semibold leading-snug tracking-tight text-white sm:mt-6 sm:w-auto sm:max-w-[88%] sm:text-2xl">Shielded by Care,<span className="hidden sm:inline"> </span><span className="block text-emerald-300 sm:inline">Empowered to Bloom.</span></p>
       </div>
     </div>
     <div className="absolute -bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-teal-800/10 bg-white px-5 py-3 text-teal-900 shadow-soft"><Sprout className="text-emerald-600" size={19}/><span className="text-xs font-bold uppercase tracking-[.16em]">Equity by design</span></div>
