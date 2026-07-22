@@ -31,7 +31,7 @@ export function PageHero({ eyebrow, title, intro, cta, visual }: { eyebrow: stri
   const theme = heroThemes[selected];
   return <section data-hero={selected} className={`relative overflow-hidden ${theme.section}`}>
     <div aria-hidden="true" className={`absolute -right-28 -top-28 h-[30rem] w-[30rem] rounded-full blur-3xl ${theme.glow}`}/>
-    <div className="container-page relative grid min-h-[590px] items-center gap-14 py-24 md:py-32 lg:grid-cols-[1.08fr_.92fr] lg:gap-20">
+    <div className={`container-page relative grid min-h-[590px] items-center gap-14 py-24 md:py-32 lg:grid-cols-[1.08fr_.92fr] lg:gap-20 ${selected === "about" ? "max-sm:pb-8" : ""}`}>
       <div className="max-w-3xl"><p className={`eyebrow ${theme.accent}`}>{eyebrow}</p><h1 className="display max-w-4xl text-[2.85rem] sm:text-6xl lg:text-[4.35rem]">{title}</h1><p className="lead mt-8 max-w-2xl text-xl leading-9">{intro}</p>{cta && <Link href="/contact" className="button-primary mt-9">{cta}<ArrowRight size={17}/></Link>}</div>
       <HeroIllustration visual={selected}/>
     </div>
