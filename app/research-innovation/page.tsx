@@ -10,12 +10,11 @@ import {
 import { CTA } from "@/components/cta";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { PageStructuredData } from "@/components/seo-json-ld";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Research & Innovation",
-  description:
-    "Applied research in implementation science, digital health, responsible AI, evaluation and learning health systems from BloomShield CIC.",
-};
+const description = "Applied research in implementation science, digital health, responsible AI, evaluation and learning health systems from BloomShield CIC.";
+export const metadata = createMetadata({ title: "Research & Innovation", description, path: "/research-innovation" });
 
 const researchAreas = [
   [FlaskConical, "Implementation Science", "Study what enables evidence-based prevention to be adopted, adapted and sustained across real settings.", "from-emerald-50 to-teal-50", "text-teal-700"],
@@ -28,6 +27,7 @@ const researchAreas = [
 export default function Research() {
   return (
     <>
+      <PageStructuredData name="Research & Innovation" description={description} path="/research-innovation" breadcrumb="Research & Innovation" />
       <PageHero
         visual="research"
         eyebrow="Research & innovation"

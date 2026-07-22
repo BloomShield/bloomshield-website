@@ -12,12 +12,11 @@ import {
 import { CTA } from "@/components/cta";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { PageStructuredData } from "@/components/seo-json-ld";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Consultancy & Advisory",
-  description:
-    "Strategic implementation, health systems, cancer prevention, evaluation and responsible AI advisory from BloomShield CIC.",
-};
+const description = "Strategic implementation, health systems, cancer prevention, evaluation and responsible AI advisory from BloomShield CIC.";
+export const metadata = createMetadata({ title: "Consultancy & Advisory", description, path: "/consultancy" });
 
 const clients = [
   [HeartPulse, "Health systems", "bg-teal-500"],
@@ -39,6 +38,7 @@ const services = [
 export default function Consultancy() {
   return (
     <>
+      <PageStructuredData name="Consultancy & Advisory" description={description} path="/consultancy" breadcrumb="Consultancy & Advisory" />
       <PageHero
         visual="consultancy"
         eyebrow="Consultancy & advisory"

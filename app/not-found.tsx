@@ -1,1 +1,9 @@
-import Link from "next/link";export default function NotFound(){return <div className="container-page py-32 text-center"><p className="eyebrow before:hidden">404</p><h1 className="display">This page has not bloomed yet.</h1><p className="lead mx-auto mt-5 max-w-xl">The page may have moved or the link may be incorrect.</p><Link href="/" className="button-primary mt-8">Return home</Link></div>}
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  robots: { index: false, follow: false },
+};
+
+export default function NotFound(){return <div className="container-page py-32 text-center"><p className="eyebrow before:hidden">404</p><h1 className="display">This page has not bloomed yet.</h1><p className="lead mx-auto mt-5 max-w-xl">The page may have moved or the link may be incorrect.</p><Link href="/" className="button-primary mt-8">Return home</Link></div>}

@@ -3,11 +3,15 @@ import Link from "next/link";
 import { CTA } from "@/components/cta";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { PageStructuredData } from "@/components/seo-json-ld";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Programmes", description: "Explore BloomShield's flagship cancer prevention product family: ScreenSmart Communities, ScreenAccess and ScreenConnect." };
+const description = "Explore BloomShield's flagship cancer prevention programmes: ScreenSmart Communities, ScreenAccess and ScreenConnect.";
+export const metadata = createMetadata({ title: "Cancer Prevention Programmes", description, path: "/programmes" });
 
 export default function Programmes() {
   return <>
+    <PageStructuredData name="Cancer Prevention Programmes" description={description} path="/programmes" breadcrumb="Programmes" />
     <PageHero visual="programmes" eyebrow="BloomShield flagship product family" title="Three programmes. One pathway to fairer prevention." intro="ScreenSmart Communities™, ScreenAccess™ and ScreenConnect™ form a cohesive family of community-led, evidence-informed implementation models." cta="Discuss a programme"/>
 
     <section id="screen-smart" className="section-space scroll-mt-24"><div className="container-page"><div className="relative overflow-hidden rounded-4xl bg-gradient-to-br from-[#061f35] via-[#073f4b] to-[#096b70] p-8 text-white shadow-[0_35px_85px_-40px_rgba(6,31,53,.75)] sm:p-12"><div aria-hidden="true" className="absolute -right-24 -top-24 h-80 w-80 rounded-full border-[54px] border-emerald-300/10"/><div className="relative grid gap-12 lg:grid-cols-2"><div><span className="inline-flex rounded-full border border-[#64e3d2]/30 bg-[#64e3d2]/10 px-4 py-2 text-xs font-bold uppercase tracking-[.18em] text-[#8ff2df]">Flagship delivery programme</span><h2 className="mt-7 font-display text-4xl font-semibold sm:text-5xl">ScreenSmart Communities™</h2><p className="mt-5 max-w-xl text-lg leading-8 text-white/80">A flexible delivery model for working with communities and health systems to improve screening understanding, informed choice and access.</p><p className="mt-5 text-sm font-bold uppercase tracking-widest text-[#8ff2df]">Community insight → trusted engagement → action</p><Link href="/contact" className="mt-9 inline-flex items-center gap-2 font-bold underline decoration-[#64e3d2] decoration-2 underline-offset-8">Bring ScreenSmart to your area <ArrowRight size={17}/></Link></div><div className="grid gap-3">{[["01","Understand local barriers and assets","bg-[#0a4a57]"],["02","Co-design culturally relevant engagement","bg-[#0b5e68]"],["03","Equip trusted community messengers","bg-[#0d7277]"],["04","Create clear navigation into services","bg-[#118687]"],["05","Evaluate reach, experience and learning","bg-[#239b96]"]].map(([n,x,c])=><div className={`group flex items-center gap-4 rounded-2xl ${c} p-4 shadow-sm transition hover:translate-x-1 hover:shadow-md`} key={x}><span className="text-xs font-bold text-white/55">{n}</span><CheckCircle2 className="shrink-0 text-[#8ff2df]" size={20}/><span className="font-semibold">{x}</span></div>)}</div></div></div></div></section>

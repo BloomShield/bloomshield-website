@@ -10,12 +10,11 @@ import {
 import { CTA } from "@/components/cta";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { PageStructuredData } from "@/components/seo-json-ld";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Partnerships",
-  description:
-    "Partner with BloomShield across communities, NHS organisations, universities, innovators, charities and international collaborations.",
-};
+const description = "Partner with BloomShield across communities, health systems, universities, innovators, charities and international collaborations.";
+export const metadata = createMetadata({ title: "Partnerships", description, path: "/partnerships" });
 
 const ecosystem = [
   [HandHeart, "Communities", "Bring lived experience, trusted relationships and local knowledge into every stage of the work.", "bg-rose-600"],
@@ -29,6 +28,7 @@ const ecosystem = [
 export default function Partnerships() {
   return (
     <>
+      <PageStructuredData name="Partnerships" description={description} path="/partnerships" breadcrumb="Partnerships" />
       <PageHero
         visual="partnerships"
         eyebrow="Partnerships"

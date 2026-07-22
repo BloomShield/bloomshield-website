@@ -1,11 +1,15 @@
 import { Building2, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
+import { PageStructuredData } from "@/components/seo-json-ld";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Contact", description: "Contact BloomShield CIC about programmes, consultancy, research and partnerships." };
+const description = "Contact BloomShield CIC about cancer prevention programmes, consultancy, applied research and partnerships.";
+export const metadata = createMetadata({ title: "Contact BloomShield", description, path: "/contact" });
 
 export default function Contact() {
   return <>
+    <PageStructuredData name="Contact BloomShield" description={description} path="/contact" breadcrumb="Contact" />
     <PageHero visual="contact" eyebrow="Contact" title="Let’s start with what matters." intro="Tell us about the community, challenge or opportunity you are working on. We will respond with a thoughtful next step." />
     <section className="section-space">
       <div className="container-page grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
