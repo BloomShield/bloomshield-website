@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BrainCircuit, Globe2, HeartHandshake, Microscope, Network, ShieldCheck, UsersRound } from "lucide-react";
+import { ArrowRight, BrainCircuit, Globe2, GraduationCap, HandHeart, HeartHandshake, Hospital, Lightbulb, Microscope, Network, ShieldCheck, Users, UsersRound } from "lucide-react";
 import { CTA } from "@/components/cta";
 import { HomeEmblem } from "@/components/home-emblem";
 import { SectionHeading } from "@/components/section-heading";
@@ -14,6 +14,15 @@ const proofPoints = [
   { icon: Globe2, title: "Multi-country implementation experience", text: "Working across diverse communities and health systems to deliver effective, context-responsive programmes." },
   { icon: HeartHandshake, title: "Evidence-informed partnerships", text: "Partnering with communities, health services, researchers and innovators to drive meaningful change." },
   { icon: Network, title: "International collaborations", text: "Building global partnerships that share knowledge, strengthen systems and advance equity." }
+];
+
+const ecosystemRoles = [
+  { icon: Users, title: "Communities", text: "Shaping programmes around lived experience, trust, culture and local priorities." },
+  { icon: Hospital, title: "Health systems", text: "Embedding practical prevention and earlier diagnosis within routine care pathways." },
+  { icon: GraduationCap, title: "Universities", text: "Generating evidence through implementation science, evaluation and applied research." },
+  { icon: HandHeart, title: "Charities", text: "Extending reach through trusted relationships and community-based delivery." },
+  { icon: Lightbulb, title: "Innovators", text: "Translating responsible technology and new ideas into practical public health solutions." },
+  { icon: Globe2, title: "International partners", text: "Sharing knowledge and adapting effective models across countries and health systems." }
 ];
 
 export default function Home() {
@@ -49,7 +58,7 @@ export default function Home() {
 
     <section className="section-space border-y border-teal-900/10 bg-teal-50"><div className="container-page"><SectionHeading eyebrow="How we define impact" title="Progress we can see, learn from and sustain." intro="We do not publish unverified headline statistics. Our work is designed around transparent, programme-specific measures."/><div className="mt-10 grid gap-6 sm:grid-cols-3"><div><p className="text-2xl font-semibold text-teal-700">Reach</p><p className="mt-2 text-slate-600">Who is engaged, and who is still missing?</p></div><div><p className="text-2xl font-semibold text-teal-700">Experience</p><p className="mt-2 text-slate-600">Do people feel informed, respected and able to act?</p></div><div><p className="text-2xl font-semibold text-teal-700">System change</p><p className="mt-2 text-slate-600">What improves in pathways, practice and partnership?</p></div></div></div></section>
 
-    <section className="section-space"><div className="container-page"><SectionHeading align="center" eyebrow="Evidence-informed partnerships" title="Better prevention is a shared endeavour." intro="We connect communities, health systems, research and innovation partners across countries—keeping public benefit and implementation at the centre."/><div className="mt-10 grid grid-cols-2 gap-3 text-center text-sm font-bold text-slate-600 sm:grid-cols-3 lg:grid-cols-6">{["Communities","Health systems","Universities","Charities","Innovators","International partners"].map(x=><div key={x} className="flex min-h-24 items-center justify-center rounded-2xl border border-teal-900/10 bg-gradient-to-br from-white to-teal-50 px-3 shadow-sm">{x}</div>)}</div></div></section>
+    <section className="section-space"><div className="container-page"><SectionHeading align="center" eyebrow="Evidence-informed partnerships" title="Better prevention is a shared endeavour." intro="We connect communities, health systems, research and innovation partners across countries—keeping public benefit and implementation at the centre."/><ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{ecosystemRoles.map(({ icon: Icon, title, text })=><li key={title} className="h-full"><article className="group h-full rounded-3xl border border-teal-900/10 bg-gradient-to-br from-white to-teal-50/70 p-6 shadow-sm transition duration-200 motion-safe:hover:-translate-y-1 hover:border-teal-700/20 hover:shadow-soft sm:p-7"><span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-100 text-teal-800 transition-colors group-hover:bg-teal-800 group-hover:text-white"><Icon className="h-6 w-6" strokeWidth={1.55}/></span><h3 className="mt-6 text-lg font-bold text-teal-950">{title}</h3><p className="mt-2 leading-7 text-slate-600">{text}</p></article></li>)}</ul></div></section>
 
     <section className="section-space bg-mist"><div className="container-page"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><SectionHeading eyebrow="Latest insights" title="Ideas for more equitable prevention."/><Link href="/research-innovation" className="inline-flex items-center gap-2 font-bold text-teal-700">Explore research <ArrowRight size={17}/></Link></div><div className="mt-10 grid gap-6 md:grid-cols-3">{[
       ["Implementation science","Why good evidence is only the beginning","Closing the gap between what we know and what communities experience."],

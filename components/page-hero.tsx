@@ -1,8 +1,8 @@
 import Link from "next/link";
 import {
-  ArrowRight, BarChart3, Bot, BriefcaseBusiness, CircleDot, FlaskConical,
-  Handshake, HeartPulse, MapPin, Network, Route, ShieldCheck, Sparkles,
-  UsersRound, Workflow
+  ArrowRight, BarChart3, Bot, BriefcaseBusiness, CircleDot, DoorOpen, FlaskConical,
+  Handshake, HeartPulse, MapPin, Network, ShieldCheck, Sparkles,
+  UsersRound, Waypoints, Workflow
 } from "lucide-react";
 
 type Visual = "about" | "programmes" | "consultancy" | "research" | "partnerships" | "contact";
@@ -39,7 +39,39 @@ export function PageHero({ eyebrow, title, intro, cta, visual }: { eyebrow: stri
 }
 
 function HeroIllustration({ visual }: { visual: Visual }) {
-  if (visual === "programmes") return <div aria-hidden="true" className="relative mx-auto h-[330px] w-full max-w-[390px]"><div className="absolute inset-x-8 top-5 h-64 rotate-3 rounded-[2.5rem] bg-[#073f4b] shadow-[0_30px_70px_-35px_rgba(7,63,75,.7)]"/><div className="absolute inset-x-2 top-16 grid gap-3 rounded-[2.5rem] border border-white/70 bg-white/85 p-6 shadow-soft backdrop-blur"><div className="flex items-center gap-4 rounded-2xl bg-[#e5f8f1] p-4 text-[#087166]"><UsersRound/><span className="font-bold">Community insight</span></div><div className="ml-5 flex items-center gap-4 rounded-2xl bg-[#d5f2eb] p-4 text-[#075e59]"><Route/><span className="font-bold">Earlier detection</span></div><div className="ml-10 flex items-center gap-4 rounded-2xl bg-[#c7ece6] p-4 text-[#064e4a]"><BarChart3/><span className="font-bold">Learning at scale</span></div></div></div>;
+  if (visual === "programmes") {
+    const programmes = [
+      { href: "#screen-smart", icon: UsersRound, step: "Step 1", stage: "Community Awareness", name: "ScreenSmart Communities™", text: "Building understanding, trust and informed participation in cancer prevention.", card: "border-2 border-[#15967e]/30 bg-gradient-to-br from-white to-[#dff5ee] text-[#075e59] shadow-md", badge: "h-10 w-10 bg-[#087166] text-white" },
+      { href: "#screen-access", icon: DoorOpen, step: "Step 2", stage: "Understanding Barriers", name: "ScreenAccess™", text: "Making barriers visible and co-designing practical routes to equitable access.", card: "border border-[#d96748]/25 bg-gradient-to-br from-white to-[#fde4d8] text-[#74301f]", badge: "h-9 w-9 bg-[#d96748] text-white" },
+      { href: "#screen-connect", icon: Waypoints, step: "Step 3", stage: "Connecting People to Services", name: "ScreenConnect™", text: "Connecting communities, primary care and screening services through trusted pathways.", card: "border border-[#5267dc]/25 bg-gradient-to-br from-white to-[#e2e6ff] text-[#293474]", badge: "h-9 w-9 bg-[#5267dc] text-white" }
+    ];
+
+    return (
+      <nav aria-label="Flagship programme pathway" className="mx-auto w-full max-w-[440px]">
+        <p className="mb-4 text-center text-xs font-bold uppercase tracking-[.16em] text-teal-800">From awareness, to access, to connection.</p>
+        <div className="relative">
+          <span aria-hidden="true" className="absolute bottom-4 left-1/2 top-4 w-px -translate-x-1/2 bg-gradient-to-b from-teal-600/20 via-teal-700/45 to-teal-600/20"/>
+          <ol className="relative grid gap-11">
+            {programmes.map(({ href, icon: Icon, step, stage, name, text, card, badge }) => (
+              <li key={name} className="relative z-10">
+                <Link href={href} className={`group block rounded-3xl p-3 shadow-sm transition duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-soft ${card}`}>
+                  <span className="flex items-center gap-2 text-[9px] font-bold uppercase leading-none tracking-[.13em] opacity-75"><span>{step}</span><span aria-hidden="true" className="h-1 w-1 rounded-full bg-current opacity-50"/><span>{stage}</span></span>
+                  <span className="mt-1.5 flex items-center gap-3">
+                    <span aria-hidden="true" className={`flex shrink-0 items-center justify-center rounded-2xl shadow-sm ${badge}`}><Icon className="h-5 w-5"/></span>
+                    <span className="min-w-0 font-display text-[1.05rem] font-bold tracking-tight sm:text-lg">{name}</span>
+                    <ArrowRight aria-hidden="true" className="ml-auto h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"/>
+                  </span>
+                  <span className="mt-1.5 block text-sm leading-5 opacity-80">{text}</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+          <div className="relative z-10 mx-auto mt-8 flex w-fit items-center gap-2 rounded-full border border-teal-700/20 bg-gradient-to-r from-white via-emerald-50 to-white px-4 py-2 text-[10px] font-bold uppercase tracking-[.14em] text-teal-900 shadow-[0_12px_30px_-18px_rgba(8,113,102,.65)]"><span aria-hidden="true" className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-700 text-white"><ShieldCheck className="h-3.5 w-3.5"/></span>Better Prevention Outcomes</div>
+        </div>
+        <div className="mt-4 text-center"><p className="text-[11px] font-bold tracking-[.04em] text-teal-900">The BloomShield Implementation Pathway™</p><p className="mt-1 text-xs leading-5 text-slate-600">Moving communities from awareness to equitable cancer prevention.</p></div>
+      </nav>
+    );
+  }
 
   if (visual === "consultancy") return <div aria-hidden="true" className="relative mx-auto h-[340px] w-full max-w-[390px]"><div className="absolute inset-3 rounded-[3rem] bg-gradient-to-br from-[#18283f] to-[#334866] shadow-[0_35px_80px_-38px_rgba(15,23,42,.75)]"><div className="absolute left-8 top-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-white"><BriefcaseBusiness className="h-8 w-8"/></div><div className="absolute bottom-9 left-8 right-8 rounded-2xl border border-white/10 bg-white/[.08] p-5 text-white"><Workflow className="h-8 w-8 text-slate-300"/><div className="mt-5 flex items-end gap-2">{[35,55,42,75,62].map((h,i)=><span key={i} className="w-full rounded-t bg-gradient-to-t from-slate-400 to-white" style={{height:h}}/>)}</div></div></div><span className="absolute right-0 top-20 flex h-20 w-20 items-center justify-center rounded-3xl bg-white text-slate-700 shadow-soft"><BarChart3 className="h-9 w-9"/></span></div>;
 
