@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 type ConsentChoice = "accepted" | "rejected" | null;
 type GtagArguments = [command: string, ...values: unknown[]];
+type ClarityClient = typeof import("@microsoft/clarity").default;
 
 declare global {
   interface Window {
@@ -17,7 +18,9 @@ declare global {
 
 const CONSENT_KEY = "bloomshield-analytics-consent";
 const SETTINGS_EVENT = "bloomshield:open-cookie-settings";
-const COOKIE_PREFIXES = ["_ga", "_gid", "_gat"];
+const COOKIE_PREFIXES = ["_ga", "_gid", "_gat", "_clck", "_clsk"];
+let clarityClient: ClarityClient | null = null;
+let clarityInitialised = false;
 
 function initialiseDataLayer() {
   window.dataLayer = window.dataLayer ?? [];
@@ -51,6 +54,22 @@ function grantAnalyticsConsent() {
   setConsentState("granted");
 }
 
+function grantClarityConsent(client: ClarityClient) {
+  client.consentV2({
+    ad_Storage: "denied",
+    analytics_Storage: "granted",
+  });
+}
+
+function withdrawClarityConsent() {
+  if (!clarityClient) return;
+  clarityClient.consentV2({
+    ad_Storage: "denied",
+    analytics_Storage: "denied",
+  });
+  clarityClient.consent(false);
+}
+
 function removeAnalyticsCookies() {
   const hostParts = window.location.hostname.split(".");
   const domains = ["", window.location.hostname, `.${window.location.hostname}`];
@@ -64,6 +83,28 @@ function removeAnalyticsCookies() {
       document.cookie = `${name}=; Max-Age=0; path=/${domainAttribute}; SameSite=Lax`;
     });
   });
+}
+
+function MicrosoftClarity({ projectId }: { projectId: string }) {
+  useEffect(() => {
+    let active = true;
+
+    void import("@microsoft/clarity").then(({ default: Clarity }) => {
+      if (!active) return;
+      clarityClient = Clarity;
+      if (!clarityInitialised) {
+        Clarity.init(projectId);
+        clarityInitialised = true;
+      }
+      grantClarityConsent(Clarity);
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [projectId]);
+
+  return null;
 }
 
 function GoogleAnalytics({ measurementId }: { measurementId: string }) {
@@ -122,7 +163,9 @@ export function AnalyticsConsent() {
   const [loaded, setLoaded] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
   const analyticsEnabled = process.env.NODE_ENV === "production" && Boolean(measurementId);
+  const clarityEnabled = process.env.NODE_ENV === "production" && Boolean(clarityProjectId);
 
   useEffect(() => {
     const saved = window.localStorage.getItem(CONSENT_KEY);
@@ -142,6 +185,7 @@ export function AnalyticsConsent() {
       grantAnalyticsConsent();
     } else {
       if (window.gtag) setConsentState("denied");
+      withdrawClarityConsent();
       removeAnalyticsCookies();
     }
   }
@@ -151,12 +195,13 @@ export function AnalyticsConsent() {
   return (
     <>
       {analyticsEnabled && choice === "accepted" && measurementId ? <GoogleAnalytics measurementId={measurementId} /> : null}
+      {clarityEnabled && choice === "accepted" && clarityProjectId ? <MicrosoftClarity projectId={clarityProjectId} /> : null}
       {showPanel ? (
         <section role="region" aria-live="polite" aria-labelledby="cookie-consent-title" className="fixed inset-x-4 bottom-4 z-[110] mx-auto max-w-3xl rounded-3xl border border-teal-900/15 bg-white p-5 shadow-[0_24px_80px_-24px_rgba(7,31,52,.45)] sm:p-6">
           <div className="sm:flex sm:items-start sm:justify-between sm:gap-8">
             <div>
               <h2 id="cookie-consent-title" className="font-display text-xl font-semibold text-ink">Analytics Cookies</h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">Optional Google Analytics cookies help us understand aggregate website use and improve BloomShield. The website works without them.</p>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">Optional analytics cookies from Google Analytics and Microsoft Clarity help us understand aggregate website use and improve BloomShield. The website works without them.</p>
               <a href="/cookies" className="mt-2 inline-block text-sm font-semibold text-teal-800 underline underline-offset-4">Read our cookie notice</a>
             </div>
             <div className="mt-5 grid shrink-0 gap-3 sm:mt-0 sm:min-w-52">
