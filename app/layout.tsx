@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
+import { Suspense } from "react";
 import { Manrope, Source_Sans_3 } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 import { SiteStructuredData } from "@/components/seo-json-ld";
 import { HOME_DESCRIPTION, SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -19,5 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en-GB" className={`${display.variable} ${body.variable}`}><body><SiteStructuredData/><a href="#main-content" className="fixed left-4 top-3 z-[100] -translate-y-20 rounded-lg bg-white px-4 py-2 font-bold text-teal-900 shadow-lg focus:translate-y-0">Skip to main content</a><Header/><main id="main-content">{children}</main><Footer/><Analytics/></body></html>;
+  return <html lang="en-GB" className={`${display.variable} ${body.variable}`}><body><SiteStructuredData/><a href="#main-content" className="fixed left-4 top-3 z-[100] -translate-y-20 rounded-lg bg-white px-4 py-2 font-bold text-teal-900 shadow-lg focus:translate-y-0">Skip to main content</a><Header/><main id="main-content">{children}</main><Footer/><Suspense fallback={null}><AnalyticsConsent/></Suspense></body></html>;
 }
