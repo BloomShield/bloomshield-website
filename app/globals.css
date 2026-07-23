@@ -83,6 +83,11 @@ main article.screenaccess-purpose-card.rounded-3xl { background: #fff; color: #3
 .screenconnect-heading { @apply font-display text-4xl font-semibold leading-tight tracking-[-.03em] text-ink sm:text-5xl; }
 .screenconnect-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#ff9b7f] px-6 py-3 text-sm font-bold text-[#321b2b] shadow-sm transition hover:bg-[#ffc0ae] focus-visible:ring-[#ff9b7f]; }
 .screenconnect-button-outline { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-blue-100/40 bg-transparent px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:ring-blue-200; }
+.screenconnect-programme-link { @apply flex min-h-12 min-w-0 items-center gap-4 rounded-2xl border p-4 shadow-sm transition motion-safe:hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2 sm:p-5; }
+.screenconnect-programme-link-icon { @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white; }
+.screenconnect-programme-link-green { @apply border-emerald-800/15 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 focus-visible:ring-emerald-700; }.screenconnect-programme-link-green .screenconnect-programme-link-icon { @apply bg-emerald-700; }
+.screenconnect-programme-link-coral { @apply border-[#a9432d]/20 bg-[#fff0ea] text-[#923a26] hover:bg-[#fde3d8] focus-visible:ring-[#a9432d]; }.screenconnect-programme-link-coral .screenconnect-programme-link-icon { @apply bg-[#b84d32]; }
+.screenconnect-programme-link-blue { @apply border-[#3858c7]/20 bg-[#edf0ff] text-[#2946a2] hover:bg-[#dfe5ff] focus-visible:ring-[#3858c7]; }.screenconnect-programme-link-blue .screenconnect-programme-link-icon { @apply bg-[#3858c7]; }
 .screenconnect-card { @apply rounded-3xl border border-blue-900/10 bg-white p-8 shadow-[0_22px_58px_-40px_rgba(30,58,138,.4)]; }
 main article.screenconnect-purpose-card.rounded-3xl { background:#fff; color:#14265b; height:auto; overflow:visible; }
 .screenconnect-purpose-card p { opacity:1; visibility:visible; position:static; transform:none; }
@@ -97,4 +102,5 @@ main article.screenconnect-purpose-card.rounded-3xl { background:#fff; color:#14
 .screenconnect-link { @apply inline-flex items-center gap-2 font-bold text-[#2946a2] underline decoration-[#7186df] decoration-2 underline-offset-8; }
 .screenconnect-closing { @apply relative overflow-hidden bg-gradient-to-br from-[#0b1d4f] via-[#173880] to-[#294fba] text-white; }
 .screenconnect-closing::before { content:""; @apply absolute -right-24 -top-28 h-80 w-80 rounded-full border-[50px] border-blue-200/10; }
+.screenconnect-closing-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-blue-100 bg-white px-6 py-3 text-sm font-bold text-[#173880] shadow-lg transition hover:bg-blue-50 hover:text-[#0b1d4f] focus-visible:ring-blue-100 focus-visible:ring-offset-[#173880]; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
