@@ -32,7 +32,7 @@ const ecosystemRoles = [
 
 export default function Home() {
   return <>
-    <PageStructuredData name={pageTitle} description={HOME_DESCRIPTION} path="/" />
+    <PageStructuredData name={pageTitle} description={HOME_DESCRIPTION} path="/" kind="home" />
     <section className="relative overflow-hidden bg-gradient-to-br from-white via-teal-50 to-emerald-400/10">
       <div aria-hidden="true" className="absolute right-[-8rem] top-[-9rem] hidden h-[32rem] w-[32rem] rounded-full border-[80px] border-white/60 lg:block"/>
       <div className="container-page grid min-h-[720px] items-center gap-12 py-20 lg:grid-cols-[1.08fr_.92fr]">

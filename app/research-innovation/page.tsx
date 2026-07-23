@@ -27,7 +27,7 @@ const researchAreas = [
 export default function Research() {
   return (
     <>
-      <PageStructuredData name="Research & Innovation" description={description} path="/research-innovation" breadcrumb="Research & Innovation" />
+      <PageStructuredData name="Research & Innovation" description={description} path="/research-innovation" breadcrumb="Research & Innovation" kind="research" />
       <PageHero
         visual="research"
         eyebrow="Research & innovation"

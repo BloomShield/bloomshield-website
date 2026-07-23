@@ -28,7 +28,7 @@ const ecosystem = [
 export default function Partnerships() {
   return (
     <>
-      <PageStructuredData name="Partnerships" description={description} path="/partnerships" breadcrumb="Partnerships" />
+      <PageStructuredData name="Partnerships" description={description} path="/partnerships" breadcrumb="Partnerships" kind="partnerships" />
       <PageHero
         visual="partnerships"
         eyebrow="Partnerships"

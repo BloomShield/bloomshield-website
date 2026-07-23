@@ -38,7 +38,7 @@ const services = [
 export default function Consultancy() {
   return (
     <>
-      <PageStructuredData name="Consultancy & Advisory" description={description} path="/consultancy" breadcrumb="Consultancy & Advisory" />
+      <PageStructuredData name="Consultancy & Advisory" description={description} path="/consultancy" breadcrumb="Consultancy & Advisory" kind="consultancy" />
       <PageHero
         visual="consultancy"
         eyebrow="Consultancy & advisory"
