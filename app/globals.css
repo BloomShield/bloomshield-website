@@ -58,4 +58,17 @@ main article.rounded-3xl.border:hover { transform: translateY(-3px); box-shadow:
 .screensmart-timeline p { @apply mt-3 leading-7 text-white/70; }
 .screensmart-closing { @apply relative overflow-hidden bg-gradient-to-br from-[#062f2a] via-[#075144] to-[#096b58] text-white; }
 .screensmart-closing::before { content: ""; @apply absolute -right-24 -top-28 h-80 w-80 rounded-full border-[50px] border-emerald-300/10; }
+.screenaccess-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-[#a9432d]; }
+.screenaccess-dark-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-[#f6a88d]; }
+.screenaccess-heading { @apply font-display text-4xl font-semibold leading-tight tracking-[-.03em] text-ink sm:text-5xl; }
+.screenaccess-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#f19a7d] px-6 py-3 text-sm font-bold text-[#3d1d18] shadow-sm transition hover:bg-[#ffc0aa] focus-visible:ring-[#f6a88d]; }
+.screenaccess-button-outline { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#ffd8ca]/35 bg-transparent px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:ring-[#f6a88d]; }
+.screenaccess-link { @apply inline-flex items-center gap-2 font-bold text-[#923a26] underline decoration-[#df795b] decoration-2 underline-offset-8; }
+.screenaccess-pathway { @apply grid gap-7 lg:grid-cols-5; }
+.screenaccess-pathway li { @apply relative border-l-2 border-[#f6a88d]/50 pl-7 lg:border-l-0 lg:border-t-2 lg:px-2 lg:pt-9; }
+.screenaccess-pathway li > span { @apply absolute -left-[1.08rem] top-0 flex h-8 w-8 items-center justify-center rounded-full bg-[#f6a88d] text-xs font-bold text-[#3d1d18] lg:-top-[1.08rem] lg:left-2; }
+.screenaccess-pathway h3 { @apply font-display text-2xl font-semibold; }
+.screenaccess-pathway p { @apply mt-3 leading-7 text-white/70; }
+.screenaccess-closing { @apply relative overflow-hidden bg-gradient-to-br from-[#3d1d18] via-[#65291f] to-[#873822] text-white; }
+.screenaccess-closing::before { content: ""; @apply absolute -right-24 -top-28 h-80 w-80 rounded-full border-[50px] border-[#f6a88d]/10; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
