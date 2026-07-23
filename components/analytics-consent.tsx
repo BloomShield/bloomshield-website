@@ -21,7 +21,11 @@ const COOKIE_PREFIXES = ["_ga", "_gid", "_gat"];
 
 function initialiseDataLayer() {
   window.dataLayer = window.dataLayer ?? [];
-  window.gtag = window.gtag ?? ((...args: GtagArguments) => window.dataLayer?.push(args));
+  window.gtag = window.gtag ?? function gtag() {
+    // Google Tag expects the native Arguments object used by its standard snippet.
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer?.push(arguments);
+  };
 }
 
 function setConsentState(analyticsStorage: "granted" | "denied") {
@@ -151,7 +155,7 @@ export function AnalyticsConsent() {
         <section role="region" aria-live="polite" aria-labelledby="cookie-consent-title" className="fixed inset-x-4 bottom-4 z-[110] mx-auto max-w-3xl rounded-3xl border border-teal-900/15 bg-white p-5 shadow-[0_24px_80px_-24px_rgba(7,31,52,.45)] sm:p-6">
           <div className="sm:flex sm:items-start sm:justify-between sm:gap-8">
             <div>
-              <h2 id="cookie-consent-title" className="font-display text-xl font-semibold text-ink">Analytics cookie settings</h2>
+              <h2 id="cookie-consent-title" className="font-display text-xl font-semibold text-ink">Analytics Cookies</h2>
               <p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">Optional Google Analytics cookies help us understand aggregate website use and improve BloomShield. The website works without them.</p>
               <a href="/cookies" className="mt-2 inline-block text-sm font-semibold text-teal-800 underline underline-offset-4">Read our cookie notice</a>
             </div>
