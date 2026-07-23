@@ -62,6 +62,8 @@ main article.rounded-3xl.border:hover { transform: translateY(-3px); box-shadow:
 .screenaccess-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-[#a9432d]; }
 .screenaccess-dark-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-[#f6a88d]; }
 .screenaccess-heading { @apply font-display text-4xl font-semibold leading-tight tracking-[-.03em] text-ink sm:text-5xl; }
+main article.screenaccess-purpose-card.rounded-3xl { background: #fff; color: #3d1d18; height: auto; overflow: visible; }
+.screenaccess-purpose-card p { opacity: 1; visibility: visible; position: static; transform: none; }
 .screenaccess-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#f19a7d] px-6 py-3 text-sm font-bold text-[#3d1d18] shadow-sm transition hover:bg-[#ffc0aa] focus-visible:ring-[#f6a88d]; }
 .screenaccess-button-outline { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#ffd8ca]/35 bg-transparent px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:ring-[#f6a88d]; }
 .screenaccess-link { @apply inline-flex items-center gap-2 font-bold text-[#923a26] underline decoration-[#df795b] decoration-2 underline-offset-8; }
