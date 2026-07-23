@@ -126,11 +126,11 @@ export default function ScreenAccess() {
     <section className="relative overflow-hidden bg-[#3d1d18] text-white">
       <div aria-hidden="true" className="absolute -right-28 -top-32 h-[34rem] w-[34rem] rounded-full border-[78px] border-[#f09a7d]/10"/>
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-[#6e2d21]/35 to-transparent"/>
-      <div className="container-page relative grid min-h-[720px] items-center gap-12 py-20 lg:grid-cols-[1.15fr_.85fr]">
-        <div>
+      <div className="container-page relative grid min-h-[720px] min-w-0 items-center gap-12 py-20 lg:grid-cols-[1.15fr_.85fr]">
+        <div className="min-w-0">
           <nav aria-label="Breadcrumb" className="mb-8 text-sm text-[#ffd8ca]/75"><ol className="flex flex-wrap items-center gap-2"><li><Link href="/">Home</Link></li><li aria-hidden="true">/</li><li><Link href="/programmes">Programmes</Link></li><li aria-hidden="true">/</li><li aria-current="page" className="text-white">ScreenAccess™</li></ol></nav>
           <p className="text-xs font-bold uppercase tracking-[.2em] text-[#f6a88d]">BloomShield Programme Portfolio · Volume 2</p>
-          <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.02] tracking-[-.04em] sm:text-6xl lg:text-7xl">ScreenAccess™</h1>
+          <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.02] tracking-[-.04em] sm:text-6xl lg:text-7xl">ScreenAccess™</h1>
           <p className="mt-6 max-w-2xl font-display text-2xl font-semibold leading-snug text-[#ffd8ca]">Removing barriers. Expanding access. Enabling earlier diagnosis.</p>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/78">ScreenAccess™ works with communities, healthcare providers, commissioners and local partners to identify and remove the barriers that prevent people from participating in cancer screening and early diagnosis pathways.</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href={contactHref} className="screenaccess-button">Discuss a ScreenAccess™ Partnership <ArrowRight size={17}/></Link><Link href="#overview" className="screenaccess-button-outline">Explore the Programme <ArrowDown size={17}/></Link></div>
