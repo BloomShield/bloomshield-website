@@ -81,7 +81,7 @@ main article.screenaccess-purpose-card.rounded-3xl { background: #fff; color: #3
 .screenconnect-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-[#3858c7]; }
 .screenconnect-dark-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-blue-200; }
 .screenconnect-heading { @apply font-display text-4xl font-semibold leading-tight tracking-[-.03em] text-ink sm:text-5xl; }
-.screenconnect-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#ff9b7f] px-6 py-3 text-sm font-bold text-[#321b2b] shadow-sm transition hover:bg-[#ffc0ae] focus-visible:ring-[#ff9b7f]; }
+.screenconnect-primary-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-blue-100 bg-white px-6 py-3 text-sm font-bold text-[#173880] shadow-lg transition hover:bg-blue-50 hover:text-[#0b1d4f] focus-visible:ring-blue-100 focus-visible:ring-offset-[#173880]; }
 .screenconnect-button-outline { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-blue-100/40 bg-transparent px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:ring-blue-200; }
 .screenconnect-programme-link { @apply flex min-h-12 min-w-0 items-center gap-4 rounded-2xl border p-4 shadow-sm transition motion-safe:hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2 sm:p-5; }
 .screenconnect-programme-link-icon { @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white; }
@@ -102,5 +102,4 @@ main article.screenconnect-purpose-card.rounded-3xl { background:#fff; color:#14
 .screenconnect-link { @apply inline-flex items-center gap-2 font-bold text-[#2946a2] underline decoration-[#7186df] decoration-2 underline-offset-8; }
 .screenconnect-closing { @apply relative overflow-hidden bg-gradient-to-br from-[#0b1d4f] via-[#173880] to-[#294fba] text-white; }
 .screenconnect-closing::before { content:""; @apply absolute -right-24 -top-28 h-80 w-80 rounded-full border-[50px] border-blue-200/10; }
-.screenconnect-closing-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-blue-100 bg-white px-6 py-3 text-sm font-bold text-[#173880] shadow-lg transition hover:bg-blue-50 hover:text-[#0b1d4f] focus-visible:ring-blue-100 focus-visible:ring-offset-[#173880]; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
