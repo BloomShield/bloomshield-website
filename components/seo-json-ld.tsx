@@ -7,6 +7,7 @@ const ids = {
   ccpe: `${SITE_URL}/#ccpe`,
   screenSmart: `${SITE_URL}/#screensmart-communities`,
   screenAccess: `${SITE_URL}/#screenaccess`,
+  screenConnect: `${SITE_URL}/#screenconnect`,
   communityProgrammes: `${SITE_URL}/#community-programmes`,
   consultancy: `${SITE_URL}/consultancy#service`,
   researchInnovation: `${SITE_URL}/research-innovation#service`,
@@ -19,6 +20,7 @@ type PageKind =
   | "programmes"
   | "screensmart"
   | "screenaccess"
+  | "screenconnect"
   | "consultancy"
   | "research"
   | "partnerships"
@@ -136,6 +138,19 @@ const screenAccessNode = {
   inLanguage: "en-GB",
 };
 
+const screenConnectNode = {
+  "@type": "Service",
+  "@id": ids.screenConnect,
+  name: "ScreenConnect™",
+  description:
+    "BloomShield CIC’s digital patient-navigation and care-coordination programme, supporting continuity from cancer screening through referral, diagnosis, treatment and follow-up.",
+  serviceType: "Digital patient navigation and connected cancer care programme",
+  url: `${SITE_URL}/programmes/screenconnect`,
+  provider: { "@id": ids.organization },
+  isBasedOn: { "@id": ids.ccpe },
+  inLanguage: "en-GB",
+};
+
 const communityProgrammesNode = {
   "@type": "Service",
   "@id": ids.communityProgrammes,
@@ -187,6 +202,7 @@ function entitiesFor(kind: PageKind) {
         ccpeNode,
         screenSmartNode,
         screenAccessNode,
+        screenConnectNode,
         communityProgrammesNode,
         consultancyNode,
         researchInnovationNode,
@@ -195,11 +211,13 @@ function entitiesFor(kind: PageKind) {
     case "about":
       return [founderNode, ccpeNode];
     case "programmes":
-      return [ccpeNode, screenSmartNode, screenAccessNode, communityProgrammesNode];
+      return [ccpeNode, screenSmartNode, screenAccessNode, screenConnectNode, communityProgrammesNode];
     case "screensmart":
       return [ccpeNode, screenSmartNode];
     case "screenaccess":
       return [ccpeNode, screenAccessNode];
+    case "screenconnect":
+      return [ccpeNode, screenConnectNode];
     case "consultancy":
       return [consultancyNode];
     case "research":
@@ -218,6 +236,8 @@ function mainEntityFor(kind: PageKind) {
       return ids.screenSmart;
     case "screenaccess":
       return ids.screenAccess;
+    case "screenconnect":
+      return ids.screenConnect;
     case "consultancy":
       return ids.consultancy;
     case "research":
@@ -239,6 +259,7 @@ function aboutFor(kind: PageKind) {
     { "@id": ids.ccpe },
     { "@id": ids.screenSmart },
     { "@id": ids.screenAccess },
+    { "@id": ids.screenConnect },
     { "@id": ids.communityProgrammes },
     { "@id": ids.consultancy },
     { "@id": ids.researchInnovation },
@@ -276,7 +297,7 @@ export function PageStructuredData({
   ];
 
   if (breadcrumb) {
-    const isProgrammeDetail = kind === "screensmart" || kind === "screenaccess";
+    const isProgrammeDetail = kind === "screensmart" || kind === "screenaccess" || kind === "screenconnect";
     graph.push({
       "@type": "BreadcrumbList",
       "@id": breadcrumbId,

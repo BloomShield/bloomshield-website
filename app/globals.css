@@ -74,4 +74,27 @@ main article.screenaccess-purpose-card.rounded-3xl { background: #fff; color: #3
 .screenaccess-pathway p { @apply mt-3 leading-7 text-white/70; }
 .screenaccess-closing { @apply relative overflow-hidden bg-gradient-to-br from-[#3d1d18] via-[#65291f] to-[#873822] text-white; }
 .screenaccess-closing::before { content: ""; @apply absolute -right-24 -top-28 h-80 w-80 rounded-full border-[50px] border-[#f6a88d]/10; }
+.screenconnect-hero { @apply relative overflow-hidden bg-gradient-to-br from-[#0b1d4f] via-[#163783] to-[#315dca] text-white; }
+.screenconnect-network { @apply absolute inset-0 opacity-40; background-image: radial-gradient(circle at 78% 18%, rgb(191 219 254 / .6) 0 4px, transparent 5px), radial-gradient(circle at 90% 45%, rgb(255 155 127 / .65) 0 5px, transparent 6px), linear-gradient(125deg, transparent 56%, rgb(191 219 254 / .16) 56.2% 56.6%, transparent 56.8%); }
+.screenconnect-network i { @apply absolute h-3 w-3 rounded-full bg-blue-200 shadow-[0_0_28px_8px_rgba(147,197,253,.3)]; }
+.screenconnect-network i:nth-child(1) { right: 18%; top: 22%; }.screenconnect-network i:nth-child(2) { right: 8%; top: 42%; }.screenconnect-network i:nth-child(3) { right: 24%; top: 62%; }.screenconnect-network i:nth-child(4) { right: 38%; top: 38%; }.screenconnect-network i:nth-child(5) { right: 10%; top: 78%; background:#ff9b7f; }
+.screenconnect-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-[#3858c7]; }
+.screenconnect-dark-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-blue-200; }
+.screenconnect-heading { @apply font-display text-4xl font-semibold leading-tight tracking-[-.03em] text-ink sm:text-5xl; }
+.screenconnect-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#ff9b7f] px-6 py-3 text-sm font-bold text-[#321b2b] shadow-sm transition hover:bg-[#ffc0ae] focus-visible:ring-[#ff9b7f]; }
+.screenconnect-button-outline { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-blue-100/40 bg-transparent px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:ring-blue-200; }
+.screenconnect-card { @apply rounded-3xl border border-blue-900/10 bg-white p-8 shadow-[0_22px_58px_-40px_rgba(30,58,138,.4)]; }
+main article.screenconnect-purpose-card.rounded-3xl { background:#fff; color:#14265b; height:auto; overflow:visible; }
+.screenconnect-purpose-card p { opacity:1; visibility:visible; position:static; transform:none; }
+.screenconnect-journey { @apply grid gap-6 md:grid-cols-2 xl:grid-cols-4; }
+.screenconnect-journey li { @apply relative min-w-0 rounded-2xl border border-white/15 bg-white/[.07] p-5 pt-12; }
+.screenconnect-journey li > span { @apply absolute left-5 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-blue-200 text-xs font-bold text-[#10245c]; }
+.screenconnect-journey p { @apply font-semibold leading-7; }
+.screenconnect-pathway { @apply grid gap-7 lg:grid-cols-5; }
+.screenconnect-pathway li { @apply relative border-l-2 border-blue-300/50 pl-7 lg:border-l-0 lg:border-t-2 lg:px-2 lg:pt-9; }
+.screenconnect-pathway li > span { @apply absolute -left-[1.08rem] top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-200 text-xs font-bold text-[#10245c] lg:-top-[1.08rem] lg:left-2; }
+.screenconnect-pathway h3 { @apply font-display text-2xl font-semibold; }.screenconnect-pathway p { @apply mt-3 leading-7 text-white/75; }
+.screenconnect-link { @apply inline-flex items-center gap-2 font-bold text-[#2946a2] underline decoration-[#7186df] decoration-2 underline-offset-8; }
+.screenconnect-closing { @apply relative overflow-hidden bg-gradient-to-br from-[#0b1d4f] via-[#173880] to-[#294fba] text-white; }
+.screenconnect-closing::before { content:""; @apply absolute -right-24 -top-28 h-80 w-80 rounded-full border-[50px] border-blue-200/10; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
