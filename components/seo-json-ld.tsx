@@ -16,6 +16,7 @@ type PageKind =
   | "home"
   | "about"
   | "programmes"
+  | "screensmart"
   | "consultancy"
   | "research"
   | "partnerships"
@@ -108,12 +109,13 @@ const ccpeNode = {
 };
 
 const screenSmartNode = {
-  "@type": "CreativeWork",
+  "@type": "Service",
   "@id": ids.screenSmart,
   name: "ScreenSmart Communities™",
   description:
     "A flagship community cancer-prevention programme delivered by BloomShield CIC through the Cancer Care Partnership Ecosystem implementation framework.",
-  url: `${SITE_URL}/programmes#screen-smart`,
+  serviceType: "Community cancer prevention, screening participation and early-diagnosis programme",
+  url: `${SITE_URL}/programmes/screensmart-communities`,
   provider: { "@id": ids.organization },
   isBasedOn: { "@id": ids.ccpe },
   inLanguage: "en-GB",
@@ -178,6 +180,8 @@ function entitiesFor(kind: PageKind) {
       return [founderNode, ccpeNode];
     case "programmes":
       return [ccpeNode, screenSmartNode, communityProgrammesNode];
+    case "screensmart":
+      return [ccpeNode, screenSmartNode];
     case "consultancy":
       return [consultancyNode];
     case "research":
@@ -192,6 +196,7 @@ function entitiesFor(kind: PageKind) {
 function mainEntityFor(kind: PageKind) {
   switch (kind) {
     case "programmes":
+    case "screensmart":
       return ids.screenSmart;
     case "consultancy":
       return ids.consultancy;
@@ -250,12 +255,18 @@ export function PageStructuredData({
   ];
 
   if (breadcrumb) {
+    const isScreenSmart = kind === "screensmart";
     graph.push({
       "@type": "BreadcrumbList",
       "@id": breadcrumbId,
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: breadcrumb, item: url },
+        ...(isScreenSmart
+          ? [
+              { "@type": "ListItem", position: 2, name: "Programmes", item: `${SITE_URL}/programmes` },
+              { "@type": "ListItem", position: 3, name: breadcrumb, item: url },
+            ]
+          : [{ "@type": "ListItem", position: 2, name: breadcrumb, item: url }]),
       ],
     });
   }

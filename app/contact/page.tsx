@@ -1,4 +1,5 @@
 import { Building2, MapPin } from "lucide-react";
+import { Suspense } from "react";
 import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
 import { PageStructuredData } from "@/components/seo-json-ld";
@@ -23,7 +24,9 @@ export default function Contact() {
           </div>
           <div className="mt-6 rounded-2xl bg-mist p-6"><h3 className="font-bold">Please note</h3><p className="mt-2 text-sm leading-6 text-slate-600">BloomShield does not provide individual medical advice or emergency support. If you need urgent medical help, contact the appropriate emergency or health service in your country.</p></div>
         </aside>
-        <ContactForm />
+        <Suspense fallback={<div className="min-h-[32rem] rounded-3xl border border-teal-900/10 bg-white p-9 shadow-soft" aria-label="Loading contact form" />}>
+          <ContactForm />
+        </Suspense>
       </div>
     </section>
   </>;

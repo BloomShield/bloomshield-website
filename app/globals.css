@@ -42,4 +42,20 @@ main article.rounded-3xl.border:hover { transform: translateY(-3px); box-shadow:
 [data-hero="partnerships"] + section article:nth-child(4) { border-top: 3px solid #2baa7f; }
 [data-hero="partnerships"] + section article:nth-child(5) { border-top: 3px solid #f26d4f; }
 [data-hero="partnerships"] + section article:nth-child(6) { border-top: 3px solid #f0b429; }
+.screensmart-eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[.2em] text-emerald-700; }
+.screensmart-heading { @apply font-display text-4xl font-semibold leading-tight tracking-[-.03em] text-ink sm:text-5xl; }
+.screensmart-button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-400 px-6 py-3 text-sm font-bold text-[#062f2a] shadow-sm transition hover:bg-emerald-300 focus-visible:ring-emerald-300; }
+.screensmart-button-muted { @apply inline-flex min-h-12 cursor-not-allowed items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white/75; }
+.screensmart-button-outline { @apply inline-flex min-h-12 items-center justify-center rounded-full border border-emerald-200/40 bg-transparent px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10 focus-visible:ring-emerald-300; }
+.screensmart-card { @apply rounded-3xl border border-emerald-900/10 bg-white p-7 shadow-[0_22px_60px_-42px_rgba(6,78,59,.45)] transition motion-safe:hover:-translate-y-1; }
+.screensmart-card svg { @apply h-8 w-8 text-emerald-700; }
+.screensmart-card h3 { @apply mt-6 text-xl font-bold; }
+.screensmart-card p { @apply mt-3 leading-7 text-slate-600; }
+.screensmart-timeline { @apply grid gap-7 lg:grid-cols-5; }
+.screensmart-timeline li { @apply relative border-l-2 border-emerald-300/50 pl-7 lg:border-l-0 lg:border-t-2 lg:px-2 lg:pt-9; }
+.screensmart-timeline li > span { @apply absolute -left-[1.08rem] top-0 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-300 text-xs font-bold text-[#062f2a] lg:-top-[1.08rem] lg:left-2; }
+.screensmart-timeline h3 { @apply font-display text-2xl font-semibold; }
+.screensmart-timeline p { @apply mt-3 leading-7 text-white/70; }
+.screensmart-closing { @apply relative overflow-hidden bg-gradient-to-br from-[#062f2a] via-[#075144] to-[#096b58] text-white; }
+.screensmart-closing::before { content: ""; @apply absolute -right-24 -top-28 h-80 w-80 rounded-full border-[50px] border-emerald-300/10; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
