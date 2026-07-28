@@ -3,13 +3,15 @@ import {
   Accessibility, ArrowDown, ArrowRight, BarChart3, Building2,
   Bus, CalendarClock, CheckCircle2, CircleDollarSign, ClipboardCheck, Compass,
   DoorOpen, HeartHandshake, Languages, Laptop, MapPinned,
-  Network, Route, ShieldCheck, Smartphone, Users,
+  Network, Route, ShieldCheck, Users,
 } from "lucide-react";
 import Link from "next/link";
+import { ProgrammeOverviewDownload } from "@/components/programme-overview-download";
 import { PageStructuredData } from "@/components/seo-json-ld";
 import { createMetadata } from "@/lib/seo";
 
 const path = "/programmes/screenaccess" as const;
+const overviewPdf = "/downloads/programmes/bloomshield-screenaccess-programme-overview-v1.pdf";
 const description =
   "ScreenAccess™ removes practical, social, geographical and organisational barriers to cancer screening, helping underserved communities participate in early detection programmes.";
 
@@ -167,7 +169,7 @@ export default function ScreenAccess() {
 
     <section className="section-space bg-[#f7f8ff]"><div className="container-page"><SectionTitle eyebrow="Programme portfolio" title="An integrated pathway from awareness to coordinated care."/><div className="mx-auto mt-12 max-w-3xl space-y-4 text-center"><PortfolioStep href="/programmes/screensmart-communities" colour="green" title="ScreenSmart Communities™" text="Builds awareness, understanding, confidence and motivation."/><ArrowDown aria-hidden="true" className="mx-auto text-slate-400"/><PortfolioStep href={path} colour="coral" title="ScreenAccess™" text="Removes barriers and enables equitable participation." current/><ArrowDown aria-hidden="true" className="mx-auto text-slate-400"/><PortfolioStep href="/programmes#screen-connect" colour="blue" title="ScreenConnect™" text="Supports navigation, coordination, follow-up and continuity of care."/></div><p className="mx-auto mt-10 max-w-2xl text-center text-lg leading-8 text-slate-600">Together, the three programmes provide an integrated pathway from awareness to access to coordinated care.</p></div></section>
 
-    <section className="section-space"><div className="container-page grid gap-12 lg:grid-cols-2"><div><SectionTitle eyebrow="Programme development" title="Flexible by design, rigorous in development."/><p className="mt-6 text-lg leading-8 text-slate-700">ScreenAccess™ is being developed as a flexible implementation programme that can be adapted to local screening priorities, populations and service environments.</p><TickList items={["Community co-design", "Local access audits", "Implementation pilots", "Mobile and outreach models", "Digital inclusion initiatives", "Navigation support", "Evaluation partnerships", "Commissioning models"]}/></div><div className="rounded-[2rem] border border-[#a9432d]/15 bg-[#fff8f5] p-8 sm:p-10"><Smartphone className="h-10 w-10 text-[#b84d32]"/><p className="mt-7 screenaccess-eyebrow">Programme literature</p><h2 className="font-display text-3xl font-semibold text-[#71301f]">ScreenAccess™ Programme Overview</h2><div className="mt-7 rounded-2xl border border-dashed border-[#a9432d]/30 bg-white p-6"><p className="font-bold text-[#71301f]">Programme Overview Coming Soon</p><p className="mt-3 leading-7 text-slate-600">A downloadable overview of the ScreenAccess™ model, implementation pathway and partnership opportunities is currently being developed.</p></div></div></div></section>
+    <section className="section-space"><div className="container-page grid gap-12 lg:grid-cols-2"><div><SectionTitle eyebrow="Programme development" title="Flexible by design, rigorous in development."/><p className="mt-6 text-lg leading-8 text-slate-700">ScreenAccess™ is being developed as a flexible implementation programme that can be adapted to local screening priorities, populations and service environments.</p><TickList items={["Community co-design", "Local access audits", "Implementation pilots", "Mobile and outreach models", "Digital inclusion initiatives", "Navigation support", "Evaluation partnerships", "Commissioning models"]}/></div><ProgrammeOverviewDownload programmeName="ScreenAccess™" pdfUrl={overviewPdf} theme="coral" volume={2} fileSize="45.09 MB" accessibleLabel="Download the ScreenAccess programme overview PDF" /></div></section>
 
     <section className="screenaccess-closing"><div className="container-page relative py-20 text-center sm:py-24"><p className="screenaccess-dark-eyebrow">Equity in action</p><h2 className="mx-auto max-w-3xl font-display text-4xl font-semibold sm:text-5xl">Let’s make screening genuinely accessible.</h2><p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/75">BloomShield works with health systems, commissioners, community organisations, employers and research partners to design practical approaches that reduce barriers and improve participation.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><Link href={contactHref} className="screenaccess-button">Discuss a Partnership <ArrowRight size={17}/></Link><Link href={contactHref} className="screenaccess-button-outline">Contact BloomShield</Link></div></div></section>
   </>;

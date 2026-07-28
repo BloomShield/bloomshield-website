@@ -27,10 +27,12 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
+import { ProgrammeOverviewDownload } from "@/components/programme-overview-download";
 import { PageStructuredData } from "@/components/seo-json-ld";
 import { createMetadata } from "@/lib/seo";
 
 const path = "/programmes/screensmart-communities" as const;
+const overviewPdf = "/downloads/programmes/bloomshield-screensmart-communities-programme-overview-v1.pdf";
 const description =
   "Explore ScreenSmart Communities™, BloomShield CIC’s flagship programme improving cancer prevention, screening participation and early diagnosis through trusted community partnerships, digital learning and implementation science.";
 
@@ -123,7 +125,7 @@ export default function ScreenSmartCommunities() {
         <div aria-hidden="true" className="absolute -right-32 -top-36 h-[34rem] w-[34rem] rounded-full border-[80px] border-emerald-300/10" />
         <div aria-hidden="true" className="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-[#0a4138]/50 to-transparent" />
         <div className="container-page relative grid min-h-[760px] items-center gap-12 py-20 lg:grid-cols-[1.18fr_.82fr]">
-          <div>
+          <div className="min-w-0">
             <nav aria-label="Breadcrumb" className="mb-8 text-sm text-emerald-100/80">
               <ol className="flex flex-wrap items-center gap-2"><li><Link href="/">Home</Link></li><li aria-hidden="true">/</li><li><Link href="/programmes">Programmes</Link></li><li aria-hidden="true">/</li><li aria-current="page" className="text-white">ScreenSmart Communities™</li></ol>
             </nav>
@@ -137,7 +139,7 @@ export default function ScreenSmartCommunities() {
             </div>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href={contactHref("ScreenSmart Community Pilot")} className="screensmart-button">Bring ScreenSmart to Your Community <ArrowRight size={17} /></Link>
-              <span aria-disabled="true" className="screensmart-button-muted" title="The programme overview is being prepared">Programme Overview Coming Soon</span>
+              <a href={overviewPdf} target="_blank" rel="noopener noreferrer" aria-label="Download the ScreenSmart Communities programme overview PDF (opens in a new tab)" className="screensmart-button-outline min-w-0 max-w-full whitespace-normal text-center w-full sm:w-auto">Download Programme Overview</a>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-md">
@@ -174,7 +176,7 @@ export default function ScreenSmartCommunities() {
       <section className="section-space"><div className="container-page"><SectionTitle eyebrow="Measurable ambition" title="What Success Looks Like" intro="ScreenSmart Communities™ aims to support meaningful improvements while generating evidence for continuous adaptation." /><div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">{outcomes.map((outcome, index) => <div key={outcome} className="rounded-2xl border border-emerald-800/10 bg-gradient-to-br from-white to-emerald-50 p-5"><span className="text-xs font-bold text-emerald-700">0{index + 1}</span><p className="mt-3 font-semibold leading-6">{outcome}</p></div>)}</div></div></section>
 
       <section className="section-space bg-mist"><div className="container-page"><SectionTitle eyebrow="Resources" title="ScreenSmart Resources" /><div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <Resource title="ScreenSmart Communities™ Programme Overview" status="Coming Soon" />
+        <ProgrammeOverviewDownload programmeName="ScreenSmart Communities™" pdfUrl={overviewPdf} theme="green" volume={1} fileSize="6.16 MB" accessibleLabel="Download the ScreenSmart Communities programme overview PDF" />
         <Resource title="Partnership and Pilot Enquiry" href={contactHref("ScreenSmart Community Pilot")} linkLabel="Make an enquiry" />
         <Resource title="Community Learning Resources" status="In Development" />
         <Resource title="Implementation Resources" status="Future Member Resource" />
