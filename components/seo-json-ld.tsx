@@ -51,7 +51,7 @@ function organizationNode(includeFounder: boolean) {
     alternateName: SITE_NAME,
     legalName: ORGANIZATION_NAME,
     url: SITE_URL,
-    sameAs: [socialLinks.linkedin],
+    sameAs: [socialLinks.instagram, socialLinks.linkedin],
     logo: {
       "@type": "ImageObject",
       url: `${SITE_URL}/bloomshield-square-lockup.png`,

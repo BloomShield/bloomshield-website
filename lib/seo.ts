@@ -4,6 +4,7 @@ export const SITE_URL = "https://bloomshield.org";
 export const SITE_NAME = "BloomShield CIC";
 export const ORGANIZATION_NAME = "BloomShield Community Interest Company";
 export const socialLinks = {
+  instagram: "https://www.instagram.com/bloomshieldcic/",
   linkedin: "https://www.linkedin.com/company/bloomshield-cic/",
 } as const;
 export const SOCIAL_IMAGE = "/bloomshield-social-card.png";
