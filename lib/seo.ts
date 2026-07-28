@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://bloomshield.org";
 export const SITE_NAME = "BloomShield CIC";
+export const ORGANIZATION_NAME = "BloomShield Community Interest Company";
+export const socialLinks = {
+  linkedin: "https://www.linkedin.com/company/bloomshield-cic/",
+} as const;
 export const SOCIAL_IMAGE = "/bloomshield-social-card.png";
 export const HOME_DESCRIPTION =
   "BloomShield CIC works with communities, health systems and partners to improve equitable cancer prevention through implementation science, research and community-led programmes.";

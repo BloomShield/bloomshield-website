@@ -1,4 +1,4 @@
-import { HOME_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { HOME_DESCRIPTION, ORGANIZATION_NAME, SITE_NAME, SITE_URL, socialLinks } from "@/lib/seo";
 
 const ids = {
   organization: `${SITE_URL}/#organization`,
@@ -47,10 +47,11 @@ function organizationNode(includeFounder: boolean) {
   return {
     "@type": "Organization",
     "@id": ids.organization,
-    name: SITE_NAME,
-    alternateName: "BloomShield Community Interest Company",
-    legalName: "BloomShield Community Interest Company",
+    name: ORGANIZATION_NAME,
+    alternateName: SITE_NAME,
+    legalName: ORGANIZATION_NAME,
     url: SITE_URL,
+    sameAs: [socialLinks.linkedin],
     logo: {
       "@type": "ImageObject",
       url: `${SITE_URL}/bloomshield-square-lockup.png`,
