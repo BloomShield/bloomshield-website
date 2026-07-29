@@ -6,6 +6,7 @@ export const ORGANIZATION_NAME = "BloomShield Community Interest Company";
 export const socialLinks = {
   instagram: "https://www.instagram.com/bloomshieldcic/",
   linkedin: "https://www.linkedin.com/company/bloomshield-cic/",
+  x: "https://x.com/BloomShieldCIC",
 } as const;
 export const SOCIAL_IMAGE = "/bloomshield-social-card.png";
 export const HOME_DESCRIPTION =
