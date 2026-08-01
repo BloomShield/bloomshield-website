@@ -24,6 +24,8 @@ type PageKind =
   | "consultancy"
   | "research"
   | "partnerships"
+  | "knowledgeHub"
+  | "medical"
   | "default";
 
 type PageStructuredDataProps = {
@@ -31,6 +33,7 @@ type PageStructuredDataProps = {
   description: string;
   path: `/${string}` | "/";
   breadcrumb?: string;
+  parentBreadcrumb?: { name: string; path: `/${string}` };
   kind?: PageKind;
 };
 
@@ -273,29 +276,53 @@ export function PageStructuredData({
   description,
   path,
   breadcrumb,
+  parentBreadcrumb,
   kind = "default",
 }: PageStructuredDataProps) {
   const url = new URL(path, SITE_URL).toString();
   const breadcrumbId = `${url}#breadcrumb`;
   const mainEntity = mainEntityFor(kind);
+  const collectionId = `${url}#topics`;
+  const pageType = kind === "knowledgeHub" ? "CollectionPage" : kind === "medical" ? "MedicalWebPage" : kind === "about" ? "AboutPage" : "WebPage";
+  const healthAbout = kind === "knowledgeHub"
+    ? [{ "@type": "Thing", name: "Cancer prevention" }, { "@type": "Thing", name: "Cancer screening" }]
+    : kind === "medical"
+      ? [{ "@type": "MedicalCondition", name: "Bowel cancer" }, { "@type": "MedicalTest", name: "Faecal immunochemical test" }]
+      : undefined;
   const graph: Record<string, unknown>[] = [
     organizationNode(kind === "about"),
     websiteNode,
     ...entitiesFor(kind),
     {
-      "@type": kind === "about" ? "AboutPage" : "WebPage",
+      "@type": pageType,
       "@id": `${url}#webpage`,
       url,
       name,
       description,
       isPartOf: { "@id": ids.website },
       publisher: { "@id": ids.organization },
-      about: aboutFor(kind),
-      ...(mainEntity ? { mainEntity: { "@id": mainEntity } } : {}),
+      about: healthAbout ?? aboutFor(kind),
+      ...(kind === "knowledgeHub" ? { mainEntity: { "@id": collectionId } } : mainEntity ? { mainEntity: { "@id": mainEntity } } : {}),
       ...(breadcrumb ? { breadcrumb: { "@id": breadcrumbId } } : {}),
+      ...(kind === "medical" ? { specialty: "https://schema.org/Oncology" } : {}),
       inLanguage: "en-GB",
     },
   ];
+
+  if (kind === "knowledgeHub") {
+    graph.push({
+      "@type": "ItemList",
+      "@id": collectionId,
+      name: "Cancer prevention and screening topics",
+      numberOfItems: 16,
+      itemListElement: [
+        "Bowel cancer screening", "Cervical screening", "Breast screening", "NHS Lung Health Checks",
+        "FIT test", "HPV test", "Mammogram", "PSA test", "Cancer symptoms", "Reducing cancer risk",
+        "HPV vaccination", "Family history and inherited risk", "Understanding your screening invitation",
+        "Why people miss cancer screening", "Screening and language barriers", "Supporting someone to attend screening",
+      ].map((name, index) => ({ "@type": "ListItem", position: index + 1, name })),
+    });
+  }
 
   if (breadcrumb) {
     const isProgrammeDetail = kind === "screensmart" || kind === "screenaccess" || kind === "screenconnect";
@@ -304,7 +331,12 @@ export function PageStructuredData({
       "@id": breadcrumbId,
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        ...(isProgrammeDetail
+        ...(parentBreadcrumb
+          ? [
+              { "@type": "ListItem", position: 2, name: parentBreadcrumb.name, item: `${SITE_URL}${parentBreadcrumb.path}` },
+              { "@type": "ListItem", position: 3, name: breadcrumb, item: url },
+            ]
+          : isProgrammeDetail
           ? [
               { "@type": "ListItem", position: 2, name: "Programmes", item: `${SITE_URL}/programmes` },
               { "@type": "ListItem", position: 3, name: breadcrumb, item: url },

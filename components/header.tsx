@@ -7,7 +7,7 @@ import { Logo } from "./logo";
 
 const links = [
   ["About", "/about"], ["Programmes", "/programmes"], ["Consultancy", "/consultancy"],
-  ["Research", "/research-innovation"], ["Partnerships", "/partnerships"]
+  ["Research", "/research-innovation"], ["Partnerships", "/partnerships"], ["Screening hub", "/cancer-prevention-screening"]
 ];
 
 const programmeLinks = [
@@ -55,10 +55,10 @@ export function Header() {
   return <header className="sticky top-0 z-50 border-b border-teal-900/10 bg-white/95 backdrop-blur-xl">
     <div className="container-page flex h-[106px] items-center justify-between sm:h-[120px]">
       <Logo />
-      <nav aria-label="Primary navigation" className="hidden items-center gap-7 lg:flex">
+      <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:flex xl:gap-7">
         {links.map(([label, href]) => {
-          const active = href === "/programmes" ? programmesActive : pathname === href;
-          return <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined} className={`text-sm font-semibold transition hover:text-teal-600 ${active ? "text-teal-600" : "text-slate-700"}`}>{label}</Link>;
+          const active = href === "/programmes" ? programmesActive : href === "/cancer-prevention-screening" ? pathname.startsWith(href) : pathname === href;
+          return <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`text-sm font-semibold transition hover:text-teal-600 ${active ? "text-teal-600" : "text-slate-700"}`}>{label}</Link>;
         })}
         <Link href="/contact" className="button-primary !min-h-10 !px-5">Talk to us</Link>
       </nav>

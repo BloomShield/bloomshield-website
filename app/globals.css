@@ -20,6 +20,17 @@ a, button, input, textarea, select { @apply focus-visible:outline-none focus-vis
 .button-secondary { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-teal-700/20 bg-white px-6 py-3 text-sm font-bold text-teal-800 transition hover:border-teal-700/40 hover:bg-teal-50; }
 .card { @apply rounded-4xl border border-white/80 bg-gradient-to-br from-white via-white to-teal-50/60 p-8 shadow-[0_24px_70px_-38px_rgba(12,64,56,.38)] transition duration-300 hover:-translate-y-1 hover:border-teal-700/15 hover:shadow-[0_30px_80px_-36px_rgba(12,64,56,.45)]; }
 .card svg { @apply h-9 w-9; }
+.health-prose { @apply text-[1.0625rem] leading-8 text-slate-700; }
+.health-prose > section { @apply scroll-mt-36 border-t border-teal-900/10 py-10 first:border-t-0 first:pt-0; }
+.health-prose h2 { @apply font-display text-3xl font-semibold leading-tight tracking-[-.02em] text-ink sm:text-4xl; }
+.health-prose h3 { @apply mt-7 font-display text-xl font-semibold text-ink sm:text-2xl; }
+.health-prose p { @apply mt-5; }
+.health-prose ul, .health-prose ol { @apply mt-5 space-y-3 pl-6; }
+.health-prose ul { @apply list-disc; }
+.health-prose ol { @apply list-decimal; }
+.health-prose li { @apply pl-1; }
+.health-inline-link { @apply mt-6 inline-flex items-center font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4 hover:decoration-teal-700; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 main div.rounded-2xl.border.p-6 { border-color: rgb(12 64 56 / .1); background: linear-gradient(145deg, #fff, #f7fbfa); box-shadow: 0 22px 55px -38px rgb(12 64 56 / .38); transition: transform .3s ease, box-shadow .3s ease; }
 main div.rounded-2xl.border.p-6:hover { transform: translateY(-3px); box-shadow: 0 28px 65px -36px rgb(12 64 56 / .44); }
 main article.rounded-3xl.border { border-radius: 2rem; background: linear-gradient(145deg, #fff, #f9fbfb); box-shadow: 0 22px 58px -40px rgb(12 64 56 / .35); transition: transform .3s ease, box-shadow .3s ease; }
