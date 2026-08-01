@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CircleAlert } from "lucide-react";
 import { PageStructuredData } from "@/components/seo-json-ld";
 import { createMetadata } from "@/lib/seo";
@@ -7,23 +8,40 @@ import { healthContentGovernance, hubGroups, officialLinks } from "./content";
 
 const title = "Cancer Prevention and Screening Hub | BloomShield CIC";
 const description = "Clear, evidence-led information about cancer prevention, NHS screening programmes, common screening tests and barriers to participation.";
+const pageName = "Cancer Prevention & Screening Information Library";
+const breadcrumbName = "Screening Information Library";
 
 export const metadata = createMetadata({ title, description, path: "/cancer-prevention-screening", absoluteTitle: true });
 
 export default function CancerPreventionScreeningHubPage() {
   return <>
-    <PageStructuredData name={title} description={description} path="/cancer-prevention-screening" breadcrumb="Cancer Prevention & Screening Hub" kind="knowledgeHub"/>
-    <Breadcrumbs current="Cancer Prevention & Screening Hub"/>
+    <PageStructuredData name={pageName} description={description} path="/cancer-prevention-screening" breadcrumb={breadcrumbName} kind="knowledgeHub"/>
+    <Breadcrumbs current={breadcrumbName}/>
 
     <header className="border-y border-teal-900/10 bg-gradient-to-br from-teal-50 via-white to-amber-50/60">
-      <div className="container-page py-16 sm:py-20 lg:py-24">
-        <p className="eyebrow">Public health knowledge library</p>
-        <h1 className="display max-w-4xl">Cancer Prevention &amp; Screening Hub</h1>
-        <div className="mt-7 max-w-3xl space-y-4 text-xl leading-9 text-slate-700">
-          <p>Clear, evidence-led information about cancer prevention, NHS screening programmes and common screening tests.</p>
-          <p>BloomShield helps people understand screening, recognise barriers to participation and find trusted official health information.</p>
+      <div className="container-page grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[minmax(0,.95fr)_minmax(27rem,1.05fr)] lg:gap-14 lg:py-20">
+        <div>
+          <p className="eyebrow">Public health knowledge library</p>
+          <h1 className="font-display text-[clamp(2.65rem,5.25vw,4.75rem)] font-semibold leading-[1.02] tracking-[-.045em] text-ink">{pageName}</h1>
+          <div className="mt-7 max-w-2xl space-y-4 text-lg leading-8 text-slate-700 sm:text-xl sm:leading-9">
+            <p>Clear, evidence-led information about cancer prevention, NHS screening programmes and common screening tests.</p>
+            <p>BloomShield helps people understand screening, recognise barriers to participation and find trusted official health information.</p>
+          </div>
+          <ExternalLink href={officialLinks.nhsScreening} className="button-primary mt-8 w-full sm:w-auto">Visit official NHS screening information</ExternalLink>
         </div>
-        <ExternalLink href={officialLinks.nhsScreening} className="button-primary mt-9">Visit official NHS screening information</ExternalLink>
+        <div className="relative mx-auto w-full max-w-2xl lg:max-w-none">
+          <div aria-hidden="true" className="absolute -inset-3 rounded-[2.5rem] border border-teal-700/10 bg-white/60 shadow-[0_24px_64px_-42px_rgba(12,64,56,.38)] sm:-inset-4"/>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[2.25rem] border border-white/80 bg-white shadow-[0_26px_68px_-40px_rgba(12,64,56,.44)] sm:aspect-[3/2] lg:aspect-[4/3]">
+            <Image
+              src="/images/cancer-screening-conversation-hero.webp"
+              alt="Two adults having a friendly conversation in a warm home setting"
+              fill
+              priority
+              sizes="(max-width: 1023px) calc(100vw - 2.5rem), (max-width: 1279px) 46vw, 600px"
+              className="object-cover object-center"
+            />
+          </div>
+        </div>
       </div>
     </header>
 
@@ -37,12 +55,12 @@ export default function CancerPreventionScreeningHubPage() {
       {hubGroups.map((group, groupIndex) => <section key={group.title} className={`container-page py-16 sm:py-20 ${groupIndex > 0 ? "border-t border-teal-900/10" : ""}`} aria-labelledby={`hub-group-${groupIndex}`}><div className="max-w-3xl"><p className="eyebrow">{String(groupIndex + 1).padStart(2, "0")}</p><h2 id={`hub-group-${groupIndex}`} className="heading">{group.title}</h2><p className="lead mt-4">{group.intro}</p></div><div className="mt-9 grid gap-5 md:grid-cols-2">{group.topics.map(topic => <HubTopicCard key={topic.title} topic={topic}/>)}</div></section>)}
     </div>
 
-    <section className="section-space" aria-labelledby="how-bloomshield-helps">
+    <section className="pb-20 pt-24 md:pb-28 md:pt-32" aria-labelledby="how-bloomshield-helps">
       <div className="container-page">
         <p className="eyebrow">From information to participation</p>
         <h2 id="how-bloomshield-helps" className="heading">How BloomShield helps</h2>
         <p className="lead mt-5 max-w-3xl">BloomShield connects accessible public health information with community engagement, practical access support and connected care pathways.</p>
-        <RelatedProgrammes/>
+        <RelatedProgrammes portfolioStyle/>
         <div className="mt-10"><Link href="/contact" className="button-primary">Work with BloomShield to improve screening access <ArrowRight aria-hidden="true" size={17}/></Link></div>
       </div>
     </section>

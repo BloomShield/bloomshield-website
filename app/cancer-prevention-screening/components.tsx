@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { AlertTriangle, ArrowRight, CalendarClock, ExternalLink as ExternalLinkIcon, ShieldCheck } from "lucide-react";
+import {
+  AlertTriangle, ArrowRight, CalendarClock, DoorOpen, ExternalLink as ExternalLinkIcon,
+  ShieldCheck, UsersRound, Waypoints, type LucideIcon,
+} from "lucide-react";
 import type { ExternalResource, HubTopic } from "./content";
 import { healthContentGovernance } from "./content";
 
@@ -45,12 +48,27 @@ export function EditorialInformation() {
   return <aside aria-labelledby="editorial-information-title" className="rounded-3xl border border-teal-900/15 bg-teal-900 p-7 text-white"><div className="flex items-center gap-3"><ShieldCheck aria-hidden="true" className="text-emerald-400"/><h2 id="editorial-information-title" className="font-display text-2xl font-semibold">Editorial information</h2></div><dl className="mt-6 grid gap-4 text-sm sm:grid-cols-2"><div><dt className="font-bold text-emerald-300">Published by</dt><dd className="mt-1 text-white/80">BloomShield CIC</dd></div><div><dt className="font-bold text-emerald-300">Resource type</dt><dd className="mt-1 text-white/80">Public health education resource</dd></div><div><dt className="font-bold text-emerald-300">Last reviewed</dt><dd className="mt-1 text-white/80"><time dateTime={healthContentGovernance.lastReviewedIso}>{healthContentGovernance.lastReviewed}</time></dd></div><div><dt className="font-bold text-emerald-300">Evidence sources</dt><dd className="mt-1 text-white/80">NHS, NHS England, GOV.UK, UK NSC and Cancer Research UK</dd></div></dl><p className="mt-6 border-t border-white/15 pt-5 text-sm leading-6 text-white/75">This resource has not been presented as externally clinically reviewed. To report an error or suggest a correction, use the <Link href="/contact" className="font-bold text-emerald-300 underline underline-offset-4">BloomShield contact form</Link>.</p></aside>;
 }
 
-const programmes = [
-  { name: "ScreenSmart Communities™", href: "/programmes/screensmart-communities", text: "builds understanding, confidence and informed participation through trusted community engagement." },
-  { name: "ScreenAccess™", href: "/programmes/screenaccess", text: "identifies and helps address practical, social and service barriers to screening access." },
-  { name: "ScreenConnect™", href: "/programmes/screenconnect", text: "supports navigation, coordination and continuity across screening and care pathways." },
+const programmes: {
+  name: string;
+  href: string;
+  text: string;
+  icon: LucideIcon;
+  card: string;
+  iconTone: string;
+  linkTone: string;
+}[] = [
+  { name: "ScreenSmart Communities™", href: "/programmes/screensmart-communities", text: "builds understanding, confidence and informed participation through trusted community engagement.", icon: UsersRound, card: "border-emerald-700/15 !bg-[#f3fbf7]", iconTone: "bg-emerald-700 text-white", linkTone: "text-emerald-900 decoration-emerald-600/40 hover:decoration-emerald-700" },
+  { name: "ScreenAccess™", href: "/programmes/screenaccess", text: "identifies and helps address practical, social and service barriers to screening access.", icon: DoorOpen, card: "border-[#c55a3d]/20 !bg-[#fff7f4]", iconTone: "bg-[#c55a3d] text-white", linkTone: "text-[#74301f] decoration-[#c55a3d]/45 hover:decoration-[#a9432d]" },
+  { name: "ScreenConnect™", href: "/programmes/screenconnect", text: "supports navigation, coordination and continuity across screening and care pathways.", icon: Waypoints, card: "border-[#4051b5]/20 !bg-[#f5f7ff]", iconTone: "bg-[#4051b5] text-white", linkTone: "text-[#293474] decoration-[#5267dc]/45 hover:decoration-[#4051b5]" },
 ];
 
-export function RelatedProgrammes() {
-  return <div className="mt-8 grid gap-4 md:grid-cols-3">{programmes.map(programme => <article key={programme.name} className="rounded-3xl border border-teal-900/10 bg-white p-6"><h3 className="font-display text-xl font-semibold"><Link href={programme.href} className="text-teal-800 underline decoration-teal-800/25 underline-offset-4 hover:decoration-teal-800">{programme.name}</Link></h3><p className="mt-3 leading-7 text-slate-600">{programme.text}</p></article>)}</div>;
+export function RelatedProgrammes({ portfolioStyle = false }: { portfolioStyle?: boolean }) {
+  return <div className="mt-8 grid gap-4 md:grid-cols-3">{programmes.map(programme => {
+    const Icon = programme.icon;
+    return <article key={programme.name} className={`rounded-3xl border p-6 ${portfolioStyle ? `portfolio-programme-card ${programme.card} shadow-[0_22px_55px_-38px_rgba(12,64,56,.38)]` : "border-teal-900/10 bg-white"}`}>
+      {portfolioStyle && <span className={`flex h-12 w-12 items-center justify-center rounded-2xl ${programme.iconTone}`}><Icon aria-hidden="true" size={24}/></span>}
+      <h3 className={`font-display text-xl font-semibold ${portfolioStyle ? "mt-6" : ""}`}><Link href={programme.href} className={`underline underline-offset-4 ${portfolioStyle ? programme.linkTone : "text-teal-800 decoration-teal-800/25 hover:decoration-teal-800"}`}>{programme.name}</Link></h3>
+      <p className={`mt-3 leading-7 ${portfolioStyle ? "text-slate-700" : "text-slate-600"}`}>{programme.text}</p>
+    </article>;
+  })}</div>;
 }

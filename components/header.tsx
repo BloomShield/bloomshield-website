@@ -7,7 +7,7 @@ import { Logo } from "./logo";
 
 const links = [
   ["About", "/about"], ["Programmes", "/programmes"], ["Consultancy", "/consultancy"],
-  ["Research", "/research-innovation"], ["Partnerships", "/partnerships"], ["Screening hub", "/cancer-prevention-screening"]
+  ["Research", "/research-innovation"], ["Partnerships", "/partnerships"], ["Screening FAQs", "/cancer-prevention-screening"]
 ];
 
 const programmeLinks = [
