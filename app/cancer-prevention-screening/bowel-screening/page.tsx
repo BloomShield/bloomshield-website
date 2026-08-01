@@ -4,12 +4,14 @@ import { PageStructuredData } from "@/components/seo-json-ld";
 import { createMetadata } from "@/lib/seo";
 import {
   AtAGlance, Breadcrumbs, ContentsNav, EditorialInformation, ExternalLink, FaqList,
-  MedicalSafetyAlert, RelatedProgrammes, ResourceList, ReviewDate,
+  MedicalSafetyAlert, RelatedProgrammes, ResourceList, ReviewDate, ScreeningArticleHero,
 } from "../components";
 import { bowelEvidence, bowelFaqs, officialBowelResources, officialLinks } from "../content";
+import { screeningArticles } from "../articles";
 
 const title = "NHS Bowel Cancer Screening: Age, FIT Test and Results | BloomShield CIC";
 const description = "Understand NHS bowel cancer screening, who is invited, how the FIT test works, possible results, benefits, limitations and where to find official NHS support.";
+const article = screeningArticles.bowel;
 
 export const metadata = createMetadata({ title, description, path: "/cancer-prevention-screening/bowel-screening", absoluteTitle: true });
 
@@ -38,20 +40,13 @@ export default function BowelScreeningPage() {
   ];
 
   return <>
-    <PageStructuredData name={title} description={description} path="/cancer-prevention-screening/bowel-screening" breadcrumb="NHS Bowel Cancer Screening" parentBreadcrumb={{ name: "Cancer Prevention & Screening Hub", path: "/cancer-prevention-screening" }} kind="medical"/>
+    <PageStructuredData name={title} description={description} path={article.path} breadcrumb="NHS Bowel Cancer Screening" parentBreadcrumb={{ name: "Cancer Prevention & Screening Hub", path: "/cancer-prevention-screening" }} kind="medical" medicalAbout={[...article.medicalSubjects]}/>
     <Breadcrumbs current="NHS Bowel Cancer Screening" parent={{ label: "Cancer Prevention & Screening Hub", href: "/cancer-prevention-screening" }}/>
 
-    <header className="border-y border-teal-900/10 bg-gradient-to-br from-teal-50 via-white to-emerald-50">
-      <div className="container-page py-14 sm:py-20">
-        <p className="eyebrow">Evidence-led screening guide</p>
-        <h1 className="display max-w-4xl">NHS Bowel Cancer Screening</h1>
-        <p className="lead mt-7 max-w-3xl text-xl leading-9">A plain-language guide to eligibility, the home FIT kit, possible results, benefits, limitations and official support.</p>
-        <div className="mt-8 flex flex-wrap gap-3"><ExternalLink href={officialLinks.govProgrammeOverview} className="button-primary">Check the current NHS bowel screening eligibility guidance</ExternalLink><a href="#article-contents" className="button-secondary">Read this guide <ArrowRight aria-hidden="true" size={17}/></a></div>
-      </div>
-    </header>
+    <ScreeningArticleHero title="NHS Bowel Cancer Screening" intro="A plain-language guide to eligibility, the home FIT kit, possible results, benefits, limitations and official support." imageSrc="/images/bowel-screening-lifestyle-hero.webp" imageAlt="A Black man relaxing with a mug in a warmly lit living room" accent="green"><ExternalLink href={officialLinks.govProgrammeOverview} className="button-primary">Check the current NHS bowel screening eligibility guidance</ExternalLink><a href="#article-contents" className="button-secondary">Read this guide <ArrowRight aria-hidden="true" size={17}/></a></ScreeningArticleHero>
 
     <div className="container-page space-y-8 py-10 sm:py-14">
-      <AtAGlance items={glance}/>
+      <AtAGlance title="Bowel screening at a glance" items={glance}/>
       <MedicalSafetyAlert/>
       <ReviewDate/>
     </div>

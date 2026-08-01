@@ -35,6 +35,7 @@ type PageStructuredDataProps = {
   breadcrumb?: string;
   parentBreadcrumb?: { name: string; path: `/${string}` };
   kind?: PageKind;
+  medicalAbout?: { type: "MedicalCondition" | "MedicalTest"; name: string }[];
 };
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -278,6 +279,7 @@ export function PageStructuredData({
   breadcrumb,
   parentBreadcrumb,
   kind = "default",
+  medicalAbout,
 }: PageStructuredDataProps) {
   const url = new URL(path, SITE_URL).toString();
   const breadcrumbId = `${url}#breadcrumb`;
@@ -287,7 +289,7 @@ export function PageStructuredData({
   const healthAbout = kind === "knowledgeHub"
     ? [{ "@type": "Thing", name: "Cancer prevention" }, { "@type": "Thing", name: "Cancer screening" }]
     : kind === "medical"
-      ? [{ "@type": "MedicalCondition", name: "Bowel cancer" }, { "@type": "MedicalTest", name: "Faecal immunochemical test" }]
+      ? (medicalAbout ?? [{ type: "MedicalCondition" as const, name: "Bowel cancer" }, { type: "MedicalTest" as const, name: "Faecal immunochemical test" }]).map(item => ({ "@type": item.type, name: item.name }))
       : undefined;
   const graph: Record<string, unknown>[] = [
     organizationNode(kind === "about"),

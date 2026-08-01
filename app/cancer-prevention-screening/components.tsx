@@ -1,7 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
-  AlertTriangle, ArrowRight, CalendarClock, DoorOpen, ExternalLink as ExternalLinkIcon,
-  ShieldCheck, UsersRound, Waypoints, type LucideIcon,
+  AlertTriangle, ArrowRight, CalendarClock, ClipboardCheck, DoorOpen, Droplet,
+  ExternalLink as ExternalLinkIcon, GitFork, HandHeart, Languages, MailOpen, Microscope,
+  Ribbon, RouteOff, ScanLine, ScanSearch, ShieldCheck, Spline, Syringe, TestTubeDiagonal,
+  UsersRound, Waypoints, Wind, type LucideIcon,
 } from "lucide-react";
 import type { ExternalResource, HubTopic } from "./content";
 import { healthContentGovernance } from "./content";
@@ -14,18 +17,78 @@ export function Breadcrumbs({ current, parent }: { current: string; parent?: { l
   return <nav aria-label="Breadcrumb" className="container-page py-5 text-sm text-slate-600"><ol className="flex flex-wrap items-center gap-2"><li><Link href="/" className="font-semibold text-teal-700 underline-offset-4 hover:underline">Home</Link></li>{parent && <><li aria-hidden="true">/</li><li><Link href={parent.href} className="font-semibold text-teal-700 underline-offset-4 hover:underline">{parent.label}</Link></li></>}<li aria-hidden="true">/</li><li aria-current="page" className="text-slate-700">{current}</li></ol></nav>;
 }
 
+const topicIdentities: Record<string, { icon: LucideIcon; cardTone: string; iconTone: string }> = {
+  "Bowel cancer screening": { icon: Spline, cardTone: "border-teal-700/15 !bg-[#f8fcfb]", iconTone: "bg-teal-50 text-teal-700" },
+  "Cervical screening": { icon: Ribbon, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
+  "Breast screening": { icon: ScanLine, cardTone: "border-[#a85d76]/15 !bg-[#fffafd]", iconTone: "bg-[#faedf2] text-[#98536b]" },
+  "NHS Lung Health Checks": { icon: Wind, cardTone: "border-[#4d6f9f]/15 !bg-[#f9fbff]", iconTone: "bg-[#edf3fb] text-[#46678f]" },
+  "FIT test": { icon: TestTubeDiagonal, cardTone: "border-teal-700/15 !bg-[#f8fcfb]", iconTone: "bg-teal-50 text-teal-700" },
+  "HPV test": { icon: Microscope, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
+  "Mammogram": { icon: ScanSearch, cardTone: "border-[#a85d76]/15 !bg-[#fffafd]", iconTone: "bg-[#faedf2] text-[#98536b]" },
+  "PSA test": { icon: Droplet, cardTone: "border-[#3e5579]/15 !bg-[#fafbfe]", iconTone: "bg-[#edf0f6] text-[#354d70]" },
+  "Cancer symptoms": { icon: ClipboardCheck, cardTone: "border-amber-700/15 !bg-[#fffcf7]", iconTone: "bg-[#fff2dc] text-[#855a18]" },
+  "Reducing cancer risk": { icon: ShieldCheck, cardTone: "border-gold-500/20 !bg-[#fffdf7]", iconTone: "bg-[#f7eed4] text-teal-700" },
+  "HPV vaccination": { icon: Syringe, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
+  "Family history and inherited risk": { icon: GitFork, cardTone: "border-[#3e5579]/15 !bg-[#fafbfe]", iconTone: "bg-[#edf0f6] text-[#354d70]" },
+  "Understanding your screening invitation": { icon: MailOpen, cardTone: "border-[#4d6f9f]/15 !bg-[#f9fbff]", iconTone: "bg-[#edf3fb] text-[#46678f]" },
+  "Why people miss cancer screening": { icon: RouteOff, cardTone: "border-[#b9634b]/15 !bg-[#fffaf8]", iconTone: "bg-[#fbeee9] text-[#9b503c]" },
+  "Screening and language barriers": { icon: Languages, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
+  "Supporting someone to attend screening": { icon: HandHeart, cardTone: "border-emerald-700/15 !bg-[#f9fcfa]", iconTone: "bg-emerald-50 text-emerald-700" },
+};
+
 export function HubTopicCard({ topic }: { topic: HubTopic }) {
-  const content = <><div className="flex items-start justify-between gap-4"><h3 className="font-display text-xl font-semibold text-ink">{topic.title}</h3><span className={`shrink-0 rounded-full px-3 py-1 text-xs font-bold ${topic.status === "published" ? "bg-emerald-100 text-teal-800" : "border border-slate-300 bg-slate-50 text-slate-600"}`}>{topic.status === "published" ? "Read guide" : "Coming soon"}</span></div><p className="mt-4 leading-7 text-slate-600">{topic.description}</p>{topic.href && <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-teal-700">Explore this guide <ArrowRight aria-hidden="true" size={16}/></span>}</>;
-  if (topic.href) return <Link href={topic.href} className="group block rounded-3xl border border-teal-900/10 bg-white p-6 shadow-[0_18px_50px_-38px_rgba(12,64,56,.45)] transition motion-safe:hover:-translate-y-1 hover:border-teal-700/25 hover:shadow-soft">{content}</Link>;
-  return <article className="rounded-3xl border border-slate-200 bg-white/75 p-6">{content}</article>;
+  const identity = topicIdentities[topic.title];
+  const Icon = identity.icon;
+  const content = <><div className="flex items-start justify-between gap-4"><span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl ${identity.iconTone}`}><Icon aria-hidden="true" size={20}/></span><span className={`shrink-0 rounded-full px-3 py-1 text-xs font-bold ${topic.status === "published" ? "bg-emerald-100 text-teal-800" : "border border-slate-300 bg-slate-50 text-slate-600"}`}>{topic.status === "published" ? "Read guide" : "Coming soon"}</span></div><h3 className="mt-4 font-display text-xl font-semibold text-ink">{topic.title}</h3><p className="mt-4 leading-7 text-slate-600">{topic.description}</p>{topic.href && <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-teal-700">Explore this guide <ArrowRight aria-hidden="true" size={16}/></span>}</>;
+  if (topic.href) return <Link href={topic.href} className={`group block rounded-3xl border p-6 shadow-[0_18px_50px_-38px_rgba(12,64,56,.45)] transition motion-safe:hover:-translate-y-1 hover:border-teal-700/25 hover:shadow-soft ${identity.cardTone}`}>{content}</Link>;
+  return <article className={`rounded-3xl border p-6 ${identity.cardTone}`}>{content}</article>;
 }
 
 export function MedicalSafetyAlert({ title = "Important: screening and symptoms" }: { title?: string }) {
   return <aside aria-label="Important medical information" className="rounded-3xl border-2 border-amber-600/40 bg-amber-50 p-6 text-amber-950 sm:p-7"><div className="flex gap-4"><AlertTriangle aria-hidden="true" className="mt-0.5 shrink-0 text-amber-700"/><div><h2 className="font-display text-xl font-bold">{title}</h2><p className="mt-2 leading-7"><strong>Screening is for people who do not have symptoms. Do not wait for a screening invitation or FIT screening kit if you have symptoms or concerns. Contact your GP.</strong></p></div></div></aside>;
 }
 
-export function AtAGlance({ items }: { items: { label: string; value: React.ReactNode }[] }) {
-  return <section aria-labelledby="at-a-glance-title" className="rounded-4xl border border-teal-800/15 bg-teal-50 p-6 shadow-soft sm:p-8"><p className="eyebrow">Quick guide</p><h2 id="at-a-glance-title" className="font-display text-3xl font-semibold text-ink">Bowel screening at a glance</h2><dl className="mt-7 grid gap-px overflow-hidden rounded-2xl border border-teal-900/10 bg-teal-900/10 md:grid-cols-2">{items.map(({ label, value }) => <div key={label} className="bg-white p-5 md:last:col-span-2"><dt className="text-xs font-bold uppercase tracking-[.12em] text-teal-700">{label}</dt><dd className="mt-2 leading-7 text-slate-700">{value}</dd></div>)}</dl></section>;
+const heroAccents = {
+  green: "from-emerald-50 via-white to-green-50/70",
+  teal: "from-teal-50 via-white to-cyan-50/60",
+  pink: "from-rose-50 via-white to-pink-50/70",
+  blue: "from-sky-50 via-white to-blue-50/70",
+} as const;
+
+export function ScreeningArticleHero({
+  title,
+  intro,
+  imageSrc,
+  imageAlt,
+  accent,
+  children,
+}: {
+  title: string;
+  intro: string;
+  imageSrc: string;
+  imageAlt: string;
+  accent: keyof typeof heroAccents;
+  children: React.ReactNode;
+}) {
+  return <header className={`overflow-hidden border-y border-teal-900/10 bg-gradient-to-br ${heroAccents[accent]}`}>
+    <div className="container-page grid lg:grid-cols-[minmax(0,.92fr)_minmax(28rem,1.08fr)] lg:items-stretch">
+      <div className="relative z-10 py-14 lg:flex lg:min-h-[32rem] lg:flex-col lg:justify-center lg:py-20 lg:pr-12">
+        <p className="eyebrow">Evidence-led screening guide</p>
+        <h1 className="display max-w-4xl">{title}</h1>
+        <p className="lead mt-7 max-w-3xl text-xl leading-9">{intro}</p>
+        <div className="mt-8 flex flex-wrap gap-3">{children}</div>
+      </div>
+      <div className="relative -mx-5 h-72 overflow-hidden sm:-mx-8 sm:h-96 lg:mx-0 lg:h-auto lg:min-h-[32rem] lg:overflow-visible">
+        <Image src={imageSrc} alt={imageAlt} fill priority sizes="(max-width: 1023px) 100vw, 54vw" className="object-cover object-center"/>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-white via-white/45 to-transparent lg:block"/>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/45 to-transparent lg:hidden"/>
+      </div>
+    </div>
+  </header>;
+}
+
+export function AtAGlance({ title, items }: { title: string; items: { label: string; value: React.ReactNode }[] }) {
+  return <section aria-labelledby="at-a-glance-title" className="rounded-4xl border border-teal-800/15 bg-teal-50 p-6 shadow-soft sm:p-8"><p className="eyebrow">Quick guide</p><h2 id="at-a-glance-title" className="font-display text-3xl font-semibold text-ink">{title}</h2><dl className="mt-7 grid gap-px overflow-hidden rounded-2xl border border-teal-900/10 bg-teal-900/10 md:grid-cols-2">{items.map(({ label, value }) => <div key={label} className="bg-white p-5 md:last:col-span-2"><dt className="text-xs font-bold uppercase tracking-[.12em] text-teal-700">{label}</dt><dd className="mt-2 leading-7 text-slate-700">{value}</dd></div>)}</dl></section>;
 }
 
 export function ContentsNav({ items }: { items: { id: string; title: string }[] }) {

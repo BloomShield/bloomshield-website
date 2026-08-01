@@ -32,6 +32,21 @@ export const officialLinks = {
   nhsEnglandReports: "https://www.england.nhs.uk/statistics/statistical-work-areas/screening/",
   cancerResearchUkOverview: "https://www.cancerresearchuk.org/health-professional/cancer-screening/bowel-cancer-screening/screening-bowel-overview",
   cancerResearchUkFit: "https://www.cancerresearchuk.org/about-cancer/tests-and-scans/FIT",
+  nhsCervicalScreening: "https://www.nhs.uk/tests-and-treatments/cervical-screening/",
+  nhsCervicalInvitations: "https://www.nhs.uk/tests-and-treatments/cervical-screening/when-youll-be-invited/",
+  nhsCervicalResults: "https://www.nhs.uk/tests-and-treatments/cervical-screening/your-results/",
+  govCervicalOverview: "https://www.gov.uk/guidance/cervical-screening-programme-overview",
+  nhsEnglandCervicalGuide: "https://www.england.nhs.uk/long-read/your-guide-to-nhs-cervical-screening/",
+  nhsBreastScreening: "https://www.nhs.uk/tests-and-treatments/breast-screening-mammogram/",
+  nhsBreastEligibility: "https://www.nhs.uk/tests-and-treatments/breast-screening-mammogram/who-breast-screening-is-for/",
+  nhsBreastResults: "https://www.nhs.uk/tests-and-treatments/breast-screening-mammogram/your-results/",
+  nhsBreastSymptoms: "https://www.nhs.uk/conditions/breast-cancer-in-women/symptoms-of-breast-cancer-in-women/",
+  govBreastOverview: "https://www.gov.uk/guidance/breast-screening-programme-overview",
+  govBreastGuide: "https://www.gov.uk/government/publications/breast-screening-helping-women-decide",
+  nhsLungScreening: "https://www.nhs.uk/tests-and-treatments/lung-cancer-screening/",
+  nhsLungSymptoms: "https://www.nhs.uk/conditions/lung-cancer/symptoms/",
+  nhsEnglandLungProgramme: "https://www.england.nhs.uk/cancer/lung/",
+  ukNscLungRecommendation: "https://view-health-screening-recommendations.service.gov.uk/lung-cancer/",
 } as const;
 
 export const hubGroups: { title: string; intro: string; topics: HubTopic[] }[] = [
@@ -40,9 +55,9 @@ export const hubGroups: { title: string; intro: string; topics: HubTopic[] }[] =
     intro: "Understand who screening is for, what happens and where to find current official guidance.",
     topics: [
       { title: "Bowel cancer screening", description: "The NHS programme, home FIT kit, results, benefits and limitations.", href: "/cancer-prevention-screening/bowel-screening", status: "published" },
-      { title: "Cervical screening", description: "An accessible guide to cervical screening and HPV testing.", status: "coming-soon" },
-      { title: "Breast screening", description: "An accessible guide to NHS breast screening and mammograms.", status: "coming-soon" },
-      { title: "NHS Lung Health Checks", description: "Who may be invited and what a lung health check can involve.", status: "coming-soon" },
+      { title: "Cervical screening", description: "An accessible guide to cervical screening and HPV testing.", href: "/cancer-prevention-screening/cervical-screening", status: "published" },
+      { title: "Breast screening", description: "An accessible guide to NHS breast screening and mammograms.", href: "/cancer-prevention-screening/breast-screening", status: "published" },
+      { title: "NHS Lung Health Checks", description: "Who may be invited and what a lung health check can involve.", href: "/cancer-prevention-screening/lung-health-checks", status: "published" },
     ],
   },
   {
