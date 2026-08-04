@@ -148,8 +148,8 @@ const screenConnectNode = {
   "@id": ids.screenConnect,
   name: "ScreenConnect™",
   description:
-    "BloomShield CIC’s digital patient-navigation and care-coordination programme, supporting continuity from cancer screening through referral, diagnosis, treatment and follow-up.",
-  serviceType: "Digital patient navigation and connected cancer care programme",
+    "BloomShield CIC’s patient-navigation and care-coordination programme, identifying barriers and supporting patient tracking, follow-up and pathway equity across the cancer care continuum.",
+  serviceType: "Patient navigation, cancer care coordination and implementation support programme",
   url: `${SITE_URL}/programmes/screenconnect`,
   provider: { "@id": ids.organization },
   isBasedOn: { "@id": ids.ccpe },
