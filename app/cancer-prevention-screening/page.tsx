@@ -47,7 +47,7 @@ export default function CancerPreventionScreeningHubPage() {
 
     <section className="container-page py-12 sm:py-16" aria-labelledby="important-information-title">
       <div className="rounded-4xl border-2 border-amber-600/40 bg-amber-50 p-7 sm:p-9">
-        <div className="flex gap-4"><CircleAlert aria-hidden="true" className="mt-1 shrink-0 text-amber-700"/><div><h2 id="important-information-title" className="font-display text-2xl font-semibold text-amber-950">Screening information is not a diagnosis</h2><ul className="mt-5 list-disc space-y-3 pl-5 leading-7 text-amber-950"><li>Screening is generally intended for people who do not have symptoms.</li><li>Do not wait for a screening invitation if you have symptoms or concerns. Contact your GP.</li><li>BloomShield provides public health education. This hub does not diagnose medical conditions or replace advice from a qualified healthcare professional.</li><li>For urgent advice in England, use <ExternalLink href={officialLinks.nhs111} className="font-bold underline underline-offset-4">NHS 111 online</ExternalLink>. Call 999 for a life-threatening emergency.</li></ul></div></div>
+        <div className="flex gap-4"><CircleAlert aria-hidden="true" className="mt-1 shrink-0 text-amber-700"/><div><h2 id="important-information-title" className="font-display text-2xl font-semibold text-amber-950">Screening Information Is Not a Diagnosis</h2><ul className="mt-5 list-disc space-y-3 pl-5 leading-7 text-amber-950"><li>Screening is generally intended for people who do not have symptoms.</li><li>Do not wait for a screening invitation if you have symptoms or concerns. Contact your GP.</li><li>BloomShield provides public health education. This hub does not diagnose medical conditions or replace advice from a qualified healthcare professional.</li><li>For urgent advice in England, use <ExternalLink href={officialLinks.nhs111} className="font-bold underline underline-offset-4">NHS 111 online</ExternalLink>. Call 999 for a life-threatening emergency.</li></ul></div></div>
       </div>
     </section>
 
@@ -58,9 +58,9 @@ export default function CancerPreventionScreeningHubPage() {
     <section className="pb-20 pt-24 md:pb-28 md:pt-32" aria-labelledby="how-bloomshield-helps">
       <div className="container-page">
         <p className="eyebrow">From information to participation</p>
-        <h2 id="how-bloomshield-helps" className="heading">How BloomShield helps</h2>
+        <h2 id="how-bloomshield-helps" className="heading">How BloomShield Helps</h2>
         <p className="lead mt-5 max-w-3xl">BloomShield connects accessible public health information with community engagement, practical access support and connected care pathways.</p>
-        <RelatedProgrammes portfolioStyle/>
+        <RelatedProgrammes/>
         <div className="mt-10"><Link href="/contact" className="button-primary">Work with BloomShield to improve screening access <ArrowRight aria-hidden="true" size={17}/></Link></div>
       </div>
     </section>

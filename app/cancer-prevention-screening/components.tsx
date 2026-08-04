@@ -18,22 +18,22 @@ export function Breadcrumbs({ current, parent }: { current: string; parent?: { l
 }
 
 const topicIdentities: Record<string, { icon: LucideIcon; cardTone: string; iconTone: string }> = {
-  "Bowel cancer screening": { icon: Spline, cardTone: "border-teal-700/15 !bg-[#f8fcfb]", iconTone: "bg-teal-50 text-teal-700" },
-  "Cervical screening": { icon: Ribbon, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
-  "Breast screening": { icon: ScanLine, cardTone: "border-[#a85d76]/15 !bg-[#fffafd]", iconTone: "bg-[#faedf2] text-[#98536b]" },
+  "Bowel Cancer Screening": { icon: Spline, cardTone: "border-teal-700/15 !bg-[#f8fcfb]", iconTone: "bg-teal-50 text-teal-700" },
+  "Cervical Screening": { icon: Ribbon, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
+  "Breast Screening": { icon: ScanLine, cardTone: "border-[#a85d76]/15 !bg-[#fffafd]", iconTone: "bg-[#faedf2] text-[#98536b]" },
   "NHS Lung Health Checks": { icon: Wind, cardTone: "border-[#4d6f9f]/15 !bg-[#f9fbff]", iconTone: "bg-[#edf3fb] text-[#46678f]" },
-  "FIT test": { icon: TestTubeDiagonal, cardTone: "border-teal-700/15 !bg-[#f8fcfb]", iconTone: "bg-teal-50 text-teal-700" },
-  "HPV test": { icon: Microscope, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
+  "FIT Test": { icon: TestTubeDiagonal, cardTone: "border-teal-700/15 !bg-[#f8fcfb]", iconTone: "bg-teal-50 text-teal-700" },
+  "HPV Test": { icon: Microscope, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
   "Mammogram": { icon: ScanSearch, cardTone: "border-[#a85d76]/15 !bg-[#fffafd]", iconTone: "bg-[#faedf2] text-[#98536b]" },
-  "PSA test": { icon: Droplet, cardTone: "border-[#3e5579]/15 !bg-[#fafbfe]", iconTone: "bg-[#edf0f6] text-[#354d70]" },
-  "Cancer symptoms": { icon: ClipboardCheck, cardTone: "border-amber-700/15 !bg-[#fffcf7]", iconTone: "bg-[#fff2dc] text-[#855a18]" },
-  "Reducing cancer risk": { icon: ShieldCheck, cardTone: "border-gold-500/20 !bg-[#fffdf7]", iconTone: "bg-[#f7eed4] text-teal-700" },
-  "HPV vaccination": { icon: Syringe, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
-  "Family history and inherited risk": { icon: GitFork, cardTone: "border-[#3e5579]/15 !bg-[#fafbfe]", iconTone: "bg-[#edf0f6] text-[#354d70]" },
-  "Understanding your screening invitation": { icon: MailOpen, cardTone: "border-[#4d6f9f]/15 !bg-[#f9fbff]", iconTone: "bg-[#edf3fb] text-[#46678f]" },
-  "Why people miss cancer screening": { icon: RouteOff, cardTone: "border-[#b9634b]/15 !bg-[#fffaf8]", iconTone: "bg-[#fbeee9] text-[#9b503c]" },
-  "Screening and language barriers": { icon: Languages, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
-  "Supporting someone to attend screening": { icon: HandHeart, cardTone: "border-emerald-700/15 !bg-[#f9fcfa]", iconTone: "bg-emerald-50 text-emerald-700" },
+  "PSA Test": { icon: Droplet, cardTone: "border-[#3e5579]/15 !bg-[#fafbfe]", iconTone: "bg-[#edf0f6] text-[#354d70]" },
+  "Cancer Symptoms": { icon: ClipboardCheck, cardTone: "border-amber-700/15 !bg-[#fffcf7]", iconTone: "bg-[#fff2dc] text-[#855a18]" },
+  "Reducing Cancer Risk": { icon: ShieldCheck, cardTone: "border-gold-500/20 !bg-[#fffdf7]", iconTone: "bg-[#f7eed4] text-teal-700" },
+  "HPV Vaccination": { icon: Syringe, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
+  "Family History and Inherited Risk": { icon: GitFork, cardTone: "border-[#3e5579]/15 !bg-[#fafbfe]", iconTone: "bg-[#edf0f6] text-[#354d70]" },
+  "Understanding Your Screening Invitation": { icon: MailOpen, cardTone: "border-[#4d6f9f]/15 !bg-[#f9fbff]", iconTone: "bg-[#edf3fb] text-[#46678f]" },
+  "Why People Miss Cancer Screening": { icon: RouteOff, cardTone: "border-[#b9634b]/15 !bg-[#fffaf8]", iconTone: "bg-[#fbeee9] text-[#9b503c]" },
+  "Screening and Language Barriers": { icon: Languages, cardTone: "border-[#76559a]/15 !bg-[#fcfaff]", iconTone: "bg-[#f3edfb] text-[#6f4d92]" },
+  "Supporting Someone to Attend Screening": { icon: HandHeart, cardTone: "border-emerald-700/15 !bg-[#f9fcfa]", iconTone: "bg-emerald-50 text-emerald-700" },
 };
 
 export function HubTopicCard({ topic }: { topic: HubTopic }) {
@@ -44,8 +44,15 @@ export function HubTopicCard({ topic }: { topic: HubTopic }) {
   return <article className={`rounded-3xl border p-6 ${identity.cardTone}`}>{content}</article>;
 }
 
-export function MedicalSafetyAlert({ title = "Important: screening and symptoms" }: { title?: string }) {
-  return <aside aria-label="Important medical information" className="rounded-3xl border-2 border-amber-600/40 bg-amber-50 p-6 text-amber-950 sm:p-7"><div className="flex gap-4"><AlertTriangle aria-hidden="true" className="mt-0.5 shrink-0 text-amber-700"/><div><h2 className="font-display text-xl font-bold">{title}</h2><p className="mt-2 leading-7"><strong>Screening is for people who do not have symptoms. Do not wait for a screening invitation or FIT screening kit if you have symptoms or concerns. Contact your GP.</strong></p></div></div></aside>;
+const safetyAlertMessages = {
+  bowel: "Screening is for people who do not have symptoms. Do not wait for a screening invitation or FIT screening kit if you have symptoms or concerns. Contact your GP.",
+  cervical: "Screening is for people who do not have symptoms. Do not wait for a cervical screening invitation or appointment if you have symptoms or concerns. Contact your GP.",
+  breast: "Screening is for people who do not have symptoms. Do not wait for a breast screening invitation or appointment if you have symptoms or concerns. Contact your GP.",
+  lung: "Screening is for people who do not have symptoms. Do not wait for a Lung Health Check if you have symptoms or concerns. Contact your GP.",
+} as const;
+
+export function MedicalSafetyAlert({ title = "Important: Screening and Symptoms", programme }: { title?: string; programme: keyof typeof safetyAlertMessages }) {
+  return <aside aria-label="Important medical information" className="rounded-3xl border-2 border-amber-600/40 bg-amber-50 p-6 text-amber-950 sm:p-7"><div className="flex gap-4"><AlertTriangle aria-hidden="true" className="mt-0.5 shrink-0 text-amber-700"/><div><h2 className="font-display text-xl font-bold">{title}</h2><p className="mt-2 leading-7"><strong>{safetyAlertMessages[programme]}</strong></p></div></div></aside>;
 }
 
 const heroAccents = {
@@ -92,7 +99,7 @@ export function AtAGlance({ title, items }: { title: string; items: { label: str
 }
 
 export function ContentsNav({ items }: { items: { id: string; title: string }[] }) {
-  return <nav aria-label="On this page" className="rounded-3xl border border-teal-900/10 bg-white p-6 lg:sticky lg:top-36"><h2 className="font-display text-xl font-semibold">On this page</h2><ol className="mt-4 space-y-2 text-sm leading-5">{items.map((item, index) => <li key={item.id}><a href={`#${item.id}`} className="block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-teal-50 hover:text-teal-800"><span className="mr-1 font-bold text-teal-700">{index + 1}.</span> {item.title}</a></li>)}</ol></nav>;
+  return <nav aria-label="On this page" className="rounded-3xl border border-teal-900/10 bg-white p-6 lg:sticky lg:top-36"><h2 className="font-display text-xl font-semibold">On This Page</h2><ol className="mt-4 space-y-2 text-sm leading-5">{items.map((item, index) => <li key={item.id}><a href={`#${item.id}`} className="block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-teal-50 hover:text-teal-800"><span className="mr-1 font-bold text-teal-700">{index + 1}.</span> {item.title}</a></li>)}</ol></nav>;
 }
 
 export function ResourceList({ resources }: { resources: ExternalResource[] }) {
@@ -108,7 +115,7 @@ export function ReviewDate() {
 }
 
 export function EditorialInformation() {
-  return <aside aria-labelledby="editorial-information-title" className="rounded-3xl border border-teal-900/15 bg-teal-900 p-7 text-white"><div className="flex items-center gap-3"><ShieldCheck aria-hidden="true" className="text-emerald-400"/><h2 id="editorial-information-title" className="font-display text-2xl font-semibold">Editorial information</h2></div><dl className="mt-6 grid gap-4 text-sm sm:grid-cols-2"><div><dt className="font-bold text-emerald-300">Published by</dt><dd className="mt-1 text-white/80">BloomShield CIC</dd></div><div><dt className="font-bold text-emerald-300">Resource type</dt><dd className="mt-1 text-white/80">Public health education resource</dd></div><div><dt className="font-bold text-emerald-300">Last reviewed</dt><dd className="mt-1 text-white/80"><time dateTime={healthContentGovernance.lastReviewedIso}>{healthContentGovernance.lastReviewed}</time></dd></div><div><dt className="font-bold text-emerald-300">Evidence sources</dt><dd className="mt-1 text-white/80">NHS, NHS England, GOV.UK, UK NSC and Cancer Research UK</dd></div></dl><p className="mt-6 border-t border-white/15 pt-5 text-sm leading-6 text-white/75">This resource has not been presented as externally clinically reviewed. To report an error or suggest a correction, use the <Link href="/contact" className="font-bold text-emerald-300 underline underline-offset-4">BloomShield contact form</Link>.</p></aside>;
+  return <aside aria-labelledby="editorial-information-title" className="rounded-3xl border border-teal-900/15 bg-teal-900 p-7 text-white"><div className="flex items-center gap-3"><ShieldCheck aria-hidden="true" className="text-emerald-400"/><h2 id="editorial-information-title" className="font-display text-2xl font-semibold">Editorial Information</h2></div><dl className="mt-6 grid gap-4 text-sm sm:grid-cols-2"><div><dt className="font-bold text-emerald-300">Published by</dt><dd className="mt-1 text-white/80">BloomShield CIC</dd></div><div><dt className="font-bold text-emerald-300">Resource type</dt><dd className="mt-1 text-white/80">Public health education resource</dd></div><div><dt className="font-bold text-emerald-300">Last reviewed</dt><dd className="mt-1 text-white/80"><time dateTime={healthContentGovernance.lastReviewedIso}>{healthContentGovernance.lastReviewed}</time></dd></div><div><dt className="font-bold text-emerald-300">Evidence sources</dt><dd className="mt-1 text-white/80">NHS, NHS England, GOV.UK, UK NSC and Cancer Research UK</dd></div></dl><p className="mt-6 border-t border-white/15 pt-5 text-sm leading-6 text-white/75">This resource has not been presented as externally clinically reviewed. To report an error or suggest a correction, use the <Link href="/contact" className="font-bold text-emerald-300 underline underline-offset-4">BloomShield contact form</Link>.</p></aside>;
 }
 
 const programmes: {
@@ -125,13 +132,13 @@ const programmes: {
   { name: "ScreenConnect™", href: "/programmes/screenconnect", text: "supports navigation, coordination and continuity across screening and care pathways.", icon: Waypoints, card: "border-[#4051b5]/20 !bg-[#f5f7ff]", iconTone: "bg-[#4051b5] text-white", linkTone: "text-[#293474] decoration-[#5267dc]/45 hover:decoration-[#4051b5]" },
 ];
 
-export function RelatedProgrammes({ portfolioStyle = false }: { portfolioStyle?: boolean }) {
-  return <div className="mt-8 grid gap-4 md:grid-cols-3">{programmes.map(programme => {
+export function RelatedProgrammes() {
+  return <div className="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] gap-4">{programmes.map(programme => {
     const Icon = programme.icon;
-    return <article key={programme.name} className={`rounded-3xl border p-6 ${portfolioStyle ? `portfolio-programme-card ${programme.card} shadow-[0_22px_55px_-38px_rgba(12,64,56,.38)]` : "border-teal-900/10 bg-white"}`}>
-      {portfolioStyle && <span className={`flex h-12 w-12 items-center justify-center rounded-2xl ${programme.iconTone}`}><Icon aria-hidden="true" size={24}/></span>}
-      <h3 className={`font-display text-xl font-semibold ${portfolioStyle ? "mt-6" : ""}`}><Link href={programme.href} className={`underline underline-offset-4 ${portfolioStyle ? programme.linkTone : "text-teal-800 decoration-teal-800/25 hover:decoration-teal-800"}`}>{programme.name}</Link></h3>
-      <p className={`mt-3 leading-7 ${portfolioStyle ? "text-slate-700" : "text-slate-600"}`}>{programme.text}</p>
+    return <article key={programme.name} className={`portfolio-programme-card h-full rounded-3xl border p-6 ${programme.card} shadow-[0_22px_55px_-38px_rgba(12,64,56,.38)]`}>
+      <span className={`flex h-12 w-12 items-center justify-center rounded-2xl ${programme.iconTone}`}><Icon aria-hidden="true" size={24}/></span>
+      <h3 className="mt-6 font-display text-xl font-semibold leading-snug"><Link href={programme.href} className={`rounded-sm underline decoration-2 underline-offset-4 ${programme.linkTone}`}>{programme.name}</Link></h3>
+      <p className="mt-3 leading-7 text-slate-700">{programme.text}</p>
     </article>;
   })}</div>;
 }

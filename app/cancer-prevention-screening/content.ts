@@ -51,43 +51,43 @@ export const officialLinks = {
 
 export const hubGroups: { title: string; intro: string; topics: HubTopic[] }[] = [
   {
-    title: "NHS cancer screening programmes",
+    title: "NHS Cancer Screening Programmes",
     intro: "Understand who screening is for, what happens and where to find current official guidance.",
     topics: [
-      { title: "Bowel cancer screening", description: "The NHS programme, home FIT kit, results, benefits and limitations.", href: "/cancer-prevention-screening/bowel-screening", status: "published" },
-      { title: "Cervical screening", description: "An accessible guide to cervical screening and HPV testing.", href: "/cancer-prevention-screening/cervical-screening", status: "published" },
-      { title: "Breast screening", description: "An accessible guide to NHS breast screening and mammograms.", href: "/cancer-prevention-screening/breast-screening", status: "published" },
+      { title: "Bowel Cancer Screening", description: "The NHS programme, home FIT kit, results, benefits and limitations.", href: "/cancer-prevention-screening/bowel-screening", status: "published" },
+      { title: "Cervical Screening", description: "An accessible guide to cervical screening and HPV testing.", href: "/cancer-prevention-screening/cervical-screening", status: "published" },
+      { title: "Breast Screening", description: "An accessible guide to NHS breast screening and mammograms.", href: "/cancer-prevention-screening/breast-screening", status: "published" },
       { title: "NHS Lung Health Checks", description: "Who may be invited and what a lung health check can involve.", href: "/cancer-prevention-screening/lung-health-checks", status: "published" },
     ],
   },
   {
-    title: "Screening tests explained",
+    title: "Screening Tests Explained",
     intro: "Plain-language guides to common screening and investigation tests.",
     topics: [
-      { title: "FIT test", description: "What a faecal immunochemical test checks for and how it is used.", status: "coming-soon" },
-      { title: "HPV test", description: "How high-risk human papillomavirus testing is used in cervical screening.", status: "coming-soon" },
+      { title: "FIT Test", description: "What a faecal immunochemical test checks for and how it is used.", status: "coming-soon" },
+      { title: "HPV Test", description: "How high-risk human papillomavirus testing is used in cervical screening.", status: "coming-soon" },
       { title: "Mammogram", description: "What happens during an X-ray examination of the breasts.", status: "coming-soon" },
-      { title: "PSA test", description: "What a prostate-specific antigen blood test can and cannot indicate.", status: "coming-soon" },
+      { title: "PSA Test", description: "What a prostate-specific antigen blood test can and cannot indicate.", status: "coming-soon" },
     ],
   },
   {
-    title: "Prevention and early detection",
+    title: "Prevention and Early Detection",
     intro: "Evidence-led information to support awareness and informed health decisions.",
     topics: [
-      { title: "Cancer symptoms", description: "Changes to notice and when to seek advice from a healthcare professional.", status: "coming-soon" },
-      { title: "Reducing cancer risk", description: "Evidence-based actions that may reduce the risk of some cancers.", status: "coming-soon" },
-      { title: "HPV vaccination", description: "How vaccination helps protect against HPV-related cancers.", status: "coming-soon" },
-      { title: "Family history and inherited risk", description: "When family history may be relevant and who to speak to.", status: "coming-soon" },
+      { title: "Cancer Symptoms", description: "Changes to notice and when to seek advice from a healthcare professional.", status: "coming-soon" },
+      { title: "Reducing Cancer Risk", description: "Evidence-based actions that may reduce the risk of some cancers.", status: "coming-soon" },
+      { title: "HPV Vaccination", description: "How vaccination helps protect against HPV-related cancers.", status: "coming-soon" },
+      { title: "Family History and Inherited Risk", description: "When family history may be relevant and who to speak to.", status: "coming-soon" },
     ],
   },
   {
-    title: "Screening access and equality",
+    title: "Screening Access and Equality",
     intro: "Practical information about invitations, barriers and supporting equitable participation.",
     topics: [
-      { title: "Understanding your screening invitation", description: "What an invitation means and where to ask questions.", status: "coming-soon" },
-      { title: "Why people miss cancer screening", description: "Common practical, social and service barriers to participation.", status: "coming-soon" },
-      { title: "Screening and language barriers", description: "Finding accessible information and communication support.", status: "coming-soon" },
-      { title: "Supporting someone to attend screening", description: "Ways to offer practical, respectful and informed support.", status: "coming-soon" },
+      { title: "Understanding Your Screening Invitation", description: "What an invitation means and where to ask questions.", status: "coming-soon" },
+      { title: "Why People Miss Cancer Screening", description: "Common practical, social and service barriers to participation.", status: "coming-soon" },
+      { title: "Screening and Language Barriers", description: "Finding accessible information and communication support.", status: "coming-soon" },
+      { title: "Supporting Someone to Attend Screening", description: "Ways to offer practical, respectful and informed support.", status: "coming-soon" },
     ],
   },
 ];
