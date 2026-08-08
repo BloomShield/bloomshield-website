@@ -14,7 +14,18 @@ const title = "PSA Test Explained: Benefits, Limitations and NHS Access | BloomS
 const description = "Understand what a PSA blood test measures, why it may be offered, what raised or normal results can mean, and the benefits and limitations of PSA testing.";
 const article = screeningArticles.psa;
 
-export const metadata = createMetadata({ title, description, path: article.path, absoluteTitle: true });
+export const metadata = createMetadata({
+  title,
+  description,
+  path: article.path,
+  absoluteTitle: true,
+  socialImage: {
+    url: "/images/psa-test-lifestyle-hero.webp",
+    width: 1693,
+    height: 929,
+    alt: "A Black man reading plain health information in a warm home setting",
+  },
+});
 
 const contents = [
   { id: "at-a-glance-title", title: "PSA Test at a Glance" },

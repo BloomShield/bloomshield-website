@@ -14,7 +14,18 @@ const article = screeningArticles.cervical;
 const title = "NHS Cervical Screening: Eligibility, HPV Test and Results | BloomShield CIC";
 const description = "Understand NHS cervical screening in England, who is invited, how HPV testing works, possible results, benefits, limitations and official NHS support.";
 
-export const metadata = createMetadata({ title, description, path: article.path, absoluteTitle: true });
+export const metadata = createMetadata({
+  title,
+  description,
+  path: article.path,
+  absoluteTitle: true,
+  socialImage: {
+    url: "/images/cervical-screening-lifestyle-hero.webp",
+    width: 1536,
+    height: 1024,
+    alt: "An Asian woman smiling confidently in a bright modern home",
+  },
+});
 
 const contents = [
   { id: "what-is-cervical-screening", title: "What Is Cervical Screening?" },

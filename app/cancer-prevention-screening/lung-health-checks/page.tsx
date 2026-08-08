@@ -14,7 +14,18 @@ const article = screeningArticles.lung;
 const title = "NHS Lung Health Checks: Eligibility, CT Scan and Results | BloomShield CIC";
 const description = "Understand NHS lung cancer screening in England, who may be invited for a lung health check, how risk assessment and low-dose CT work, benefits, limitations and official support.";
 
-export const metadata = createMetadata({ title, description, path: article.path, absoluteTitle: true });
+export const metadata = createMetadata({
+  title,
+  description,
+  path: article.path,
+  absoluteTitle: true,
+  socialImage: {
+    url: "/images/lung-health-check-lifestyle-hero.webp",
+    width: 1536,
+    height: 1024,
+    alt: "A South Asian man walking comfortably along a leafy park path",
+  },
+});
 
 const contents = [
   { id: "what-is-lung-screening", title: "What Is an NHS Lung Health Check?" },

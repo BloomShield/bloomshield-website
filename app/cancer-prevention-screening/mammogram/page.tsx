@@ -14,7 +14,18 @@ const title = "Mammogram Explained: What Happens and What Results Mean | BloomSh
 const description = "Understand what happens during a mammogram, how breast X-rays are taken, possible results, discomfort, benefits, limitations and official NHS guidance.";
 const article = screeningArticles.mammogram;
 
-export const metadata = createMetadata({ title, description, path: article.path, absoluteTitle: true });
+export const metadata = createMetadata({
+  title,
+  description,
+  path: article.path,
+  absoluteTitle: true,
+  socialImage: {
+    url: "/images/mammogram-lifestyle-hero.webp",
+    width: 1691,
+    height: 930,
+    alt: "A Black woman relaxing with a mug in a softly lit living room",
+  },
+});
 
 const contents = [
   { id: "at-a-glance-title", title: "Mammogram at a Glance" },

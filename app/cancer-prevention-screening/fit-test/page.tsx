@@ -14,7 +14,18 @@ const title = "FIT Test Explained: Results, Accuracy and NHS Use | BloomShield C
 const description = "Understand what a FIT test checks for, how to collect a sample, what the result may mean, its benefits and limitations, and how screening FIT differs from diagnostic FIT.";
 const article = screeningArticles.fit;
 
-export const metadata = createMetadata({ title, description, path: article.path, absoluteTitle: true });
+export const metadata = createMetadata({
+  title,
+  description,
+  path: article.path,
+  absoluteTitle: true,
+  socialImage: {
+    url: "/images/fit-test-lifestyle-hero.webp",
+    width: 1693,
+    height: 929,
+    alt: "A Black man reading home test instructions in a warmly lit living room",
+  },
+});
 
 const contents = [
   { id: "at-a-glance-title", title: "FIT Test at a Glance" },

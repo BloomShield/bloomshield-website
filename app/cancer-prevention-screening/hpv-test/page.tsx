@@ -14,7 +14,18 @@ const title = "HPV Test Explained: Cervical Screening and Results | BloomShield 
 const description = "Understand what an HPV test checks for, how HPV testing is used in NHS cervical screening, what different results may mean, and why having HPV does not mean you have cancer.";
 const article = screeningArticles.hpv;
 
-export const metadata = createMetadata({ title, description, path: article.path, absoluteTitle: true });
+export const metadata = createMetadata({
+  title,
+  description,
+  path: article.path,
+  absoluteTitle: true,
+  socialImage: {
+    url: "/images/hpv-test-lifestyle-hero.webp",
+    width: 1690,
+    height: 931,
+    alt: "An Asian woman holding a mug in a bright, warmly lit home",
+  },
+});
 
 const contents = [
   { id: "at-a-glance-title", title: "HPV Test at a Glance" },

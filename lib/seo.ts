@@ -17,11 +17,24 @@ type PageMetadata = {
   description: string;
   path: `/${string}` | "/";
   absoluteTitle?: boolean;
+  socialImage?: {
+    url: `/${string}`;
+    width: number;
+    height: number;
+    alt: string;
+  };
 };
 
-export function createMetadata({ title, description, path, absoluteTitle = false }: PageMetadata): Metadata {
+export function createMetadata({ title, description, path, absoluteTitle = false, socialImage }: PageMetadata): Metadata {
   const canonical = new URL(path, SITE_URL).toString();
   const socialTitle = absoluteTitle ? title : `${title} | ${SITE_NAME}`;
+  const image = socialImage ?? {
+    url: SOCIAL_IMAGE,
+    width: 1200,
+    height: 630,
+    alt: "BloomShield — Shielded by Care, Empowered to Bloom.",
+  };
+  const imageUrl = new URL(image.url, SITE_URL).toString();
 
   return {
     title: absoluteTitle ? { absolute: title } : title,
@@ -35,17 +48,22 @@ export function createMetadata({ title, description, path, absoluteTitle = false
       title: socialTitle,
       description,
       images: [{
-        url: SOCIAL_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: "BloomShield — Shielded by Care, Empowered to Bloom.",
+        url: imageUrl,
+        width: image.width,
+        height: image.height,
+        alt: image.alt,
       }],
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
-      images: [SOCIAL_IMAGE],
+      images: [{
+        url: imageUrl,
+        width: image.width,
+        height: image.height,
+        alt: image.alt,
+      }],
     },
   };
 }

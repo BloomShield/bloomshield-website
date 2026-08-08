@@ -14,7 +14,18 @@ const article = screeningArticles.breast;
 const title = "NHS Breast Screening: Eligibility, Mammogram and Results | BloomShield CIC";
 const description = "Understand NHS breast screening in England, who is invited, what happens during a mammogram, possible results, benefits, limitations and official NHS support.";
 
-export const metadata = createMetadata({ title, description, path: article.path, absoluteTitle: true });
+export const metadata = createMetadata({
+  title,
+  description,
+  path: article.path,
+  absoluteTitle: true,
+  socialImage: {
+    url: "/images/breast-screening-lifestyle-hero.webp",
+    width: 1536,
+    height: 1024,
+    alt: "A Black woman relaxing at home in warm daylight",
+  },
+});
 
 const contents = [
   { id: "what-is-breast-screening", title: "What Is Breast Screening?" },

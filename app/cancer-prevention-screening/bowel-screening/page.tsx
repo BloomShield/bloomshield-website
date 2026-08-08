@@ -13,7 +13,18 @@ const title = "NHS Bowel Cancer Screening: Age, FIT Test and Results | BloomShie
 const description = "Understand NHS bowel cancer screening, who is invited, how the FIT test works, possible results, benefits, limitations and where to find official NHS support.";
 const article = screeningArticles.bowel;
 
-export const metadata = createMetadata({ title, description, path: "/cancer-prevention-screening/bowel-screening", absoluteTitle: true });
+export const metadata = createMetadata({
+  title,
+  description,
+  path: "/cancer-prevention-screening/bowel-screening",
+  absoluteTitle: true,
+  socialImage: {
+    url: "/images/bowel-screening-lifestyle-hero.webp",
+    width: 1536,
+    height: 1024,
+    alt: "A Black man relaxing with a mug in a warmly lit living room",
+  },
+});
 
 const contents = [
   { id: "what-is-bowel-cancer", title: "What Is Bowel Cancer?" },
