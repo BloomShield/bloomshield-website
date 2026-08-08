@@ -51,6 +51,16 @@ export const officialLinks = {
   govBowelScreeningGuide: "https://www.gov.uk/government/publications/bowel-cancer-screening-benefits-and-risks/nhs-bowel-cancer-screening-helping-you-decide",
   govScreeningForGps: "https://www.gov.uk/guidance/nhs-screening-programmes-information-for-gps-and-practice-staff",
   niceSymptomaticFit: "https://www.nice.org.uk/guidance/dg56/",
+  nhsHpv: "https://www.nhs.uk/conditions/human-papilloma-virus-hpv/",
+  govCervicalGuide: "https://www.gov.uk/government/publications/cervical-screening-description-in-brief/cervical-screening-helping-you-decide--2",
+  nhsMammogramAppointment: "https://www.nhs.uk/tests-and-treatments/breast-screening-mammogram/what-happens-at-your-breast-screening-appointment/",
+  govBreastGuideCurrent: "https://www.gov.uk/government/publications/breast-screening-helping-women-decide/nhs-breast-screening-helping-you-decide",
+  govBreastImplants: "https://www.gov.uk/government/publications/breast-screening-breast-implant-guidelines/breast-implants-and-breast-screening",
+  nhsPsaTest: "https://www.nhs.uk/tests-and-treatments/psa-test/",
+  nhsProstateSymptoms: "https://www.nhs.uk/conditions/prostate-cancer/symptoms/",
+  ukNscProstateRecommendation: "https://view-health-screening-recommendations.service.gov.uk/prostate-cancer/",
+  govTargetedProstateScreening: "https://www.gov.uk/government/publications/prostate-cancer-screening-equality-impact-assessment/equality-impact-assessment-introduction-of-a-targeted-prostate-cancer-screening-programme",
+  niceProstateGuidance: "https://www.nice.org.uk/guidance/ng131",
 } as const;
 
 export const hubGroups: { title: string; intro: string; topics: HubTopic[] }[] = [
@@ -69,9 +79,9 @@ export const hubGroups: { title: string; intro: string; topics: HubTopic[] }[] =
     intro: "Plain-language guides to common screening and investigation tests.",
     topics: [
       { title: "FIT Test", description: "What a faecal immunochemical test checks for and how it is used.", href: "/cancer-prevention-screening/fit-test", status: "published" },
-      { title: "HPV Test", description: "How high-risk human papillomavirus testing is used in cervical screening.", status: "coming-soon" },
-      { title: "Mammogram", description: "What happens during an X-ray examination of the breasts.", status: "coming-soon" },
-      { title: "PSA Test", description: "What a prostate-specific antigen blood test can and cannot indicate.", status: "coming-soon" },
+      { title: "HPV Test", description: "How high-risk human papillomavirus testing is used in cervical screening.", href: "/cancer-prevention-screening/hpv-test", status: "published" },
+      { title: "Mammogram", description: "What happens during an X-ray examination of the breasts.", href: "/cancer-prevention-screening/mammogram", status: "published" },
+      { title: "PSA Test", description: "What a prostate-specific antigen blood test can and cannot indicate.", href: "/cancer-prevention-screening/psa-test", status: "published" },
     ],
   },
   {
@@ -264,4 +274,68 @@ export const fitFaqs = [
     question: "What should I do if I have symptoms?",
     answer: "Contact your GP rather than waiting for a routine screening invitation or kit. A screening test is not a substitute for medical assessment, and persistent or concerning symptoms still need review even after a normal FIT result.",
   },
+] as const;
+
+export const hpvEvidence: ExternalResource[] = [
+  { title: "Human papillomavirus (HPV)", description: "Current NHS information about HPV, high-risk types, transmission, testing and vaccination.", href: officialLinks.nhsHpv, organisation: "NHS" },
+  { title: "Your cervical screening results", description: "NHS explanations of HPV-negative, HPV-positive and unclear cervical screening results.", href: officialLinks.nhsCervicalResults, organisation: "NHS" },
+  { title: "Your guide to NHS cervical screening", description: "The current official guide to cervical screening, HPV testing, results, benefits and risks in England.", href: officialLinks.govCervicalGuide, organisation: "NHS England and GOV.UK" },
+  { title: "Cervical screening programme overview", description: "Programme information about primary HPV testing and the cervical screening pathway in England.", href: officialLinks.govCervicalOverview, organisation: "NHS England and GOV.UK" },
+];
+
+export const officialHpvResources: ExternalResource[] = hpvEvidence;
+
+export const hpvFaqs = [
+  { question: "Does HPV mean I have cancer?", answer: "No. HPV is common, and finding a high-risk type does not mean that you have cervical cancer. Your cervical screening result explains whether abnormal cells were found and whether any follow-up is needed." },
+  { question: "Does an HPV-positive result mean my partner has been unfaithful?", answer: "No. HPV can remain in the body or become detectable after many years. A positive result cannot show when HPV was acquired or from whom, and it does not establish infidelity." },
+  { question: "Can HPV remain undetected for years?", answer: "Yes. HPV may be present for a long time without causing symptoms, and it can become detectable after a period when it was not detected. A result cannot reliably date the infection." },
+  { question: "Can HPV clear on its own?", answer: "Yes. The immune system clears most HPV infections without treatment. Follow the screening advice in your result because persistent high-risk HPV may need closer checks." },
+  { question: "Is an HPV test the same as a smear test?", answer: "Cervical screening used to be called a smear test. In the current England pathway, a cervical sample is tested first for high-risk HPV. If high-risk HPV is found, the same sample is checked for abnormal cervical cells." },
+  { question: "Does the HPV vaccine mean I no longer need cervical screening?", answer: "No. The vaccine does not protect against every high-risk HPV type. If you are eligible for cervical screening, the NHS advises taking part even if you have been vaccinated." },
+  { question: "What happens if high-risk HPV is found?", answer: "The next step depends on whether abnormal cervical cells are also found and on your previous results. You may be invited for another screening test or referred for colposcopy. Follow the instructions in your result." },
+  { question: "What if I have symptoms?", answer: "Contact your GP rather than waiting for routine cervical screening. Cervical screening is for people without symptoms and does not check for every gynaecological cancer." },
+] as const;
+
+export const mammogramEvidence: ExternalResource[] = [
+  { title: "Breast screening (mammogram)", description: "NHS information about breast screening, mammograms, eligibility and informed choice.", href: officialLinks.nhsBreastScreening, organisation: "NHS" },
+  { title: "What happens at your breast screening appointment", description: "Current NHS practical guidance about preparation, breast positioning, compression and support during the appointment.", href: officialLinks.nhsMammogramAppointment, organisation: "NHS" },
+  { title: "Your breast screening results", description: "NHS explanations of normal results, recall and possible further tests.", href: officialLinks.nhsBreastResults, organisation: "NHS" },
+  { title: "Your guide to NHS breast screening", description: "The current England guide to how screening works and its possible benefits and harms.", href: officialLinks.govBreastGuideCurrent, organisation: "NHS England and GOV.UK" },
+  { title: "Breast implants and breast screening", description: "Official England guidance about mammography for people with breast implants.", href: officialLinks.govBreastImplants, organisation: "NHS England and GOV.UK" },
+];
+
+export const officialMammogramResources: ExternalResource[] = mammogramEvidence.slice(0, 4);
+
+export const mammogramFaqs = [
+  { question: "Does a mammogram hurt?", answer: "Breast compression is brief, but it can be uncomfortable and is painful for some people. Tell the mammographer how you feel. You remain in control and can ask to pause or stop." },
+  { question: "How long does a mammogram take?", answer: "Taking each image is brief, but the appointment also includes changing, positioning and checks. Your invitation or screening service can tell you how much time to allow." },
+  { question: "What should I wear?", answer: "The NHS suggests wearing a top that is easy to remove because you will undress from the waist up. You will be given privacy to change." },
+  { question: "Can I use deodorant?", answer: "Current NHS guidance says not to use deodorant, antiperspirant or talcum powder on the day because these may affect the mammogram." },
+  { question: "What does being recalled mean?", answer: "It means the screening team needs more information. You may have more mammograms, a breast examination, an ultrasound or a biopsy. Most people recalled for further tests are not diagnosed with breast cancer." },
+  { question: "Can mammograms miss breast cancer?", answer: "Yes. No screening test finds every cancer. Continue to be aware of your breasts and contact your GP about a new or unusual change even after a normal mammogram." },
+  { question: "What if I have breast implants?", answer: "Tell the screening service and mammographer before the examination. Implants can hide some breast tissue, so extra views may be offered. Screening checks breast tissue, not the condition of an implant." },
+  { question: "What if I find a breast lump after a normal mammogram?", answer: "Contact your GP. A normal screening result does not rule out every cancer and should not delay assessment of a new lump or other breast change." },
+  { question: "Is a screening mammogram the same as a mammogram for breast symptoms?", answer: "The imaging method may be similar, but the pathways are different. Routine screening is offered to eligible people without symptoms. Symptoms need clinical assessment, which may involve examination and diagnostic imaging." },
+] as const;
+
+export const psaEvidence: ExternalResource[] = [
+  { title: "PSA test", description: "Current NHS information about what PSA testing measures, access, preparation, results, benefits and risks.", href: officialLinks.nhsPsaTest, organisation: "NHS" },
+  { title: "Prostate cancer screening recommendation", description: "The March 2026 UK National Screening Committee position on general-population and targeted prostate screening.", href: officialLinks.ukNscProstateRecommendation, organisation: "UK National Screening Committee" },
+  { title: "Targeted prostate cancer screening equality impact assessment", description: "Official England information about the targeted recommendation for men aged 45–61 with a pathogenic BRCA2 variant and relevant family history, including implementation considerations.", href: officialLinks.govTargetedProstateScreening, organisation: "Department of Health and Social Care and GOV.UK" },
+  { title: "Prostate cancer: diagnosis and management", description: "NICE guidance on informed decisions, MRI, biopsy and assessment when prostate cancer is suspected.", href: officialLinks.niceProstateGuidance, organisation: "NICE" },
+  { title: "Prostate cancer symptoms", description: "Current NHS advice about symptoms and when to contact a GP.", href: officialLinks.nhsProstateSymptoms, organisation: "NHS" },
+];
+
+export const officialPsaResources: ExternalResource[] = psaEvidence.slice(0, 4);
+
+export const psaFaqs = [
+  { question: "Does a high PSA mean prostate cancer?", answer: "No. PSA can be raised by prostate enlargement, inflammation, infection and other factors. A raised result needs interpretation in context and may lead to repeat testing, examination, MRI or other assessment." },
+  { question: "Can a normal PSA miss prostate cancer?", answer: "Yes. A PSA result within the expected range does not completely rule out prostate cancer. Contact your GP if symptoms persist, change or concern you." },
+  { question: "Can I ask my GP for a PSA test?", answer: "Men and anyone with a prostate can ask a GP about PSA testing. The GP should discuss your symptoms, personal risk and the possible benefits and harms before deciding with you whether testing is appropriate." },
+  { question: "Why is there no general-population PSA screening programme?", answer: "The UK National Screening Committee concluded that screening is more likely to cause more harm than good across the general population. It recommends PSA testing every 2 years only for men aged 45–61 who have both a pathogenic BRCA2 variant and a relevant family history of breast, ovarian, pancreatic or prostate cancer. How eligible men are identified and invited may continue to develop." },
+  { question: "What can affect my PSA level?", answer: "Prostate enlargement, inflammation or infection can raise PSA. Ejaculation, anal sex, vigorous exercise and cycling shortly before the test can also affect the result. Follow the preparation advice from the service arranging your test." },
+  { question: "Do I need to prepare before the blood test?", answer: "Current NHS guidance advises avoiding ejaculation, anal sex, vigorous exercise and cycling for 48 hours before a PSA test. Tell the clinician about infections, recent prostate procedures and medicines, and follow their instructions." },
+  { question: "What happens if my PSA is raised?", answer: "Your clinician will consider the result with your age, symptoms, examination and risk factors. They may repeat the test, treat a possible infection or refer you for investigations such as MRI. A raised PSA alone is not a diagnosis." },
+  { question: "Should every man over 50 have a PSA test?", answer: "No blanket recommendation applies. PSA testing involves trade-offs, so the decision should be based on informed discussion of individual risk, preferences, possible benefits and possible harms." },
+  { question: "What if I have urinary symptoms?", answer: "Contact your GP for assessment rather than relying on a PSA test alone. Urinary symptoms often have non-cancer causes, but they still need appropriate clinical review." },
 ] as const;
