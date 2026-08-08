@@ -39,7 +39,7 @@ const topicIdentities: Record<string, { icon: LucideIcon; cardTone: string; icon
 export function HubTopicCard({ topic }: { topic: HubTopic }) {
   const identity = topicIdentities[topic.title];
   const Icon = identity.icon;
-  const content = <><div className="flex items-start justify-between gap-4"><span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl ${identity.iconTone}`}><Icon aria-hidden="true" size={20}/></span><span className={`shrink-0 rounded-full px-3 py-1 text-xs font-bold ${topic.status === "published" ? "bg-emerald-100 text-teal-800" : "border border-slate-300 bg-slate-50 text-slate-600"}`}>{topic.status === "published" ? "Read guide" : "Coming soon"}</span></div><h3 className="mt-4 font-display text-xl font-semibold text-ink">{topic.title}</h3><p className="mt-4 leading-7 text-slate-600">{topic.description}</p>{topic.href && <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-teal-700">Explore this guide <ArrowRight aria-hidden="true" size={16}/></span>}</>;
+  const content = <><div className="flex items-start justify-between gap-4"><span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl ${identity.iconTone}`}><Icon aria-hidden="true" size={20}/></span><span className={`shrink-0 rounded-full px-3 py-1 text-xs font-bold ${topic.status === "published" ? "bg-emerald-100 text-teal-800" : "border border-slate-300 bg-slate-50 text-slate-600"}`}>{topic.status === "published" ? "Published" : "Coming soon"}</span></div><h3 className="mt-4 font-display text-xl font-semibold text-ink">{topic.title}</h3><p className="mt-4 leading-7 text-slate-600">{topic.description}</p>{topic.href && <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-teal-700">Read Our Guide <ArrowRight aria-hidden="true" size={16}/></span>}</>;
   if (topic.href) return <Link href={topic.href} className={`group block rounded-3xl border p-6 shadow-[0_18px_50px_-38px_rgba(12,64,56,.45)] transition motion-safe:hover:-translate-y-1 hover:border-teal-700/25 hover:shadow-soft ${identity.cardTone}`}>{content}</Link>;
   return <article className={`rounded-3xl border p-6 ${identity.cardTone}`}>{content}</article>;
 }
@@ -49,10 +49,21 @@ const safetyAlertMessages = {
   cervical: "Screening is for people who do not have symptoms. Do not wait for a cervical screening invitation or appointment if you have symptoms or concerns. Contact your GP.",
   breast: "Screening is for people who do not have symptoms. Do not wait for a breast screening invitation or appointment if you have symptoms or concerns. Contact your GP.",
   lung: "Screening is for people who do not have symptoms. Do not wait for a Lung Health Check if you have symptoms or concerns. Contact your GP.",
+  fit: "FIT does not diagnose cancer. Test results need to be interpreted within the screening or clinical pathway in which the test was requested.",
 } as const;
 
-export function MedicalSafetyAlert({ title = "Important: Screening and Symptoms", programme }: { title?: string; programme: keyof typeof safetyAlertMessages }) {
-  return <aside aria-label="Important medical information" className="rounded-3xl border-2 border-amber-600/40 bg-amber-50 p-6 text-amber-950 sm:p-7"><div className="flex gap-4"><AlertTriangle aria-hidden="true" className="mt-0.5 shrink-0 text-amber-700"/><div><h2 className="font-display text-xl font-bold">{title}</h2><p className="mt-2 leading-7"><strong>{safetyAlertMessages[programme]}</strong></p></div></div></aside>;
+export function MedicalSafetyAlert({ title = "Important: Screening and Symptoms", programme, message }: { title?: string; programme: keyof typeof safetyAlertMessages; message?: string }) {
+  return <aside aria-label="Important medical information" className="rounded-3xl border-2 border-amber-600/40 bg-amber-50 p-6 text-amber-950 sm:p-7"><div className="flex gap-4"><AlertTriangle aria-hidden="true" className="mt-0.5 shrink-0 text-amber-700"/><div><h2 className="font-display text-xl font-bold">{title}</h2><p className="mt-2 leading-7"><strong>{message ?? safetyAlertMessages[programme]}</strong></p></div></div></aside>;
+}
+
+export function BloomShieldExplains({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+  const headingId = `${id}-title`;
+  return <aside id={id} aria-labelledby={headingId} className="my-8 rounded-3xl border border-teal-800/20 border-l-[5px] border-l-gold-500 bg-teal-50/80 p-6 text-slate-800 shadow-[0_18px_45px_-38px_rgba(12,64,56,.45)] sm:p-7">
+    <div className="flex items-start gap-4">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white text-teal-800 shadow-sm"><ShieldCheck aria-hidden="true" size={21}/></span>
+      <div className="min-w-0"><p className="eyebrow">BloomShield Explains</p><h3 id={headingId} className="mt-1 font-display text-2xl font-semibold text-teal-950">{title}</h3><div className="mt-4 space-y-3 leading-7 text-slate-700">{children}</div></div>
+    </div>
+  </aside>;
 }
 
 const heroAccents = {
