@@ -61,6 +61,20 @@ export const officialLinks = {
   ukNscProstateRecommendation: "https://view-health-screening-recommendations.service.gov.uk/prostate-cancer/",
   govTargetedProstateScreening: "https://www.gov.uk/government/publications/prostate-cancer-screening-equality-impact-assessment/equality-impact-assessment-introduction-of-a-targeted-prostate-cancer-screening-programme",
   niceProstateGuidance: "https://www.nice.org.uk/guidance/ng131",
+  nhsCancer: "https://www.nhs.uk/conditions/cancer/",
+  niceSuspectedCancer: "https://www.nice.org.uk/guidance/ng12/informationforpublic",
+  nhsQuitSmoking: "https://www.nhs.uk/live-well/quit-smoking/",
+  nhsAlcohol: "https://www.nhs.uk/live-well/alcohol-advice/the-risks-of-drinking-too-much/",
+  nhsBalancedDiet: "https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/eating-a-balanced-diet/",
+  nhsPhysicalActivity: "https://www.nhs.uk/live-well/exercise/physical-activity-guidelines-for-adults-aged-19-to-64/",
+  nhsSunSafety: "https://www.nhs.uk/live-well/seasonal-health/sunscreen-and-sun-safety/",
+  nhsHpvVaccine: "https://www.nhs.uk/vaccinations/hpv-vaccine/",
+  govHpvGuidance: "https://www.gov.uk/government/publications/hpv-universal-vaccination-guidance-for-health-professionals/hpv-vaccination-guidance-for-healthcare-practitioners",
+  govHpvGreenBook: "https://www.gov.uk/government/publications/human-papillomavirus-hpv-the-green-book-chapter-18a",
+  nhsCancerRiskGenes: "https://www.nhs.uk/tests-and-treatments/genetic-tests-for-cancer-risk/",
+  nhsGeneticTesting: "https://www.nhs.uk/tests-and-treatments/genetic-and-genomic-testing/",
+  niceFamilialBreastCancer: "https://www.nice.org.uk/guidance/cg164/chapter/recommendations",
+  nhsGenomicsFamilyHistory: "https://www.genomicseducation.hee.nhs.uk/genotes/in-the-clinic/presentation-patient-with-a-family-history-of-cancer/",
 } as const;
 
 export const hubGroups: { title: string; intro: string; topics: HubTopic[] }[] = [
@@ -88,10 +102,10 @@ export const hubGroups: { title: string; intro: string; topics: HubTopic[] }[] =
     title: "Prevention and Early Detection",
     intro: "Evidence-led information to support awareness and informed health decisions.",
     topics: [
-      { title: "Cancer Symptoms", description: "Changes to notice and when to seek advice from a healthcare professional.", status: "coming-soon" },
-      { title: "Reducing Cancer Risk", description: "Evidence-based actions that may reduce the risk of some cancers.", status: "coming-soon" },
-      { title: "HPV Vaccination", description: "How vaccination helps protect against HPV-related cancers.", status: "coming-soon" },
-      { title: "Family History and Inherited Risk", description: "When family history may be relevant and who to speak to.", status: "coming-soon" },
+      { title: "Cancer Symptoms", description: "Changes to notice and when to seek advice from a healthcare professional.", href: "/cancer-prevention-screening/cancer-symptoms", status: "published" },
+      { title: "Reducing Cancer Risk", description: "Evidence-based actions that may reduce the risk of some cancers.", href: "/cancer-prevention-screening/reducing-cancer-risk", status: "published" },
+      { title: "HPV Vaccination", description: "How vaccination helps protect against HPV-related cancers.", href: "/cancer-prevention-screening/hpv-vaccination", status: "published" },
+      { title: "Family History and Inherited Risk", description: "When family history may be relevant and who to speak to.", href: "/cancer-prevention-screening/family-history-inherited-risk", status: "published" },
     ],
   },
   {
@@ -338,4 +352,78 @@ export const psaFaqs = [
   { question: "What happens if my PSA is raised?", answer: "Your clinician will consider the result with your age, symptoms, examination and risk factors. They may repeat the test, treat a possible infection or refer you for investigations such as MRI. A raised PSA alone is not a diagnosis." },
   { question: "Should every man over 50 have a PSA test?", answer: "No blanket recommendation applies. PSA testing involves trade-offs, so the decision should be based on informed discussion of individual risk, preferences, possible benefits and possible harms." },
   { question: "What if I have urinary symptoms?", answer: "Contact your GP for assessment rather than relying on a PSA test alone. Urinary symptoms often have non-cancer causes, but they still need appropriate clinical review." },
+] as const;
+
+export const cancerSymptomsEvidence: ExternalResource[] = [
+  { title: "Cancer", description: "Current NHS information about possible cancer symptoms, when to contact a GP, causes and risk reduction.", href: officialLinks.nhsCancer, organisation: "NHS" },
+  { title: "Suspected cancer: information for the public", description: "NICE information about symptom assessment, tests, referral and safety netting.", href: officialLinks.niceSuspectedCancer, organisation: "NICE" },
+];
+
+export const officialCancerSymptomsResources: ExternalResource[] = cancerSymptomsEvidence;
+
+export const cancerSymptomsFaqs = [
+  { question: "Does having one of these symptoms mean I have cancer?", answer: "No. These symptoms are common and often have causes other than cancer. A GP can assess the change, consider other explanations and decide whether any tests or referral are needed." },
+  { question: "How long should I wait before contacting a GP?", answer: "There is no single safe waiting period for every symptom. Contact a GP if a change is not normal for you, persists, worsens or worries you. Seek help sooner for bleeding, coughing up blood, a new lump or another change that feels urgent." },
+  { question: "Should I wait for my screening invitation?", answer: "No. Routine screening is generally for eligible people without symptoms. Contact your GP about symptoms rather than waiting for screening, even if an invitation is due soon." },
+  { question: "What if a test was normal but the symptom continues?", answer: "Contact the clinician or your GP again if the symptom persists, recurs or worsens, or if you remain concerned. NICE describes this follow-up as safety netting." },
+  { question: "Does an urgent referral mean I have cancer?", answer: "No. An urgent suspected-cancer referral is a precaution to investigate a possible cause promptly. Most referred people will not be diagnosed with cancer." },
+  { question: "Can I bring someone to an appointment?", answer: "You can ask whether a relative, friend, carer or interpreter can support you. Tell the service about communication, mobility or other access needs when arranging the appointment." },
+] as const;
+
+export const cancerRiskEvidence: ExternalResource[] = [
+  { title: "Cancer", description: "NHS guidance on established cancer risk factors and practical steps that may reduce the risk of some cancers.", href: officialLinks.nhsCancer, organisation: "NHS" },
+  { title: "Quit smoking", description: "NHS information and routes to stop-smoking support.", href: officialLinks.nhsQuitSmoking, organisation: "NHS" },
+  { title: "The risks of drinking too much", description: "NHS low-risk drinking guidance and information about alcohol-related health harms.", href: officialLinks.nhsAlcohol, organisation: "NHS" },
+  { title: "Eating a balanced diet", description: "Current NHS Eatwell guidance, including fibre, fruit and vegetables, and red and processed meat.", href: officialLinks.nhsBalancedDiet, organisation: "NHS" },
+  { title: "Physical activity guidelines for adults", description: "Current NHS activity guidance for adults aged 19 to 64.", href: officialLinks.nhsPhysicalActivity, organisation: "NHS" },
+  { title: "Sunscreen and sun safety", description: "Current NHS guidance on UV exposure, shade, clothing and sunscreen.", href: officialLinks.nhsSunSafety, organisation: "NHS" },
+];
+
+export const officialCancerRiskResources: ExternalResource[] = cancerRiskEvidence;
+
+export const cancerRiskFaqs = [
+  { question: "Can cancer always be prevented?", answer: "No. Anyone can develop cancer, and it is not always clear what caused it. Evidence-based actions can reduce the risk of some cancers but cannot guarantee protection." },
+  { question: "What is the most useful first step?", answer: "The right starting point depends on you. If you smoke, NHS stop-smoking support can help. Other practical options include drinking less alcohol, moving more, eating a balanced diet and protecting skin from UV." },
+  { question: "Is there a safe amount of alcohol?", answer: "NHS guidance describes 14 units a week as a low-risk limit, not a safe level. Drinking less reduces alcohol-related health risk." },
+  { question: "Do supplements prevent cancer?", answer: "Do not rely on supplements as a substitute for a balanced diet or medical care. Ask a pharmacist, GP or dietitian before taking supplements if you have a health condition, use medicines or are unsure." },
+  { question: "Does screening prevent cancer?", answer: "Screening and prevention are related but different. Some screening can find changes before cancer develops, while other screening aims to find cancer earlier. No screening test prevents or detects every cancer." },
+  { question: "What if healthy changes feel unaffordable or inaccessible?", answer: "Small changes can still matter, and support should respect cost, disability, culture and local access. NHS Better Health, your GP surgery and local services may offer practical support." },
+] as const;
+
+export const hpvVaccinationEvidence: ExternalResource[] = [
+  { title: "HPV vaccine", description: "Current NHS eligibility, catch-up routes, doses, safety and access information.", href: officialLinks.nhsHpvVaccine, organisation: "NHS" },
+  { title: "Human papillomavirus (HPV)", description: "NHS information about HPV, transmission, prevention and cervical screening.", href: officialLinks.nhsHpv, organisation: "NHS" },
+  { title: "HPV vaccination guidance for healthcare practitioners", description: "UKHSA programme guidance, schedules, eligibility and evidence for the current UK HPV vaccine.", href: officialLinks.govHpvGuidance, organisation: "UK Health Security Agency and GOV.UK" },
+  { title: "HPV: the Green Book, chapter 18a", description: "Official UK immunisation guidance on HPV vaccination, contraindications and schedules.", href: officialLinks.govHpvGreenBook, organisation: "UK Health Security Agency and GOV.UK" },
+];
+
+export const officialHpvVaccinationResources: ExternalResource[] = hpvVaccinationEvidence;
+
+export const hpvVaccinationFaqs = [
+  { question: "Who is routinely offered the HPV vaccine?", answer: "In England, all children aged 12 to 13 in school year 8 are offered it. Catch-up and higher-risk routes are cohort-specific, so check the current NHS page or ask the relevant school, GP, sexual health or HIV service." },
+  { question: "Can I catch up if I missed it at school?", answer: "Some people can. Current NHS guidance offers catch-up to eligible girls and eligible boys up to their 25th birthday, with the boys' cohort linked to date of birth. Ask the NHS service named in the current eligibility guidance." },
+  { question: "How many doses are needed?", answer: "Current NHS guidance says most eligible people under 25 have one dose, people aged 25 to 45 usually have two, and people with a weakened immune system have three. Follow the schedule given by your vaccinating service." },
+  { question: "Can the vaccine treat an HPV infection I already have?", answer: "No. It does not treat an existing infection or cell changes. It may still protect against vaccine HPV types you have not acquired, if you are eligible." },
+  { question: "Is the HPV vaccine safe?", answer: "The HPV vaccine is routinely used in the UK. Common side effects are usually mild and short-lived, such as a sore arm, headache or tiredness. Serious allergic reactions are very rare, and vaccinators are trained to respond." },
+  { question: "Do I still need cervical screening after vaccination?", answer: "Yes, if you are eligible. The vaccine does not protect against every cancer-causing HPV type and does not replace cervical screening." },
+  { question: "Does the vaccine contain a live virus?", answer: "No. The HPV vaccine cannot cause HPV infection. Ask the vaccinating service or check the official patient leaflet if you have questions about ingredients." },
+] as const;
+
+export const familyHistoryEvidence: ExternalResource[] = [
+  { title: "Genetic tests to check your cancer risk", description: "NHS information about when testing may be considered, genetic counselling and possible results.", href: officialLinks.nhsCancerRiskGenes, organisation: "NHS" },
+  { title: "Genetic and genomic testing", description: "NHS information about referral, counselling, testing and the implications of results for families.", href: officialLinks.nhsGeneticTesting, organisation: "NHS" },
+  { title: "Familial breast cancer: recommendations", description: "NICE guidance on taking a family history, referral, genetic assessment and surveillance.", href: officialLinks.niceFamilialBreastCancer, organisation: "NICE" },
+  { title: "Patient with a family history of cancer", description: "NHS Genomics Education guidance on significant family patterns and referral to clinical genetics in England.", href: officialLinks.nhsGenomicsFamilyHistory, organisation: "NHS England Genomics Education Programme" },
+];
+
+export const officialFamilyHistoryResources: ExternalResource[] = familyHistoryEvidence;
+
+export const familyHistoryFaqs = [
+  { question: "Does cancer in my family mean I will get cancer?", answer: "No. Family history can influence risk but does not determine your future. Shared environment, chance and other factors may also contribute." },
+  { question: "Which side of the family matters?", answer: "Both maternal and paternal relatives matter. Useful details include the cancer type, age at diagnosis, whether one person had more than one cancer, and any known genetic-test result." },
+  { question: "Does everyone with a family history need genetic testing?", answer: "No. A GP or specialist can assess the pattern and decide whether genetics referral or testing is appropriate. Testing may be most informative when it starts with a relative who has had cancer." },
+  { question: "What can a genetic-test result show?", answer: "It may identify a known pathogenic variant, find no such variant, or find a variant whose meaning is uncertain. A genetics professional can explain what the result does and does not mean." },
+  { question: "Does a negative result mean my risk is zero?", answer: "No. The meaning depends on what was tested and whether a known family variant exists. Family history and other factors may still affect advice even when no variant is found." },
+  { question: "What should I record before speaking to my GP?", answer: "If you can, note which relatives had cancer, the type, age at diagnosis, whether cancer affected paired organs or occurred more than once, and any genetic-test result. Do not delay asking for advice if details are incomplete." },
+  { question: "Should I wait for genetic assessment if I have symptoms?", answer: "No. Contact your GP about symptoms or unusual changes now. Family-risk assessment and routine screening do not replace assessment of symptoms." },
 ] as const;

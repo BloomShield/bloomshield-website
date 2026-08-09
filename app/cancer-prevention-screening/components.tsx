@@ -53,6 +53,10 @@ const safetyAlertMessages = {
   hpv: "Do not wait for routine cervical screening if you have symptoms or concerns. Cervical screening is for people without symptoms and does not check for every gynaecological cancer. Contact your GP.",
   mammogram: "Do not wait for a routine breast screening invitation if you have breast symptoms or concerns. Contact your GP for clinical assessment.",
   psa: "PSA testing does not replace clinical assessment of symptoms. It is not a general-population NHS screening programme, and a PSA result cannot diagnose or completely rule out prostate cancer.",
+  symptoms: "Possible cancer symptoms often have other causes, but new, persistent, worsening or unusual changes should be checked. Do not wait for a screening invitation; contact your GP.",
+  prevention: "Risk reduction cannot prevent every cancer. Healthy choices do not guarantee protection, and symptoms or concerns still need medical assessment.",
+  vaccination: "The HPV vaccine prevents new infections with important HPV types; it does not treat an infection already present. Eligible people should still attend cervical screening when invited.",
+  family: "Family history can affect risk without predicting what will happen to one person. New or concerning symptoms still need medical assessment, whatever your family history or genetic-test result.",
 } as const;
 
 export function MedicalSafetyAlert({ title = "Important: Screening and Symptoms", programme, message }: { title?: string; programme: keyof typeof safetyAlertMessages; message?: string }) {
@@ -74,6 +78,7 @@ const heroAccents = {
   teal: "from-teal-50 via-white to-cyan-50/60",
   pink: "from-rose-50 via-white to-pink-50/70",
   blue: "from-sky-50 via-white to-blue-50/70",
+  gold: "from-amber-50 via-white to-yellow-50/70",
 } as const;
 
 export function ScreeningArticleHero({
@@ -82,6 +87,7 @@ export function ScreeningArticleHero({
   imageSrc,
   imageAlt,
   accent,
+  eyebrow = "Evidence-led screening guide",
   children,
 }: {
   title: string;
@@ -89,12 +95,13 @@ export function ScreeningArticleHero({
   imageSrc: string;
   imageAlt: string;
   accent: keyof typeof heroAccents;
+  eyebrow?: string;
   children: React.ReactNode;
 }) {
   return <header className={`overflow-hidden border-y border-teal-900/10 bg-gradient-to-br ${heroAccents[accent]}`}>
     <div className="container-page grid lg:grid-cols-[minmax(0,.92fr)_minmax(28rem,1.08fr)] lg:items-stretch">
       <div className="relative z-10 py-14 lg:flex lg:min-h-[32rem] lg:flex-col lg:justify-center lg:py-20 lg:pr-12">
-        <p className="eyebrow">Evidence-led screening guide</p>
+        <p className="eyebrow">{eyebrow}</p>
         <h1 className="display max-w-4xl">{title}</h1>
         <p className="lead mt-7 max-w-3xl text-xl leading-9">{intro}</p>
         <div className="mt-8 flex flex-wrap gap-3">{children}</div>
