@@ -38,6 +38,9 @@ main article.rounded-3xl.border:hover { transform: translateY(-3px); box-shadow:
 main article.portfolio-programme-card { transition: transform .2s ease, box-shadow .2s ease; }
 main article.portfolio-programme-card:hover,
 main article.portfolio-programme-card:focus-within { transform: translateY(-2px); box-shadow: 0 28px 64px -38px rgb(12 64 56 / .4); }
+.screening-article-hero-image { object-position: var(--hero-image-position-base, 50% 50%); }
+@media (min-width: 64rem) { .screening-article-hero-image { object-position: var(--hero-image-position-desktop, 50% 50%); } }
+@media (min-width: 80rem) { .screening-article-hero-image { object-position: var(--hero-image-position-wide, var(--hero-image-position-desktop, 50% 50%)); } }
 /* Accessible contrast for small labels layered over programme colour fields. */
 .text-white\/35 { color: rgb(255 255 255 / .78); }
 .text-white\/55 { color: rgb(255 255 255 / .9); }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import {
   AlertTriangle, ArrowRight, CalendarClock, ClipboardCheck, DoorOpen, Droplet,
   ExternalLink as ExternalLinkIcon, GitFork, HandHeart, Languages, MailOpen, Microscope,
@@ -81,6 +82,12 @@ const heroAccents = {
   gold: "from-amber-50 via-white to-yellow-50/70",
 } as const;
 
+type HeroImagePosition = {
+  base?: `${number}% ${number}%`;
+  desktop: `${number}% ${number}%`;
+  wide?: `${number}% ${number}%`;
+};
+
 export function ScreeningArticleHero({
   title,
   intro,
@@ -88,6 +95,7 @@ export function ScreeningArticleHero({
   imageAlt,
   accent,
   eyebrow = "Evidence-led screening guide",
+  imagePosition = { desktop: "50% 50%" },
   children,
 }: {
   title: string;
@@ -96,8 +104,15 @@ export function ScreeningArticleHero({
   imageAlt: string;
   accent: keyof typeof heroAccents;
   eyebrow?: string;
+  imagePosition?: HeroImagePosition;
   children: React.ReactNode;
 }) {
+  const imagePositionStyle = {
+    "--hero-image-position-base": imagePosition.base ?? "50% 50%",
+    "--hero-image-position-desktop": imagePosition.desktop,
+    "--hero-image-position-wide": imagePosition.wide,
+  } as CSSProperties;
+
   return <header className={`overflow-hidden border-y border-teal-900/10 bg-gradient-to-br ${heroAccents[accent]}`}>
     <div className="container-page grid lg:grid-cols-[minmax(0,.92fr)_minmax(28rem,1.08fr)] lg:items-stretch">
       <div className="relative z-10 py-14 lg:flex lg:min-h-[32rem] lg:flex-col lg:justify-center lg:py-20 lg:pr-12">
@@ -107,7 +122,7 @@ export function ScreeningArticleHero({
         <div className="mt-8 flex flex-wrap gap-3">{children}</div>
       </div>
       <div className="relative -mx-5 h-72 overflow-hidden sm:-mx-8 sm:h-96 lg:mx-0 lg:h-auto lg:min-h-[32rem] lg:overflow-visible">
-        <Image src={imageSrc} alt={imageAlt} fill priority sizes="(max-width: 1023px) 100vw, 54vw" className="object-cover object-center"/>
+        <Image src={imageSrc} alt={imageAlt} fill priority sizes="(max-width: 1023px) 100vw, 54vw" className="screening-article-hero-image object-cover" style={imagePositionStyle}/>
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-white via-white/45 to-transparent lg:block"/>
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/45 to-transparent lg:hidden"/>
       </div>
