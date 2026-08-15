@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   Bot,
   ChartNoAxesCombined,
   ClipboardCheck,
@@ -7,6 +8,7 @@ import {
   ShieldCheck,
   Smartphone,
 } from "lucide-react";
+import Link from "next/link";
 import { CTA } from "@/components/cta";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
@@ -34,6 +36,23 @@ export default function Research() {
         title="Applied research for prevention that works."
         intro="BloomShield works at the intersection of implementation science, digital health and community knowledge—connecting rigorous inquiry with the realities of diverse health systems."
       />
+
+      <section className="section-space bg-[#eef9f6]">
+        <div className="container-page">
+          <div className="grid overflow-hidden rounded-[2rem] border border-teal-900/10 bg-white shadow-soft lg:grid-cols-[.72fr_1.28fr]">
+            <div className="bg-[#0c4038] p-8 text-white sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-300">Active research project</p>
+              <p className="mt-6 font-display text-3xl font-semibold leading-tight">Help shape what comes next.</p>
+              <p className="mt-6 font-bold text-[#f3dfb5]">10-minute survey · Open until 24 August 2026</p>
+            </div>
+            <div className="p-8 sm:p-10">
+              <h2 className="font-display text-2xl font-semibold leading-tight sm:text-3xl">BloomShield Grassroots VCSE Digital &amp; Organisational Capacity Study 2026</h2>
+              <p className="mt-5 max-w-3xl leading-7 text-slate-600">A sector-wide study exploring digital systems, data and organisational capacity — and the practical support grassroots voluntary, community and social enterprise organisations need to thrive.</p>
+              <Link href="/research/vcse-digital-capacity-study" className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-teal-700 px-6 py-3 text-sm font-bold text-white transition hover:bg-teal-800">Explore the study <ArrowRight aria-hidden="true" size={17} /></Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="section-space">
         <div className="container-page">

@@ -57,7 +57,13 @@ export function Header() {
       <Logo />
       <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:flex xl:gap-7">
         {links.map(([label, href]) => {
-          const active = href === "/programmes" ? programmesActive : href === "/cancer-prevention-screening" ? pathname.startsWith(href) : pathname === href;
+          const active = href === "/programmes"
+            ? programmesActive
+            : href === "/cancer-prevention-screening"
+              ? pathname.startsWith(href)
+              : href === "/research-innovation"
+                ? pathname === href || pathname.startsWith("/research/")
+                : pathname === href;
           return <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`text-sm font-semibold transition hover:text-teal-600 ${active ? "text-teal-600" : "text-slate-700"}`}>{label}</Link>;
         })}
         <Link href="/contact" className="button-primary !min-h-10 !px-5">Talk to us</Link>
