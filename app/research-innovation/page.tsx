@@ -16,7 +16,17 @@ import { PageStructuredData } from "@/components/seo-json-ld";
 import { createMetadata } from "@/lib/seo";
 
 const description = "Applied research in implementation science, digital health, responsible AI, evaluation and learning health systems from BloomShield CIC.";
-export const metadata = createMetadata({ title: "Research & Innovation", description, path: "/research-innovation" });
+export const metadata = createMetadata({
+  title: "Research & Innovation",
+  description,
+  path: "/research-innovation",
+  socialImage: {
+    url: "/images/research-innovation-social-card.png",
+    width: 1200,
+    height: 630,
+    alt: "BloomShield Research & Innovation — Applied research for prevention that works.",
+  },
+});
 
 const researchAreas = [
   [FlaskConical, "Implementation Science", "Study what enables evidence-based prevention to be adopted, adapted and sustained across real settings.", "from-emerald-50 to-teal-50", "text-teal-700"],
