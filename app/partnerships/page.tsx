@@ -13,8 +13,18 @@ import { SectionHeading } from "@/components/section-heading";
 import { PageStructuredData } from "@/components/seo-json-ld";
 import { createMetadata } from "@/lib/seo";
 
-const description = "Partner with BloomShield across communities, health systems, universities, innovators, charities and international collaborations.";
-export const metadata = createMetadata({ title: "Partnerships", description, path: "/partnerships" });
+const description = "BloomShield builds partnerships across communities, health systems, universities, charities, innovators and international organisations to advance equitable cancer prevention.";
+export const metadata = createMetadata({
+  title: "Partnerships",
+  description,
+  path: "/partnerships",
+  socialImage: {
+    url: "/images/partnerships-social-card.png",
+    width: 1200,
+    height: 630,
+    alt: "BloomShield Partnerships — Connect the ecosystem. Strengthen the pathway.",
+  },
+});
 
 const ecosystem = [
   [HandHeart, "Communities", "Bring lived experience, trusted relationships and local knowledge into every stage of the work.", "bg-rose-600"],
