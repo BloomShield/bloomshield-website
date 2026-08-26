@@ -86,7 +86,14 @@ export function createMetadata({ title, description, path, absoluteTitle = false
 export function createInsightMetadata({ title, description, path, socialImage, socialImageAlt, socialImageWidth, socialImageHeight, type = "website", keywords, authors, datePublished, dateModified }: InsightMetadata): Metadata {
   const canonical = new URL(path, SITE_URL).toString();
   const imageUrl = new URL(socialImage, SITE_URL).toString();
-  const image = { url: imageUrl, width: socialImageWidth, height: socialImageHeight, alt: socialImageAlt };
+  const image = {
+    url: imageUrl,
+    secureUrl: imageUrl,
+    type: "image/png",
+    width: socialImageWidth,
+    height: socialImageHeight,
+    alt: socialImageAlt,
+  };
 
   return {
     title,
