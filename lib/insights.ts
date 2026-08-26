@@ -108,6 +108,7 @@ export const insights: InsightRecord[] = [
     tags: ["Cervical Cancer", "HPV", "HPV Home Testing Kit", "Cancer Screening", "Prevention", "Health Equity", "NHS England", "Implementation"],
     ccpeLens: ["Understand", "Validate", "Implement", "Evaluate"],
     reflectionQuestion: "What would it take for HPV self-testing to translate from easier access into equitable completion of the full screening pathway?",
+    linkedinDiscussionUrl: "https://lnkd.in/p/eCgDe-ka",
     seoTitle: "NHS HPV Self-Testing in England: Can Home Testing Close the Gap?",
     seoDescription: "NHS England is rolling out HPV self-testing for women overdue for cervical screening. Can home testing improve uptake, reduce inequalities and follow-up?",
     canonicalUrl: "/insights/evidence-policy/hpv-self-testing-screening-gap",
