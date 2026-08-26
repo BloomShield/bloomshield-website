@@ -36,6 +36,16 @@ const references = [
   { label: "Cervical cancer screening recommendation: HPV self-sampling for under-screened people", source: "UK National Screening Committee — recommendation and YouScreen evidence", href: "https://view-health-screening-recommendations.service.gov.uk/cervical-cancer/" },
 ];
 
+const relatedContent = <section aria-labelledby="related-insights">
+  <h2 id="related-insights">Related Insights</h2>
+  <div className="mt-6 rounded-[1.5rem] border border-teal-900/10 bg-white p-6">
+    <p className="text-xs font-bold uppercase tracking-[.16em] text-teal-700">Forthcoming conversation</p>
+    <h3 className="mt-3 font-display text-2xl font-semibold">Dr Sang’udi Sang’udi | SarataniAI</h3>
+    <p className="mt-3 leading-7 text-slate-600">AI-enabled cervical cancer screening, frontline delivery and what innovation must overcome in low-resource settings.</p>
+    <Link href="/insights/conversations" data-insights-event="insights_related_content_click" className="mt-5 inline-flex font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">View the series</Link>
+  </div>
+</section>;
+
 export default function HpvSelfTestingInsightPage() {
   const jsonLd = {
     "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${SITE_URL}${canonicalPath}#article`, headline: article.title, alternativeHeadline: seoTitle, description: seoDescription,
@@ -48,7 +58,7 @@ export default function HpvSelfTestingInsightPage() {
   };
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-    <InsightArticle category={article.area} crossTag="Implementation & Equity" title={article.title} articleSlug={article.slug} date={article.publishedAt!} dateIso={article.publishedAtIso!} authors={authors} publisher={insightPublisher.name} standfirst={standfirst} image={article.image!} imageAlt={article.imageAlt!} domains={["People", "Systems", "Equity", "Impact"]} ccpeLens={article.ccpeLens} tags={article.tags} reflectionQuestion={article.reflectionQuestion} linkedinDiscussionUrl={article.linkedinDiscussionUrl} engagementContactLabel={article.engagementContactLabel} references={references} implementationLesson={<p>Removing a procedural barrier can improve access, but equitable implementation requires attention to the entire pathway. Self-sampling may make the first step easier; health systems must still understand and address the barriers that emerge between testing, follow-up and preventive care.</p>} next={{ label: "Conversations: SarataniAI", href: "/insights/conversations" }}>
+    <InsightArticle category={article.area} crossTag="Implementation & Equity" title={article.title} articleSlug={article.slug} date={article.publishedAt!} dateIso={article.publishedAtIso!} authors={authors} publisher={insightPublisher.name} standfirst={standfirst} image={article.image!} imageAlt={article.imageAlt!} domains={["People", "Systems", "Equity", "Impact"]} ccpeLens={article.ccpeLens} tags={article.tags} reflectionQuestion={article.reflectionQuestion} linkedinDiscussionUrl={article.linkedinDiscussionUrl} engagementContactLabel={article.engagementContactLabel} references={references} relatedContent={relatedContent} implementationLesson={<p>Removing a procedural barrier can improve access, but equitable implementation requires attention to the entire pathway. Self-sampling may make the first step easier; health systems must still understand and address the barriers that emerge between testing, follow-up and preventive care.</p>} next={{ label: "Conversations: SarataniAI", href: "/insights/conversations" }}>
       <section aria-labelledby="public-health-development">
         <p className="insight-kicker">From policy announcement to equitable implementation</p>
         <p>Today, NHS England began rolling out HPV self-testing to nearly four million women who are not up to date with cervical screening.</p>
@@ -123,15 +133,6 @@ export default function HpvSelfTestingInsightPage() {
         <p>What we should now watch carefully is whether that change reaches the women for whom the previous pathway did not work.</p>
         <p>Because the measure of success will not simply be how many kits are offered.</p>
         <p>It will be how many previously under-screened women are enabled to move from invitation, to testing, to follow-up and ultimately to prevention.</p>
-      </section>
-      <section aria-labelledby="related-insights">
-        <h2 id="related-insights">Related Insights</h2>
-        <div className="mt-6 rounded-[1.5rem] border border-teal-900/10 bg-white p-6">
-          <p className="text-xs font-bold uppercase tracking-[.16em] text-teal-700">Forthcoming conversation</p>
-          <h3 className="mt-3 font-display text-2xl font-semibold">Dr Sang’udi Sang’udi | SarataniAI</h3>
-          <p className="mt-3 leading-7 text-slate-600">AI-enabled cervical cancer screening, frontline delivery and what innovation must overcome in low-resource settings.</p>
-          <Link href="/insights/conversations" data-insights-event="insights_related_content_click" className="mt-5 inline-flex font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">View the series</Link>
-        </div>
       </section>
     </InsightArticle>
   </>;

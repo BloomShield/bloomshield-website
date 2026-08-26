@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpenCheck, Mail } from "lucide-react";
 import { InsightsShell } from "./insights-shell";
 import { InsightsAnalytics } from "./insights-analytics";
+import { InsightsArticleInteractions } from "./insights-article-interactions";
 import type { InsightAuthor } from "@/lib/insights";
 
 type InsightArticleProps = {
@@ -24,13 +25,14 @@ type InsightArticleProps = {
   linkedinDiscussionUrl?: string;
   engagementContactLabel?: string;
   children: React.ReactNode;
+  relatedContent?: React.ReactNode;
   implementationLesson: React.ReactNode;
   references: { label: string; href: string; source: string }[];
   previous?: { label: string; href: string };
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, implementationLesson, references, previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, relatedContent, implementationLesson, references, previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -52,7 +54,8 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
 
       <div className="container-page grid gap-12 py-16 lg:grid-cols-[minmax(0,1fr)_15.5rem] lg:py-24">
         <div className="insight-prose min-w-0">
-          {children}
+          <div className="insight-manuscript">{children}</div>
+          <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} />
           <aside className="my-14 rounded-[1.5rem] border-l-4 border-[#b9892f] bg-[#f3ead6] p-7 sm:p-9" aria-labelledby="implementation-lesson">
             <BookOpenCheck aria-hidden="true" className="text-[#75551b]" />
             <h2 id="implementation-lesson" className="mt-5 !text-2xl">Implementation Lesson</h2>
@@ -95,18 +98,23 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
               <p className="!mt-0 text-xs font-extrabold uppercase tracking-[.18em] text-[#75551b]">A question for reflection</p>
               <p className="mt-5 font-display text-[1.35rem] font-semibold leading-[1.4] text-ink sm:text-[1.55rem]">{reflectionQuestion}</p>
             </div> : null}
-            <div className={`grid gap-4 ${reflectionQuestion ? "mt-6" : ""} ${linkedinDiscussionUrl ? "sm:grid-cols-2" : ""}`}>
-              {linkedinDiscussionUrl ? <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group rounded-[1.5rem] border border-teal-900/15 bg-white p-6 text-ink transition hover:border-teal-700/35 hover:shadow-[0_24px_55px_-38px_rgba(12,64,56,.45)] sm:p-7">
-                <span className="flex items-start justify-between gap-4"><span><span className="block font-display text-xl font-semibold text-teal-900">Join the conversation on LinkedIn</span><span className="mt-3 block text-base leading-7 text-slate-600">Share your perspective and tag BloomShield CIC.</span></span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" size={21} /></span>
+            <div className="mt-6 divide-y divide-teal-900/10 border-y border-teal-900/10">
+              {linkedinDiscussionUrl ? <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group -mx-3 flex min-h-11 items-start justify-between gap-5 rounded-lg px-3 py-5 text-ink transition hover:bg-teal-50/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:items-center">
+                <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">Join the conversation on LinkedIn</span><span className="mt-1.5 block text-base leading-7 text-slate-600">Share your perspective and tag BloomShield CIC.</span></span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
               </a> : null}
-              <div className="rounded-[1.5rem] border border-teal-900/10 bg-[#f7f5ef] p-6 sm:p-7">
-                <Mail aria-hidden="true" className="text-[#85601e]" size={22} />
-                <h3 className="!mt-5 !text-xl">Corrections, evidence or partnership follow-up</h3>
-                <p className="!mt-3 text-base leading-7 text-slate-600">If you would like to suggest a correction, share relevant evidence, explore a partnership or continue the discussion in more depth, contact BloomShield.</p>
-                <Link href="/contact" data-insights-event="insights_contact_click" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-700 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-teal-800">{engagementContactLabel}<ArrowRight aria-hidden="true" size={17} /></Link>
+              <div className="py-5 sm:flex sm:items-center sm:justify-between sm:gap-8">
+                <div className="flex items-start gap-3">
+                  <Mail aria-hidden="true" className="mt-1 shrink-0 text-[#85601e]" size={20} />
+                  <div>
+                    <h3 className="!mt-0 !text-lg sm:!text-xl">Corrections, evidence or partnership follow-up</h3>
+                    <p className="!mt-1.5 text-base leading-7 text-slate-600">Suggest a correction, share relevant evidence or explore a partnership.</p>
+                  </div>
+                </div>
+                <Link href="/contact" data-insights-event="insights_contact_click" className="mt-3 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-3 text-sm font-bold text-teal-800 underline decoration-teal-700/30 underline-offset-4 transition hover:bg-teal-50 hover:decoration-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:mt-0">{engagementContactLabel}<ArrowRight aria-hidden="true" size={17} /></Link>
               </div>
             </div>
           </section>
+          {relatedContent}
         </div>
         <aside className="lg:sticky lg:top-36 lg:h-fit" aria-label="Article details">
           <div className="rounded-[1.5rem] border border-teal-900/10 bg-white p-6">

@@ -6,6 +6,8 @@ export type InsightsEventName =
   | "insights_contact_click"
   | "insights_related_content_click"
   | "insights_category_click"
+  | "insights_reaction"
+  | "insights_share"
   | "insights_scroll_depth";
 
 export type AnalyticsParameters = Record<string, string | number | boolean | undefined>;

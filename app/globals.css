@@ -31,7 +31,8 @@ a, button, input, textarea, select { @apply focus-visible:outline-none focus-vis
 .health-prose li { @apply pl-1; }
 .health-inline-link { @apply mt-6 inline-flex items-center font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4 hover:decoration-teal-700; }
 .insight-prose { @apply mx-auto max-w-[43rem] text-base leading-7 text-slate-700 sm:text-[1.125rem] sm:leading-8; }
-.insight-prose > section { @apply border-t border-teal-900/10 py-10 first:border-t-0 first:pt-0 sm:py-12; }
+.insight-prose > section, .insight-manuscript > section { @apply border-t border-teal-900/10 py-10 first:border-t-0 first:pt-0 sm:py-12; }
+.insight-manuscript > section:last-child { @apply pb-0; }
 .insight-prose h2 { @apply mt-1 max-w-[40rem] font-display text-[1.55rem] font-semibold leading-[1.25] tracking-[-.02em] text-ink sm:text-[2rem] sm:leading-[1.22]; }
 .insight-prose h3 { @apply mt-8 font-display text-[1.35rem] font-semibold leading-tight text-ink sm:text-2xl; }
 .insight-prose p { @apply mt-5; }
