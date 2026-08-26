@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { GA_READY_EVENT } from "@/lib/analytics";
 
 type ConsentChoice = "accepted" | "rejected" | null;
 type GtagArguments = [command: string, ...values: unknown[]];
@@ -19,6 +20,7 @@ declare global {
 const CONSENT_KEY = "bloomshield-analytics-consent";
 const SETTINGS_EVENT = "bloomshield:open-cookie-settings";
 const COOKIE_PREFIXES = ["_ga", "_gid", "_gat", "_clck", "_clsk"];
+const DEFAULT_GA_MEASUREMENT_ID = "G-VE12VJKP4F";
 let clarityClient: ClarityClient | null = null;
 let clarityInitialised = false;
 
@@ -126,8 +128,13 @@ function GoogleAnalytics({ measurementId }: { measurementId: string }) {
       allow_ad_personalization_signals: false,
       ads_data_redaction: true,
     });
+    window.dispatchEvent(new Event(GA_READY_EVENT));
     setReady(true);
   }, [measurementId]);
+
+  useEffect(() => {
+    configure();
+  }, [configure]);
 
   useEffect(() => {
     if (!ready || lastPage.current === pagePath) return;
@@ -144,8 +151,6 @@ function GoogleAnalytics({ measurementId }: { measurementId: string }) {
       id="bloomshield-google-analytics"
       src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`}
       strategy="afterInteractive"
-      onLoad={configure}
-      onReady={configure}
     />
   );
 }
@@ -162,7 +167,7 @@ export function AnalyticsConsent() {
   const [choice, setChoice] = useState<ConsentChoice>(null);
   const [loaded, setLoaded] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || DEFAULT_GA_MEASUREMENT_ID;
   const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
   const analyticsEnabled = process.env.NODE_ENV === "production" && Boolean(measurementId);
   const clarityEnabled = process.env.NODE_ENV === "production" && Boolean(clarityProjectId);

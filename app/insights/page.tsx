@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, CircleDotDashed, FlaskConical, Landmark, LibraryBig, Waypoints } from "lucide-react";
 import { InsightsShell } from "@/components/insights-shell";
 import { InsightsCollectionStructuredData } from "@/components/insights-structured-data";
+import { InsightsAnalytics } from "@/components/insights-analytics";
 import { createInsightMetadata } from "@/lib/seo";
 import { conversationsSeries, getInsightAuthors, insightAreas, insights, partnershipPlaybook } from "@/lib/insights";
 
@@ -31,6 +32,7 @@ export default function InsightsPage() {
   const hpvArticle = insights.find(item => item.slug === "hpv-self-testing-screening-gap")!;
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
+    <InsightsAnalytics contentSection="Insights overview" />
     <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: conversationsSeries.title, url: conversationsSeries.href }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
@@ -41,7 +43,7 @@ export default function InsightsPage() {
       <div className="container-page grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {insightAreas.map((area, index) => {
           const { Icon, plate, accent } = areaPresentation[index];
-          return <a href={`#${index === 0 ? "series" : area.name.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-")}`} key={area.name} className={`group flex min-h-28 items-center gap-4 rounded-2xl border border-teal-900/10 bg-white p-4 shadow-[0_18px_45px_-34px_rgba(12,64,56,.5)] transition hover:-translate-y-1 hover:shadow-[0_22px_52px_-32px_rgba(12,64,56,.52)] ${accent}`}>
+          return <a href={`#${index === 0 ? "series" : area.name.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-")}`} data-insights-event="insights_category_click" data-content-section={area.name} key={area.name} className={`group flex min-h-28 items-center gap-4 rounded-2xl border border-teal-900/10 bg-white p-4 shadow-[0_18px_45px_-34px_rgba(12,64,56,.5)] transition hover:-translate-y-1 hover:shadow-[0_22px_52px_-32px_rgba(12,64,56,.52)] ${accent}`}>
             <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${plate}`}><Icon aria-hidden="true" size={23}/></span>
             <span className="min-w-0"><span className="text-[.65rem] font-extrabold uppercase tracking-[.16em] text-slate-500">Explore 0{index + 1}</span><span className="mt-1 block font-display text-lg font-semibold leading-tight text-ink group-hover:text-teal-700">{area.name}</span></span>
             <ArrowUpRight aria-hidden="true" className="ml-auto shrink-0 text-slate-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-700" size={19}/>

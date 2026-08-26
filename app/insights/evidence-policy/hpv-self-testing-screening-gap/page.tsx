@@ -48,7 +48,7 @@ export default function HpvSelfTestingInsightPage() {
   };
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-    <InsightArticle category={article.area} crossTag="Implementation & Equity" title={article.title} date={article.publishedAt!} dateIso={article.publishedAtIso!} authors={authors} publisher={insightPublisher.name} standfirst={standfirst} image={article.image!} imageAlt={article.imageAlt!} domains={["People", "Systems", "Equity", "Impact"]} ccpeLens={article.ccpeLens} tags={article.tags} reflectionQuestion={article.reflectionQuestion} linkedinDiscussionUrl={article.linkedinDiscussionUrl} engagementContactLabel={article.engagementContactLabel} references={references} implementationLesson={<p>Removing a procedural barrier can improve access, but equitable implementation requires attention to the entire pathway. Self-sampling may make the first step easier; health systems must still understand and address the barriers that emerge between testing, follow-up and preventive care.</p>} next={{ label: "Conversations: SarataniAI", href: "/insights/conversations" }}>
+    <InsightArticle category={article.area} crossTag="Implementation & Equity" title={article.title} articleSlug={article.slug} date={article.publishedAt!} dateIso={article.publishedAtIso!} authors={authors} publisher={insightPublisher.name} standfirst={standfirst} image={article.image!} imageAlt={article.imageAlt!} domains={["People", "Systems", "Equity", "Impact"]} ccpeLens={article.ccpeLens} tags={article.tags} reflectionQuestion={article.reflectionQuestion} linkedinDiscussionUrl={article.linkedinDiscussionUrl} engagementContactLabel={article.engagementContactLabel} references={references} implementationLesson={<p>Removing a procedural barrier can improve access, but equitable implementation requires attention to the entire pathway. Self-sampling may make the first step easier; health systems must still understand and address the barriers that emerge between testing, follow-up and preventive care.</p>} next={{ label: "Conversations: SarataniAI", href: "/insights/conversations" }}>
       <section aria-labelledby="public-health-development">
         <p className="insight-kicker">From policy announcement to equitable implementation</p>
         <p>Today, NHS England began rolling out HPV self-testing to nearly four million women who are not up to date with cervical screening.</p>
@@ -130,7 +130,7 @@ export default function HpvSelfTestingInsightPage() {
           <p className="text-xs font-bold uppercase tracking-[.16em] text-teal-700">Forthcoming conversation</p>
           <h3 className="mt-3 font-display text-2xl font-semibold">Dr Sang’udi Sang’udi | SarataniAI</h3>
           <p className="mt-3 leading-7 text-slate-600">AI-enabled cervical cancer screening, frontline delivery and what innovation must overcome in low-resource settings.</p>
-          <Link href="/insights/conversations" className="mt-5 inline-flex font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">View the series</Link>
+          <Link href="/insights/conversations" data-insights-event="insights_related_content_click" className="mt-5 inline-flex font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">View the series</Link>
         </div>
       </section>
     </InsightArticle>

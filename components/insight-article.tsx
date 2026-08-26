@@ -2,12 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpenCheck, Mail } from "lucide-react";
 import { InsightsShell } from "./insights-shell";
+import { InsightsAnalytics } from "./insights-analytics";
 import type { InsightAuthor } from "@/lib/insights";
 
 type InsightArticleProps = {
   category: string;
   crossTag: string;
   title: string;
+  articleSlug: string;
   date: string;
   dateIso: string;
   authors: InsightAuthor[];
@@ -28,9 +30,10 @@ type InsightArticleProps = {
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, date, dateIso, authors, publisher, standfirst, image, imageAlt, domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, implementationLesson, references, previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, implementationLesson, references, previous, next }: InsightArticleProps) {
   return <InsightsShell>
-    <article>
+    <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
+    <article data-insights-article>
       <header className="bg-[#f7f5ef]">
         <div className="container-page py-14 md:py-20">
           <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900"><ArrowLeft aria-hidden="true" size={18}/> All Insights</Link>
@@ -93,14 +96,14 @@ export function InsightArticle({ category, crossTag, title, date, dateIso, autho
               <p className="mt-5 font-display text-[1.35rem] font-semibold leading-[1.4] text-ink sm:text-[1.55rem]">{reflectionQuestion}</p>
             </div> : null}
             <div className={`grid gap-4 ${reflectionQuestion ? "mt-6" : ""} ${linkedinDiscussionUrl ? "sm:grid-cols-2" : ""}`}>
-              {linkedinDiscussionUrl ? <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" className="group rounded-[1.5rem] border border-teal-900/15 bg-white p-6 text-ink transition hover:border-teal-700/35 hover:shadow-[0_24px_55px_-38px_rgba(12,64,56,.45)] sm:p-7">
+              {linkedinDiscussionUrl ? <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group rounded-[1.5rem] border border-teal-900/15 bg-white p-6 text-ink transition hover:border-teal-700/35 hover:shadow-[0_24px_55px_-38px_rgba(12,64,56,.45)] sm:p-7">
                 <span className="flex items-start justify-between gap-4"><span><span className="block font-display text-xl font-semibold text-teal-900">Join the conversation on LinkedIn</span><span className="mt-3 block text-base leading-7 text-slate-600">Share your perspective and tag BloomShield CIC.</span></span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" size={21} /></span>
               </a> : null}
               <div className="rounded-[1.5rem] border border-teal-900/10 bg-[#f7f5ef] p-6 sm:p-7">
                 <Mail aria-hidden="true" className="text-[#85601e]" size={22} />
                 <h3 className="!mt-5 !text-xl">Corrections, evidence or partnership follow-up</h3>
                 <p className="!mt-3 text-base leading-7 text-slate-600">If you would like to suggest a correction, share relevant evidence, explore a partnership or continue the discussion in more depth, contact BloomShield.</p>
-                <Link href="/contact" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-700 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-teal-800">{engagementContactLabel}<ArrowRight aria-hidden="true" size={17} /></Link>
+                <Link href="/contact" data-insights-event="insights_contact_click" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-700 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-teal-800">{engagementContactLabel}<ArrowRight aria-hidden="true" size={17} /></Link>
               </div>
             </div>
           </section>
@@ -118,8 +121,8 @@ export function InsightArticle({ category, crossTag, title, date, dateIso, autho
 
       <nav aria-label="Article navigation" className="border-t border-teal-900/10 bg-white">
         <div className="container-page grid gap-4 py-10 sm:grid-cols-2">
-          {previous ? <Link href={previous.href} className="rounded-2xl border border-teal-900/10 p-5 font-bold text-teal-800"><span className="mb-2 block text-xs uppercase tracking-widest text-slate-500">Previous</span><span className="flex items-center gap-2"><ArrowLeft aria-hidden="true" size={17}/>{previous.label}</span></Link> : <span />}
-          {next ? <Link href={next.href} className="rounded-2xl border border-teal-900/10 p-5 text-right font-bold text-teal-800"><span className="mb-2 block text-xs uppercase tracking-widest text-slate-500">Next</span><span className="flex items-center justify-end gap-2">{next.label}<ArrowRight aria-hidden="true" size={17}/></span></Link> : null}
+          {previous ? <Link href={previous.href} data-insights-event="insights_related_content_click" className="rounded-2xl border border-teal-900/10 p-5 font-bold text-teal-800"><span className="mb-2 block text-xs uppercase tracking-widest text-slate-500">Previous</span><span className="flex items-center gap-2"><ArrowLeft aria-hidden="true" size={17}/>{previous.label}</span></Link> : <span />}
+          {next ? <Link href={next.href} data-insights-event="insights_related_content_click" className="rounded-2xl border border-teal-900/10 p-5 text-right font-bold text-teal-800"><span className="mb-2 block text-xs uppercase tracking-widest text-slate-500">Next</span><span className="flex items-center justify-end gap-2">{next.label}<ArrowRight aria-hidden="true" size={17}/></span></Link> : null}
         </div>
       </nav>
     </article>
