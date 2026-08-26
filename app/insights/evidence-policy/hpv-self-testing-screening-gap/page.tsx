@@ -56,15 +56,15 @@ export default function HpvSelfTestingInsightPage() {
         <p>For women who have not attended screening after previous invitations, the new approach offers something significantly different: the ability to collect a vaginal sample privately at home and return it to the NHS for testing for high-risk human papillomavirus (HPV). The rollout begins with women aged 30 to 65 and will be phased across England. Invitations will be issued through the NHS App, text message, email or letter.</p>
         <p>The policy responds to a persistent challenge. Only 68.8% of eligible women in England are currently up to date with cervical screening, below NHS England’s 80% target. Around four million women are therefore behind with routine screening.</p>
         <p>Making screening easier, more private and more convenient is therefore a very welcome intervention.</p>
-        <div className="my-10 border-y border-teal-900/10 py-7 font-display text-xl font-semibold leading-8 text-ink sm:text-[1.4rem] sm:leading-9">
+        <div className="insight-question-block">
           <p className="!mt-0">But the question that matters next is not simply:</p>
-          <p>How many self-testing kits will be offered?</p>
+          <p className="insight-question-line">How many self-testing kits will be offered?</p>
           <p>It is:</p>
-          <p>Will self-testing reach the women who have been least well served by the existing screening system — and will they successfully complete the pathway that follows?</p>
+          <p className="insight-question-line">Will self-testing reach the women who have been least well served by the existing screening system — and will they successfully complete the pathway that follows?</p>
         </div>
       </section>
-      <section aria-labelledby="traditional-screening">
-        <h2 id="traditional-screening">Traditional cervical screening asks people to book an appointment, travel to a clinic or GP practice, undergo an intimate examination and fit that appointment around work, caring responsibilities and everyday life.</h2>
+      <section aria-label="Traditional cervical screening barriers">
+        <p>Traditional cervical screening asks people to book an appointment, travel to a clinic or GP practice, undergo an intimate examination and fit that appointment around work, caring responsibilities and everyday life.</p>
         <p>For some women, embarrassment, discomfort, previous experiences, inconvenience or difficulty attending appointments can become significant barriers. NHS England explicitly cites many of these factors in explaining the rationale for self-testing.</p>
         <p>Removing the need for an initial clinical examination may therefore remove an important barrier.</p>
         <p>Evidence preceding the national rollout is encouraging. The YouScreen trial, undertaken in North London with NHS England and King’s College London, suggested that offering self-sampling to under-screened women could increase the number participating in screening in England by around 400,000 each year. The evidence subsequently contributed to the UK National Screening Committee recommendation supporting wider rollout.</p>
@@ -101,7 +101,7 @@ export default function HpvSelfTestingInsightPage() {
         <p>From an implementation perspective, that distinction is crucial.</p>
       </section>
       <section aria-labelledby="pathway-completion">
-        <h2 id="pathway-completion">Kit distribution is not pathway completion.</h2>
+        <p id="pathway-completion" className="insight-pull-statement">Kit distribution is not pathway completion.</p>
         <p>England has an ambition to eliminate cervical cancer by 2040, and increasing vaccination and screening participation are central to achieving it.</p>
         <p>HPV self-sampling could make a substantial contribution.</p>
         <p>It represents precisely the kind of service redesign that health systems increasingly need: moving prevention closer to people rather than requiring everybody to interact with healthcare in exactly the same way.</p>
@@ -117,7 +117,7 @@ export default function HpvSelfTestingInsightPage() {
       <section aria-labelledby="chapter-starts-now">
         <p>There is much to celebrate in today’s announcement.</p>
         <p>Giving millions of women another way to participate in cervical screening is sensible, evidence-informed public-health policy.</p>
-        <h2 id="chapter-starts-now" className="insight-pull-statement">But the most interesting chapter starts now.</h2>
+        <p id="chapter-starts-now" className="insight-pull-statement">But the most interesting chapter starts now.</p>
         <p>Public-health interventions ultimately succeed or fail in the distance between policy design and people’s lived experience of accessing care.</p>
         <p>The NHS has changed the pathway.</p>
         <p>What we should now watch carefully is whether that change reaches the women for whom the previous pathway did not work.</p>
