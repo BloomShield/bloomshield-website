@@ -3,11 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, CircleDotDashed, FlaskConical, Landmark, LibraryBig, Waypoints } from "lucide-react";
 import { InsightsShell } from "@/components/insights-shell";
-import { createMetadata } from "@/lib/seo";
+import { InsightsCollectionStructuredData } from "@/components/insights-structured-data";
+import { createInsightMetadata } from "@/lib/seo";
 import { conversationsSeries, getInsightAuthors, insightAreas, insights, partnershipPlaybook } from "@/lib/insights";
 
 const description = "Ideas, evidence and conversations advancing equitable cancer care. Explore BloomShield Insights on policy, implementation, innovation and partnership.";
-export const metadata: Metadata = createMetadata({ title: "BloomShield Insights", description, path: "/insights" });
+const overviewKeywords = ["equitable cancer care", "cancer prevention", "cancer screening", "health policy", "implementation science", "health equity"] as const;
+export const metadata: Metadata = createInsightMetadata({
+  title: "BloomShield Insights: Ideas and Evidence for Equitable Cancer Care",
+  description,
+  path: "/insights",
+  socialImage: "/images/insights/overview-hero-banner.png",
+  socialImageAlt: "BloomShield Insights: ideas, evidence, policy, implementation and impact advancing equitable cancer care.",
+  socialImageWidth: 1672,
+  socialImageHeight: 941,
+  keywords: overviewKeywords,
+});
 
 const areaPresentation = [
   { Icon: LibraryBig, plate: "bg-[#e7f3ef] text-[#0a6657]", accent: "group-hover:border-[#2da878]/45" },
@@ -20,7 +31,9 @@ export default function InsightsPage() {
   const hpvArticle = insights.find(item => item.slug === "hpv-self-testing-screening-gap")!;
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: conversationsSeries.title, url: conversationsSeries.href }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
+      <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
     </section>
 
@@ -87,7 +100,7 @@ export default function InsightsPage() {
                 <h3 className="mt-5 font-display text-3xl font-semibold leading-tight tracking-[-.025em] group-hover:text-teal-700">{hpvArticle.title}</h3>
                 <p className="mt-5 text-lg leading-8 text-slate-600">{hpvArticle.description}</p>
                 <p className="mt-5 text-sm font-semibold text-slate-600">By {hpvAuthors.map(author => author.name).join(" & ")}</p>
-                <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Read the Insight <ArrowRight aria-hidden="true" size={19}/></span>
+                <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Explore our analysis of NHS HPV self-testing in England <ArrowRight aria-hidden="true" size={19}/></span>
               </div>
             </Link>
           </article>

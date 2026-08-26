@@ -18,11 +18,26 @@ type PageMetadata = {
   path: `/${string}` | "/";
   absoluteTitle?: boolean;
   socialImage?: {
-    url: `/${string}`;
+    url: `/${string}` | string;
     width: number;
     height: number;
     alt: string;
   };
+};
+
+type InsightMetadata = {
+  title: string;
+  description: string;
+  path: string;
+  socialImage: string;
+  socialImageAlt: string;
+  socialImageWidth: number;
+  socialImageHeight: number;
+  type?: "website" | "article";
+  keywords?: readonly string[];
+  authors?: readonly string[];
+  datePublished?: string;
+  dateModified?: string;
 };
 
 export function createMetadata({ title, description, path, absoluteTitle = false, socialImage }: PageMetadata): Metadata {
@@ -64,6 +79,42 @@ export function createMetadata({ title, description, path, absoluteTitle = false
         height: image.height,
         alt: image.alt,
       }],
+    },
+  };
+}
+
+export function createInsightMetadata({ title, description, path, socialImage, socialImageAlt, socialImageWidth, socialImageHeight, type = "website", keywords, authors, datePublished, dateModified }: InsightMetadata): Metadata {
+  const canonical = new URL(path, SITE_URL).toString();
+  const imageUrl = new URL(socialImage, SITE_URL).toString();
+  const image = { url: imageUrl, width: socialImageWidth, height: socialImageHeight, alt: socialImageAlt };
+
+  return {
+    title,
+    description,
+    keywords: keywords ? [...keywords] : undefined,
+    authors: authors?.map(name => ({ name })),
+    publisher: "BloomShield Insights",
+    alternates: { canonical },
+    openGraph: {
+      type,
+      locale: "en_GB",
+      siteName: "BloomShield Insights",
+      url: canonical,
+      title,
+      description,
+      images: [image],
+      ...(type === "article" ? {
+        publishedTime: datePublished,
+        modifiedTime: dateModified,
+        authors: authors ? [...authors] : undefined,
+        tags: keywords ? [...keywords] : undefined,
+      } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   };
 }

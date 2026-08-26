@@ -3,15 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { InsightsShell } from "@/components/insights-shell";
+import { InsightsCollectionStructuredData } from "@/components/insights-structured-data";
 import { ccpeDomains, conversationsSeries, insights } from "@/lib/insights";
-import { createMetadata } from "@/lib/seo";
+import { createInsightMetadata } from "@/lib/seo";
 
 const description = conversationsSeries.description;
-export const metadata: Metadata = createMetadata({ title: conversationsSeries.title, description, path: "/insights/conversations", socialImage: { url: conversationsSeries.image, width: 1672, height: 941, alt: conversationsSeries.imageAlt } });
+export const metadata: Metadata = createInsightMetadata({
+  title: conversationsSeries.seoTitle,
+  description: conversationsSeries.seoDescription,
+  path: conversationsSeries.canonicalUrl,
+  socialImage: conversationsSeries.socialImage,
+  socialImageAlt: conversationsSeries.socialImageAlt,
+  socialImageWidth: conversationsSeries.socialImageWidth,
+  socialImageHeight: conversationsSeries.socialImageHeight,
+  keywords: conversationsSeries.keywords,
+});
 
 export default function ConversationsPage() {
   const conversation = insights.find(item => item.slug === "saratani-ai")!;
   return <InsightsShell>
+    <InsightsCollectionStructuredData title={conversationsSeries.title} description={conversationsSeries.seoDescription} path={conversationsSeries.canonicalUrl} image={conversationsSeries.socialImage} keywords={conversationsSeries.keywords} items={[{ name: conversation.title, url: conversationsSeries.href }]} />
     <header className="bg-[#062f2f] text-white">
       <div className="container-page py-16 md:py-24">
         <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-bold text-white/70 hover:text-white"><ArrowLeft aria-hidden="true" size={18}/> All Insights</Link>

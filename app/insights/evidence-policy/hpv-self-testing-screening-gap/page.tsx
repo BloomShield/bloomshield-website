@@ -2,23 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { InsightArticle } from "@/components/insight-article";
 import { getInsightAuthors, insightPublisher, insights } from "@/lib/insights";
-import { ORGANIZATION_NAME, SITE_URL } from "@/lib/seo";
+import { createInsightMetadata, ORGANIZATION_NAME, SITE_URL } from "@/lib/seo";
 
 const article = insights.find(item => item.slug === "hpv-self-testing-screening-gap")!;
 const authors = getInsightAuthors(article);
 const path = "/insights/evidence-policy/hpv-self-testing-screening-gap";
 const standfirst = "NHS England has begun offering HPV self-testing to millions of women who are behind with cervical screening. The policy could remove an important barrier to participation — but its real test will be whether previously under-screened women complete the pathway from invitation to testing and follow-up.";
-const socialDescription = "What NHS England’s HPV self-testing rollout means for participation, pathway completion and screening equity.";
+const seoTitle = article.seoTitle ?? article.title;
+const seoDescription = article.seoDescription ?? article.description;
+const canonicalPath = article.canonicalUrl ?? path;
+const socialImage = article.socialImage ?? article.image!;
+const socialImageAlt = article.socialImageAlt ?? article.imageAlt!;
+const keywords = article.keywords ?? article.tags ?? [];
 
-export const metadata: Metadata = {
-  title: article.title,
-  description: socialDescription,
-  authors: authors.map(author => ({ name: author.name })),
-  publisher: insightPublisher.name,
-  alternates: { canonical: `${SITE_URL}${path}` },
-  openGraph: { type: "article", locale: "en_GB", siteName: insightPublisher.name, url: `${SITE_URL}${path}`, title: article.title, description: socialDescription, publishedTime: article.publishedAtIso, authors: authors.map(author => author.name), tags: article.tags, images: [{ url: `${SITE_URL}${article.image}`, width: 1680, height: 945, alt: article.imageAlt }] },
-  twitter: { card: "summary_large_image", title: article.title, description: socialDescription, images: [{ url: `${SITE_URL}${article.image}`, width: 1680, height: 945, alt: article.imageAlt }] },
-};
+export const metadata: Metadata = createInsightMetadata({
+  title: seoTitle,
+  description: seoDescription,
+  path: canonicalPath,
+  socialImage,
+  socialImageAlt,
+  socialImageWidth: article.socialImageWidth ?? 1672,
+  socialImageHeight: article.socialImageHeight ?? 941,
+  type: "article",
+  keywords,
+  authors: authors.map(author => author.name),
+  datePublished: article.datePublished ?? article.publishedAtIso,
+  dateModified: article.dateModified ?? article.publishedAtIso,
+});
 
 const references = [
   { label: "NHS rolls out discreet home-testing kits against cervical cancer for millions of women", source: "NHS England, 25 August 2026", href: "https://www.england.nhs.uk/2026/08/nhs-rolls-out-discreet-home-testing-kits-against-cervical-cancer-for-millions-of-women/" },
@@ -28,15 +38,17 @@ const references = [
 
 export default function HpvSelfTestingInsightPage() {
   const jsonLd = {
-    "@context": "https://schema.org", "@type": "Article", headline: article.title, description: socialDescription,
-    image: [`${SITE_URL}${article.image}`], datePublished: article.publishedAtIso, dateModified: article.publishedAtIso,
-    author: authors.map(author => ({ "@type": author.type === "person" ? "Person" : "Organization", name: author.name, description: author.biography, ...(author.affiliation ? { affiliation: { "@type": "Organization", name: "BloomShield CIC" } } : {}) })),
-    publisher: { "@type": "Organization", name: insightPublisher.name, parentOrganization: { "@type": "Organization", name: ORGANIZATION_NAME }, logo: { "@type": "ImageObject", url: `${SITE_URL}/bloomshield-square-lockup.png` } },
-    mainEntityOfPage: `${SITE_URL}${path}`, articleSection: article.area, keywords: article.tags?.join(", "), inLanguage: "en-GB",
+    "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${SITE_URL}${canonicalPath}#article`, headline: article.title, alternativeHeadline: seoTitle, description: seoDescription,
+    image: { "@type": "ImageObject", url: `${SITE_URL}${socialImage}`, width: article.socialImageWidth ?? 1672, height: article.socialImageHeight ?? 941, caption: socialImageAlt },
+    datePublished: article.datePublished ?? article.publishedAtIso, dateModified: article.dateModified ?? article.publishedAtIso,
+    author: authors.map(author => ({ "@type": author.type === "person" ? "Person" : "Organization", name: author.name, description: author.biography, ...(author.credentials ? { jobTitle: author.credentials } : {}), ...(author.affiliation ? { affiliation: { "@type": "Organization", name: "BloomShield CIC", url: SITE_URL } } : {}) })),
+    publisher: { "@type": "Organization", name: insightPublisher.name, url: `${SITE_URL}/insights`, parentOrganization: { "@type": "Organization", name: ORGANIZATION_NAME, url: SITE_URL }, logo: { "@type": "ImageObject", url: `${SITE_URL}/bloomshield-square-lockup.png`, width: 545, height: 590 } },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}${canonicalPath}` }, articleSection: article.area, keywords: keywords.join(", "),
+    about: keywords.map(name => ({ "@type": "Thing", name })), inLanguage: "en-GB",
   };
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-    <InsightArticle category={article.area} crossTag="Implementation & Equity" title={article.title} date={article.publishedAt!} dateIso={article.publishedAtIso!} authors={authors} publisher={insightPublisher.name} standfirst={standfirst} image={article.image!} imageAlt={article.imageAlt!} domains={["People", "Systems", "Equity", "Impact"]} ccpeLens={article.ccpeLens} tags={article.tags} references={references} implementationLesson={<p>Removing a procedural barrier can improve access, but equitable implementation requires attention to the entire pathway. Self-sampling may make the first step easier; health systems must still understand and address the barriers that emerge between testing, follow-up and preventive care.</p>} next={{ label: "Conversations: SarataniAI", href: "/insights/conversations" }}>
+    <InsightArticle category={article.area} crossTag="Implementation & Equity" title={article.title} date={article.publishedAt!} dateIso={article.publishedAtIso!} authors={authors} publisher={insightPublisher.name} standfirst={standfirst} image={article.image!} imageAlt={article.imageAlt!} domains={["People", "Systems", "Equity", "Impact"]} ccpeLens={article.ccpeLens} tags={article.tags} reflectionQuestion={article.reflectionQuestion} linkedinDiscussionUrl={article.linkedinDiscussionUrl} engagementContactLabel={article.engagementContactLabel} references={references} implementationLesson={<p>Removing a procedural barrier can improve access, but equitable implementation requires attention to the entire pathway. Self-sampling may make the first step easier; health systems must still understand and address the barriers that emerge between testing, follow-up and preventive care.</p>} next={{ label: "Conversations: SarataniAI", href: "/insights/conversations" }}>
       <section aria-labelledby="public-health-development">
         <p className="insight-kicker">From policy announcement to equitable implementation</p>
         <p>Today, NHS England began rolling out HPV self-testing to nearly four million women who are not up to date with cervical screening.</p>

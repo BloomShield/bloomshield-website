@@ -27,6 +27,19 @@ export type InsightRecord = {
   authorIds?: string[];
   tags?: string[];
   ccpeLens?: string[];
+  reflectionQuestion?: string;
+  linkedinDiscussionUrl?: string;
+  engagementContactLabel?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  canonicalUrl?: string;
+  socialImage?: string;
+  socialImageAlt?: string;
+  socialImageWidth?: number;
+  socialImageHeight?: number;
+  keywords?: string[];
+  datePublished?: string;
+  dateModified?: string;
 };
 
 export const insightPublisher = {
@@ -58,6 +71,14 @@ export const conversationsSeries = {
   image: "/images/insights/conversations-saratani-ai.png" as const,
   overviewImage: "/images/insights/conversations-saratani-ai-square.png" as const,
   imageAlt: "BloomShield Insights conversation with Dr Sang’udi Sang’udi of SarataniAI about equitable cervical cancer screening.",
+  seoTitle: "Conversations Across the Cancer Care Ecosystem",
+  seoDescription: "BloomShield Insights conversations with leaders and innovators shaping equitable cancer prevention, screening and care across health systems.",
+  canonicalUrl: "/insights/conversations",
+  socialImage: "/images/insights/conversations-saratani-ai.png",
+  socialImageAlt: "BloomShield Insights conversation with Dr Sang’udi Sang’udi of SarataniAI about equitable cervical cancer screening.",
+  socialImageWidth: 1672,
+  socialImageHeight: 941,
+  keywords: ["equitable cancer care", "cancer screening innovation", "health systems", "cancer care partnerships", "SarataniAI"],
 };
 
 export const partnershipPlaybook = {
@@ -80,12 +101,23 @@ export const insights: InsightRecord[] = [
     status: "published",
     description: "NHS England’s national offer could remove an important barrier to screening. Its impact will depend on whether under-screened women complete the pathway from invitation to follow-up.",
     image: "/images/insights/hpv-self-testing.png",
-    imageAlt: "BloomShield Insights illustration of the NHS HPV self-testing pathway from invitation through follow-up care.",
+    imageAlt: "NHS HPV home testing kit and cervical screening self-testing in England",
     publishedAt: "25 August 2026",
     publishedAtIso: "2026-08-25",
     authorIds: ["femi-olaleye"],
     tags: ["Cervical Cancer", "HPV", "HPV Home Testing Kit", "Cancer Screening", "Prevention", "Health Equity", "NHS England", "Implementation"],
     ccpeLens: ["Understand", "Validate", "Implement", "Evaluate"],
+    reflectionQuestion: "What would it take for HPV self-testing to translate from easier access into equitable completion of the full screening pathway?",
+    seoTitle: "NHS HPV Self-Testing in England: Can Home Testing Close the Gap?",
+    seoDescription: "NHS England is rolling out HPV self-testing for women overdue for cervical screening. Can home testing improve uptake, reduce inequalities and follow-up?",
+    canonicalUrl: "/insights/evidence-policy/hpv-self-testing-screening-gap",
+    socialImage: "/images/insights/hpv-self-testing.png",
+    socialImageAlt: "NHS HPV home testing kit and cervical screening self-testing in England",
+    socialImageWidth: 1672,
+    socialImageHeight: 941,
+    keywords: ["HPV Home Testing Kit", "HPV self testing UK", "NHS HPV self testing", "cervical screening home test", "HPV self sampling England", "cervical cancer screening at home", "NHS cervical screening self test", "cervical screening inequalities"],
+    datePublished: "2026-08-25",
+    dateModified: "2026-08-25",
   },
   {
     slug: "saratani-ai",
