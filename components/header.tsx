@@ -7,7 +7,7 @@ import { Logo } from "./logo";
 
 const links = [
   ["About", "/about"], ["Programmes", "/programmes"], ["Consultancy", "/consultancy"],
-  ["Research", "/research-innovation"], ["Partnerships", "/partnerships"], ["Screening FAQs", "/cancer-prevention-screening"]
+  ["Research", "/research-innovation"], ["Partnerships", "/partnerships"], ["Insights", "/insights"], ["Screening FAQs", "/cancer-prevention-screening"]
 ];
 
 const programmeLinks = [
@@ -55,12 +55,14 @@ export function Header() {
   return <header className="sticky top-0 z-50 border-b border-teal-900/10 bg-white/95 backdrop-blur-xl">
     <div className="container-page flex h-[106px] items-center justify-between sm:h-[120px]">
       <Logo />
-      <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:flex xl:gap-7">
+      <nav aria-label="Primary navigation" className="hidden items-center gap-4 lg:flex xl:gap-5">
         {links.map(([label, href]) => {
           const active = href === "/programmes"
             ? programmesActive
             : href === "/cancer-prevention-screening"
               ? pathname.startsWith(href)
+              : href === "/insights"
+                ? pathname.startsWith(href)
               : href === "/research-innovation"
                 ? pathname === href || pathname.startsWith("/research/")
                 : pathname === href;
