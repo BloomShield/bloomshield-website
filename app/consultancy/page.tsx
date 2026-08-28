@@ -8,8 +8,12 @@ import {
   HeartPulse,
   Lightbulb,
   Workflow,
+  UsersRound,
+  ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 import { CTA } from "@/components/cta";
+import { FundingDevelopmentPathway } from "@/components/funding-development-pathway";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { PageStructuredData } from "@/components/seo-json-ld";
@@ -22,6 +26,7 @@ const clients = [
   [HeartPulse, "Health systems", "bg-teal-500"],
   [FlaskConical, "Research organisations", "bg-violet-500"],
   [HeartHandshake, "Charities", "bg-rose-500"],
+  [UsersRound, "Faith & community organisations", "bg-emerald-700"],
   [Lightbulb, "Innovators", "bg-amber-600"],
   [Landmark, "Governments", "bg-sky-600"],
 ];
@@ -43,14 +48,14 @@ export default function Consultancy() {
         visual="consultancy"
         eyebrow="Consultancy & advisory"
         title="Strategy that works in real health systems."
-        intro="BloomShield is a strategic implementation partner to health systems, research organisations, charities, innovators and governments seeking equitable, evidence-informed change."
+        intro="BloomShield is a strategic implementation partner to health systems, research organisations, charities, faith and community organisations, innovators and governments seeking equitable, evidence-informed change."
         cta="Talk about your challenge"
       />
 
       <section className="bg-[#071f34] py-10 text-white">
         <div className="container-page">
           <p className="text-sm font-bold uppercase tracking-[.18em] text-emerald-300">Who we advise</p>
-          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {clients.map(([Icon, label, badge]) => (
               <div className="flex min-h-20 items-center gap-4 rounded-2xl border border-white/12 bg-white/[.075] p-4.5 transition hover:bg-white/[.11]" key={label as string}>
                 <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white shadow-lg shadow-black/15 ${badge}`}>
@@ -84,6 +89,24 @@ export default function Consultancy() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-space bg-[#071f34] text-white">
+        <div className="container-page">
+          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-300">Specialist Consultancy Practice</p>
+              <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">Faith &amp; Community Funding Development</h2>
+              <p className="mt-5 text-xl font-semibold leading-8 text-emerald-200">Turning trusted community presence into sustainable community capacity.</p>
+            </div>
+            <div className="space-y-5 text-lg leading-8 text-white/75">
+              <p>Faith and community organisations often hold valuable assets — trusted relationships, local knowledge, volunteers, community spaces and sustained connections with the people they serve.</p>
+              <p>BloomShield helps organisations translate those assets into stronger programmes, funding readiness, evidence, organisational systems and sustainable community delivery.</p>
+            </div>
+          </div>
+          <div className="mt-10"><FundingDevelopmentPathway compact /></div>
+          <Link href="/faith-community-funding-development" className="mt-9 inline-flex min-h-12 items-center gap-2 rounded-full bg-emerald-300 px-6 py-3 text-sm font-bold text-[#071f34] transition hover:bg-emerald-200">Explore Faith &amp; Community Funding Development <ArrowRight aria-hidden="true" size={17} /></Link>
         </div>
       </section>
 

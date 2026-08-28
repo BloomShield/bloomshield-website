@@ -63,6 +63,8 @@ export function Header() {
               ? pathname.startsWith(href)
               : href === "/insights"
                 ? pathname.startsWith(href)
+              : href === "/consultancy"
+                ? pathname === href || pathname === "/faith-community-funding-development"
               : href === "/research-innovation"
                 ? pathname === href || pathname.startsWith("/research/")
                 : pathname === href;
@@ -81,7 +83,10 @@ export function Header() {
           {programmesOpen && <ul id="mobile-programmes-submenu" className="mb-2 ml-4 space-y-1 border-l border-teal-900/15 bg-teal-50/50 py-2 pl-3 pr-1">
             {programmeLinks.map(([name, route, accent]) => <li key={route}><Link href={route} onClick={closeMobileMenu} aria-current={pathname === route ? "page" : undefined} className={`flex min-h-12 items-center rounded-lg border-l-4 ${accent} px-4 py-2.5 text-[.925rem] font-semibold leading-6 text-slate-700 hover:bg-white aria-[current=page]:bg-white aria-[current=page]:text-teal-800`}>{name}</Link></li>)}
           </ul>}
-        </div> : <Link key={href} href={href} onClick={closeMobileMenu} aria-current={pathname === href ? "page" : undefined} className={`flex min-h-12 items-center rounded-xl px-4 py-3 font-semibold hover:bg-teal-50 ${pathname === href ? "text-teal-700" : "text-slate-800"}`}>{label}</Link>)}
+        </div> : (() => {
+          const active = pathname === href || (href === "/consultancy" && pathname === "/faith-community-funding-development");
+          return <Link key={href} href={href} onClick={closeMobileMenu} aria-current={active ? "page" : undefined} className={`flex min-h-12 items-center rounded-xl px-4 py-3 font-semibold hover:bg-teal-50 ${active ? "text-teal-700" : "text-slate-800"}`}>{label}</Link>;
+        })())}
         <Link href="/contact" onClick={closeMobileMenu} className="button-primary mt-3">Talk to us</Link>
       </div>
     </nav>}
