@@ -27,10 +27,12 @@ export const metadata = createMetadata({
   description,
   path,
   socialImage: {
-    url: "/images/faith-community-funding-hero.png",
-    width: 1536,
-    height: 1024,
-    alt: "Community and faith-sector leaders collaborating on programme and funding development.",
+    url: "/images/faith-community-funding-og-v2.png",
+    secureUrl: "/images/faith-community-funding-og-v2.png",
+    type: "image/png",
+    width: 1200,
+    height: 630,
+    alt: "Faith and community leaders collaborating on programme and funding development with BloomShield CIC.",
   },
 });
 

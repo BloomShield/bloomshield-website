@@ -22,6 +22,8 @@ type PageMetadata = {
     width: number;
     height: number;
     alt: string;
+    secureUrl?: `/${string}` | string;
+    type?: "image/jpeg" | "image/png" | "image/webp";
   };
 };
 
@@ -50,6 +52,14 @@ export function createMetadata({ title, description, path, absoluteTitle = false
     alt: "BloomShield — Shielded by Care, Empowered to Bloom.",
   };
   const imageUrl = new URL(image.url, SITE_URL).toString();
+  const openGraphImage = {
+    url: imageUrl,
+    width: image.width,
+    height: image.height,
+    alt: image.alt,
+    ...(socialImage?.secureUrl ? { secureUrl: new URL(socialImage.secureUrl, SITE_URL).toString() } : {}),
+    ...(socialImage?.type ? { type: socialImage.type } : {}),
+  };
 
   return {
     title: absoluteTitle ? { absolute: title } : title,
@@ -62,23 +72,13 @@ export function createMetadata({ title, description, path, absoluteTitle = false
       url: canonical,
       title: socialTitle,
       description,
-      images: [{
-        url: imageUrl,
-        width: image.width,
-        height: image.height,
-        alt: image.alt,
-      }],
+      images: [openGraphImage],
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
-      images: [{
-        url: imageUrl,
-        width: image.width,
-        height: image.height,
-        alt: image.alt,
-      }],
+      images: [openGraphImage],
     },
   };
 }
