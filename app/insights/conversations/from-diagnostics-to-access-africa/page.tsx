@@ -109,7 +109,7 @@ export default function FromDiagnosticsToAccessPage() {
         <p className="insight-editorial-note"><strong>Editorial note:</strong> The views expressed in the interview are Shola’s own and are presented in the context of this conversation. His professional affiliation is included for identification and context.</p>
       </section>
 
-      <section aria-labelledby="question-1">
+      <section className="insight-interview-question" aria-labelledby="question-1">
         <h2 id="question-1">Question 1</h2>
         <p className="insight-pull-statement">What have those years taught you about the biggest barriers preventing advanced diagnostic technologies from reaching the people who need them most across Africa?</p>
         <p>Affordability, accessibility, funding gaps and weak regulatory oversight are among the biggest barriers to the penetration of quality diagnostic technologies in low- and middle-income settings across Africa.</p>
@@ -120,7 +120,7 @@ export default function FromDiagnosticsToAccessPage() {
         <p>Regulatory capacity matters as well. Weak oversight can allow products of variable quality to enter markets. Supply chains need regular auditing, and diagnostics should increasingly be treated as a distinct regulatory category rather than simply being absorbed into pharmaceutical and food regulatory systems. The rapid evolution of diagnostics over the past decade or two makes stronger specialist regulatory capacity increasingly important.</p>
       </section>
 
-      <section aria-labelledby="question-2">
+      <section className="insight-interview-question" aria-labelledby="question-2">
         <h2 id="question-2">Question 2</h2>
         <p className="insight-pull-statement">A diagnostic technology can be scientifically excellent and still fail to achieve population-level impact. Beyond the test itself, what needs to be in place for molecular diagnostics to become genuinely accessible and sustainable within African health systems?</p>
         <p>Diagnostic innovations intended for the region need to be deployable in rugged settings characterised by difficult terrain, unreliable electricity, limited internet access and inadequate laboratory infrastructure.</p>
@@ -129,7 +129,7 @@ export default function FromDiagnosticsToAccessPage() {
         <p>Pricing must also be sustainable both for manufacturers and for the people who need the tests. Government policies that expand health-insurance coverage could improve access to quality diagnostics and healthcare more broadly. In short, accessibility and affordability have to be core design considerations, not afterthoughts.</p>
       </section>
 
-      <section aria-labelledby="question-3">
+      <section className="insight-interview-question" aria-labelledby="question-3">
         <h2 id="question-3">Question 3</h2>
         <p className="insight-pull-statement">Cervical cancer remains one of the clearest examples of the gap between available technology and equitable access. From your experience with HPV molecular testing, where do you see the greatest opportunities now for African countries to expand high-performance cervical cancer screening?</p>
         <p>HPV molecular testing gives African health systems an opportunity to expand high-performance cervical screening without depending exclusively on infrastructure-heavy cytology systems or on less sensitive approaches such as visual inspection with acetic acid.</p>
@@ -138,7 +138,7 @@ export default function FromDiagnosticsToAccessPage() {
         <p>Where testing models can return results quickly - potentially within the same day - they may also reduce loss to follow-up after a positive result. Longer screening intervals associated with HPV DNA-based strategies can further reduce the number of repeat tests required over time and may lower the long-term cost burden for public health systems.</p>
       </section>
 
-      <section aria-labelledby="question-4">
+      <section className="insight-interview-question" aria-labelledby="question-4">
         <h2 id="question-4">Question 4</h2>
         <p className="insight-pull-statement">The conversation around African health technology is increasingly moving from importing products towards localisation, local manufacturing and stronger regional supply chains. How important do you believe this transition will be, and what would it take for localisation to succeed without compromising quality?</p>
         <p>Localisation requires more than installing production capacity. It depends on technology transfer, appropriate intellectual-property arrangements and stringent quality-control mechanisms.</p>
@@ -147,8 +147,8 @@ export default function FromDiagnosticsToAccessPage() {
         <p>Governments can also participate as third parties in technology-transfer negotiations, act as guarantors of minimum purchase volumes, offer tax incentives, and provide the regulatory and industrial ecosystem needed for local production to become commercially viable.</p>
       </section>
 
-      <section aria-labelledby="question-6">
-        <h2 id="question-6">Question 6</h2>
+      <section className="insight-interview-question" aria-labelledby="question-5">
+        <h2 id="question-5">Question 5</h2>
         <p className="insight-pull-statement">Looking ahead five to ten years, what would you most like to see change in Africa’s molecular diagnostics landscape, and what would convince you that the continent has moved from simply adopting technologies to building resilient diagnostic ecosystems of its own?</p>
         <p>Africa has the world’s largest proportion of young people and remains a major frontier for global economic development. Greater adoption of molecular technologies, particularly in diagnostics, can expand markets while also creating significant health and economic benefits.</p>
         <p>The growth of precision-diagnostics start-ups in countries such as Nigeria, Ghana and Kenya is an encouraging sign that the continent is beginning to build more of its own capability.</p>

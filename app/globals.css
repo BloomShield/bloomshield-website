@@ -45,6 +45,10 @@ a, button, input, textarea, select { @apply focus-visible:outline-none focus-vis
 .insight-question-block .insight-question-line { @apply font-display text-[1.125rem] font-semibold leading-[1.5] text-ink sm:text-[1.3rem] sm:leading-[1.45]; }
 .insight-prose .insight-pull-statement { @apply !my-7 max-w-[38rem] rounded-r-2xl border-l-[3px] border-[#b9892f] bg-[#f7f5ef] px-5 py-5 font-display !text-xl font-semibold !leading-7 text-ink sm:!my-8 sm:px-7 sm:py-6 sm:!text-[1.55rem] sm:!leading-[1.35]; }
 .insight-prose .insight-pull-statement + p { @apply !mt-7; }
+.insight-prose .insight-interview-question { @apply py-12 sm:py-16; }
+.insight-prose .insight-interview-question h2 { @apply !mt-0 text-xs font-extrabold uppercase tracking-[.18em] text-[#85601e] sm:text-sm; }
+.insight-prose .insight-interview-question .insight-pull-statement { @apply !my-5 max-w-[40rem] rounded-none border-l-[2px] bg-transparent px-5 py-1 font-display !text-[1.2rem] font-medium !leading-[1.45] sm:!my-6 sm:px-6 sm:!text-[1.4rem]; }
+.insight-prose .insight-interview-question .insight-pull-statement + p { @apply !mt-8; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 main div.rounded-2xl.border.p-6 { border-color: rgb(12 64 56 / .1); background: linear-gradient(145deg, #fff, #f7fbfa); box-shadow: 0 22px 55px -38px rgb(12 64 56 / .38); transition: transform .3s ease, box-shadow .3s ease; }
 main div.rounded-2xl.border.p-6:hover { transform: translateY(-3px); box-shadow: 0 28px 65px -36px rgb(12 64 56 / .44); }

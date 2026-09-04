@@ -37,7 +37,7 @@ export default function ConversationsPage() {
     </header>
     <section className="section-space">
       <div className="container-page">
-        <div className="flex items-end justify-between gap-8"><div><p className="eyebrow">Latest conversation</p><h2 className="heading">From innovation to access.</h2></div><p className="hidden text-sm text-slate-500 sm:block">More conversations will be added to this series.</p></div>
+        <div className="flex items-end justify-between gap-8"><div><p className="eyebrow">Current conversation</p><h2 className="heading">From innovation to access.</h2></div><p className="hidden text-sm text-slate-500 sm:block">More conversations will be added to this series.</p></div>
         <article className="mt-10 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-white shadow-soft">
           <Link href={conversation.href!} className="group block">
           <div className="w-full border-b border-teal-900/10 bg-[#062f2f]"><div className="relative mx-auto aspect-[3/1] w-full"><Image src={conversation.image!} alt={conversation.imageAlt!} fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center transition duration-500 group-hover:scale-[1.01]" priority /></div></div>
