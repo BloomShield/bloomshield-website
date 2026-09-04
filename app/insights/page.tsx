@@ -30,10 +30,11 @@ const areaPresentation = [
 
 export default function InsightsPage() {
   const hpvArticle = insights.find(item => item.slug === "hpv-self-testing-screening-gap")!;
+  const conversationArticle = insights.find(item => item.slug === "from-diagnostics-to-access-africa")!;
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: conversationsSeries.title, url: conversationsSeries.href }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
@@ -61,17 +62,19 @@ export default function InsightsPage() {
 
         <article className="mt-12 overflow-hidden rounded-[2.5rem] bg-[#082f36] text-white shadow-soft">
           <div className="w-full border-b border-white/10 bg-[#052b31]">
-            <div className="relative mx-auto aspect-square w-full max-w-[54rem]">
+            <div className="relative mx-auto aspect-[16/9] w-full">
               <Image src={conversationsSeries.overviewImage} alt={conversationsSeries.imageAlt} fill sizes="(min-width: 1024px) 864px, 100vw" className="object-contain object-center" priority />
             </div>
           </div>
           <div className="grid gap-8 p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-end lg:p-14">
             <div>
-              <span className="text-xs font-bold uppercase tracking-[.22em] text-[#e7bd68]">Featured series</span>
-              <h3 className="mt-6 max-w-2xl font-display text-3xl font-semibold leading-tight sm:text-4xl">{conversationsSeries.title}</h3>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">{conversationsSeries.description}</p>
+              <span className="text-xs font-bold uppercase tracking-[.22em] text-[#e7bd68]">Featured conversation</span>
+              <p className="mt-4 text-sm font-semibold text-white/65">{conversationsSeries.title}</p>
+              <h3 className="mt-4 max-w-2xl font-display text-3xl font-semibold leading-tight sm:text-4xl">{conversationArticle.title}</h3>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/72">{conversationArticle.description}</p>
+              <p className="mt-5 text-sm font-semibold text-white/65">With Olusola “Shola” Ogunbowale · Interviewed by Dr Femi Olaleye</p>
             </div>
-            <Link href={conversationsSeries.href} className="inline-flex min-h-12 w-fit items-center gap-3 rounded-full bg-white px-6 py-3 font-bold text-teal-900 transition hover:bg-emerald-50">Explore the series <ArrowRight aria-hidden="true" size={19}/></Link>
+            <Link href={conversationArticle.href!} className="inline-flex min-h-12 w-fit items-center gap-3 rounded-full bg-white px-6 py-3 font-bold text-teal-900 transition hover:bg-emerald-50">Read the conversation <ArrowRight aria-hidden="true" size={19}/></Link>
           </div>
         </article>
 

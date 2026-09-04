@@ -18,6 +18,7 @@ type InsightArticleProps = {
   standfirst: string;
   image: string;
   imageAlt: string;
+  heroClassName?: string;
   domains: string[];
   ccpeLens?: string[];
   tags?: string[];
@@ -27,12 +28,12 @@ type InsightArticleProps = {
   children: React.ReactNode;
   relatedContent?: React.ReactNode;
   implementationLesson: React.ReactNode;
-  references: { label: string; href: string; source: string }[];
+  references?: { label: string; href: string; source: string }[];
   previous?: { label: string; href: string };
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, relatedContent, implementationLesson, references, previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, relatedContent, implementationLesson, references, previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -49,7 +50,7 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
             <p className="mt-4 text-xs font-bold uppercase tracking-[.14em] text-teal-700">Published by {publisher}</p>
           </div>
         </div>
-        <div className="container-page pb-12 md:pb-16"><div className="relative aspect-[16/9] overflow-hidden rounded-[1.5rem] bg-teal-900"><Image src={image} alt={imageAlt} fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-cover" priority /></div></div>
+        <div className="container-page pb-12 md:pb-16"><div className={`relative ${heroClassName} overflow-hidden rounded-[1.5rem] bg-teal-900`}><Image src={image} alt={imageAlt} fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-cover" priority /></div></div>
       </header>
 
       <div className="container-page grid gap-12 py-16 lg:grid-cols-[minmax(0,1fr)_15.5rem] lg:py-24">
@@ -75,12 +76,12 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
               </div>
             </div>
           </section>
-          <section aria-labelledby="references">
+          {references?.length ? <section aria-labelledby="references">
             <h2 id="references">References and source links</h2>
             <ol className="mt-6 space-y-5">
               {references.map(reference => <li key={reference.href} className="pl-2"><a href={reference.href} target="_blank" rel="noopener noreferrer" className="font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4 hover:decoration-teal-700">{reference.label}</a><span className="mt-1 block text-sm text-slate-500">{reference.source}</span></li>)}
             </ol>
-          </section>
+          </section> : null}
           <section aria-labelledby="about-the-author">
             <p className="text-xs font-bold uppercase tracking-[.16em] text-teal-700">Contributor</p>
             <h2 id="about-the-author" className="mt-4">{authors.length > 1 ? "About the authors" : "About the author"}</h2>
