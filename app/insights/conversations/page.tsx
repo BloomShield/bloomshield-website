@@ -56,6 +56,9 @@ export default function ConversationsPage() {
         </article>
 
         <article className="mt-8 overflow-hidden rounded-[2rem] border border-teal-900/10 bg-white">
+          <div className="border-b border-teal-900/10 bg-[#062f2f]">
+            <Image src="/images/insights/saratani-ai-conversations-banner.png" alt="BloomShield Conversations Across the Cancer Care Ecosystem, featuring Dr Sang’udi Sang’udi of SarataniAI and Dr Femi Olaleye." width={1672} height={941} sizes="(min-width: 1240px) 1150px, 100vw" className="h-auto w-full" />
+          </div>
           <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
             <div><span className="w-fit rounded-full bg-[#f2d59b] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#594010]">Forthcoming</span><h2 className="mt-6 font-display text-3xl font-semibold leading-tight">{forthcomingConversation.title}</h2></div>
             <div><p className="text-xl font-semibold leading-8 text-teal-800">Can AI bring cervical cancer screening closer to women who have historically been left behind?</p><p className="mt-5 leading-8 text-slate-600">{forthcomingConversation.description}</p><p className="mt-7 text-sm font-semibold text-slate-500">The full conversation is not yet published.</p></div>
