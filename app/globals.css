@@ -138,4 +138,13 @@ main article.screenconnect-purpose-card.rounded-3xl { background:#fff; color:#14
 .screenconnect-link { @apply inline-flex items-center gap-2 font-bold text-[#2946a2] underline decoration-[#7186df] decoration-2 underline-offset-8; }
 .screenconnect-closing { @apply relative overflow-hidden bg-gradient-to-br from-[#0b1d4f] via-[#173880] to-[#294fba] text-white; }
 .screenconnect-closing::before { content:""; @apply absolute -right-24 -top-28 h-80 w-80 rounded-full border-[50px] border-blue-200/10; }
+.screenconnect-discovery-callout { @apply flex gap-4 rounded-3xl border border-[#3858c7]/25 bg-[#edf0ff] p-6 sm:p-8; }
+.screenconnect-discovery-callout h3 { @apply font-display text-2xl font-semibold text-[#1d337d]; }
+.screenconnect-discovery-callout p { @apply mt-3 max-w-4xl leading-7 text-slate-700; }
+.screenconnect-pathway-figure { @apply overflow-hidden rounded-3xl border border-blue-900/10 bg-white shadow-sm; }
+.screenconnect-pathway-scroll-hint { @apply hidden px-5 pt-5 text-sm font-semibold text-[#2946a2]; }
+.screenconnect-pathway-scroll { @apply w-full; }
+.screenconnect-pathway-image { @apply h-auto w-full; }
+.screenconnect-pathway-figure figcaption { @apply border-t border-blue-900/10 px-5 py-4 text-sm leading-6 text-slate-600 sm:px-6; }
+@media (max-width: 767px) { .screenconnect-pathway-scroll-hint { @apply block; }.screenconnect-pathway-scroll { overflow-x:auto; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch; }.screenconnect-pathway-image { width:1050px; max-width:none; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
