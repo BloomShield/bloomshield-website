@@ -111,6 +111,7 @@ export const insights: InsightRecord[] = [
     tags: ["Cervical Cancer", "HPV", "Cancer Prevention", "Cancer Screening", "Health Policy", "Implementation Science", "Health Equity", "Australia"],
     ccpeLens: ["Understand", "Validate", "Implement", "Evaluate"],
     reflectionQuestion: "What would it take for every health system to connect prevention, screening, diagnosis, treatment and follow-up into a pathway that reaches every woman?",
+    linkedinDiscussionUrl: "https://www.linkedin.com/pulse/australia-world-how-do-you-actually-eliminate-cancer-dr-femi-vryze",
     seoTitle: "Australia → World: What Does It Really Take to Eliminate Cervical Cancer? | BloomShield Insights",
     seoDescription: "Australia is on track to eliminate cervical cancer as a public-health problem by 2035. BloomShield examines the system behind its progress and what other countries can learn.",
     canonicalUrl: "/insights/evidence-policy/australia-world-eliminating-cervical-cancer",

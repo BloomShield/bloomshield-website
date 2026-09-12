@@ -24,6 +24,9 @@ type InsightArticleProps = {
   tags?: string[];
   reflectionQuestion?: string;
   linkedinDiscussionUrl?: string;
+  linkedinDiscussionTitle?: string;
+  linkedinDiscussionDescription?: string;
+  linkedinDiscussionLinkLabel?: string;
   engagementContactLabel?: string;
   children: React.ReactNode;
   relatedContent?: React.ReactNode;
@@ -34,7 +37,7 @@ type InsightArticleProps = {
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, engagementContactLabel = "Contact BloomShield", children, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -102,7 +105,7 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
             </div> : null}
             <div className="mt-6 divide-y divide-teal-900/10 border-y border-teal-900/10">
               {linkedinDiscussionUrl ? <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group -mx-3 flex min-h-11 items-start justify-between gap-5 rounded-lg px-3 py-5 text-ink transition hover:bg-teal-50/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:items-center">
-                <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">Join the conversation on LinkedIn</span><span className="mt-1.5 block text-base leading-7 text-slate-600">Share your perspective and tag BloomShield CIC.</span></span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
+                <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">{linkedinDiscussionTitle}</span><span className="mt-1.5 block text-base leading-7 text-slate-600">{linkedinDiscussionDescription}</span>{linkedinDiscussionLinkLabel ? <span className="mt-2 block text-sm font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">{linkedinDiscussionLinkLabel}</span> : null}</span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
               </a> : null}
               <div className="py-5 sm:flex sm:items-center sm:justify-between sm:gap-8">
                 <div className="flex items-start gap-3">
