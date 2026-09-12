@@ -37,6 +37,9 @@ export type InsightRecord = {
   socialImageAlt?: string;
   socialImageWidth?: number;
   socialImageHeight?: number;
+  socialImageType?: "image/jpeg" | "image/png" | "image/webp";
+  socialTitle?: string;
+  socialDescription?: string;
   keywords?: string[];
   datePublished?: string;
   dateModified?: string;
@@ -53,7 +56,7 @@ export const insightAuthors: Record<string, InsightAuthor> = {
     type: "person",
     name: "Dr Femi Olaleye",
     credentials: "Global Health Specialist & Cancer Prevention Expert",
-    affiliation: "Founder, BloomShield CIC",
+    affiliation: "Founder & CEO, BloomShield CIC",
     biography: "Dr Femi Olaleye is a global health specialist and cancer prevention expert, and the founder of BloomShield CIC. His work focuses on equitable cancer prevention, screening access, implementation, community engagement and partnerships that translate evidence into practical improvements in cancer care.",
   },
 };
@@ -91,6 +94,37 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+  {
+    slug: "australia-world-eliminating-cervical-cancer",
+    href: "/insights/evidence-policy/australia-world-eliminating-cervical-cancer",
+    title: "Australia → World: What Does It Really Take to Eliminate Cervical Cancer?",
+    shortTitle: "Australia → World: eliminating cervical cancer",
+    area: "Evidence & Policy",
+    crossTags: ["Implementation & Equity", "Systems", "Equity"],
+    status: "published",
+    description: "Australia is moving towards cervical cancer elimination. The real lesson for the world is how vaccination, screening, data, follow-up and policy were connected into a system.",
+    image: "/images/insights/australia-success-story-banner-1.png",
+    imageAlt: "BloomShield Insights Australia to World graphic exploring what it takes to eliminate cervical cancer, featuring Sydney and a connected world map.",
+    publishedAt: "12 September 2026",
+    publishedAtIso: "2026-09-12",
+    authorIds: ["femi-olaleye"],
+    tags: ["Cervical Cancer", "HPV", "Cancer Prevention", "Cancer Screening", "Health Policy", "Implementation Science", "Health Equity", "Australia"],
+    ccpeLens: ["Understand", "Validate", "Implement", "Evaluate"],
+    reflectionQuestion: "What would it take for every health system to connect prevention, screening, diagnosis, treatment and follow-up into a pathway that reaches every woman?",
+    seoTitle: "Australia → World: What Does It Really Take to Eliminate Cervical Cancer? | BloomShield Insights",
+    seoDescription: "Australia is on track to eliminate cervical cancer as a public-health problem by 2035. BloomShield examines the system behind its progress and what other countries can learn.",
+    canonicalUrl: "/insights/evidence-policy/australia-world-eliminating-cervical-cancer",
+    socialImage: "/images/insights/australia-banner.jpg",
+    socialImageAlt: "Australia to World — BloomShield Insights perspective on how Australia is working towards cervical cancer elimination.",
+    socialImageWidth: 1093,
+    socialImageHeight: 346,
+    socialImageType: "image/jpeg",
+    socialTitle: "Australia → World: What Does It Really Take to Eliminate Cervical Cancer?",
+    socialDescription: "Australia’s cervical cancer progress is not the story of one breakthrough. It is the story of a system. What can the rest of the world learn?",
+    keywords: ["cervical cancer elimination Australia", "HPV vaccination Australia", "cervical screening Australia", "HPV self-collection", "cancer prevention", "health systems", "health equity"],
+    datePublished: "2026-09-12",
+    dateModified: "2026-09-12",
+  },
   {
     slug: "hpv-self-testing-screening-gap",
     href: "/insights/evidence-policy/hpv-self-testing-screening-gap",

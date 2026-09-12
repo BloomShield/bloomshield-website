@@ -30,11 +30,12 @@ const areaPresentation = [
 
 export default function InsightsPage() {
   const hpvArticle = insights.find(item => item.slug === "hpv-self-testing-screening-gap")!;
+  const australiaArticle = insights.find(item => item.slug === "australia-world-eliminating-cervical-cancer")!;
   const conversationArticle = insights.find(item => item.slug === "from-diagnostics-to-access-africa")!;
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
@@ -110,6 +111,18 @@ export default function InsightsPage() {
             </Link>
           </article>
         </div>
+        <article className="mt-8 overflow-hidden rounded-[2rem] border border-teal-900/10 bg-[#f7f5ef]">
+          <Link href={australiaArticle.href!} className="group block">
+            <div className="relative aspect-[16/9] overflow-hidden bg-[#021827]"><Image src={australiaArticle.socialImage!} alt={australiaArticle.socialImageAlt!} fill sizes="(min-width: 1024px) 55vw, 100vw" className="object-contain object-center" /></div>
+            <div className="p-7 sm:p-9">
+              <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[.14em] text-teal-700"><span>{australiaArticle.area}</span><span aria-hidden="true">·</span><time dateTime={australiaArticle.publishedAtIso}>{australiaArticle.publishedAt}</time></div>
+              <h3 className="mt-5 font-display text-3xl font-semibold leading-tight tracking-[-.025em] group-hover:text-teal-700">{australiaArticle.title}</h3>
+              <p className="mt-5 text-lg leading-8 text-slate-600">{australiaArticle.description}</p>
+              <p className="mt-5 text-sm font-semibold text-slate-600">By Dr Femi Olaleye</p>
+              <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Explore Australia’s elimination story <ArrowRight aria-hidden="true" size={19}/></span>
+            </div>
+          </Link>
+        </article>
       </div>
     </section>
 

@@ -29,11 +29,12 @@ type InsightArticleProps = {
   relatedContent?: React.ReactNode;
   implementationLesson: React.ReactNode;
   references?: { label: string; href: string; source: string }[];
+  referencesHeading?: string;
   previous?: { label: string; href: string };
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, relatedContent, implementationLesson, references, previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, engagementContactLabel = "Contact BloomShield", children, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -77,7 +78,7 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
             </div>
           </section>
           {references?.length ? <section aria-labelledby="references">
-            <h2 id="references">References and source links</h2>
+            <h2 id="references">{referencesHeading}</h2>
             <ol className="mt-6 space-y-5">
               {references.map(reference => <li key={reference.href} className="pl-2"><a href={reference.href} target="_blank" rel="noopener noreferrer" className="font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4 hover:decoration-teal-700">{reference.label}</a><span className="mt-1 block text-sm text-slate-500">{reference.source}</span></li>)}
             </ol>

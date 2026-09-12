@@ -35,6 +35,9 @@ type InsightMetadata = {
   socialImageAlt: string;
   socialImageWidth: number;
   socialImageHeight: number;
+  socialImageType?: "image/jpeg" | "image/png" | "image/webp";
+  socialTitle?: string;
+  socialDescription?: string;
   type?: "website" | "article";
   keywords?: readonly string[];
   authors?: readonly string[];
@@ -83,13 +86,13 @@ export function createMetadata({ title, description, path, absoluteTitle = false
   };
 }
 
-export function createInsightMetadata({ title, description, path, socialImage, socialImageAlt, socialImageWidth, socialImageHeight, type = "website", keywords, authors, datePublished, dateModified }: InsightMetadata): Metadata {
+export function createInsightMetadata({ title, description, path, socialImage, socialImageAlt, socialImageWidth, socialImageHeight, socialImageType = "image/png", socialTitle, socialDescription, type = "website", keywords, authors, datePublished, dateModified }: InsightMetadata): Metadata {
   const canonical = new URL(path, SITE_URL).toString();
   const imageUrl = new URL(socialImage, SITE_URL).toString();
   const image = {
     url: imageUrl,
     secureUrl: imageUrl,
-    type: "image/png",
+    type: socialImageType,
     width: socialImageWidth,
     height: socialImageHeight,
     alt: socialImageAlt,
@@ -107,8 +110,8 @@ export function createInsightMetadata({ title, description, path, socialImage, s
       locale: "en_GB",
       siteName: "BloomShield Insights",
       url: canonical,
-      title,
-      description,
+      title: socialTitle ?? title,
+      description: socialDescription ?? description,
       images: [image],
       ...(type === "article" ? {
         publishedTime: datePublished,
@@ -119,8 +122,8 @@ export function createInsightMetadata({ title, description, path, socialImage, s
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: socialTitle ?? title,
+      description: socialDescription ?? description,
       images: [image],
     },
   };
