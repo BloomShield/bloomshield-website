@@ -60,26 +60,6 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
       <div className="container-page grid gap-12 py-16 lg:grid-cols-[minmax(0,1fr)_15.5rem] lg:py-24">
         <div className="insight-prose min-w-0">
           <div className="insight-manuscript">{children}</div>
-          <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} />
-          <aside className="my-14 rounded-[1.5rem] border-l-4 border-[#b9892f] bg-[#f3ead6] p-7 sm:p-9" aria-labelledby="implementation-lesson">
-            <BookOpenCheck aria-hidden="true" className="text-[#75551b]" />
-            <h2 id="implementation-lesson" className="mt-5 !text-2xl">Implementation Lesson</h2>
-            <div className="mt-4 text-[1.0625rem] leading-8 text-slate-700">{implementationLesson}</div>
-          </aside>
-          <section aria-labelledby="ccpe-lens" className="my-12 rounded-[1.5rem] bg-[#073b3b] p-7 text-white sm:p-9">
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-[#e7bd68]">Cancer Care Partnership Ecosystem</p>
-            <h2 id="ccpe-lens" className="mt-4 !text-2xl !text-white sm:!text-3xl">CCPE Lens</h2>
-            {ccpeLens?.length ? <ol className="mt-6 flex list-none flex-wrap items-center gap-3 !pl-0" aria-label="CCPE implementation cycle">{ccpeLens.map((stage, index) => <li className="flex items-center gap-3 !pl-0 font-bold" key={stage}><span className="rounded-full border border-[#e7bd68]/50 px-4 py-2">{stage}</span>{index < ccpeLens.length - 1 ? <span aria-hidden="true" className="text-[#e7bd68]">→</span> : null}</li>)}</ol> : null}
-            <p className="mt-4 text-lg leading-8 text-white/75">This Insight is indexed through the domains most relevant to implementation and equitable impact.</p>
-            <div className="relative mt-7 pt-5">
-              <span aria-hidden="true" className="absolute left-1/2 top-0 h-5 w-px -translate-x-1/2 bg-gradient-to-b from-[#e7bd68]/80 to-[#e7bd68]/20" />
-              <div className="rounded-xl border border-white/15 bg-white/[.06] px-5 py-4 sm:flex sm:items-center sm:gap-5 sm:px-6">
-                <p className="shrink-0 text-[.68rem] font-extrabold uppercase tracking-[.18em] text-[#e7bd68]">Cross-cutting domains</p>
-                <span aria-hidden="true" className="hidden h-7 w-px bg-white/20 sm:block" />
-                <ul className="mt-3 grid grid-cols-2 gap-x-5 gap-y-2 !pl-0 sm:mt-0 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5" aria-label="CCPE cross-cutting domains">{domains.map(domain => <li className="flex items-center gap-2 !pl-0 text-sm font-bold text-white/90" key={domain}><span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e7bd68]" />{domain}</li>)}</ul>
-              </div>
-            </div>
-          </section>
           {references?.length ? <section aria-labelledby="references">
             <h2 id="references">{referencesHeading}</h2>
             <ol className="mt-6 space-y-5">
@@ -103,11 +83,8 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
               <p className="!mt-0 text-xs font-extrabold uppercase tracking-[.18em] text-[#75551b]">A question for reflection</p>
               <p className="mt-5 font-display text-[1.35rem] font-semibold leading-[1.4] text-ink sm:text-[1.55rem]">{reflectionQuestion}</p>
             </div> : null}
-            <div className="mt-6 divide-y divide-teal-900/10 border-y border-teal-900/10">
-              {linkedinDiscussionUrl ? <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group -mx-3 flex min-h-11 items-start justify-between gap-5 rounded-lg px-3 py-5 text-ink transition hover:bg-teal-50/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:items-center">
-                <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">{linkedinDiscussionTitle}</span><span className="mt-1.5 block text-base leading-7 text-slate-600">{linkedinDiscussionDescription}</span>{linkedinDiscussionLinkLabel ? <span className="mt-2 block text-sm font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">{linkedinDiscussionLinkLabel}</span> : null}</span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
-              </a> : null}
-              <div className="py-5 sm:flex sm:items-center sm:justify-between sm:gap-8">
+            <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} />
+            <div className="border-b border-teal-900/10 py-5 sm:flex sm:items-center sm:justify-between sm:gap-8">
                 <div className="flex items-start gap-3">
                   <Mail aria-hidden="true" className="mt-1 shrink-0 text-[#85601e]" size={20} />
                   <div>
@@ -116,8 +93,33 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
                   </div>
                 </div>
                 <Link href="/contact" data-insights-event="insights_contact_click" className="mt-3 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-3 text-sm font-bold text-teal-800 underline decoration-teal-700/30 underline-offset-4 transition hover:bg-teal-50 hover:decoration-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:mt-0">{engagementContactLabel}<ArrowRight aria-hidden="true" size={17} /></Link>
+            </div>
+          </section>
+          {linkedinDiscussionUrl ? <section aria-label="Continue the conversation">
+            <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group -mx-3 flex min-h-11 items-start justify-between gap-5 rounded-lg px-3 py-5 text-ink transition hover:bg-teal-50/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:items-center">
+              <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">{linkedinDiscussionTitle}</span><span className="mt-1.5 block text-base leading-7 text-slate-600">{linkedinDiscussionDescription}</span>{linkedinDiscussionLinkLabel ? <span className="mt-2 block text-sm font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">{linkedinDiscussionLinkLabel}</span> : null}</span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
+            </a>
+          </section> : null}
+          <section aria-labelledby="ccpe-lens">
+            <div className="rounded-[1.5rem] bg-[#073b3b] p-7 text-white sm:p-9">
+              <p className="!mt-0 text-xs font-bold uppercase tracking-[.2em] text-[#e7bd68]">Cancer Care Partnership Ecosystem</p>
+              <h2 id="ccpe-lens" className="mt-4 !text-2xl !text-white sm:!text-3xl">CCPE Lens</h2>
+              {ccpeLens?.length ? <ol className="mt-6 flex list-none flex-wrap items-center gap-3 !pl-0" aria-label="CCPE implementation cycle">{ccpeLens.map((stage, index) => <li className="flex items-center gap-3 !pl-0 font-bold" key={stage}><span className="rounded-full border border-[#e7bd68]/50 px-4 py-2">{stage}</span>{index < ccpeLens.length - 1 ? <span aria-hidden="true" className="text-[#e7bd68]">→</span> : null}</li>)}</ol> : null}
+              <p className="mt-4 text-lg leading-8 text-white/75">This Insight is indexed through the domains most relevant to implementation and equitable impact.</p>
+              <div className="relative mt-7 pt-5">
+                <span aria-hidden="true" className="absolute left-1/2 top-0 h-5 w-px -translate-x-1/2 bg-gradient-to-b from-[#e7bd68]/80 to-[#e7bd68]/20" />
+                <div className="rounded-xl border border-white/15 bg-white/[.06] px-5 py-4 sm:flex sm:items-center sm:gap-5 sm:px-6">
+                  <p className="!mt-0 shrink-0 text-[.68rem] font-extrabold uppercase tracking-[.18em] text-[#e7bd68]">Cross-cutting domains</p>
+                  <span aria-hidden="true" className="hidden h-7 w-px bg-white/20 sm:block" />
+                  <ul className="mt-3 grid grid-cols-2 gap-x-5 gap-y-2 !pl-0 sm:mt-0 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5" aria-label="CCPE cross-cutting domains">{domains.map(domain => <li className="flex items-center gap-2 !pl-0 text-sm font-bold text-white/90" key={domain}><span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e7bd68]" />{domain}</li>)}</ul>
+                </div>
               </div>
             </div>
+            <aside className="mt-8 border-l-[3px] border-[#b9892f] bg-[#f5eedf] px-6 py-7 sm:px-8" aria-labelledby="implementation-lesson">
+              <BookOpenCheck aria-hidden="true" className="text-[#75551b]" />
+              <h2 id="implementation-lesson" className="mt-4 !text-2xl">Implementation Lesson</h2>
+              <div className="mt-3 text-[1.0625rem] leading-8 text-slate-700">{implementationLesson}</div>
+            </aside>
           </section>
           {relatedContent}
         </div>
