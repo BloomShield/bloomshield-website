@@ -19,6 +19,7 @@ type InsightArticleProps = {
   image: string;
   imageAlt: string;
   heroClassName?: string;
+  heroImageClassName?: string;
   domains: string[];
   ccpeLens?: string[];
   tags?: string[];
@@ -29,6 +30,8 @@ type InsightArticleProps = {
   linkedinDiscussionLinkLabel?: string;
   engagementContactLabel?: string;
   children: React.ReactNode;
+  interactionsAfterManuscript?: boolean;
+  supportingEditorial?: React.ReactNode;
   relatedContent?: React.ReactNode;
   implementationLesson: React.ReactNode;
   references?: { label: string; href: string; source: string }[];
@@ -37,7 +40,7 @@ type InsightArticleProps = {
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, engagementContactLabel = "Contact BloomShield", children, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -54,12 +57,14 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
             <p className="mt-4 text-xs font-bold uppercase tracking-[.14em] text-teal-700">Published by {publisher}</p>
           </div>
         </div>
-        <div className="container-page pb-12 md:pb-16"><div className={`relative ${heroClassName} overflow-hidden rounded-[1.5rem] bg-teal-900`}><Image src={image} alt={imageAlt} fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-cover" priority /></div></div>
+        <div className="container-page pb-12 md:pb-16"><div className={`relative ${heroClassName} overflow-hidden rounded-[1.5rem] bg-teal-900`}><Image src={image} alt={imageAlt} fill sizes="(min-width: 1240px) 1150px, 100vw" className={heroImageClassName} priority /></div></div>
       </header>
 
       <div className="container-page grid gap-12 py-16 lg:grid-cols-[minmax(0,1fr)_15.5rem] lg:py-24">
         <div className="insight-prose min-w-0">
           <div className="insight-manuscript">{children}</div>
+          {interactionsAfterManuscript ? <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} /> : null}
+          {supportingEditorial}
           {references?.length ? <section aria-labelledby="references">
             <h2 id="references">{referencesHeading}</h2>
             <ol className="mt-6 space-y-5">
@@ -83,7 +88,7 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
               <p className="!mt-0 text-xs font-extrabold uppercase tracking-[.18em] text-[#75551b]">A question for reflection</p>
               <p className="mt-5 font-display text-[1.35rem] font-semibold leading-[1.4] text-ink sm:text-[1.55rem]">{reflectionQuestion}</p>
             </div> : null}
-            <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} />
+            {!interactionsAfterManuscript ? <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} /> : null}
             <div className="border-b border-teal-900/10 py-5 sm:flex sm:items-center sm:justify-between sm:gap-8">
                 <div className="flex items-start gap-3">
                   <Mail aria-hidden="true" className="mt-1 shrink-0 text-[#85601e]" size={20} />

@@ -1,5 +1,5 @@
 export type InsightStatus = "published" | "forthcoming" | "archive-slot";
-export type InsightArea = "Series & Collections" | "Evidence & Policy" | "Implementation & Equity" | "Innovation in Practice";
+export type InsightArea = "Series & Collections" | "Local Lens" | "Conversations" | "Evidence & Policy" | "Implementation & Equity" | "Innovation in Practice";
 
 export type InsightAuthor = {
   id: string;
@@ -84,6 +84,22 @@ export const conversationsSeries = {
   keywords: ["equitable cancer care", "cancer screening innovation", "health systems", "cancer care partnerships", "SarataniAI"],
 };
 
+export const localLensSeries = {
+  title: "BloomShield Local Lens",
+  href: "/insights/local-lens" as const,
+  description: "A recurring BloomShield Insights series examining local cancer data, the inequalities beneath the averages, and the community and system responses that can make prevention and early diagnosis more equitable.",
+  image: "/images/insights/local-lens-medway-card.png" as const,
+  imageAlt: "BloomShield Local Lens Medway and Kent edition: cancer screening statistics for breast, bowel and cervical screening alongside a Medway and Kent map and local community scene.",
+  seoTitle: "BloomShield Local Lens | Local Cancer Data and Health Equity",
+  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action, beginning with cancer screening in Medway and Kent.",
+  canonicalUrl: "/insights/local-lens",
+  socialImage: "/images/insights/local-lens-medway-card.png",
+  socialImageAlt: "BloomShield Local Lens Medway and Kent edition exploring what local cancer screening data tells us.",
+  socialImageWidth: 1672,
+  socialImageHeight: 941,
+  keywords: ["BloomShield Local Lens", "local cancer data", "cancer screening inequalities", "Medway", "Kent", "health equity", "community health"],
+};
+
 export const partnershipPlaybook = {
   title: "The Partnership Playbook for Equitable Cancer Care",
   description: "The foundational BloomShield Insights archive: an eight-part series and a final handover essay on building partnerships capable of advancing equitable cancer care.",
@@ -94,6 +110,36 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+  {
+    slug: "medway-kent",
+    href: "/insights/local-lens/medway-kent",
+    title: "Cancer screening in Medway: what the local data tells us",
+    shortTitle: "Local Lens: Medway & Kent",
+    area: "Local Lens",
+    crossTags: ["Cancer Screening", "Health Equity", "Community"],
+    status: "published",
+    description: "BloomShield Local Lens begins in Medway and Kent, examining screening progress, the inequality gaps beneath local averages, and how community and system partners can respond.",
+    image: "/images/insights/local-lens-medway-hero.png",
+    imageAlt: "BloomShield Local Lens banner for Medway and Kent showing breast, bowel and cervical screening statistics, a Medway and Kent map, local landmarks and community members.",
+    publishedAt: "20 September 2026",
+    publishedAtIso: "2026-09-20",
+    authorIds: ["femi-olaleye"],
+    tags: ["Local Lens", "Medway", "Kent", "Cancer Screening", "Breast Screening", "Bowel Screening", "Cervical Screening", "Health Inequalities", "Early Diagnosis", "Community Health"],
+    ccpeLens: ["Understand", "Validate", "Implement", "Evaluate"],
+    reflectionQuestion: "What are you seeing locally? Who is still being missed? And what would help more people complete the screening pathway?",
+    linkedinDiscussionUrl: "https://www.linkedin.com/company/bloomshield-cic/",
+    engagementContactLabel: "Share local insight",
+    seoTitle: "Cancer Screening in Medway: What the Local Data Tells Us",
+    seoDescription: "Current breast, bowel and cervical screening data for Medway, the inequalities beneath the averages, and what local partners are doing to improve access.",
+    canonicalUrl: "/insights/local-lens/medway-kent",
+    socialImage: "/images/insights/local-lens-medway-hero.png",
+    socialImageAlt: "Cancer screening in Medway: current breast, bowel and cervical screening figures compared with England.",
+    socialImageWidth: 1983,
+    socialImageHeight: 793,
+    keywords: ["cancer screening Medway", "Medway cancer data", "Kent cancer screening", "breast screening Medway", "bowel screening Medway", "cervical screening Medway", "cancer screening inequalities", "health equity Medway"],
+    datePublished: "2026-09-20",
+    dateModified: "2026-09-20",
+  },
   {
     slug: "australia-world-eliminating-cervical-cancer",
     href: "/insights/evidence-policy/australia-world-eliminating-cervical-cancer",
@@ -198,8 +244,9 @@ export const insights: InsightRecord[] = [
 ];
 
 export const insightAreas = [
-  { name: "Series & Collections", description: "Sustained editorial programmes that build knowledge across connected questions." },
+  { name: "Overview", href: "/insights", description: "The full BloomShield Insights publishing programme." },
+  { name: "Series & Collections", href: "/insights#series", description: "Sustained editorial programmes that build knowledge across connected questions." },
+  { name: "Local Lens", href: "/insights/local-lens", description: "Local data, inequality gaps, community voices and practical action." },
+  { name: "Conversations", href: "/insights/conversations", description: "Conversations with people shaping more equitable cancer care." },
   { name: "Evidence & Policy", description: "What emerging evidence and policy decisions mean for equitable cancer prevention." },
-  { name: "Implementation & Equity", description: "The practical conditions that determine who benefits from good policy and innovation." },
-  { name: "Innovation in Practice", description: "How promising approaches meet the realities of frontline care and health systems." },
 ] as const;

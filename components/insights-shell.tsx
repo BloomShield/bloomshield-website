@@ -3,6 +3,8 @@ import { InsightsMark } from "./insights-mark";
 
 const links = [
   ["Overview", "/insights"],
+  ["Series & Collections", "/insights#series"],
+  ["Local Lens", "/insights/local-lens"],
   ["Conversations", "/insights/conversations"],
   ["Evidence & Policy", "/insights#evidence-policy"],
 ] as const;

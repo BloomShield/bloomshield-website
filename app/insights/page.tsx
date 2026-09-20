@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BookOpen, CircleDotDashed, FlaskConical, Landmark, LibraryBig, Waypoints } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, CircleDotDashed, Landmark, LibraryBig, MapPinned, MessageCircle, Waypoints } from "lucide-react";
 import { InsightsShell } from "@/components/insights-shell";
 import { InsightsCollectionStructuredData } from "@/components/insights-structured-data";
 import { InsightsAnalytics } from "@/components/insights-analytics";
 import { createInsightMetadata } from "@/lib/seo";
-import { conversationsSeries, getInsightAuthors, insightAreas, insights, partnershipPlaybook } from "@/lib/insights";
+import { conversationsSeries, getInsightAuthors, insightAreas, insights, localLensSeries, partnershipPlaybook } from "@/lib/insights";
 
 const description = "Ideas, evidence and conversations advancing equitable cancer care. Explore BloomShield Insights on policy, implementation, innovation and partnership.";
 const overviewKeywords = ["equitable cancer care", "cancer prevention", "cancer screening", "health policy", "implementation science", "health equity"] as const;
@@ -24,32 +24,35 @@ export const metadata: Metadata = createInsightMetadata({
 const areaPresentation = [
   { Icon: LibraryBig, plate: "bg-[#e7f3ef] text-[#0a6657]", accent: "group-hover:border-[#2da878]/45" },
   { Icon: Landmark, plate: "bg-[#f4e8cf] text-[#75551b]", accent: "group-hover:border-[#b9892f]/45" },
-  { Icon: Waypoints, plate: "bg-[#e8edf8] text-[#334c91]", accent: "group-hover:border-[#536db3]/45" },
-  { Icon: FlaskConical, plate: "bg-[#f0e9f6] text-[#67428c]", accent: "group-hover:border-[#7b4caf]/45" },
+  { Icon: MapPinned, plate: "bg-[#dff3ef] text-[#075548]", accent: "group-hover:border-[#2da878]/45" },
+  { Icon: MessageCircle, plate: "bg-[#e8edf8] text-[#334c91]", accent: "group-hover:border-[#536db3]/45" },
+  { Icon: Waypoints, plate: "bg-[#f0e9f6] text-[#67428c]", accent: "group-hover:border-[#7b4caf]/45" },
 ] as const;
 
 export default function InsightsPage() {
   const hpvArticle = insights.find(item => item.slug === "hpv-self-testing-screening-gap")!;
   const australiaArticle = insights.find(item => item.slug === "australia-world-eliminating-cervical-cancer")!;
   const conversationArticle = insights.find(item => item.slug === "from-diagnostics-to-access-africa")!;
+  const localLensArticle = insights.find(item => item.slug === "medway-kent")!;
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
     </section>
 
     <section className="border-b border-teal-900/10 bg-white py-8" aria-label="Insights areas">
-      <div className="container-page grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container-page grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {insightAreas.map((area, index) => {
           const { Icon, plate, accent } = areaPresentation[index];
-          return <a href={`#${index === 0 ? "series" : area.name.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-")}`} data-insights-event="insights_category_click" data-content-section={area.name} key={area.name} className={`group flex min-h-28 items-center gap-4 rounded-2xl border border-teal-900/10 bg-white p-4 shadow-[0_18px_45px_-34px_rgba(12,64,56,.5)] transition hover:-translate-y-1 hover:shadow-[0_22px_52px_-32px_rgba(12,64,56,.52)] ${accent}`}>
+          const href = "href" in area ? area.href : `#${area.name.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-")}`;
+          return <Link href={href} data-insights-event="insights_category_click" data-content-section={area.name} key={area.name} className={`group flex min-h-28 items-center gap-4 rounded-2xl border border-teal-900/10 bg-white p-4 shadow-[0_18px_45px_-34px_rgba(12,64,56,.5)] transition hover:-translate-y-1 hover:shadow-[0_22px_52px_-32px_rgba(12,64,56,.52)] ${accent}`}>
             <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${plate}`}><Icon aria-hidden="true" size={23}/></span>
             <span className="min-w-0"><span className="text-[.65rem] font-extrabold uppercase tracking-[.16em] text-slate-500">Explore 0{index + 1}</span><span className="mt-1 block font-display text-lg font-semibold leading-tight text-ink group-hover:text-teal-700">{area.name}</span></span>
             <ArrowUpRight aria-hidden="true" className="ml-auto shrink-0 text-slate-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-700" size={19}/>
-          </a>;
+          </Link>;
         })}
       </div>
     </section>
@@ -86,6 +89,24 @@ export default function InsightsPage() {
             <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{partnershipPlaybook.description}</p>
           </div>
           <div className="flex items-center gap-3 rounded-full bg-teal-50 px-5 py-3 text-sm font-bold text-teal-800"><BookOpen aria-hidden="true" size={20}/> 9 article slots prepared</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="local-lens" className="section-space scroll-mt-32 bg-white">
+      <div className="container-page">
+        <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:items-end">
+          <div><p className="eyebrow">Local Lens</p><h2 className="heading">Local data. Local voices. Local action.</h2></div>
+          <p className="max-w-2xl text-lg leading-8 text-slate-600">A recurring national series examining what local cancer data shows, who may still be getting missed, and how community and system partners can respond.</p>
+        </div>
+        <article className="mt-12 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-[#f7f5ef] shadow-soft">
+          <Link href={localLensArticle.href!} className="group block">
+            <div className="relative aspect-[1672/941] w-full overflow-hidden bg-[#062f2f]"><Image src={localLensSeries.image} alt={localLensSeries.imageAlt} fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center transition duration-500 group-hover:scale-[1.005]" /></div>
+            <div className="grid gap-6 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div><p className="text-xs font-extrabold uppercase tracking-[.18em] text-teal-700">First edition · Medway &amp; Kent</p><h3 className="mt-4 max-w-3xl font-display text-3xl font-semibold leading-tight sm:text-4xl">{localLensArticle.title}</h3><p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{localLensArticle.description}</p></div>
+              <span className="inline-flex items-center gap-2 font-bold text-teal-700">Read Local Lens <ArrowRight aria-hidden="true" size={19}/></span>
+            </div>
+          </Link>
         </article>
       </div>
     </section>
