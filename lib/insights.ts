@@ -127,7 +127,7 @@ export const insights: InsightRecord[] = [
     tags: ["Local Lens", "Medway", "Kent", "Cancer Screening", "Breast Screening", "Bowel Screening", "Cervical Screening", "Health Inequalities", "Early Diagnosis", "Community Health"],
     ccpeLens: ["Understand", "Validate", "Implement", "Evaluate"],
     reflectionQuestion: "What are you seeing locally? Who is still being missed? And what would help more people complete the screening pathway?",
-    linkedinDiscussionUrl: "https://www.linkedin.com/company/bloomshield-cic/",
+    linkedinDiscussionUrl: "https://lnkd.in/p/ed-8pcsi",
     engagementContactLabel: "Share local insight",
     seoTitle: "Cancer Screening in Medway: What the Local Data Tells Us",
     seoDescription: "Current breast, bowel and cervical screening data for Medway, the inequalities beneath the averages, and what local partners are doing to improve access.",
