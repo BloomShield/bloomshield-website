@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "./logo";
@@ -53,7 +53,7 @@ export function Header() {
     setProgrammesOpen(false);
   }
 
-  return <header className="sticky top-0 z-50 border-b border-teal-900/10 bg-white/95 backdrop-blur-xl">
+  return <SiteSearch>{(openSearch) => <header className="sticky top-0 z-50 border-b border-teal-900/10 bg-white/95 backdrop-blur-xl">
     <div className="container-page flex h-[106px] items-center justify-between sm:h-[120px]">
       <Logo />
       <nav aria-label="Primary navigation" className="hidden items-center gap-4 lg:flex xl:gap-5">
@@ -71,10 +71,10 @@ export function Header() {
                 : pathname === href;
           return <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`text-sm font-semibold transition hover:text-teal-600 ${active ? "text-teal-600" : "text-slate-700"}`}>{label}</Link>;
         })}
-        <SiteSearch />
+        <button type="button" onClick={(event) => openSearch(event.currentTarget)} aria-label="Search BloomShield" className="flex min-h-12 min-w-12 items-center justify-center rounded-lg text-teal-900 transition hover:bg-teal-50" title="Search BloomShield (Ctrl+K)"><Search aria-hidden="true" size={21} /></button>
         <Link href="/contact" className="button-primary !min-h-10 !px-5">Talk to us</Link>
       </nav>
-      <div className="flex items-center lg:hidden"><SiteSearch /><button onClick={toggleMobileMenu} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"} className="flex min-h-12 min-w-12 items-center justify-center rounded-lg text-teal-900">{open ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}</button></div>
+      <div className="flex items-center lg:hidden"><button type="button" onClick={(event) => openSearch(event.currentTarget)} aria-label="Search BloomShield" className="flex min-h-12 min-w-12 items-center justify-center rounded-lg text-teal-900 transition hover:bg-teal-50" title="Search BloomShield (Ctrl+K)"><Search aria-hidden="true" size={21} /></button><button onClick={toggleMobileMenu} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"} className="flex min-h-12 min-w-12 items-center justify-center rounded-lg text-teal-900">{open ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}</button></div>
     </div>
     {open && <nav id="mobile-menu" aria-label="Mobile navigation" className="max-h-[calc(100dvh-106px)] overflow-y-auto overscroll-contain border-t border-teal-900/10 bg-white px-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-5 sm:max-h-[calc(100dvh-120px)] lg:hidden">
       <div className="mx-auto flex max-w-[1240px] flex-col gap-1">
@@ -92,5 +92,5 @@ export function Header() {
         <Link href="/contact" onClick={closeMobileMenu} className="button-primary mt-3">Talk to us</Link>
       </div>
     </nav>}
-  </header>;
+  </header>}</SiteSearch>;
 }

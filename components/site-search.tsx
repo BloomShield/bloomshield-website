@@ -2,26 +2,45 @@
 
 import Link from "next/link";
 import { Search, X } from "lucide-react";
-import { FormEvent, useEffect, useId, useRef, useState } from "react";
+import { FormEvent, ReactNode, useEffect, useId, useRef, useState } from "react";
 import { trackSiteSearchEvent } from "@/lib/analytics";
 import { searchSite } from "@/lib/site-search";
 
-export function SiteSearch() {
+type SiteSearchProps = { children: (openSearch: (trigger?: HTMLElement) => void) => ReactNode };
+
+function getFocusableElements(dialog: HTMLElement) {
+  return Array.from(dialog.querySelectorAll<HTMLElement>("a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])")).filter((element) => element.getClientRects().length > 0);
+}
+
+export function SiteSearch({ children }: SiteSearchProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLElement>(null);
   const titleId = useId();
   const inputId = useId();
   const results = searchSite(query);
-  function close() { setOpen(false); setQuery(""); requestAnimationFrame(() => triggerRef.current?.focus()); }
-  function show() { setOpen(true); trackSiteSearchEvent("site_search_open"); }
+  function close() { setOpen(false); setQuery(""); requestAnimationFrame(() => returnFocusRef.current?.focus()); }
+  function show(trigger?: HTMLElement) { returnFocusRef.current = trigger ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null); setOpen(true); trackSiteSearchEvent("site_search_open"); }
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     inputRef.current?.focus();
-    const onKeyDown = (event: KeyboardEvent) => { if (event.key === "Escape") close(); };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { close(); return; }
+      if (event.key !== "Tab") return;
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+      const focusableElements = getFocusableElements(dialog);
+      if (focusableElements.length === 0) return;
+      const first = focusableElements[0];
+      const last = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+      if (event.shiftKey && (activeElement === first || !dialog.contains(activeElement))) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && (activeElement === last || !dialog.contains(activeElement))) { event.preventDefault(); first.focus(); }
+    };
     document.addEventListener("keydown", onKeyDown);
     return () => { document.body.style.overflow = previousOverflow; document.removeEventListener("keydown", onKeyDown); };
   }, [open]);
@@ -30,7 +49,8 @@ export function SiteSearch() {
       if ((!event.ctrlKey && !event.metaKey) || event.key.toLowerCase() !== "k") return;
       const target = event.target as HTMLElement | null;
       if (target?.matches("input, textarea, select, [contenteditable=true]")) return;
-      event.preventDefault(); if (!open) show();
+      event.preventDefault();
+      if (!open) show();
     };
     document.addEventListener("keydown", onShortcut);
     return () => document.removeEventListener("keydown", onShortcut);
@@ -40,9 +60,9 @@ export function SiteSearch() {
     if (query.trim().length >= 2) { const parameters = { search_term: query.trim(), result_count: results.length }; trackSiteSearchEvent("site_search_submit", parameters); if (results.length === 0) trackSiteSearchEvent("site_search_no_results", parameters); }
   }
   return <>
-    <button ref={triggerRef} type="button" onClick={show} aria-label="Search BloomShield" className="flex min-h-12 min-w-12 items-center justify-center rounded-lg text-teal-900 transition hover:bg-teal-50" title="Search BloomShield (Ctrl+K)"><Search aria-hidden="true" size={21} /></button>
+    {children(show)}
     {open && <div className="fixed inset-0 z-[70] flex items-start justify-center bg-slate-950/35 px-4 py-5 backdrop-blur-sm sm:items-center sm:p-8" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) close(); }}>
-      <section role="dialog" aria-modal="true" aria-labelledby={titleId} className="max-h-[calc(100dvh-2.5rem)] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white p-5 shadow-2xl sm:p-7">
+      <section ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby={titleId} className="max-h-[calc(100dvh-2.5rem)] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white p-5 shadow-2xl sm:p-7">
         <div className="mb-5 flex items-center justify-between gap-4"><h2 id={titleId} className="font-display text-2xl font-semibold tracking-[-.02em] text-ink">Search BloomShield</h2><button type="button" onClick={close} className="flex min-h-12 min-w-12 items-center justify-center rounded-full text-teal-900 hover:bg-teal-50" aria-label="Close search"><X aria-hidden="true" /></button></div>
         <form onSubmit={submit}><label htmlFor={inputId} className="sr-only">Search BloomShield</label><div className="flex items-center rounded-2xl border border-teal-900/20 bg-teal-50/50 px-4 focus-within:border-teal-700 focus-within:ring-2 focus-within:ring-gold-500 focus-within:ring-offset-2"><Search aria-hidden="true" className="shrink-0 text-teal-700" size={20} /><input ref={inputRef} id={inputId} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search BloomShield…" className="min-h-14 w-full bg-transparent px-3 text-lg text-ink placeholder:text-slate-500 focus:outline-none" /></div></form>
         <div className="mt-5" aria-live="polite">
