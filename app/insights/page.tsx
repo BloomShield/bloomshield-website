@@ -34,10 +34,11 @@ export default function InsightsPage() {
   const australiaArticle = insights.find(item => item.slug === "australia-world-eliminating-cervical-cancer")!;
   const conversationArticle = insights.find(item => item.slug === "from-diagnostics-to-access-africa")!;
   const localLensArticle = insights.find(item => item.slug === "medway-kent")!;
+  const implementationArticle = insights.find(item => item.slug === "county-durham-breast-services-review")!;
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
@@ -149,7 +150,19 @@ export default function InsightsPage() {
 
     <section id="implementation-equity" className="section-space border-t border-teal-900/10">
       <div className="container-page grid gap-8 lg:grid-cols-2">
-        {[{ id: "implementation-equity", title: "Implementation & Equity", copy: "How access, trust, delivery design and follow-up determine whether an intervention narrows—or reproduces—inequality." }, { id: "innovation-in-practice", title: "Innovation in Practice", copy: "A grounded view of promising tools and models: the systems they enter, the people who deliver them and the evidence needed to scale." }].map(item => <article id={item.id} className="scroll-mt-32 rounded-[2rem] border border-teal-900/10 bg-white p-8 sm:p-10" key={item.title}>
+        <article className="overflow-hidden rounded-[2rem] border border-teal-900/10 bg-[#f7f5ef] shadow-soft">
+          <Link href={implementationArticle.href!} className="group block">
+            <div className="relative aspect-[1672/941] overflow-hidden bg-[#062f2f]"><Image src={implementationArticle.image!} alt={implementationArticle.imageAlt!} fill sizes="(min-width: 1024px) 55vw, 100vw" className="object-contain object-center transition duration-500 group-hover:scale-[1.005]" /></div>
+            <div className="p-7 sm:p-9">
+              <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[.14em] text-teal-700"><span>{implementationArticle.area}</span><span aria-hidden="true">·</span><time dateTime={implementationArticle.publishedAtIso}>{implementationArticle.publishedAt}</time></div>
+              <h2 className="mt-5 font-display text-3xl font-semibold leading-tight tracking-[-.025em] group-hover:text-teal-700">{implementationArticle.title}</h2>
+              <p className="mt-5 text-lg leading-8 text-slate-600">{implementationArticle.description}</p>
+              <p className="mt-5 text-sm font-semibold text-slate-600">By Dr Femi Olaleye</p>
+              <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Read the full Insight <ArrowRight aria-hidden="true" size={19}/></span>
+            </div>
+          </Link>
+        </article>
+        {[{ id: "innovation-in-practice", title: "Innovation in Practice", copy: "A grounded view of promising tools and models: the systems they enter, the people who deliver them and the evidence needed to scale." }].map(item => <article id={item.id} className="scroll-mt-32 rounded-[2rem] border border-teal-900/10 bg-white p-8 sm:p-10" key={item.title}>
           <CircleDotDashed className="text-[#9b7125]" aria-hidden="true" />
           <h2 className="mt-7 font-display text-3xl font-semibold">{item.title}</h2>
           <p className="mt-4 max-w-xl text-lg leading-8 text-slate-600">{item.copy}</p>
