@@ -4,6 +4,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "./logo";
+import { SiteSearch } from "./site-search";
 
 const links = [
   ["About", "/about"], ["Programmes", "/programmes"], ["Consultancy", "/consultancy"],
@@ -70,9 +71,10 @@ export function Header() {
                 : pathname === href;
           return <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`text-sm font-semibold transition hover:text-teal-600 ${active ? "text-teal-600" : "text-slate-700"}`}>{label}</Link>;
         })}
+        <SiteSearch />
         <Link href="/contact" className="button-primary !min-h-10 !px-5">Talk to us</Link>
       </nav>
-      <button onClick={toggleMobileMenu} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"} className="flex min-h-12 min-w-12 items-center justify-center rounded-lg text-teal-900 lg:hidden">{open ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}</button>
+      <div className="flex items-center lg:hidden"><SiteSearch /><button onClick={toggleMobileMenu} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"} className="flex min-h-12 min-w-12 items-center justify-center rounded-lg text-teal-900">{open ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}</button></div>
     </div>
     {open && <nav id="mobile-menu" aria-label="Mobile navigation" className="max-h-[calc(100dvh-106px)] overflow-y-auto overscroll-contain border-t border-teal-900/10 bg-white px-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-5 sm:max-h-[calc(100dvh-120px)] lg:hidden">
       <div className="mx-auto flex max-w-[1240px] flex-col gap-1">
