@@ -87,6 +87,10 @@ export default function CountyDurhamBreastServicesReviewPage() {
       ccpeLens={article.ccpeLens}
       tags={article.tags}
       reflectionQuestion={article.reflectionQuestion}
+      linkedinDiscussionUrl={article.linkedinDiscussionUrl}
+      linkedinDiscussionTitle="Continue the conversation on LinkedIn"
+      linkedinDiscussionDescription="Join the discussion, share your perspective, and follow BloomShield for more evidence-led insights on cancer equity, implementation and health systems."
+      linkedinDiscussionLinkLabel="Join the conversation on LinkedIn →"
       engagementContactLabel={article.engagementContactLabel}
       implementationLesson={<p>Investigating harm is essential. The further test is whether the response changes the conditions that allowed it, and whether transparent evaluation shows those improvements are lasting.</p>}
       references={sources}

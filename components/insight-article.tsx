@@ -65,13 +65,13 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
           <div className="insight-manuscript">{children}</div>
           {interactionsAfterManuscript ? <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} /> : null}
           {supportingEditorial}
-          {references?.length ? <section aria-labelledby="references">
+          {references?.length ? <section className="insight-article-end-section" aria-labelledby="references">
             <h2 id="references">{referencesHeading}</h2>
             <ol className="mt-6 space-y-5">
               {references.map(reference => <li key={reference.href} className="pl-2"><a href={reference.href} target="_blank" rel="noopener noreferrer" className="font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4 hover:decoration-teal-700">{reference.label}</a><span className="mt-1 block text-sm text-slate-500">{reference.source}</span></li>)}
             </ol>
           </section> : null}
-          <section aria-labelledby="about-the-author">
+          <section className="insight-article-end-section" aria-labelledby="about-the-author">
             <p className="text-xs font-bold uppercase tracking-[.16em] text-teal-700">Contributor</p>
             <h2 id="about-the-author" className="mt-4">{authors.length > 1 ? "About the authors" : "About the author"}</h2>
             <div className="mt-7 space-y-6">
@@ -83,7 +83,7 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
               </div>)}
             </div>
           </section>
-          <section aria-label="Article engagement">
+          <section className="insight-article-end-section" aria-label="Article engagement">
             {reflectionQuestion ? <div className="rounded-[1.5rem] border border-[#b9892f]/25 bg-[#f3ead6] p-7 sm:p-9">
               <p className="!mt-0 text-xs font-extrabold uppercase tracking-[.18em] text-[#75551b]">A question for reflection</p>
               <p className="mt-5 font-display text-[1.35rem] font-semibold leading-[1.4] text-ink sm:text-[1.55rem]">{reflectionQuestion}</p>
@@ -100,12 +100,12 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
                 <Link href="/contact" data-insights-event="insights_contact_click" className="mt-3 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-3 text-sm font-bold text-teal-800 underline decoration-teal-700/30 underline-offset-4 transition hover:bg-teal-50 hover:decoration-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:mt-0">{engagementContactLabel}<ArrowRight aria-hidden="true" size={17} /></Link>
             </div>
           </section>
-          {linkedinDiscussionUrl ? <section aria-label="Continue the conversation">
+          {linkedinDiscussionUrl ? <section className="insight-article-end-section" aria-label="Continue the conversation">
             <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group -mx-3 flex min-h-11 items-start justify-between gap-5 rounded-lg px-3 py-5 text-ink transition hover:bg-teal-50/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:items-center">
               <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">{linkedinDiscussionTitle}</span><span className="mt-1.5 block text-base leading-7 text-slate-600">{linkedinDiscussionDescription}</span>{linkedinDiscussionLinkLabel ? <span className="mt-2 block text-sm font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">{linkedinDiscussionLinkLabel}</span> : null}</span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
             </a>
           </section> : null}
-          <section aria-labelledby="ccpe-lens">
+          <section className="insight-article-end-section" aria-labelledby="ccpe-lens">
             <div className="rounded-[1.5rem] bg-[#073b3b] p-7 text-white sm:p-9">
               <p className="!mt-0 text-xs font-bold uppercase tracking-[.2em] text-[#e7bd68]">Cancer Care Partnership Ecosystem</p>
               <h2 id="ccpe-lens" className="mt-4 !text-2xl !text-white sm:!text-3xl">CCPE Lens</h2>

@@ -127,6 +127,7 @@ export const insights: InsightRecord[] = [
     tags: ["Implementation & Equity", "Breast Cancer", "Clinical Governance", "Quality Improvement", "Patient Safety", "County Durham", "NHS"],
     ccpeLens: ["Understand", "Validate", "Implement", "Evaluate"],
     reflectionQuestion: "When a service identifies serious failure, how will it demonstrate—openly and over time—that the changes it makes are improving care?",
+    linkedinDiscussionUrl: "https://www.linkedin.com/pulse/4500-breast-cancer-records-under-review-county-durham-dr-femi-telce",
     engagementContactLabel: "Share evidence or perspective",
     seoTitle: "County Durham Breast Services Review: What Changed and What We Can Learn",
     seoDescription: "What County Durham’s breast-services look-back tells us about clinical audit, implementation, governance and sustaining safer cancer care.",

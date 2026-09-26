@@ -32,6 +32,7 @@ a, button, input, textarea, select { @apply focus-visible:outline-none focus-vis
 .health-inline-link { @apply mt-6 inline-flex items-center font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4 hover:decoration-teal-700; }
 .insight-prose { @apply mx-auto max-w-[46rem] text-[1.0625rem] leading-[1.78] text-slate-700 sm:text-[1.1875rem] sm:leading-[1.82]; }
 .insight-prose > section, .insight-manuscript > section { @apply border-t border-teal-900/10 py-12 first:border-t-0 first:pt-0 sm:py-16; }
+.insight-prose > .insight-article-end-section { @apply py-0 pt-10 sm:pt-12; }
 .insight-manuscript > section:last-child { @apply pb-0; }
 .insight-prose h2 { @apply mt-0 max-w-[42rem] font-display text-[1.75rem] font-semibold leading-[1.18] tracking-[-.025em] text-ink sm:text-[2.25rem] sm:leading-[1.16]; }
 .insight-prose h3 { @apply mt-10 max-w-[40rem] font-display text-[1.4rem] font-semibold leading-[1.25] tracking-[-.015em] text-ink sm:text-[1.65rem]; }
