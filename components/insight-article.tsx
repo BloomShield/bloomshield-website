@@ -10,6 +10,7 @@ type InsightArticleProps = {
   category: string;
   crossTag: string;
   title: string;
+  subtitle?: string;
   articleSlug: string;
   date: string;
   dateIso: string;
@@ -28,6 +29,7 @@ type InsightArticleProps = {
   linkedinDiscussionTitle?: string;
   linkedinDiscussionDescription?: string;
   linkedinDiscussionLinkLabel?: string;
+  linkedinBeforeContact?: boolean;
   engagementContactLabel?: string;
   children: React.ReactNode;
   interactionsAfterManuscript?: boolean;
@@ -40,7 +42,7 @@ type InsightArticleProps = {
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, subtitle, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, linkedinBeforeContact = false, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -49,6 +51,7 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
           <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900"><ArrowLeft aria-hidden="true" size={18}/> All Insights</Link>
           <div className="mt-10 flex flex-wrap items-center gap-3 text-xs font-extrabold uppercase tracking-[.15em] text-teal-700"><span className="rounded-full border border-teal-700/25 px-4 py-2">{category}</span><span>{crossTag}</span></div>
           <h1 className="mt-7 max-w-5xl font-display text-4xl font-semibold leading-[1.1] tracking-[-.035em] text-ink sm:text-5xl lg:text-[3.5rem]">{title}</h1>
+          {subtitle ? <p className="mt-4 max-w-4xl font-display text-2xl font-semibold leading-tight text-teal-900 sm:text-3xl">{subtitle}</p> : null}
           <p className="mt-8 max-w-[52rem] border-l-2 border-[#b9892f] pl-5 text-[1.2rem] leading-8 text-slate-700 sm:pl-7 sm:text-[1.4rem] sm:leading-9">{standfirst}</p>
           <div className="mt-9 max-w-[52rem] border-t border-teal-900/10 pt-7">
             <p className="text-lg text-slate-700">By <strong className="text-ink">{authors.map(author => author.name).join(" & ")}</strong></p>
@@ -89,6 +92,11 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
               <p className="mt-5 font-display text-[1.35rem] font-semibold leading-[1.4] text-ink sm:text-[1.55rem]">{reflectionQuestion}</p>
             </div> : null}
             {!interactionsAfterManuscript ? <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} /> : null}
+            {linkedinBeforeContact && linkedinDiscussionUrl ? <div className="border-b border-teal-900/10 py-5" aria-label="Continue the conversation">
+              <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group -mx-3 flex min-h-11 items-start justify-between gap-5 rounded-lg px-3 py-5 text-ink transition hover:bg-teal-50/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:items-center">
+                <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">{linkedinDiscussionTitle}</span><span className="mt-1.5 block text-base leading-7 text-slate-600">{linkedinDiscussionDescription}</span>{linkedinDiscussionLinkLabel ? <span className="mt-2 block text-sm font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">{linkedinDiscussionLinkLabel}</span> : null}</span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
+              </a>
+            </div> : null}
             <div className="border-b border-teal-900/10 py-5 sm:flex sm:items-center sm:justify-between sm:gap-8">
                 <div className="flex items-start gap-3">
                   <Mail aria-hidden="true" className="mt-1 shrink-0 text-[#85601e]" size={20} />
@@ -100,7 +108,7 @@ export function InsightArticle({ category, crossTag, title, articleSlug, date, d
                 <Link href="/contact" data-insights-event="insights_contact_click" className="mt-3 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-3 text-sm font-bold text-teal-800 underline decoration-teal-700/30 underline-offset-4 transition hover:bg-teal-50 hover:decoration-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:mt-0">{engagementContactLabel}<ArrowRight aria-hidden="true" size={17} /></Link>
             </div>
           </section>
-          {linkedinDiscussionUrl ? <section className="insight-article-end-section" aria-label="Continue the conversation">
+          {!linkedinBeforeContact && linkedinDiscussionUrl ? <section className="insight-article-end-section" aria-label="Continue the conversation">
             <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className="group -mx-3 flex min-h-11 items-start justify-between gap-5 rounded-lg px-3 py-5 text-ink transition hover:bg-teal-50/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:items-center">
               <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">{linkedinDiscussionTitle}</span><span className="mt-1.5 block text-base leading-7 text-slate-600">{linkedinDiscussionDescription}</span>{linkedinDiscussionLinkLabel ? <span className="mt-2 block text-sm font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">{linkedinDiscussionLinkLabel}</span> : null}</span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
             </a>
