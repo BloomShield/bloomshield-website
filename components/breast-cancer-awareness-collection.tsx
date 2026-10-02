@@ -1,0 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
+import { insights } from "@/lib/insights";
+export function BreastCancerAwarenessCollection() {
+ const articles = insights.filter(item => item.collection === "Breast Cancer Awareness Month" && item.status === "published");
+ return <section className="mt-12" aria-labelledby="breast-cancer-awareness"><p className="eyebrow">Collection</p><h2 id="breast-cancer-awareness" className="mt-4 font-display text-3xl font-semibold">Breast Cancer Awareness Month</h2><div className="mt-7 grid gap-8">{articles.map(article=><article key={article.slug} className="overflow-hidden rounded-[2rem] border border-teal-900/10 bg-white"><Link href={article.href!} data-insights-event="insights_related_content_click" className="grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"><div className="relative aspect-square bg-white"><Image src={article.image!} alt={article.imageAlt!} fill sizes="(min-width: 768px) 575px, 100vw" className="object-contain object-center"/></div><div className="self-center p-7 sm:p-10"><time dateTime={article.publishedAtIso} className="text-sm text-slate-600">{article.publishedAt}</time><h3 className="mt-4 font-display text-3xl font-semibold">{article.title}</h3><p className="mt-5 text-lg leading-8 text-slate-600">{article.description}</p><span className="mt-6 inline-block font-bold text-teal-700">Read the full Insight →</span></div></Link></article>)}</div></section>;
+}

@@ -13,6 +13,7 @@ export type InsightAuthor = {
 
 export type InsightRecord = {
   slug: string;
+  collection?: string;
   href?: `/insights/${string}`;
   title: string;
   shortTitle?: string;
@@ -110,6 +111,55 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+{
+  "slug": "before-we-talk-about-the-gaps",
+  "linkedinDiscussionUrl": "https://www.linkedin.com/pulse/before-we-talk-gaps-dr-femi-olaleye-mb-chb-mba-z2xre",
+  "href": "/insights/series-collections/before-we-talk-about-the-gaps",
+  "title": "Before We Talk About the Gaps",
+  "area": "Series & Collections",
+  "collection": "Breast Cancer Awareness Month",
+  "crossTags": [
+    "Breast Screening",
+    "Health Inequalities"
+  ],
+  "status": "published",
+  "description": "Recognising the people behind breast cancer prevention and screening — and asking why too many women are still not reaching services already available to them.",
+  "image": "/images/insights/breast-cancer-awareness-before-gaps-card.png",
+  "imageAlt": "BloomShield Breast Cancer Awareness Month artwork: Before we talk about the gaps, featuring four women outside an NHS building and pink ribbons.",
+  "publishedAt": "2 October 2026",
+  "publishedAtIso": "2026-10-02",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Breast Cancer Awareness Month",
+    "Breast Cancer",
+    "Cancer Screening",
+    "Breast Screening",
+    "Early Diagnosis",
+    "Health Inequalities",
+    "Local Lens",
+    "NHS"
+  ],
+  "canonicalUrl": "/insights/series-collections/before-we-talk-about-the-gaps",
+  "socialImage": "/images/insights/breast-cancer-awareness-before-gaps-card.png",
+  "socialImageAlt": "Before we talk about the gaps — BloomShield Breast Cancer Awareness Month.",
+  "socialImageWidth": 1254,
+  "socialImageHeight": 1254,
+  "socialImageType": "image/png",
+  "keywords": [
+    "Breast Cancer Awareness Month",
+    "Breast Cancer",
+    "Cancer Screening",
+    "Breast Screening",
+    "Early Diagnosis",
+    "Health Inequalities",
+    "Local Lens",
+    "NHS"
+  ],
+  "datePublished": "2026-10-02",
+  "dateModified": "2026-10-02"
+},
   {
     slug: "county-durham-breast-services-review",
     href: "/insights/implementation-equity/county-durham-breast-services-review",
@@ -309,7 +359,7 @@ export const insights: InsightRecord[] = [
 
 export const insightAreas = [
   { name: "Overview", href: "/insights", description: "The full BloomShield Insights publishing programme." },
-  { name: "Series & Collections", href: "/insights#series", description: "Sustained editorial programmes that build knowledge across connected questions." },
+  { name: "Series & Collections", href: "/insights/series-collections", description: "Sustained editorial programmes that build knowledge across connected questions." },
   { name: "Local Lens", href: "/insights/local-lens", description: "Local data, inequality gaps, community voices and practical action." },
   { name: "Conversations", href: "/insights/conversations", description: "Conversations with people shaping more equitable cancer care." },
   { name: "Evidence & Policy", description: "What emerging evidence and policy decisions mean for equitable cancer prevention." },

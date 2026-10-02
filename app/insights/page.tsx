@@ -1,3 +1,4 @@
+import { BreastCancerAwarenessCollection } from "@/components/breast-cancer-awareness-collection";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,7 +40,7 @@ export default function InsightsPage() {
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
@@ -66,6 +67,7 @@ export default function InsightsPage() {
           <p className="max-w-2xl text-lg leading-8 text-slate-600">Our collections connect evidence and lived experience over time—building practical understanding across people, partnerships, systems, innovation, equity and impact.</p>
         </div>
 
+        <BreastCancerAwarenessCollection />
         <article className="mt-12 overflow-hidden rounded-[2.5rem] bg-[#082f36] text-white shadow-soft">
           <div className="w-full border-b border-white/10 bg-[#052b31]">
             <div className="relative mx-auto aspect-[16/9] w-full">
