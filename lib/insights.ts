@@ -92,7 +92,7 @@ export const localLensSeries = {
   image: "/images/insights/local-lens-medway-card.png" as const,
   imageAlt: "BloomShield Local Lens Medway and Kent edition: cancer screening statistics for breast, bowel and cervical screening alongside a Medway and Kent map and local community scene.",
   seoTitle: "BloomShield Local Lens | Local Cancer Data and Health Equity",
-  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action through editions on cancer screening in Medway and Kent and Liverpool.",
+  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action through editions on cancer screening in Medway and Kent, Liverpool, and Devon, Cornwall and the Isles of Scilly.",
   canonicalUrl: "/insights/local-lens",
   socialImage: "/images/insights/local-lens-medway-card.png",
   socialImageAlt: "BloomShield Local Lens Medway and Kent edition exploring what local cancer screening data tells us.",
@@ -111,6 +111,73 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+{
+  "slug": "devon-cornwall-isles-of-scilly",
+  "href": "/insights/local-lens/devon-cornwall-isles-of-scilly",
+  "title": "Local Lens: Devon, Cornwall & the Isles of Scilly",
+  "shortTitle": "Can funding trusted local organisations help close the screening gap?",
+  "area": "Local Lens",
+  "crossTags": [
+    "Cancer Screening",
+    "Health Inequalities",
+    "Rural Health"
+  ],
+  "status": "published",
+  "description": "Strong overall screening performance can still hide local inequality.",
+  "image": "/images/insights/local-lens-devon-cornwall-scilly-hero.png",
+  "imageAlt": "BloomShield Local Lens LL-003: Devon, Cornwall and the Isles of Scilly map, screening gap headline, coastal community members and Local data. Local voices. Local action. branding.",
+  "publishedAt": "6 October 2026",
+  "publishedAtIso": "2026-10-06",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Local Lens",
+    "Devon",
+    "Cornwall",
+    "Isles of Scilly",
+    "Cancer Screening",
+    "Health Inequalities",
+    "Rural Health",
+    "VCSE",
+    "Community Engagement",
+    "Early Diagnosis",
+    "Peninsula Cancer Alliance"
+  ],
+  "ccpeLens": [
+    "Understand",
+    "Validate",
+    "Implement",
+    "Evaluate"
+  ],
+  "reflectionQuestion": "If screening inequality is partly about trust, access and local context, should trusted community organisations be treated as part of the screening infrastructure itself?",
+  "engagementContactLabel": "Share local insight",
+  "seoTitle": "Local Lens: Devon, Cornwall & the Isles of Scilly",
+  "seoDescription": "Strong overall screening performance can still hide local inequality.",
+  "canonicalUrl": "/insights/local-lens/devon-cornwall-isles-of-scilly",
+  "socialImage": "/images/insights/local-lens-devon-cornwall-scilly-hero.png",
+  "socialImageAlt": "BloomShield Local Lens LL-003: Devon, Cornwall and the Isles of Scilly map, screening gap headline, coastal community members and Local data. Local voices. Local action. branding.",
+  "socialImageWidth": 1672,
+  "socialImageHeight": 941,
+  "socialImageType": "image/png",
+  "socialTitle": "Local Lens: Devon, Cornwall & the Isles of Scilly",
+  "socialDescription": "Can funding trusted local organisations help close the screening gap?",
+  "keywords": [
+    "Local Lens",
+    "Devon",
+    "Cornwall",
+    "Isles of Scilly",
+    "Cancer Screening",
+    "Health Inequalities",
+    "Rural Health",
+    "VCSE",
+    "Community Engagement",
+    "Early Diagnosis",
+    "Peninsula Cancer Alliance"
+  ],
+  "datePublished": "2026-10-06",
+  "dateModified": "2026-10-06"
+},
 {
   "slug": "before-we-talk-about-the-gaps",
   "linkedinDiscussionUrl": "https://www.linkedin.com/pulse/before-we-talk-gaps-dr-femi-olaleye-mb-chb-mba-z2xre",

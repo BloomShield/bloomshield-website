@@ -35,12 +35,13 @@ export default function InsightsPage() {
   const australiaArticle = insights.find(item => item.slug === "australia-world-eliminating-cervical-cancer")!;
   const conversationArticle = insights.find(item => item.slug === "from-diagnostics-to-access-africa")!;
   const localLensArticle = insights.find(item => item.slug === "medway-kent")!;
+  const devonArticle = insights.find(item => item.slug === "devon-cornwall-isles-of-scilly")!;
   const liverpoolArticle = insights.find(item => item.slug === "liverpool")!;
   const implementationArticle = insights.find(item => item.slug === "county-durham-breast-services-review")!;
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
@@ -116,6 +117,15 @@ export default function InsightsPage() {
             <div className="relative aspect-square w-full overflow-hidden bg-[#062f2f]"><Image src="/images/insights/local-lens-liverpool-card.png" alt="BloomShield Local Lens Liverpool edition card showing the Royal Liver Building, Liverpool map marker, NHS University Hospitals of Liverpool Group mobile breast-screening unit and screening-data panels." fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center transition duration-500 group-hover:scale-[1.005]" /></div>
             <div className="grid gap-6 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <div><p className="text-xs font-extrabold uppercase tracking-[.18em] text-teal-700">Edition 02 · Liverpool</p><h3 className="mt-4 max-w-3xl font-display text-3xl font-semibold leading-tight sm:text-4xl">{liverpoolArticle.title}</h3><p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{liverpoolArticle.description}</p></div>
+              <span className="inline-flex items-center gap-2 font-bold text-teal-700">Read Local Lens <ArrowRight aria-hidden="true" size={19}/></span>
+            </div>
+          </Link>
+        </article>
+        <article className="mt-8 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-[#f7f5ef] shadow-soft">
+          <Link href={devonArticle.href!} className="group block">
+            <div className="relative aspect-[1448/1086] w-full overflow-hidden bg-[#062f2f]"><Image src="/images/insights/local-lens-devon-cornwall-scilly-card.png" alt="BloomShield Local Lens LL-003: Devon, Cornwall and the Isles of Scilly map, screening gap headline, coastal community members and Local data. Local voices. Local action. branding." fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center " /></div>
+            <div className="grid gap-6 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div><p className="text-xs font-extrabold uppercase tracking-[.18em] text-teal-700">Edition 03 · Devon, Cornwall &amp; the Isles of Scilly</p><h3 className="mt-4 max-w-3xl font-display text-3xl font-semibold leading-tight sm:text-4xl">{devonArticle.title}</h3><p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{devonArticle.description}</p></div>
               <span className="inline-flex items-center gap-2 font-bold text-teal-700">Read Local Lens <ArrowRight aria-hidden="true" size={19}/></span>
             </div>
           </Link>

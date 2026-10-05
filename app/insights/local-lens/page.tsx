@@ -21,11 +21,12 @@ export const metadata: Metadata = createInsightMetadata({
 
 export default function LocalLensPage() {
   const medwayArticle = insights.find(item => item.slug === "medway-kent")!;
+  const devonArticle = insights.find(item => item.slug === "devon-cornwall-isles-of-scilly")!;
   const liverpoolArticle = insights.find(item => item.slug === "liverpool")!;
 
   return <InsightsShell>
     <InsightsAnalytics contentSection="Local Lens" />
-    <InsightsCollectionStructuredData title={localLensSeries.title} description={localLensSeries.seoDescription} path={localLensSeries.canonicalUrl} image={localLensSeries.socialImage} keywords={localLensSeries.keywords} items={[{ name: medwayArticle.title, url: medwayArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }]} />
+    <InsightsCollectionStructuredData title={localLensSeries.title} description={localLensSeries.seoDescription} path={localLensSeries.canonicalUrl} image={localLensSeries.socialImage} keywords={localLensSeries.keywords} items={[{ name: medwayArticle.title, url: medwayArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }]} />
     <header className="relative overflow-hidden bg-[#062f2f] text-white">
       <div aria-hidden="true" className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_70%_35%,rgba(86,199,176,.2),transparent_58%)]" />
       <div className="container-page relative py-16 md:py-24">
@@ -48,7 +49,7 @@ export default function LocalLensPage() {
       <div className="container-page">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div><p className="eyebrow">Editions</p><h2 id="editions" className="heading">Local insight, edition by edition.</h2></div>
-          <div className="flex items-center gap-3 text-sm font-bold text-teal-800"><MapPinned aria-hidden="true" size={19}/> Edition 01 → Edition 02</div>
+          <div className="flex items-center gap-3 text-sm font-bold text-teal-800"><MapPinned aria-hidden="true" size={19}/> Edition 01 → Edition 03</div>
         </div>
         <article className="mt-10 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-white shadow-soft">
           <Link href={medwayArticle.href!} className="group block">
@@ -81,6 +82,24 @@ export default function LocalLensPage() {
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{liverpoolArticle.title}</h3>
                 <p className="mt-5 text-lg leading-8 text-slate-600">{liverpoolArticle.description}</p>
+                <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Read the full article <ArrowRight aria-hidden="true" size={19}/></span>
+              </div>
+            </div>
+          </Link>
+        </article>
+        <article className="mt-8 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-white shadow-soft">
+          <Link href={devonArticle.href!} className="group block">
+            <div className="relative aspect-[1448/1086] w-full overflow-hidden bg-[#062f2f]">
+              <Image src="/images/insights/local-lens-devon-cornwall-scilly-card.png" alt="BloomShield Local Lens LL-003: Devon, Cornwall and the Isles of Scilly map, screening gap headline, coastal community members and Local data. Local voices. Local action. branding." fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center " />
+            </div>
+            <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
+              <div>
+                <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 03 · Devon, Cornwall &amp; the Isles of Scilly</p>
+              </div>
+              <div>
+                <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{devonArticle.title}</h3>
+                <p className="mt-5 text-lg leading-8 text-slate-600">{devonArticle.description}</p>
                 <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Read the full article <ArrowRight aria-hidden="true" size={19}/></span>
               </div>
             </div>
