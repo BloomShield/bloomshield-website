@@ -151,6 +151,7 @@ export const insights: InsightRecord[] = [
     "Evaluate"
   ],
   "reflectionQuestion": "If screening inequality is partly about trust, access and local context, should trusted community organisations be treated as part of the screening infrastructure itself?",
+  "linkedinDiscussionUrl": "https://lnkd.in/p/eBvdZCWk",
   "engagementContactLabel": "Share local insight",
   "seoTitle": "Local Lens: Devon, Cornwall & the Isles of Scilly",
   "seoDescription": "Strong overall screening performance can still hide local inequality.",
