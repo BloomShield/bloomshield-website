@@ -30,8 +30,8 @@ const articleMetadata = createInsightMetadata({
 });
 
 const socialPreviewImage = {
-  url: "/images/insights/local-lens-devon-cornwall-scilly-card.png",
-  secureUrl: new URL("/images/insights/local-lens-devon-cornwall-scilly-card.png", SITE_URL).toString(),
+  url: "/images/insights/local-lens-devon-cornwall-scilly-card-v2.png",
+  secureUrl: new URL("/images/insights/local-lens-devon-cornwall-scilly-card-v2.png", SITE_URL).toString(),
   type: "image/png",
   width: 1448,
   height: 1086,
