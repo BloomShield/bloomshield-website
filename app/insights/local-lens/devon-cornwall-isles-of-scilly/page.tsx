@@ -11,7 +11,7 @@ const socialImage = article.socialImage!;
 const socialImageAlt = article.socialImageAlt!;
 const keywords = article.keywords ?? article.tags ?? [];
 
-export const metadata: Metadata = createInsightMetadata({
+const articleMetadata = createInsightMetadata({
   title: article.seoTitle ?? article.title,
   description: article.seoDescription ?? article.description,
   path: canonicalPath,
@@ -28,6 +28,28 @@ export const metadata: Metadata = createInsightMetadata({
   datePublished: article.datePublished ?? article.publishedAtIso,
   dateModified: article.dateModified ?? article.publishedAtIso,
 });
+
+const socialPreviewImage = {
+  url: "/images/insights/local-lens-devon-cornwall-scilly-card.png",
+  secureUrl: new URL("/images/insights/local-lens-devon-cornwall-scilly-card.png", SITE_URL).toString(),
+  type: "image/png",
+  width: 1448,
+  height: 1086,
+  alt: "BloomShield Local Lens: Devon, Cornwall & the Isles of Scilly",
+};
+
+export const metadata: Metadata = {
+  ...articleMetadata,
+  openGraph: {
+    ...articleMetadata.openGraph,
+    images: [socialPreviewImage],
+  },
+  twitter: {
+    ...articleMetadata.twitter,
+    card: "summary_large_image",
+    images: [socialPreviewImage],
+  },
+};
 
 const references = [
   {
