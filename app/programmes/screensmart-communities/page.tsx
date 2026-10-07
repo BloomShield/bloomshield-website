@@ -1,3 +1,4 @@
+import { CurrentScreenSmartCampaign } from "@/components/screensmart-campaign";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
@@ -158,6 +159,8 @@ export default function ScreenSmartCommunities() {
       </div></section>
 
       <section className="section-space"><div className="container-page"><SectionTitle eyebrow="The need" title="Why ScreenSmart Communities™?" /><div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_.9fr]"><div className="space-y-5 text-lg leading-8 text-slate-600"><p>Many cancers can be prevented or treated more successfully when people participate in recommended screening programmes and seek medical advice promptly when symptoms develop. Yet significant inequalities remain.</p><p>Communities affected by socioeconomic disadvantage, cultural barriers, limited health literacy, digital exclusion, rural isolation, mistrust or reduced access to healthcare may experience lower screening participation and poorer cancer outcomes.</p><p>ScreenSmart Communities™ helps bridge those gaps by working with communities rather than simply delivering services to them.</p><p>The programme focuses on trust, informed choice, practical access, culturally responsive communication and clear pathways into appropriate healthcare and follow-up support.</p></div><ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">{["Reduce barriers", "Build trust", "Improve participation", "Support earlier diagnosis", "Strengthen local capacity"].map((item) => <li key={item} className="flex items-center gap-4 rounded-2xl border border-emerald-800/10 bg-emerald-50 p-5 font-bold text-emerald-950"><CheckCircle2 className="shrink-0 text-emerald-700" />{item}</li>)}</ul></div></div></section>
+
+      <CurrentScreenSmartCampaign />
 
       <section className="section-space bg-[#f5faf7]"><div className="container-page"><SectionTitle eyebrow="Programme delivery" title="What We Do" intro="A structured programme that connects education, trusted engagement, practical navigation and learning—without blurring the boundaries of clinical care." /><div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{functions.map(([Icon, title, text]) => <article className="screensmart-card" key={title}><Icon aria-hidden="true" /><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
