@@ -26,15 +26,14 @@ const changes = [
 const sources = [
   { label: "NHS: breast cancer symptoms and breast changes", href: "https://www.nhs.uk/conditions/breast-cancer-in-women/symptoms-of-breast-cancer-in-women/" },
   { label: "NHS: breast screening (mammogram)", href: "https://www.nhs.uk/tests-and-treatments/breast-screening-mammogram/" },
-  { label: "Breast Cancer Now: signs and symptoms — Touch Look Check", href: "https://breastcancernow.org/about-breast-cancer/touch-look-check" },
 ];
 
 export default function TLCCampaignPage() {
   return <>
-    <PageStructuredData name={tlcCampaign.title} description={description} path={tlcCampaign.href} breadcrumb={tlcCampaign.title} parentBreadcrumb={{ name: "Insights", path: "/insights" }} />
+    <PageStructuredData name={tlcCampaign.title} description={description} path={tlcCampaign.href} breadcrumb={tlcCampaign.title} breadcrumbParents={[{ name: "Programmes", path: "/programmes" }, { name: "ScreenSmart Communities™", path: "/programmes/screensmart-communities" }]} />
     <section className="bg-pink-50/60 py-12 sm:py-16">
       <div className="container-page">
-        <nav aria-label="Breadcrumb" className="mb-10 text-sm leading-7 text-teal-800"><ol className="flex flex-wrap gap-x-2"><li><Link href="/" className="underline underline-offset-4">Home</Link><span aria-hidden="true"> /</span></li><li><Link href="/insights" className="underline underline-offset-4">Insights</Link><span aria-hidden="true"> /</span></li><li><span>Campaigns</span><span aria-hidden="true"> /</span></li><li aria-current="page">{tlcCampaign.title}</li></ol></nav>
+        <nav aria-label="Breadcrumb" className="mb-10 text-sm leading-7 text-teal-800"><ol className="flex flex-wrap gap-x-2"><li><Link href="/" className="underline underline-offset-4">Home</Link><span aria-hidden="true"> /</span></li><li><Link href="/programmes" className="underline underline-offset-4">Programmes</Link><span aria-hidden="true"> /</span></li><li><Link href="/programmes/screensmart-communities" className="underline underline-offset-4">ScreenSmart Communities™</Link><span aria-hidden="true"> /</span></li><li aria-current="page">{tlcCampaign.title}</li></ol></nav>
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div><p className="eyebrow">ScreenSmart Campaign</p><h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-teal-950 sm:text-5xl">{tlcCampaign.title}</h1><p className="lead mt-6">Small changes can matter. Getting to know what is normal for your breasts can make it easier to notice when something changes.</p><p className="mt-6 font-semibold text-pink-800">TLC today for a healthier tomorrow.</p></div>
           <CampaignArtwork permanent priority />

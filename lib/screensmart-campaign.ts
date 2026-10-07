@@ -23,7 +23,7 @@ export const tlcCampaign = {
   imageWidth: 1254,
   imageHeight: 1254,
   imageAlt: "BloomShield TLC breast awareness campaign: Touch, Look, Check.",
-  href: "/insights/campaigns/tlc-breast-awareness",
+  href: "/programmes/screensmart-communities/tlc-breast-awareness",
   cta: "Explore the TLC campaign →",
   accent: "pink",
 } satisfies FeaturedCampaign;

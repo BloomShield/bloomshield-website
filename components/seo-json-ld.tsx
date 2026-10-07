@@ -34,6 +34,7 @@ type PageStructuredDataProps = {
   path: `/${string}` | "/";
   breadcrumb?: string;
   parentBreadcrumb?: { name: string; path: `/${string}` };
+  breadcrumbParents?: { name: string; path: `/${string}` }[];
   kind?: PageKind;
   medicalAbout?: { type: "MedicalCondition" | "MedicalTest"; name: string }[];
 };
@@ -278,6 +279,7 @@ export function PageStructuredData({
   path,
   breadcrumb,
   parentBreadcrumb,
+  breadcrumbParents,
   kind = "default",
   medicalAbout,
 }: PageStructuredDataProps) {
@@ -328,22 +330,14 @@ export function PageStructuredData({
 
   if (breadcrumb) {
     const isProgrammeDetail = kind === "screensmart" || kind === "screenaccess" || kind === "screenconnect";
+    const parents = breadcrumbParents ?? (parentBreadcrumb ? [parentBreadcrumb] : isProgrammeDetail ? [{ name: "Programmes", path: "/programmes" }] : []);
     graph.push({
       "@type": "BreadcrumbList",
       "@id": breadcrumbId,
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        ...(parentBreadcrumb
-          ? [
-              { "@type": "ListItem", position: 2, name: parentBreadcrumb.name, item: `${SITE_URL}${parentBreadcrumb.path}` },
-              { "@type": "ListItem", position: 3, name: breadcrumb, item: url },
-            ]
-          : isProgrammeDetail
-          ? [
-              { "@type": "ListItem", position: 2, name: "Programmes", item: `${SITE_URL}/programmes` },
-              { "@type": "ListItem", position: 3, name: breadcrumb, item: url },
-            ]
-          : [{ "@type": "ListItem", position: 2, name: breadcrumb, item: url }]),
+        ...parents.map((parent, index) => ({ "@type": "ListItem", position: index + 2, name: parent.name, item: `${SITE_URL}${parent.path}` })),
+        { "@type": "ListItem", position: parents.length + 2, name: breadcrumb, item: url },
       ],
     });
   }
