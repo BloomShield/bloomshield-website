@@ -3,6 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  async redirects() {
+    return [{
+      source: "/insights/campaigns/tlc-breast-awareness",
+      destination: "/programmes/screensmart-communities/tlc-breast-awareness",
+      permanent: true,
+    }];
+  },
   webpack(config, { dev }) {
     if (!dev) config.cache = false;
     return config;

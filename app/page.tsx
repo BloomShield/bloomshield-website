@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BrainCircuit, Globe2, GraduationCap, HandHeart, HeartHandshake, Hospital, Lightbulb, Microscope, Network, ShieldCheck, Users, UsersRound } from "lucide-react";
 import { CTA } from "@/components/cta";
-import { HomeEmblem } from "@/components/home-emblem";
+import { CampaignArtwork, CampaignSpotlight } from "@/components/screensmart-campaign";
 import { SectionHeading } from "@/components/section-heading";
 import { PageStructuredData } from "@/components/seo-json-ld";
 import { createMetadata, HOME_DESCRIPTION } from "@/lib/seo";
@@ -37,9 +37,10 @@ export default function Home() {
       <div aria-hidden="true" className="absolute right-[-8rem] top-[-9rem] hidden h-[32rem] w-[32rem] rounded-full border-[80px] border-white/60 lg:block"/>
       <div className="container-page grid min-h-[720px] items-center gap-12 py-20 lg:grid-cols-[1.08fr_.92fr]">
         <div><p className="eyebrow">Cancer prevention, powered by communities</p><h1 className="display max-w-3xl">Protect lives.<br/>Prevent cancer.<br/><span className="text-teal-600">Empower communities.</span></h1><p className="lead mt-7 max-w-xl">BloomShield combines community insight, implementation science and evidence-informed partnerships to advance equitable cancer prevention across diverse communities and health systems.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/programmes" className="button-primary">Explore our programmes <ArrowRight size={17}/></Link><Link href="/partnerships" className="button-secondary">Partner with us</Link></div></div>
-        <HomeEmblem />
+        <div className="relative"><CampaignArtwork priority /></div>
       </div>
     </section>
+    <CampaignSpotlight />
     <section aria-label="BloomShield experience and partnerships" className="border-y border-teal-900/10 bg-white">
       <div className="container-page grid md:grid-cols-3">
         {proofPoints.map(({ icon: Icon, title, text }, index) => (
