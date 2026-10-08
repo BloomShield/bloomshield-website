@@ -1,5 +1,6 @@
 import { hubGroups } from "@/app/cancer-prevention-screening/content";
 import { insights } from "@/lib/insights";
+import { tlcCampaign } from "@/lib/screensmart-campaign";
 
 export type SearchResultType = "Insight" | "Programme" | "Page" | "Research & Innovation" | "Screening Guide";
 
@@ -17,6 +18,7 @@ const corePages: SiteSearchEntry[] = [
   { title: "About", href: "/about", type: "Page", description: "Learn about BloomShield, our purpose and approach.", terms: ["about bloomshield", "organisation"] },
   { title: "Programmes", href: "/programmes", type: "Programme", description: "BloomShield programmes for equitable cancer screening and prevention.", terms: ["programme", "community screening"] },
   { title: "ScreenSmart Communities™", href: "/programmes/screensmart-communities", type: "Programme", description: "Community-led support to increase cancer screening participation.", terms: ["screensmart", "screen smart", "community navigation", "community screening"] },
+  { title: tlcCampaign.title, href: tlcCampaign.href, type: "Programme", group: "ScreenSmart Campaign", description: "BloomShield's ScreenSmart breast-awareness campaign helping people get to know what is normal, notice breast changes and seek appropriate medical advice.", terms: ["TLC", "Touch Look Check", "Touch. Look. Check.", "breast awareness", "breast cancer awareness", "breast changes", "ScreenSmart", "ScreenSmart campaign", "breast screening awareness"] },
   { title: "ScreenAccess™", href: "/programmes/screenaccess", type: "Programme", description: "Helping people overcome barriers to cancer screening.", terms: ["screen access", "screening access", "health inequalities"] },
   { title: "ScreenConnect™", href: "/programmes/screenconnect", type: "Programme", description: "Connecting partners to strengthen cancer screening pathways.", terms: ["screen connect", "partnerships", "cancer pathways"] },
   { title: "Consultancy", href: "/consultancy", type: "Page", description: "Practical support for equitable cancer prevention, screening and service improvement.", terms: ["consulting", "implementation science", "service improvement"] },
