@@ -63,7 +63,7 @@ export default function Research() {
             </div>
           </div>
           <article className="mt-6 rounded-[2rem] border border-teal-900/10 bg-white p-8 shadow-soft sm:p-10">
-            <p className="text-xs font-bold uppercase tracking-[.15em] text-teal-800">Active development · Synthetic research demonstrator</p>
+            <p className="relative isolate w-fit text-xs font-bold uppercase tracking-[.15em] text-[#2946a2] before:absolute before:-inset-x-3 before:-inset-y-1.5 before:-z-10 before:rounded-2xl before:border before:border-[#3858c7]/25 before:bg-[#edf0ff] sm:before:rounded-full">Active development · Synthetic research demonstrator</p>
             <h2 className="mt-5 font-display text-2xl font-semibold sm:text-3xl">ScreenConnect™ Digital</h2>
             <p className="mt-5 max-w-3xl leading-7 text-slate-600">A multi-pathway, person-centred longitudinal research demonstrator for exploring how people move through screening, diagnostic and navigation pathways over time.</p>
             <ul aria-label="Research themes" className="mt-6 flex flex-wrap gap-2">
@@ -72,7 +72,7 @@ export default function Research() {
             <Link href="/research/screenconnect" className="button-primary mt-7">Explore ScreenConnect <ArrowRight aria-hidden="true" size={17} /></Link>
           </article>
           <article className="mt-6 rounded-[2rem] border border-teal-900/10 bg-white p-8 shadow-soft sm:p-10">
-            <p className="text-xs font-bold uppercase tracking-[.15em] text-teal-800">ACTIVE DEVELOPMENT · INTELLIGENT SCREENING REGISTRY DEMONSTRATOR</p>
+            <p className="relative isolate w-fit text-xs font-bold uppercase tracking-[.15em] text-gold-500 before:absolute before:-inset-x-3 before:-inset-y-1.5 before:-z-10 before:rounded-2xl before:border before:border-gold-400/60 before:bg-[#fff7e6] sm:before:rounded-full">ACTIVE DEVELOPMENT · INTELLIGENT SCREENING REGISTRY DEMONSTRATOR</p>
             <h2 className="mt-5 font-display text-2xl font-semibold sm:text-3xl">ACCEPT SIMS™</h2>
             <p className="mt-5 max-w-3xl leading-7 text-slate-600">An AI-enabled cervical cancer screening and navigation demonstrator exploring how screening events, referral completion, follow-up and pathway outcomes can be structured into an operational screening registry.</p>
             <ul aria-label="Research themes" className="mt-6 flex flex-wrap gap-2">
