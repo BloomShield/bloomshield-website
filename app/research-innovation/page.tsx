@@ -71,6 +71,15 @@ export default function Research() {
             </ul>
             <Link href="/research/screenconnect" className="button-primary mt-7">Explore ScreenConnect <ArrowRight aria-hidden="true" size={17} /></Link>
           </article>
+          <article className="mt-6 rounded-[2rem] border border-teal-900/10 bg-white p-8 shadow-soft sm:p-10">
+            <p className="text-xs font-bold uppercase tracking-[.15em] text-teal-800">ACTIVE DEVELOPMENT · INTELLIGENT SCREENING REGISTRY DEMONSTRATOR</p>
+            <h2 className="mt-5 font-display text-2xl font-semibold sm:text-3xl">ACCEPT SIMS™</h2>
+            <p className="mt-5 max-w-3xl leading-7 text-slate-600">An AI-enabled cervical cancer screening and navigation demonstrator exploring how screening events, referral completion, follow-up and pathway outcomes can be structured into an operational screening registry.</p>
+            <ul aria-label="Research themes" className="mt-6 flex flex-wrap gap-2">
+              {["Cervical cancer screening", "Operational screening registry", "Navigation intelligence"].map((tag) => <li key={tag} className="rounded-full bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-800">{tag}</li>)}
+            </ul>
+            <Link href="/research/accept" className="button-primary mt-7">Explore ACCEPT SIMS <ArrowRight aria-hidden="true" size={17} /></Link>
+          </article>
         </div>
       </section>
 
