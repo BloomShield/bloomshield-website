@@ -49,7 +49,8 @@ export default function Research() {
 
       <section className="section-space bg-[#eef9f6]">
         <div className="container-page">
-          <div className="grid overflow-hidden rounded-[2rem] border border-teal-900/10 bg-white shadow-soft lg:grid-cols-[.72fr_1.28fr]">
+          <SectionHeading eyebrow="Active research" title="A growing portfolio of applied research." intro="Explore the studies and demonstrators shaping our research in community capacity, digital health and person-centred pathways." />
+          <div className="mt-10 grid overflow-hidden rounded-[2rem] border border-teal-900/10 bg-white shadow-soft lg:grid-cols-[.72fr_1.28fr]">
             <div className="bg-[#0c4038] p-8 text-white sm:p-10">
               <p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-300">Active research project</p>
               <p className="mt-6 font-display text-3xl font-semibold leading-tight">Help shape what comes next.</p>
@@ -61,6 +62,15 @@ export default function Research() {
               <Link href="/research/vcse-digital-capacity-study" className="mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-teal-700 px-6 py-3 text-sm font-bold text-white transition hover:bg-teal-800">Explore the study <ArrowRight aria-hidden="true" size={17} /></Link>
             </div>
           </div>
+          <article className="mt-6 rounded-[2rem] border border-teal-900/10 bg-white p-8 shadow-soft sm:p-10">
+            <p className="text-xs font-bold uppercase tracking-[.15em] text-teal-800">Active development · Synthetic research demonstrator</p>
+            <h2 className="mt-5 font-display text-2xl font-semibold sm:text-3xl">ScreenConnect™ Digital</h2>
+            <p className="mt-5 max-w-3xl leading-7 text-slate-600">A multi-pathway, person-centred longitudinal research demonstrator for exploring how people move through screening, diagnostic and navigation pathways over time.</p>
+            <ul aria-label="Research themes" className="mt-6 flex flex-wrap gap-2">
+              {["Digital health", "Implementation science", "Longitudinal pathway research"].map((tag) => <li key={tag} className="rounded-full bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-800">{tag}</li>)}
+            </ul>
+            <Link href="/research/screenconnect" className="button-primary mt-7">Explore ScreenConnect <ArrowRight aria-hidden="true" size={17} /></Link>
+          </article>
         </div>
       </section>
 
