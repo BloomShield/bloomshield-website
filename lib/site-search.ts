@@ -14,6 +14,8 @@ export type SiteSearchEntry = {
 };
 
 const corePages: SiteSearchEntry[] = [
+  { title: "ACCEPT SIMS™", href: "/research/accept", type: "Research & Innovation", description: "Synthetic cervical cancer screening registry and navigation research demonstrator. Not for clinical use.", terms: ["accept", "accept sims", "screening registry", "intelligent screening registry", "cervical cancer", "cervical screening", "navigation intelligence", "AI screening", "screening demonstrator"] },
+  { title: "ScreenConnect™ Digital", href: "/research/screenconnect", type: "Research & Innovation", description: "A synthetic, person-centred longitudinal research demonstrator exploring screening, diagnostic and navigation pathways.", terms: ["screenconnect", "screen connect", "digital navigation", "navigation", "longitudinal research", "pathway research", "research demonstrator"] },
   { title: "Home", href: "/", type: "Page", description: "BloomShield CIC: equitable cancer prevention, screening and community health.", terms: ["cancer prevention", "community health"] },
   { title: "About", href: "/about", type: "Page", description: "Learn about BloomShield, our purpose and approach.", terms: ["about bloomshield", "organisation"] },
   { title: "Programmes", href: "/programmes", type: "Programme", description: "BloomShield programmes for equitable cancer screening and prevention.", terms: ["programme", "community screening"] },
