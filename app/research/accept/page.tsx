@@ -8,8 +8,8 @@ import { createMetadata } from "@/lib/seo";
 const path = "/research/accept";
 const demonstrator = "https://accept-sims.bloomshield.org";
 const description = "A synthetic cervical screening registry and navigation research demonstrator exploring screening-to-resolution pathways, stakeholder co-design and future AI evaluation.";
-const artworkAlt = "ACCEPT SIMS™ stakeholder demonstrator by BloomShield CIC — synthetic data only, not for clinical use.";
-export const metadata = createMetadata({ title: "ACCEPT SIMS™", description, path, socialImage: { url: "/images/accept-sims-stakeholder-banner.png", width: 1731, height: 909, alt: artworkAlt, type: "image/png" } });
+const artworkAlt = "ACCEPT SIMS Intelligent Screening Registry Demonstrator banner by BloomShield CIC — synthetic data only, not for clinical use.";
+export const metadata = createMetadata({ title: "ACCEPT SIMS™", description, path, socialImage: { url: "/images/accept-sims-registry-banner.png", width: 1774, height: 887, alt: artworkAlt, type: "image/png" } });
 
 const questions = ["Was an abnormal result communicated?", "Was a referral made?", "Did the participant reach the next stage of care?", "Where did the pathway stall?", "What prevented completion?", "Was the pathway eventually resolved?", "Could future programme support help safely re-engage unresolved cases?"];
 const registryQuestions = ["What happens after screening", "Where pathways break down", "Why follow-up is incomplete", "Which groups remain unresolved", "How programme interventions change outcomes over time"];
@@ -49,7 +49,7 @@ export default function AcceptResearchPage() {
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-200">A research-facing demonstrator exploring how cervical screening programmes can connect screening events, referral completion, follow-up, pathway outcomes and future AI evaluation within a longitudinal operational registry.</p>
         <p className="mt-6 inline-block rounded-2xl border border-emerald-300/40 bg-white/5 px-4 py-3 text-sm font-semibold text-emerald-200">Synthetic research demonstrator · Not for clinical use</p>
         <CollaborationButtons hero />
-        <a href={demonstrator} className="mt-10 block rounded-3xl"><Image src="/images/accept-sims-stakeholder-banner.png" alt={artworkAlt} width={1731} height={909} priority sizes="(min-width: 1240px) 1144px, 100vw" className="h-auto w-full rounded-3xl border border-white/15 shadow-soft" /></a>
+        <a href={demonstrator} className="mt-10 block rounded-3xl"><Image src="/images/accept-sims-registry-banner.png" alt={artworkAlt} width={1774} height={887} priority sizes="(min-width: 1240px) 1144px, 100vw" className="h-auto w-full rounded-3xl border border-white/15 shadow-soft" /></a>
         <a href={demonstrator} className="mt-5 inline-block font-semibold leading-7 text-emerald-300 underline underline-offset-4">Explore the live ACCEPT SIMS™ stakeholder demonstrator →</a>
       </div>
     </section>
