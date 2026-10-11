@@ -14,6 +14,7 @@ export type InsightAuthor = {
 export type InsightRecord = {
   slug: string;
   collection?: string;
+  seriesPosition?: number;
   href?: `/insights/${string}`;
   title: string;
   shortTitle?: string;
@@ -112,6 +113,43 @@ export const partnershipPlaybook = {
 
 export const insights: InsightRecord[] = [
 {
+  "slug": "breast-screening-gaps-what-are-we-actually-seeing",
+  "href": "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing",
+  "title": "Breast Screening Gaps: What Are We Actually Seeing?",
+  "area": "Series & Collections",
+  "collection": "Breast Cancer Awareness Month",
+  "seriesPosition": 2,
+  "crossTags": [
+    "Breast Screening",
+    "Health Inequalities"
+  ],
+  "status": "published",
+  "description": "From Medway and Kent to Liverpool and the South West, BloomShield Local Lens is beginning to reveal different kinds of breast screening inequality. The next question is not simply whether gaps exist — but what they are, why they occur, and how widespread they really are.",
+  "image": "/images/insights/breast-screening-gaps-card.png",
+  "imageAlt": "BloomShield Breast Cancer Awareness Month Part 2: Breast Screening Gaps, featuring three women outside an NHS building and the screening pathway.",
+  "publishedAt": "11 October 2026",
+  "publishedAtIso": "2026-10-11",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Breast Cancer Awareness Month",
+    "Breast Screening",
+    "Health Inequalities",
+    "Local Lens",
+    "NHS"
+  ],
+  "canonicalUrl": "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing",
+  "socialImage": "/images/insights/breast-screening-gaps-card.png",
+  "socialImageAlt": "Breast Screening Gaps: What Are We Actually Seeing? — Part 2 of 3.",
+  "socialImageWidth": 1448,
+  "socialImageHeight": 1086,
+  "socialImageType": "image/png",
+  "seoDescription": "BloomShield examines emerging breast screening gaps across Medway and Kent, Liverpool, and Devon, Cornwall and the Isles of Scilly — asking what the gaps are, why they occur and where people may be lost along the screening journey.",
+  "datePublished": "2026-10-11",
+  "dateModified": "2026-10-11"
+},
+{
   "slug": "devon-cornwall-isles-of-scilly",
   "href": "/insights/local-lens/devon-cornwall-isles-of-scilly",
   "title": "Local Lens: Devon, Cornwall & the Isles of Scilly",
@@ -181,6 +219,7 @@ export const insights: InsightRecord[] = [
 },
 {
   "slug": "before-we-talk-about-the-gaps",
+  "seriesPosition": 1,
   "linkedinDiscussionUrl": "https://www.linkedin.com/pulse/before-we-talk-gaps-dr-femi-olaleye-mb-chb-mba-z2xre",
   "href": "/insights/series-collections/before-we-talk-about-the-gaps",
   "title": "Before We Talk About the Gaps",

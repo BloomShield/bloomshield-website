@@ -14,6 +14,7 @@ type InsightArticleProps = {
   articleSlug: string;
   date: string;
   dateIso: string;
+  readTime?: string;
   authors: InsightAuthor[];
   publisher: string;
   standfirst: string;
@@ -42,7 +43,7 @@ type InsightArticleProps = {
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, subtitle, articleSlug, date, dateIso, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, linkedinBeforeContact = false, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, subtitle, articleSlug, date, dateIso, readTime, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, linkedinBeforeContact = false, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -57,6 +58,7 @@ export function InsightArticle({ category, crossTag, title, subtitle, articleSlu
             <p className="text-lg text-slate-700">By <strong className="text-ink">{authors.map(author => author.name).join(" & ")}</strong></p>
             {authors.map(author => <p key={author.id} className="mt-2 text-sm italic leading-6 text-slate-600">{[author.credentials, author.affiliation].filter(Boolean).join(" | ")}</p>)}
             <time dateTime={dateIso} className="mt-3 block text-sm italic text-slate-600">{date}</time>
+            {readTime ? <p className="mt-3 text-sm text-slate-600">{readTime}</p> : null}
             <p className="mt-4 text-xs font-bold uppercase tracking-[.14em] text-teal-700">Published by {publisher}</p>
           </div>
         </div>
