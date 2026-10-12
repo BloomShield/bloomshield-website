@@ -114,6 +114,7 @@ export const partnershipPlaybook = {
 export const insights: InsightRecord[] = [
 {
   "slug": "west-london",
+  "linkedinDiscussionUrl": "https://lnkd.in/p/eUEwNyhr",
   "href": "/insights/local-lens/west-london",
   "title": "Local Lens: West London",
   "shortTitle": "World-class cancer services are near you — why do women still miss out?",

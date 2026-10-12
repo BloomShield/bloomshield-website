@@ -129,6 +129,11 @@ export default function WestLondonLocalLensPage() {
       ccpeLens={article.ccpeLens}
       tags={article.tags}
       reflectionQuestion={article.reflectionQuestion}
+      linkedinDiscussionUrl={article.linkedinDiscussionUrl}
+      linkedinDiscussionTitle="Continue the Local Lens conversation"
+      linkedinDiscussionDescription="Join the discussion about screening access and participation in West London."
+      linkedinDiscussionLinkLabel="Join the discussion on LinkedIn →"
+      linkedinBeforeContact
       engagementContactLabel={article.engagementContactLabel}
       interactionsAfterManuscript
       references={references}
