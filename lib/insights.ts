@@ -93,7 +93,7 @@ export const localLensSeries = {
   image: "/images/insights/local-lens-medway-card.png" as const,
   imageAlt: "BloomShield Local Lens Medway and Kent edition: cancer screening statistics for breast, bowel and cervical screening alongside a Medway and Kent map and local community scene.",
   seoTitle: "BloomShield Local Lens | Local Cancer Data and Health Equity",
-  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action through editions on cancer screening in Medway and Kent, Liverpool, and Devon, Cornwall and the Isles of Scilly.",
+  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action through editions on cancer screening in Medway and Kent, Liverpool, Devon, Cornwall and the Isles of Scilly, and West London.",
   canonicalUrl: "/insights/local-lens",
   socialImage: "/images/insights/local-lens-medway-card.png",
   socialImageAlt: "BloomShield Local Lens Medway and Kent edition exploring what local cancer screening data tells us.",
@@ -112,6 +112,61 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+{
+  "slug": "west-london",
+  "href": "/insights/local-lens/west-london",
+  "title": "Local Lens: West London",
+  "shortTitle": "World-class cancer services are near you — why do women still miss out?",
+  "area": "Local Lens",
+  "crossTags": [
+    "Cancer Screening",
+    "Health Inequalities",
+    "Early Diagnosis"
+  ],
+  "status": "published",
+  "description": "West London combines world-class cancer infrastructure with some of the lowest breast screening participation in England. The question is not simply whether services exist — but whether proximity is converting into participation.",
+  "image": "/images/insights/local-lens-west-london-hero.png",
+  "imageAlt": "BloomShield Local Lens LL-004: West London, women outside Chelsea and Westminster Hospital, and breast screening coverage comparisons for England, London and Kensington and Chelsea.",
+  "publishedAt": "12 October 2026",
+  "publishedAtIso": "2026-10-12",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Local Lens",
+    "West London",
+    "Cancer Screening",
+    "Breast Screening",
+    "Health Inequalities",
+    "Early Diagnosis"
+  ],
+  "ccpeLens": [
+    "Understand",
+    "Validate",
+    "Implement",
+    "Evaluate"
+  ],
+  "engagementContactLabel": "Share local insight",
+  "seoTitle": "Local Lens: West London",
+  "seoDescription": "BloomShield Local Lens examines why West London can combine world-class cancer services with some of the lowest breast screening participation in England — and what may be getting in the way.",
+  "canonicalUrl": "/insights/local-lens/west-london",
+  "socialImage": "/images/insights/local-lens-west-london-card.png",
+  "socialImageAlt": "BloomShield Local Lens LL-004: West London — world-class cancer services are near you; why do women still miss out?",
+  "socialImageWidth": 1448,
+  "socialImageHeight": 1086,
+  "socialImageType": "image/png",
+  "keywords": [
+    "Local Lens",
+    "West London",
+    "Breast Screening",
+    "Cancer Screening",
+    "Health Inequalities",
+    "RM Partners",
+    "Screening Access"
+  ],
+  "datePublished": "2026-10-12",
+  "dateModified": "2026-10-12"
+},
 {
   "slug": "breast-screening-gaps-what-are-we-actually-seeing",
   "href": "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing",
