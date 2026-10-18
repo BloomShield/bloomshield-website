@@ -30,7 +30,26 @@ const articleMetadata = createInsightMetadata({
   dateModified: article.dateModified ?? article.publishedAtIso,
 });
 
-export const metadata: Metadata = articleMetadata;
+const socialPreviewImage = {
+  url: "/images/insights/local-lens-greater-manchester-card-v2.png",
+  width: article.socialImageWidth!,
+  height: article.socialImageHeight!,
+  alt: socialImageAlt,
+  type: "image/png",
+};
+
+export const metadata: Metadata = {
+  ...articleMetadata,
+  openGraph: {
+    ...articleMetadata.openGraph,
+    images: [socialPreviewImage],
+  },
+  twitter: {
+    ...articleMetadata.twitter,
+    card: "summary_large_image",
+    images: [socialPreviewImage],
+  },
+};
 
 const references = [
 {"label":"Greater Manchester Cancer Board: Cancer Alliance funding, January 2023","href":"https://gmcancer.org.uk/wp-content/uploads/2023/07/GM-Cancer-Board-Pack-January-2023.pdf#page=70","source":"Greater Manchester Cancer Board · Cancer Alliance Allocation 2023–24/2024–25, pp. 70–72: £13,607,311 for 2023/24 and £13,582,543 for 2024/25 in place-based service development funding, alongside separately funded targeted programmes."},
