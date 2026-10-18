@@ -93,7 +93,7 @@ export const localLensSeries = {
   image: "/images/insights/local-lens-medway-card.png" as const,
   imageAlt: "BloomShield Local Lens Medway and Kent edition: cancer screening statistics for breast, bowel and cervical screening alongside a Medway and Kent map and local community scene.",
   seoTitle: "BloomShield Local Lens | Local Cancer Data and Health Equity",
-  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action through editions on cancer screening in Medway and Kent, Liverpool, Devon, Cornwall and the Isles of Scilly, and West London.",
+  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action through editions on cancer screening in Medway and Kent, Liverpool, Devon, Cornwall and the Isles of Scilly, West London, and Greater Manchester.",
   canonicalUrl: "/insights/local-lens",
   socialImage: "/images/insights/local-lens-medway-card.png",
   socialImageAlt: "BloomShield Local Lens Medway and Kent edition exploring what local cancer screening data tells us.",
@@ -112,6 +112,58 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+{
+  "slug": "greater-manchester",
+  "href": "/insights/local-lens/greater-manchester",
+  "title": "Local Lens: Greater Manchester",
+  "shortTitle": "What happens when the screening pathway adapts to the person?",
+  "area": "Local Lens",
+  "crossTags": [
+    "Cancer Screening",
+    "Health Inequalities",
+    "Early Diagnosis"
+  ],
+  "status": "published",
+  "description": "Greater Manchester is showing that screening inequalities are not fixed — and that targeted, personalised support can change participation and pathway outcomes.",
+  "image": "/images/insights/local-lens-greater-manchester-hero.png",
+  "imageAlt": "BloomShield Local Lens LL-005: Greater Manchester, community screening support and selected breast, bowel and lung screening programme outcomes.",
+  "publishedAt": "18 October 2026",
+  "publishedAtIso": "2026-10-18",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Local Lens",
+    "Greater Manchester",
+    "Cancer Screening",
+    "Health Inequalities",
+    "Early Diagnosis"
+  ],
+  "ccpeLens": [
+    "Understand",
+    "Validate",
+    "Implement",
+    "Evaluate"
+  ],
+  "engagementContactLabel": "Share local insight",
+  "seoTitle": "Local Lens: Greater Manchester",
+  "seoDescription": "BloomShield Local Lens examines how Greater Manchester is using targeted screening, community support and pathway adaptation to reduce cancer inequalities — and what happens when the pathway adapts to the person.",
+  "canonicalUrl": "/insights/local-lens/greater-manchester",
+  "socialImage": "/images/insights/local-lens-greater-manchester-card.png",
+  "socialImageAlt": "BloomShield Local Lens LL-005: Greater Manchester — what happens when the screening pathway adapts to the person?",
+  "socialImageWidth": 1672,
+  "socialImageHeight": 941,
+  "socialImageType": "image/png",
+  "keywords": [
+    "Local Lens",
+    "Greater Manchester",
+    "Cancer Screening",
+    "Health Inequalities",
+    "Pathway Adaptation"
+  ],
+  "datePublished": "2026-10-18",
+  "dateModified": "2026-10-18"
+},
 {
   "slug": "west-london",
   "linkedinDiscussionUrl": "https://lnkd.in/p/eUEwNyhr",

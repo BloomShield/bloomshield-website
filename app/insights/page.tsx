@@ -35,6 +35,7 @@ export default function InsightsPage() {
   const australiaArticle = insights.find(item => item.slug === "australia-world-eliminating-cervical-cancer")!;
   const conversationArticle = insights.find(item => item.slug === "from-diagnostics-to-access-africa")!;
   const localLensArticle = insights.find(item => item.slug === "medway-kent")!;
+  const greaterManchesterArticle = insights.find(item => item.slug === "greater-manchester")!;
   const westLondonArticle = insights.find(item => item.slug === "west-london")!;
   const devonArticle = insights.find(item => item.slug === "devon-cornwall-isles-of-scilly")!;
   const liverpoolArticle = insights.find(item => item.slug === "liverpool")!;
@@ -42,7 +43,7 @@ export default function InsightsPage() {
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: "Breast Screening Gaps: What Are We Actually Seeing?", url: "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing" }, { name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: westLondonArticle.title, url: westLondonArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: "Breast Screening Gaps: What Are We Actually Seeing?", url: "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing" }, { name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: westLondonArticle.title, url: westLondonArticle.href! }, { name: greaterManchesterArticle.title, url: greaterManchesterArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
@@ -136,6 +137,15 @@ export default function InsightsPage() {
             <div className="relative aspect-[1448/1086] w-full overflow-hidden bg-[#062f2f]"><Image src="/images/insights/local-lens-west-london-card.png" alt="BloomShield Local Lens LL-004: West London edition, local women and breast screening coverage comparisons." fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center " /></div>
             <div className="grid gap-6 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <div><p className="text-xs font-extrabold uppercase tracking-[.18em] text-teal-700">Edition 04 · West London</p><h3 className="mt-4 max-w-3xl font-display text-3xl font-semibold leading-tight sm:text-4xl">{westLondonArticle.title}</h3><p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{westLondonArticle.description}</p></div>
+              <span className="inline-flex items-center gap-2 font-bold text-teal-700">Read Local Lens <ArrowRight aria-hidden="true" size={19}/></span>
+            </div>
+          </Link>
+        </article>
+        <article className="mt-8 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-[#f7f5ef] shadow-soft">
+          <Link href={greaterManchesterArticle.href!} className="group block">
+            <div className="relative aspect-[1672/941] w-full overflow-hidden bg-[#062f2f]"><Image src="/images/insights/local-lens-greater-manchester-card.png" alt="BloomShield Local Lens LL-005: Greater Manchester edition, community support and screening programme outcomes." fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center " /></div>
+            <div className="grid gap-6 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div><p className="text-xs font-extrabold uppercase tracking-[.18em] text-teal-700">Edition 05 · Greater Manchester</p><h3 className="mt-4 max-w-3xl font-display text-3xl font-semibold leading-tight sm:text-4xl">{greaterManchesterArticle.title}</h3><p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{greaterManchesterArticle.description}</p></div>
               <span className="inline-flex items-center gap-2 font-bold text-teal-700">Read Local Lens <ArrowRight aria-hidden="true" size={19}/></span>
             </div>
           </Link>
