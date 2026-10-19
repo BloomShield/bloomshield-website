@@ -114,6 +114,7 @@ export const partnershipPlaybook = {
 export const insights: InsightRecord[] = [
 {
   "slug": "greater-manchester",
+  "linkedinDiscussionUrl": "https://lnkd.in/p/ec3UaHcY",
   "href": "/insights/local-lens/greater-manchester",
   "title": "Local Lens: Greater Manchester",
   "shortTitle": "What happens when the screening pathway adapts to the person?",
