@@ -147,9 +147,10 @@ export default function GreaterManchesterLocalLensPage() {
       tags={article.tags}
       reflectionQuestion={article.reflectionQuestion}
       linkedinDiscussionUrl={article.linkedinDiscussionUrl}
-      linkedinDiscussionTitle="Continue the Local Lens conversation"
-      linkedinDiscussionDescription="Join the discussion about screening access and participation in Greater Manchester."
+      linkedinDiscussionTitle="Join the discussion on LinkedIn"
+      linkedinDiscussionDescription="Continue the Local Lens conversation on screening access and participation in Greater Manchester."
       linkedinDiscussionLinkLabel="Join the discussion on LinkedIn →"
+      linkedinDiscussionCard
       linkedinBeforeContact
       engagementContactLabel={article.engagementContactLabel}
       interactionsAfterManuscript
