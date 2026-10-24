@@ -194,12 +194,12 @@ test('commercial page, pre-declaration explanation and signed UK offer agree', (
  const previous=process.env.VCSE_EOI_OPEN;process.env.VCSE_EOI_OPEN='false';
  let html;try {html=renderToStaticMarkup(React.createElement(Page));}finally{process.env.VCSE_EOI_OPEN=previous;}
  const presentation=signing.createPresentation('uk_early_adopter');
- assert.equal(presentation.offerVersion,'vcse-uk-2026-10-24-v2');
+ assert.equal(presentation.offerVersion,'vcse-uk-2026-10-24-v3');
  assert.equal(presentation.declarationSetVersion,'vcse-declarations-2026-10-24-v2');
  const signed=JSON.parse(Buffer.from(presentation.token.split('.')[0],'base64url').toString('utf8'));
  assert.equal(signed.offerVersion,presentation.offerVersion);assert.equal(signed.declarationSetVersion,presentation.declarationSetVersion);
  for(const [price,label] of definitions.ukCommercial.cards) {assert.ok(html.includes(price));assert.ok(html.includes(label));assert.ok(presentation.offerSummary.includes(price));assert.ok(presentation.offerSummary.toLowerCase().includes(label.toLowerCase()));}
- for(const text of [definitions.ukCommercial.discoveryExplanation,definitions.ukCommercial.postDiscoveryExplanation,definitions.ukCommercial.paymentBoundary,...definitions.ukCommercial.paymentOptions,definitions.ukCommercial.infrastructureExplanation,...definitions.ukCommercial.eoiExplanation]) assert.ok(html.includes(text),text);
+ for(const text of [definitions.ukCommercial.discoveryExplanation,definitions.ukCommercial.postDiscoveryExplanation,definitions.ukCommercial.paymentBoundary,...definitions.ukCommercial.paymentOptions,definitions.ukCommercial.infrastructureExplanation,...definitions.ukCommercial.eoiExplanation]) assert.ok(html.replaceAll("&#x27;", "'").includes(text),text);
  const boundary=html.indexOf('id="eoi-boundary"');const checks=html.indexOf('name="selectionAcknowledged"');assert.ok(boundary>=0 && boundary<checks);
  assert.match(html,/<fieldset disabled=""/);assert.equal((html.match(/name="(?:selectionAcknowledged|purchaseBoundaryAcknowledged|privacyAcknowledged)"/g)||[]).length,3);
  assert.doesNotMatch(html,/type="checkbox"[^>]*checked=""/);
@@ -226,4 +226,35 @@ test('released versions and international offer remain intact; superseded UK pre
  await db.query('INSERT INTO vcse_eoi(id,fingerprint,payload,privacy_version,country,enquiry_route,declaration_set_version,offer_version,declaration_snapshot) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)',[id,'historical-audit','{}','historical-privacy','GB','uk_early_adopter',legacyDeclaration,legacyOffer,JSON.stringify(originalSnapshot)]);
  await api.POST(request(valid));
  const retained=(await db.query('SELECT * FROM vcse_eoi WHERE id=$1',[id])).rows[0];assert.equal(retained.declaration_set_version,legacyDeclaration);assert.equal(retained.offer_version,legacyOffer);assert.deepEqual(retained.declaration_snapshot,originalSnapshot);
+});
+test('commercial UX uses semantic cards, consistent decorative icons and accessible contrast', () => {
+ const React=require('react');const {renderToStaticMarkup}=require('react-dom/server');
+ const {VcseCommercialTerms,commercialColors:c}=require('../components/vcse-commercial-terms.tsx');
+ const html=renderToStaticMarkup(React.createElement(VcseCommercialTerms));
+ assert.match(html,/aria-labelledby="commercial-heading"/);assert.match(html,/<h2[^>]*>Understand your needs first\. Decide whether to proceed afterwards\.<\/h2>/);
+ assert.equal((html.match(/<li /g)||[]).length,3);assert.equal((html.match(/<svg /g)||[]).length,3);
+ assert.equal((html.match(/width="32" height="32"/g)||[]).length,3);assert.equal((html.match(/stroke-width="1\.8"/g)||[]).length,3);assert.equal((html.match(/aria-hidden="true"/g)||[]).length,3);
+ for(const text of [definitions.ukCommercial.paymentHeading,...definitions.ukCommercial.paymentOptionHeadings,definitions.ukCommercial.infrastructureConfirmation,definitions.ukCommercial.closingClarifier]) assert.ok(html.includes(text));
+ assert.doesNotMatch(html,/overflow-hidden|truncate|whitespace-nowrap|line-clamp|<mark/);
+ const luminance=hex=>{const rgb=hex.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=0.04045?v/12.92:((v+0.055)/1.055)**2.4);return rgb[0]*0.2126+rgb[1]*0.7152+rgb[2]*0.0722;};
+ const contrast=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05);};
+ for(const [foreground,background,minimum] of [[c.onDark,c.background,4.5],[c.secondary,c.background,4.5],[c.label,c.card,4.5],[c.amount,c.card,4.5],[c.icon,c.card,3],[c.border,c.card,3]]) {assert.ok(contrast(foreground,background)>=minimum,`${foreground} on ${background}: ${contrast(foreground,background)}`);assert.ok(html.includes(foreground));}
+ // Both plans still total the selected implementation price; hosting is separate.
+ const planAmounts=definitions.ukCommercial.paymentOptions.map(text=>[...text.matchAll(/£(\d+)/g)].map(match=>Number(match[1])));
+ assert.equal(planAmounts[0].reduce((sum,value)=>sum+value,0),1250);assert.equal(planAmounts[1][0]+5*planAmounts[1][1],1250);
+ assert.match(definitions.ukCommercial.paymentOptions[0],/£625 on agreement, plus £625/);assert.match(definitions.ukCommercial.paymentOptions[1],/£250 initially, followed by five monthly payments of £200/);
+});
+test('UK offer v3 preserves v2 records, declaration wording, form explanation and international terms', async () => {
+ const v2=definitions.OFFER_VERSIONS['vcse-uk-2026-10-24-v2'];assert.equal(v2.version,'vcse-uk-2026-10-24-v2');
+ assert.deepEqual(v2.commercial.cards,[['£2,500','Standard implementation cost'],['50%','Selected early-adopter discount'],['£1,250','Discounted early-adopter implementation price']]);
+ assert.deepEqual(definitions.ukCommercial.eoiExplanation,v2.commercial.eoiExplanation);
+ assert.equal(definitions.DECLARATION_SET_VERSION,'vcse-declarations-2026-10-24-v2');
+ const current=signing.createPresentation('uk_early_adopter');const decoded=JSON.parse(Buffer.from(current.token.split('.')[0],'base64url').toString('utf8'));decoded.offerVersion=v2.version;
+ const encoded=Buffer.from(JSON.stringify(decoded)).toString('base64url');const oldToken=encoded+'.'+require('node:crypto').createHmac('sha256',process.env.VCSE_EOI_DECLARATION_SECRET).update(encoded).digest('base64url');
+ const stale=await api.POST(request({...valid,presentationToken:oldToken}));assert.equal(stale.status,409);assert.equal((await stale.json()).reviewRequired,true);
+ const id=require('node:crypto').randomUUID();const oldSnapshot={offerVersion:v2.version,declarationSetVersion:definitions.DECLARATION_SET_VERSION,declarations:definitions.acknowledgements};
+ await db.query('INSERT INTO vcse_eoi(id,fingerprint,payload,privacy_version,country,enquiry_route,offer_version,declaration_snapshot) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[id,'v2-historical','{}',definitions.PRIVACY_NOTICE_VERSION,'GB','uk_early_adopter',v2.version,JSON.stringify(oldSnapshot)]);
+ assert.equal((await api.POST(request(valid))).status,200);
+ const row=(await db.query('SELECT * FROM vcse_eoi WHERE id=$1',[id])).rows[0];assert.equal(row.offer_version,v2.version);assert.deepEqual(row.declaration_snapshot,oldSnapshot);
+ const international=signing.createPresentation('international_interest');assert.equal(international.offerVersion,'vcse-international-2026-10-24-v1');assert.equal(international.declarationSetVersion,'vcse-declarations-2026-10-24-v1');
 });
