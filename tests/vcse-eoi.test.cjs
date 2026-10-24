@@ -25,9 +25,9 @@ process.env.VCSE_EOI_DECLARATION_SECRET='test-declaration-secret';
 const signing=require('../lib/vcse-declaration-signing.ts');
 const definitions=require('../lib/vcse-declarations.ts');
 const auditFor=data=>signing.verifyPresentation(signing.createPresentation(data.enquiryRoute).token,data.enquiryRoute);
-const valid = { ...Object.fromEntries(schema.fields.map(([key])=>[key, 'Example'])), country:'GB', operatingCountries:['GB'], email:'test@example.org', website:'https://example.org', staffSize:'1–5', volunteerSize:'6–10', commercialReadiness:'Instalments needed', challenges:[schema.challenges[0]], selectionAcknowledged:true, purchaseBoundaryAcknowledged:true, privacyAcknowledged:true, presentationToken:signing.createPresentation('uk_early_adopter').token };
+const valid = { ...Object.fromEntries(schema.fields.map(([key])=>[key, 'Example'])), country:'GB', operatingCountries:['GB'], email:'test@example.org', website:'https://example.org', staffSize:'1–5', volunteerSize:'6–10', participation:'ready_to_arrange',approver:'organisation_lead',timing:'one_to_three_months',commercialReadiness:'existing_budget', challenges:[schema.challenges[0]], selectionAcknowledged:true, purchaseBoundaryAcknowledged:true, privacyAcknowledged:true, presentationToken:signing.createPresentation('uk_early_adopter').token };
 const request = (body, options={}) => new Request('http://localhost/api/vcse-eoi', {method:'POST',headers:{origin:'http://localhost','content-type':'application/json', ...options.headers},body:typeof body === 'string' ? body : JSON.stringify(body)});
-before(async () => { db = new PGlite(); await db.exec(fs.readFileSync('docs/migrations/001_vcse_eoi.sql','utf8')); await db.exec(fs.readFileSync('docs/migrations/002_vcse_international_interest.sql','utf8')); await db.exec(fs.readFileSync('docs/migrations/003_vcse_declaration_audit.sql','utf8')); });
+before(async () => { db = new PGlite(); await db.exec(fs.readFileSync('docs/migrations/001_vcse_eoi.sql','utf8')); await db.exec(fs.readFileSync('docs/migrations/002_vcse_international_interest.sql','utf8')); await db.exec(fs.readFileSync('docs/migrations/003_vcse_declaration_audit.sql','utf8')); await db.exec(fs.readFileSync('docs/migrations/004_vcse_structured_answers.sql','utf8')); });
 beforeEach(async () => {
  await db.exec('TRUNCATE vcse_eoi_delivery, vcse_eoi, vcse_eoi_rate, vcse_eoi_events');
  Object.assign(process.env, {VCSE_EOI_OPEN:'true',VCSE_EOI_ORIGIN:'http://localhost',VCSE_EOI_ENVIRONMENT:'staging',VCSE_EOI_DATABASE_URL:'test',RESEND_API_KEY:'test',VCSE_EOI_FROM_EMAIL:'test@example.org',VCSE_EOI_TO_EMAIL:'team@example.org',VCSE_EOI_RATE_SALT:'test',VCSE_EOI_RETRY_SECRET:'test-secret',VCSE_EOI_WEBHOOK_SECRET:'whsec_dGVzdA==',VCSE_EOI_DECLARATION_SECRET:'test-declaration-secret'});
@@ -109,7 +109,7 @@ test('early webhook events reconcile after acceptance; old uncertain jobs need m
  assert.equal(await service.deliver(),0);
 });
 test('routes UK, international and UK-based overseas operators from selected base country', async () => {
- for(const [country, operatingCountries, readiness, route] of [ ['GB',['GB'],'Instalments needed','uk_early_adopter'], ['NG',['NG','GH'],'Potentially','international_interest'], ['GB',['GB','NG'],'Contribution available','uk_early_adopter'] ]) {
+ for(const [country, operatingCountries, readiness, route] of [ ['GB',['GB'],'existing_budget','uk_early_adopter'], ['NG',['NG','GH'],'potentially','international_interest'], ['GB',['GB','NG'],'subject_to_approval','uk_early_adopter'] ]) {
   const raw={...valid,country,operatingCountries,commercialReadiness:readiness,enquiryRoute:'forged-route',presentationToken:signing.createPresentation(route).token};
   const data=schema.validateApplication(raw).data; assert.equal(data.enquiryRoute,route);
   const result=await (await api.POST(request(raw))).json(); assert.ok(result.receipt);
@@ -119,8 +119,8 @@ test('routes UK, international and UK-based overseas operators from selected bas
   if(route==='international_interest') { assert.match(result.message,/international interest/); assert.match(email.subject,/international/); assert.match(email.text,/assessed separately/); assert.doesNotMatch(email.text,/£1,250|£20\/month|Discovery is free with no purchase obligation/); }
   else { assert.doesNotMatch(result.message,/international interest/); assert.match(email.text,/Discovery is free with no purchase obligation/); }
  }
- assert.equal(schema.validateApplication({...valid,country:'NG',commercialReadiness:'Instalments needed'}).data,undefined);
- assert.equal(schema.validateApplication({...valid,country:'GB',commercialReadiness:'Yes'}).data,undefined);
+ assert.equal(schema.validateApplication({...valid,country:'NG',commercialReadiness:'existing_budget'}).data,undefined);
+ assert.equal(schema.validateApplication({...valid,country:'GB',commercialReadiness:'yes'}).data,undefined);
  for(const input of [{country:''},{country:'ZZ'},{operatingCountries:[]},{operatingCountries:['ZZ']},{operatingCountries:['GB','GB']}]) assert.equal(schema.validateApplication({...valid,...input}).data,undefined);
 });
 test('additive international migration preserves legacy records and queued notifications', async () => {
@@ -257,4 +257,50 @@ test('UK offer v3 preserves v2 records, declaration wording, form explanation an
  assert.equal((await api.POST(request(valid))).status,200);
  const row=(await db.query('SELECT * FROM vcse_eoi WHERE id=$1',[id])).rows[0];assert.equal(row.offer_version,v2.version);assert.deepEqual(row.declaration_snapshot,oldSnapshot);
  const international=signing.createPresentation('international_interest');assert.equal(international.offerVersion,'vcse-international-2026-10-24-v1');assert.equal(international.declarationSetVersion,'vcse-declarations-2026-10-24-v1');
+});
+test('structured questions accept stable codes, reject ambiguous/legacy answers and persist route-specific columns', async () => {
+ const q=require('../lib/vcse-eoi-questions.ts');
+ for(const [country,route,readiness] of [['GB','uk_early_adopter','existing_budget'],['NG','international_interest','potentially'],['GB','uk_early_adopter','external_funding_needed']]) {
+  const definitions=q.questionsForRoute(route);
+  for(const key of q.structuredKeys) for(const option of definitions[key].options) {
+   const raw={...valid,country,commercialReadiness:readiness,[key]:option.value};assert.ok(schema.validateApplication(raw).data,`${country} ${key}: ${option.value}`);
+  }
+  const raw={...valid,country,operatingCountries:country==='GB'?['GB','NG']:['NG'],commercialReadiness:readiness,presentationToken:signing.createPresentation(route).token,answerSchemaVersion:'forged-version'};
+  const result=await (await api.POST(request(raw))).json();assert.ok(result.receipt);
+  const row=(await db.query('SELECT * FROM vcse_eoi WHERE id=$1',[result.receipt])).rows[0];
+  assert.equal(row.answer_schema_version,q.ANSWER_SCHEMA_VERSION);assert.equal(row.payload.answerSchemaVersion,q.ANSWER_SCHEMA_VERSION);
+  assert.equal(row.discovery_readiness_code,'ready_to_arrange');assert.equal(row.expenditure_approver_code,'organisation_lead');assert.equal(row.implementation_timing_code,'one_to_three_months');
+  assert.equal(row.uk_funding_code,route==='uk_early_adopter'?readiness:null);assert.equal(row.international_paid_discussion_code,route==='international_interest'?readiness:null);
+ }
+ for(const key of q.structuredKeys) for(const value of [undefined,'',true,1,{},[],['existing_budget'],'Other free-text response','Yes — we are ready to arrange a session']) {
+  const response=await api.POST(request({...valid,[key]:value}));assert.equal(response.status,400);assert.ok((await response.json()).errors[key]);
+ }
+ const international=q.questionsForRoute('international_interest');
+ assert.deepEqual(international.commercialReadiness.options.map(o=>o.label),['Yes','Potentially','Funded access needed','Need more information']);
+ assert.doesNotMatch(international.participation.label+' '+international.participation.helper,/free discovery|£1,250|£20/);
+ assert.equal((await api.POST(request({...valid,country:'NG',commercialReadiness:'existing_budget'}))).status,400);
+ assert.equal((await api.POST(request({...valid,commercialReadiness:'potentially'}))).status,400);
+});
+test('form renders visible native selectors with linked helpers, unchanged declarations and no default commitment', () => {
+ const q=require('../lib/vcse-eoi-questions.ts');const React=require('react');const {renderToStaticMarkup}=require('react-dom/server');
+ const {VcseEoiForm}=require('../components/vcse-eoi-form.tsx');
+ const html=renderToStaticMarkup(React.createElement(VcseEoiForm,{open:false,presentations:signing.createPresentations()}));
+ for(const key of q.structuredKeys) {
+  assert.match(html,new RegExp(`<label for="${key}"`));assert.match(html,new RegExp(`<select[^>]+id="${key}"[^>]+aria-describedby="${key}-help"`));
+  assert.ok(html.includes(`id="${key}-help"`));assert.match(html,new RegExp(`<select[^>]+id="${key}"[^>]*><option value="" selected="">Please choose</option>`));
+  assert.ok(!html.includes(`<textarea id="${key}"`));
+ }
+ assert.ok(html.includes(q.toolsLabel));assert.ok(html.includes(q.toolsHelper));assert.match(html,/<textarea[^>]+id="tools"/);
+ assert.match(html,/<fieldset disabled=""/);assert.equal((html.match(/name="(?:selectionAcknowledged|purchaseBoundaryAcknowledged|privacyAcknowledged)"/g)||[]).length,3);assert.doesNotMatch(html,/type="checkbox"[^>]*checked=""/);
+ assert.ok(html.includes('data-clarity-mask="true"'));assert.match(html,/name="commercialReadiness"/);
+});
+test('structured-answer migration preserves historical free text and old commercial choices without inventing codes', async () => {
+ const legacy=new PGlite();try {
+  for(const file of ['001_vcse_eoi.sql','002_vcse_international_interest.sql','003_vcse_declaration_audit.sql'])await legacy.exec(fs.readFileSync('docs/migrations/'+file,'utf8'));
+  const id=require('node:crypto').randomUUID();const payload={participation:'We need to discuss this at our next meeting',approver:'Treasurer and trustees',timing:'Possibly next spring',commercialReadiness:'Instalments needed'};
+  await legacy.query('INSERT INTO vcse_eoi(id,fingerprint,payload,privacy_version,country,enquiry_route) VALUES ($1,$2,$3,$4,$5,$6)',[id,'legacy-free-text',JSON.stringify(payload),'historical','GB','uk_early_adopter']);
+  const migration=fs.readFileSync('docs/migrations/004_vcse_structured_answers.sql','utf8');await legacy.exec(migration);await legacy.exec(migration);
+  const row=(await legacy.query('SELECT * FROM vcse_eoi WHERE id=$1',[id])).rows[0];assert.deepEqual(row.payload,payload);
+  for(const key of ['answer_schema_version','discovery_readiness_code','expenditure_approver_code','implementation_timing_code','uk_funding_code','international_paid_discussion_code'])assert.equal(row[key],null,key);
+ } finally {await legacy.close();}
 });

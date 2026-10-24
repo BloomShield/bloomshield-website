@@ -1,4 +1,5 @@
-import { countryCodes, internationalReadinessOptions } from "./vcse-countries";
+import { ANSWER_SCHEMA_VERSION, questionsForRoute, structuredKeys, toolsLabel } from "./vcse-eoi-questions";
+import { countryCodes } from "./vcse-countries";
 import { acknowledgements } from "./vcse-declarations";
 export { acknowledgements } from "./vcse-declarations";
 export const fields = [
@@ -8,16 +9,15 @@ export const fields = [
   ["staffSize", "Staff size band", 60], ["volunteerSize", "Volunteer size band", 60],
   ["contactName", "Your name", 160], ["role", "Your role", 160], ["email", "Email address", 254],
   ["decisionInvolvement", "Your involvement in decisions", 500],
-  ["example", "A recent example of an operational challenge", 2000], ["tools", "Current tools and systems", 1000],
-  ["participation", "Readiness to take part in discovery", 500],
-  ["approver", "Role or committee approving expenditure", 300],
-  ["commercialReadiness", "Commercial readiness", 100], ["timing", "Likely timing", 300],
+  ["example", "A recent example of an operational challenge", 2000], ["tools", toolsLabel, 1000],
+  ["participation", questionsForRoute("uk_early_adopter").participation.label, 80],
+  ["approver", questionsForRoute("uk_early_adopter").approver.label, 80],
+  ["commercialReadiness", questionsForRoute("uk_early_adopter").commercialReadiness.label, 80], ["timing", questionsForRoute("uk_early_adopter").timing.label, 80],
   ["referral", "How did you hear about us? (optional)", 300],
 ] as const;
 export const challenges = ["Grant pipeline tracking", "Task management", "Document management", "Opportunities and watchlist monitoring"];
 export const sizeBands = ["0", "1–5", "6–10", "11–25", "26–50", "51+", "Not sure"];
-export const readinessOptions = ["Contribution available", "Instalments needed", "Funded access needed", "More information needed", "No current budget"];
-export type Application = Record<(typeof fields)[number][0], string> & { challenges: string[]; selectionAcknowledged: true; purchaseBoundaryAcknowledged: true; privacyAcknowledged: true; operatingCountries: string[]; enquiryRoute: "uk_early_adopter" | "international_interest" };
+export type Application = Record<(typeof fields)[number][0], string> & { challenges: string[]; selectionAcknowledged: true; purchaseBoundaryAcknowledged: true; privacyAcknowledged: true; operatingCountries: string[]; enquiryRoute: "uk_early_adopter" | "international_interest"; answerSchemaVersion: typeof ANSWER_SCHEMA_VERSION };
 export function validateApplication(raw: unknown): { data?: Application; errors: Record<string, string> } {
   const errors: Record<string, string> = {};
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return { errors: { form: "Please complete the form." } };
@@ -43,8 +43,11 @@ export function validateApplication(raw: unknown): { data?: Application; errors:
   const operating = input.operatingCountries;
   if (!Array.isArray(operating) || operating.length < 1 || operating.length > 249 || new Set(operating).size !== operating.length || operating.some(c => typeof c !== "string" || !countryCodes.has(c))) errors.operatingCountries = "Choose at least one valid operating country, without duplicates.";
   data.operatingCountries = Array.isArray(operating) ? [...operating].sort() : [];
-  const commercialOptions = country === "GB" ? readinessOptions : internationalReadinessOptions;
-  if (!commercialOptions.includes(data.commercialReadiness as string)) errors.commercialReadiness = country === "GB" ? "Choose a commercial readiness option." : "Choose whether you would consider discussing a paid implementation.";
+  const questions = questionsForRoute(country === "GB" ? "uk_early_adopter" : "international_interest");
+  for (const key of structuredKeys) {
+    if (!questions[key].options.some(option => option.value === data[key])) errors[key] = `Choose an answer for: ${questions[key].label}`;
+  }
+  data.answerSchemaVersion = ANSWER_SCHEMA_VERSION;
   const selected = input.challenges;
   if (!Array.isArray(selected) || selected.length < 1 || selected.length > 3 || new Set(selected).size !== selected.length || selected.some(c => typeof c !== "string" || !challenges.includes(c))) errors.challenges = "Choose between one and three operational challenges.";
   data.challenges = Array.isArray(selected) ? [...selected].sort() : [];

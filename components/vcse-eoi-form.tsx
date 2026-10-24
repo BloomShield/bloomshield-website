@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { countries, internationalNotice, internationalReadinessOptions } from "@/lib/vcse-countries";
+import { countries, internationalNotice } from "@/lib/vcse-countries";
+import { isStructuredKey, questionsForRoute, toolsHelper, toolsLabel } from "@/lib/vcse-eoi-questions";
 import type { AcknowledgementKey, PresentationMap } from "@/lib/vcse-declarations";
-import { acknowledgements, challenges, fields, readinessOptions, sizeBands } from "@/lib/vcse-eoi-schema";
+import { acknowledgements, challenges, fields, sizeBands } from "@/lib/vcse-eoi-schema";
 
 export function VcseEoiForm({ open, presentations: initialPresentations }: { open: boolean; presentations: PresentationMap }) {
   const [presentations, setPresentations] = useState(initialPresentations);
@@ -11,6 +12,7 @@ export function VcseEoiForm({ open, presentations: initialPresentations }: { ope
   const [acknowledged, setAcknowledged] = useState<Partial<Record<AcknowledgementKey, boolean>>>({});
   const [country, setCountry] = useState("");
   const international = Boolean(country && country !== "GB");
+  const questions = questionsForRoute(international ? "international_interest" : "uk_early_adopter");
   const presentation = presentations[international ? "international_interest" : "uk_early_adopter"];
   const [busy, setBusy] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -56,12 +58,15 @@ export function VcseEoiForm({ open, presentations: initialPresentations }: { ope
           </select>{error("operatingCountries")}
         </div>
         <div className="grid gap-6 md:grid-cols-2">{fields.filter(([key]) => key !== "country").map(([key, label, max]) => {
-          const options = key === "staffSize" || key === "volunteerSize" ? sizeBands : key === "commercialReadiness" ? (country === "GB" ? readinessOptions : internationalReadinessOptions) : null;
-          const long = ["activities", "decisionInvolvement", "example", "tools", "participation"].includes(key);
-          const attributes = { id: key, name: key, required: key !== "website" && key !== "referral", "aria-invalid": Boolean(errors[key]), "aria-describedby": errors[key] ? `${key}-error` : undefined, className: controlClass };
-          const visibleLabel = key === "commercialReadiness" ? (international ? "Would you consider discussing a paid implementation?" : country ? "Commercial readiness for the UK offer" : "Commercial readiness — choose a country first") : key === "participation" && international ? "Readiness for a possible exploratory conversation" : label;
-          return <div key={key === "commercialReadiness" ? `${key}-${country}` : key} className={long ? "md:col-span-2" : ""}><label htmlFor={key} className="font-semibold">{visibleLabel}</label>
-            {options ? <select {...attributes} disabled={key === "commercialReadiness" && !country} defaultValue=""><option value="">Please choose</option>{options.map(o => <option key={o}>{o}</option>)}</select>
+          const question = isStructuredKey(key) ? questions[key] : undefined;
+          const options = question?.options || (key === "staffSize" || key === "volunteerSize" ? sizeBands.map(value => ({ value, label: value })) : null);
+          const helper = question?.helper || (key === "tools" ? toolsHelper : undefined);
+          const long = ["activities", "decisionInvolvement", "example", "tools", "participation", "approver", "commercialReadiness", "timing"].includes(key);
+          const attributes = { id: key, name: key, required: key !== "website" && key !== "referral", "aria-invalid": Boolean(errors[key]), "aria-describedby": [helper ? `${key}-help` : "", errors[key] ? `${key}-error` : ""].filter(Boolean).join(" ") || undefined, className: controlClass };
+          const visibleLabel = question?.label || (key === "tools" ? toolsLabel : label);
+          return <div key={key === "commercialReadiness" || key === "participation" ? `${key}-${international ? "international" : "uk"}` : key} className={long ? "md:col-span-2" : ""}><label htmlFor={key} className="font-semibold">{visibleLabel}</label>
+            {helper && <p id={`${key}-help`} className="mt-2 text-sm leading-6 text-slate-600">{helper}</p>}
+            {options ? <select {...attributes} disabled={(key === "commercialReadiness" || key === "participation") && !country} defaultValue=""><option value="">Please choose</option>{options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select>
               : long ? <textarea {...attributes} maxLength={max} rows={3} />
               : <input {...attributes} maxLength={max} type={key === "email" ? "email" : key === "website" ? "url" : "text"} autoComplete={key === "email" ? "email" : key === "contactName" ? "name" : key === "organisation" ? "organization" : "off"} />}
             {error(key)}</div>;
