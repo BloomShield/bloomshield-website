@@ -11,7 +11,7 @@ $env:ADMIN_SYNTHETIC_PREVIEW = 'true'
 pnpm dev:admin
 ```
 
-Open http://127.0.0.1:3110. Use `next dev`, not `next start`: production mode always returns 404, even with the opt-in. Vercel preview and production also return 404. Bind to loopback only. To clear all edits, reload. To stop, press Ctrl+C and remove the opt-in with `Remove-Item Env:ADMIN_SYNTHETIC_PREVIEW`.
+Open http://127.0.0.1:3110. The sidebar and header identify the application as **BloomShield CIC — VCSE Campaign Dashboard**, with the supplied round teal-and-gold shield logo. Use `next dev`, not `next start`: production mode always returns 404, even with the opt-in. Vercel preview and production also return 404. Bind to loopback only. To clear all edits, reload. To stop, press Ctrl+C and remove the opt-in with `Remove-Item Env:ADMIN_SYNTHETIC_PREVIEW`.
 
 The role selector is a demonstration only. Administrator sees 18 fictional records; Programme Reviewer sees the nine assigned to Programme Lead. Open the register, choose an organisation, record screening/research/WTP evidence, save, and inspect activity history. Reviewers cannot assign users or approve/reverse final selection. Filters affect all overview/report totals. Pipeline counts are current status, not historical conversion. Reference date is fixed at 24 October 2026 so synthetic workload counts remain reproducible.
 
@@ -54,5 +54,15 @@ The lint configuration ignores existing untracked `.qa` scripts and generated ne
 - Public and admin production builds passed. The initial public build could not fetch its existing Google fonts under the network sandbox; a network-enabled rerun passed with 57 public routes generated.
 - Admin production HTTP checks passed with the preview flag deliberately enabled: GET and POST to root, an applicant API path and a record UUID all returned explicit 404/no-store/noindex with no data. Middleware rejects before streaming; a page-level notFound alone was insufficient for HTTP status and was corrected.
 - Local development returned HTTP 200 with the synthetic banner and no Clarity script. Role switching and edits remain synthetic browser-memory demonstrations, not live security verification.
-- Browser attachment timed out and no browser tab became available. Visual, responsive, keyboard, screen-reader and full form interaction acceptance remain unverified; do not claim screenshot evidence.
+- Initial implementation browser attachment timed out. The subsequent branding review below records the responsive and interaction checks now completed; full screen-reader and complete form-workflow acceptance remain outstanding.
 - No production resources, DNS, database migrations, applicant records, recruitment flags, approved terms or emails were changed.
+
+## Approved branding refinement — draft PR #8
+
+The application title, sidebar lockup, header and footer now use BloomShield CIC / VCSE Campaign Dashboard. Recruitment & commercial validation remains a functional header label. A pale teal sidebar, teal navigation and gold selection/top accents reinforce the existing identity without changing the dashboard structure.
+
+`admin/public/brand/bloomshield-hero-shield.jpeg` is a byte-identical copy of the user-supplied BloomShield Hero Shield Logo.jpeg, SHA-256 `23077c9823189e0d5a953db749277448c10421572dbda1e285281cdd35ed0444`. The original artwork is preserved; CSS gives its display a circular outline at 64 × 64 pixels. The adjacent text supplies the accessible link name, so the image has empty alternative text to avoid repeating it. Public-site assets are untouched.
+
+Browser review confirmed the logo loads and the shell has no horizontal overflow at 320, 768 and 1440 pixels. Screenshots: `docs/qa/c05-brand-320.png`, `docs/qa/c05-brand-768.png`, `docs/qa/c05-brand-1440.png`. Reviewer scope remained nine records, administrator scope 18; register navigation, empty search and reset worked; the skip link navigated to #main. No snapshots required updates and no fixtures, filters, role logic or security gates were changed. Broader screen-reader/full workflow acceptance and the live-service blockers above remain unchanged. PR #8 stays draft; no merge or deployment.
+
+Branding regression checks passed: all 28 tests, ESLint, public/admin TypeScript checks and both production builds (57 public routes). Six admin production GET/POST denial checks and the public closed-recruitment HTTP checks passed again. The served development JPEG matched the supplied asset checksum; the same asset URL returned 404 in production mode with preview opt-in enabled. No test or snapshot source changes were necessary for this presentation-only update.
