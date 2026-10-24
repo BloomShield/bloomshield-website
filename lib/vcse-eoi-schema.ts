@@ -48,7 +48,7 @@ export function validateApplication(raw: unknown): { data?: Application; errors:
   const selected = input.challenges;
   if (!Array.isArray(selected) || selected.length < 1 || selected.length > 3 || new Set(selected).size !== selected.length || selected.some(c => typeof c !== "string" || !challenges.includes(c))) errors.challenges = "Choose between one and three operational challenges.";
   data.challenges = Array.isArray(selected) ? [...selected].sort() : [];
-  const acknowledgementErrors = { selectionAcknowledged: "Confirm that expressing interest does not guarantee selection or deployment.", purchaseBoundaryAcknowledged: "Confirm that discovery creates no purchase obligation and implementation needs a separate agreement.", privacyAcknowledged: "Confirm that you have read the programme privacy information." };
+  const acknowledgementErrors = { selectionAcknowledged: "Confirm that expressing interest does not guarantee selection or deployment.", purchaseBoundaryAcknowledged: "Confirm the discovery and implementation agreement boundary described in this declaration.", privacyAcknowledged: "Confirm that you have read the programme privacy information." };
   for (const [key] of acknowledgements) { if (input[key] !== true) errors[key] = acknowledgementErrors[key]; data[key] = input[key]; }
   return Object.keys(errors).length ? { errors } : { data: data as Application, errors };
 }
