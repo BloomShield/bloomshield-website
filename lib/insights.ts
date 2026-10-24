@@ -113,6 +113,43 @@ export const partnershipPlaybook = {
 
 export const insights: InsightRecord[] = [
 {
+  "slug": "from-gaps-to-the-360-journey",
+  "href": "/insights/series-collections/from-gaps-to-the-360-journey",
+  "title": "From Gaps to the 360° Journey",
+  "area": "Series & Collections",
+  "collection": "Breast Cancer Awareness Month",
+  "seriesPosition": 3,
+  "crossTags": [
+    "Breast Screening",
+    "Health Inequalities"
+  ],
+  "status": "published",
+  "description": "From identifying inequalities to understanding what happens next.",
+  "image": "/images/insights/breast-cancer-awareness-part-3-360-journey-square.png",
+  "imageAlt": "BloomShield Part 3: From gaps to the 360° journey, community screening conversations, ScreenConnect Digital dashboard and the full screening pathway.",
+  "publishedAt": "24 October 2026",
+  "publishedAtIso": "2026-10-24",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Breast Cancer Awareness Month",
+    "Breast Screening",
+    "Health Inequalities",
+    "Local Lens",
+    "ScreenConnect Digital"
+  ],
+  "canonicalUrl": "/insights/series-collections/from-gaps-to-the-360-journey",
+  "socialImage": "/images/insights/breast-cancer-awareness-part-3-360-journey-hero.png",
+  "socialImageAlt": "From gaps to the 360° journey — Breast Cancer Awareness Month, Part 3 of 3.",
+  "socialImageWidth": 1672,
+  "socialImageHeight": 941,
+  "socialImageType": "image/png",
+  "seoDescription": "The final part of BloomShield’s Breast Cancer Awareness Month series explores the 360° cancer screening journey and introduces ScreenConnect™ Digital as a research demonstrator for understanding what happens inside the screening gap.",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24"
+},
+{
   "slug": "greater-manchester",
   "linkedinDiscussionUrl": "https://lnkd.in/p/ec3UaHcY",
   "href": "/insights/local-lens/greater-manchester",
