@@ -7,7 +7,8 @@ const compat = new FlatCompat({ baseDirectory: here });
 
 const config = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-  { ignores: [".next/**", "node_modules/**", "out/**", "next-env.d.ts"] }
+  { ignores: ["**/.next/**", "**/.next-dev/**", "node_modules/**", "out/**", "**/next-env.d.ts", ".qa/**"] },
+  { files: ["tests/**/*.cjs"], rules: { "@typescript-eslint/no-require-imports": "off" } }
 ];
 
 export default config;

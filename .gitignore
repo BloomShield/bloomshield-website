@@ -1,5 +1,7 @@
 node_modules
 .next
+.next-dev
+admin/next-env.d.ts
 out
 .pnpm-store
 *.tsbuildinfo
