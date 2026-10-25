@@ -1,5 +1,7 @@
 # APP-001B-C05 architecture assessment
 
+> Authentication decision superseded on 25 October 2026: C06 uses invitation-only email/password with Better Auth and administrator MFA. See [C06 handover](c06-handover.md). This C05 document records the earlier synthetic-only boundary.
+
 24 October 2026. Development only; no deployment, DNS, database connection or email delivery authorised by this implementation.
 
 ## Evidence and decision
