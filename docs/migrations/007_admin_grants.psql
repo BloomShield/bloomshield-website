@@ -1,0 +1,19 @@
+-- Run with psql as staging owner, explicitly supplying admin_runtime_role.
+-- Example: psql "$STAGING_OWNER_URL" -v admin_runtime_role=bloomshield_admin_staging -f docs/migrations/007_admin_grants.psql
+-- Check current_database(), runtime role ownership and isolation BEFORE running.
+\if :{?admin_runtime_role}
+BEGIN;
+REVOKE ALL ON vcse_eoi,vcse_eoi_delivery,vcse_eoi_events,vcse_eoi_rate FROM :"admin_runtime_role";
+GRANT USAGE ON SCHEMA public TO :"admin_runtime_role";
+GRANT SELECT ON vcse_eoi TO :"admin_runtime_role";
+GRANT SELECT(id,application_id,kind,status) ON vcse_eoi_delivery TO :"admin_runtime_role";
+GRANT SELECT,INSERT,UPDATE,DELETE ON "user",session,account,verification,"twoFactor","rateLimit",admin_session_activity,admin_auth_attempt TO :"admin_runtime_role";
+GRANT SELECT,INSERT,UPDATE ON admin_access,admin_management TO :"admin_runtime_role";
+REVOKE ALL ON admin_audit FROM :"admin_runtime_role";
+GRANT SELECT,INSERT ON admin_audit TO :"admin_runtime_role";
+GRANT USAGE ON SEQUENCE admin_audit_id_seq TO :"admin_runtime_role";
+COMMIT;
+\else
+\echo 'BLOCKED: supply an existing isolated staging admin runtime role'
+\quit
+\endif

@@ -1,0 +1,4 @@
+{
+  "framework": "nextjs",
+  "git": { "deploymentEnabled": { "codex/app-001b-c06-email-auth": false } }
+}
