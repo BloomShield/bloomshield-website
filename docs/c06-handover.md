@@ -62,3 +62,7 @@ Onboarding: invite only a named individual, verify role, require administrator M
 Monitor delivery exceptions and failed auth/management actions without applicant values or secrets. Agree an approved retention period for audit and auth metadata. Schedule bounded deletion of expired verification/rate-limit/activity data and expired sessions using a dedicated maintenance role only after policy approval; do not implement source retention deletion ad hoc. Keep dependency/security advisory review and secret rotation under an identified owner. Secret rotation affects encrypted MFA material and sessions; rehearse it with backups and staged key rotation before production.
 
 Before publishing the C06 branch, root and admin `vercel.json` explicitly disable automatic Git deployments for `codex/app-001b-c06-email-auth`, following Vercel's documented `git.deploymentEnabled` branch setting. This prevents publishing the review branch from requesting a Vercel deployment. No deployment CLI was run. Any later staging deployment still requires approval and infrastructure preflight.
+
+## C07 staging execution supplement
+
+For current infrastructure classifications, isolated migration/grant procedure, email/scheduler acceptance, recovery approvals and operator actions, begin with [C07 infrastructure](c07-infrastructure.md) and [C07 acceptance](c07-acceptance.md). C07 does not supersede approved commercial terms, change released declaration versions or authorise production launch. Staging and production remain NO-GO until the recorded gates are satisfied.
