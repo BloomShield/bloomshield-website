@@ -1,0 +1,182 @@
+{
+  "at": "2026-10-26T04:41:17.002Z",
+  "deploymentId": "dpl_7t5Ntcw2NmJzotxfwyKrnzU3f7pw",
+  "projectId": "prj_LBA1I3mpMsT2SPXhW7o6MJEOlfOx",
+  "commit": "02ab310c02bf9b46b6d95ae20b4f02048643e3ed",
+  "deploymentUrlRedacted": true,
+  "target": "production",
+  "build": "READY",
+  "pinnedSourceFilesVerified": 253,
+  "unauthorised": [
+    {
+      "path": "/",
+      "status": 302,
+      "redirectHost": "vercel.com",
+      "applicationExposed": false
+    },
+    {
+      "path": "/login",
+      "status": 302,
+      "redirectHost": "vercel.com",
+      "applicationExposed": false
+    },
+    {
+      "path": "/api/records",
+      "status": 302,
+      "redirectHost": "vercel.com",
+      "applicationExposed": false
+    }
+  ],
+  "authorised": [
+    {
+      "method": "GET",
+      "path": "/",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "POST",
+      "path": "/",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "GET",
+      "path": "/login",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "POST",
+      "path": "/login",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "GET",
+      "path": "/staff",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "POST",
+      "path": "/staff",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "GET",
+      "path": "/api/records",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "POST",
+      "path": "/api/records",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "GET",
+      "path": "/api/users",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "POST",
+      "path": "/api/users",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/sign-in/email",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/sign-in/email",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/sign-up/email",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/sign-up/email",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/request-password-reset",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/request-password-reset",
+      "status": 404,
+      "cacheControl": "no-store",
+      "robots": "noindex, nofollow",
+      "body": "Workspace unavailable"
+    }
+  ],
+  "applicationSecretsConfigured": false,
+  "testingBypassRevoked": true,
+  "unauthorisedAfterRevocation": 302,
+  "allDeploymentsProtection": true,
+  "gitDisconnected": true,
+  "onlyClosedStateEnvironmentFlags": true,
+  "exactlyOneDeployment": true,
+  "existingProjectsUnchanged": [
+    {
+      "name": "bloomshield-website",
+      "updatedAt": 1792971398497
+    },
+    {
+      "name": "bloomshield-funding-pipeline",
+      "updatedAt": 1792881480844
+    }
+  ],
+  "sourceProvenance": "253 tracked files matched pinned Git blobs; CLI inherited dirty/message metadata from surrounding parent checkout. Archive verification and explicit commit SHA establish source identity.",
+  "buildRegion": "iad1",
+  "applicationFunctionRegion": "lhr1",
+  "middlewareRegions": "Vercel global middleware distribution; not London-only",
+  "finalVerifiedAt": "2026-10-26T04:42:28.089Z"
+}
