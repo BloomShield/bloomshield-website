@@ -1,6 +1,44 @@
 # C07 acceptance evidence and operating checklist
 
-## Current Neon result — 26 October 2026, after operator authentication
+## Approved first closed Vercel deployment — 26 October 2026
+
+**Closed-deployment checks PASS against the actual isolated Vercel staging-designated project. Full staging acceptance NO-GO; public production launch NO-GO.** Founder explicitly approved exactly one initial Production-classified deployment, without application credentials, domain promotion, recruitment activation or changes to existing live projects. Exactly one deployment was created; no retry/redeployment was attempted.
+
+- Project: `bloomshield-app001b-admin-staging`, `prj_LBA1I3mpMsT2SPXhW7o6MJEOlfOx`, team `bloom-shield`.
+- Deployment: `dpl_7t5Ntcw2NmJzotxfwyKrnzU3f7pw`, target `production`, final state **READY**; build-to-ready time reported as 61.195 seconds.
+- Deployment hostname withheld from tracked evidence; authorised operators can resolve the deployment ID in Vercel. No authentication, callback, reset, share or bypass URL is published.
+- Source: `02ab310c02bf9b46b6d95ae20b4f02048643e3ed`. A clean archive was compared byte-for-byte against all 253 tracked Git blobs before upload; 252 files uploaded because the normal uploader excludes .gitignore. Local credential/environment files were absent. Windows archive line-ending conversion was detected and corrected before deployment. CLI metadata inherited `gitDirty=1` and an older commit message from the surrounding parent checkout; explicit commit metadata and the independently verified archive establish the actual source, rather than those inherited fields. No source application code was changed.
+- CLI: Vercel 65.2.0; linked source copy independently resolved to the exact approved project. One command used Production target and skip-domain; no Git connection was added. Existing automatic C06/C07 Git-deployment restrictions remained present in the deployed configuration.
+
+| Check | Actual evidence / result |
+| --- | --- |
+| Root/shared sources/build | PASS. CLI API readback: root admin, sourceFilesOutsideRootDirectory=true, Node 24.x, Next.js, default .next output. Install `npx --yes pnpm@12.15.0 --dir .. install --frozen-lockfile --ignore-scripts`; build `npx --yes pnpm@12.15.0 --dir .. run build:admin`. Logs confirm pnpm 12.15.0 installed the frozen lockfile and next build admin succeeded. |
+| Geography | PASS for London application functions: deployment output confirms lhr1. Build log reports iad1 (US build machine); middleware is globally distributed by Vercel. This is not evidence that all provider processing occurs only in London. |
+| Protection | PASS. All Deployments Vercel Authentication remained enabled. Unauthenticated GET /, /login and /api/records returned 302 to vercel.com authentication, without application content. Rechecked / after testing-credential revocation: still 302. |
+| Closed application | PASS. Authenticated Vercel curl GET and POST for /, /login, /staff, /api/records, /api/users, /api/auth/sign-in/email, /api/auth/sign-up/email, /api/auth/request-password-reset: all 16 returned 404, Cache-Control no-store, X-Robots-Tag noindex/nofollow and exactly Workspace unavailable. Management writes use /api/records and were denied before application handling. |
+| No application credentials/data | PASS. Only ADMIN_STAGING_ENABLED=false and ADMIN_DATA_CLASSIFICATION=synthetic exist, in both Production and Preview; no hidden Production or shared variable bindings, database URL, Better Auth secret or Resend key. No applicant fixture or database connection was supplied to this deployment. Exact closed response exposes no records or credentials. |
+| Testing credential lifecycle | PASS. Link generated a local OIDC file, which was removed from the upload copy before deployment. Vercel curl generated one automation bypass credential for authorised probes; value never printed. After probes it was revoked without regeneration; project readback shows zero bypass entries and All Deployments protection retained. No temporary share URL was created. |
+| Domain/Git safeguards | PASS. No custom domain or DNS change; only Vercel-generated hostnames/aliases. autoAssignCustomDomains=false; Git link absent. No automatic Git deployment activation. |
+| Existing live projects unchanged | PASS. Before/after updatedAt values identical: bloomshield-website 1792971398497; bloomshield-funding-pipeline 1792881480844. No mutation call targeted either project. |
+| Exactly one deployment | PASS. Post-deployment list contains only dpl_7t5Ntcw2NmJzotxfwyKrnzU3f7pw in the staging project. |
+
+Verification tooling corrections: the first authenticated curl probe rejected a misplaced --cwd argument; rerunning the HTTP probe from the linked directory passed. A cleanup assertion treated an omitted Git-link property as different from null; corrected readback confirmed the testing credential was already successfully revoked. Neither issue caused an additional deployment or application change. Build succeeded on the only deployment attempt.
+
+Redacted machine-readable HTTP evidence: [c07-first-closed-deployment.json](qa/c07-first-closed-deployment.json). No tokens, bypass values, cookies, passwords, connection strings or applicant values are retained there.
+
+Next recommended action: review this closed-deployment evidence, then separately authorise a connected synthetic Preview workflow and its exact configuration. Do not add credentials, enable ADMIN_STAGING_ENABLED, deploy another build, configure Resend or activate recruitment under this first-deployment approval. Browser/MFA, connected Preview persistence, mail and restoration acceptance remain BLOCKED. No migrations, merges, paid upgrade or live-project deployment occurred.
+
+### Preview preflight — proposal for separate approval, not executed
+
+1. Approve one exact Preview source commit and the same isolated project ID. The documentation publication commit does not replace the recorded deployed source 02ab310. Keep Git disconnected and automatic C07 deployment restrictions unchanged; use an explicitly approved manual Preview deployment.
+2. Recheck admin root, shared-source access, pinned root install/admin build, Node 24.x, London function region, All Deployments protection, no custom domains, and no changes to live projects. Review the US build/global middleware geography separately; do not call the deployment London-only.
+3. Agree the Preview acceptance scope before any configuration: a closed Preview smoke test needs no application credentials. A connected Preview requires separately approved restricted ADMIN_DATABASE_URL, independent Better Auth secret and exact protected HTTPS origin, synthetic-only authorised users, and explicit permission to enable ADMIN_STAGING_ENABLED. Keep the Production-classified closed deployment and its configuration untouched.
+4. Leave Resend absent unless a separate dummy-recipient/mail workflow is approved. Plan an authorised no-real-email account bootstrap/login path before claiming connected authentication acceptance. No Neon provisioning or migration rerun is needed.
+5. After approval, verify the new deployment is actually Preview and tied to the approved project/commit. Test unauthorised protection first, then the approved closed or connected workflow, reviewer scope, management/audit persistence and negative cases. Revoke any test-only access credential afterward. Stop on deployment failure; no automatic retry.
+
+Full staging acceptance and public production launch remain NO-GO. This preflight authorises no environment change, credential upload, deployment, database connection, mail configuration or recruitment activation.
+
+## Neon result — 26 October 2026, historical phase before Vercel deployment
 
 **Database integration success criterion achieved. Protected website/email acceptance remains BLOCKED; production NO-GO.** This section supersedes the earlier unauthenticated attempt and historical 25 October evidence below. No deployment or merge occurred.
 
