@@ -1,5 +1,7 @@
 # C07 infrastructure configuration and isolation report
 
+26 October update: Neon project/organisation/region, empty neondb, migrations 001–007 and restricted runtime connections have now been verified against actual synthetic staging. See [current database evidence](c07-neon-staging.md) and [acceptance](c07-acceptance.md). No Vercel/Resend/deployment work occurred. The 25 October inventory below is historical and superseded for Neon only.
+
 25 October 2026. Isolated synthetic staging only. **Staging NO-GO; production NO-GO.** No external infrastructure was provisioned or verified. No live database migrations, mail, deployments, DNS changes, merges or recruitment activation occurred.
 
 ## Source and evidence boundary

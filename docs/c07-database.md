@@ -1,6 +1,6 @@
 # C07 migration and runtime grant verification
 
-**BLOCKED — not testable without configuration/credentials:** no live Neon connection, project identity, migration ledger, roles or backup were available. No migration was applied externally. Local embedded PostgreSQL results are recorded separately in acceptance.
+**26 October update: PASS — actual Neon staging for migrations/runtime permissions and fictional persistence.** Project `long-bar-21726499`, London `aws-eu-west-2`, database `neondb`, synthetic-only branch `br-hidden-violet-zaboc8g7` verified empty before migrations 001–007 committed. See [current acceptance](c07-acceptance.md) and [migration register/runtime setup](c07-neon-staging.md). Backup restoration and protected website/email acceptance remain BLOCKED. The procedure below also applies to future fresh staging setups; do not rerun against this now-populated database.
 
 ## Operator migration procedure
 
@@ -8,12 +8,12 @@
 2. Confirm a fresh empty database, or establish synthetic provenance of an existing staging database and review schema/migration history. Back up only that synthetic staging database before changes. A branch copied from production is not acceptable isolation.
 3. As schema owner only, review and execute 001_vcse_eoi.sql → 002_vcse_international_interest.sql → 003_vcse_declaration_audit.sql → 004_vcse_structured_answers.sql → 005_admin_auth.sql → 006_admin_management.sql → 007_admin_grants.psql. Use psql with ON_ERROR_STOP and its normal protected connection configuration, never a connection URI in retained command output. Supply the approved existing `admin_runtime_role` to 007. Do not blindly rerun one-time migrations. Skip only where ledger plus actual schema/constraint/function/grant inspection prove application; file presence is insufficient.
 4. Record file SHA-256, application time, operator, database identity, transaction outcome and verification result in a restricted migration register. Migration files 005/006 are not an automatic idempotent runner. Do not manufacture ledger entries for historical migrations.
-5. Create independent non-owner public-intake and admin runtime roles using provider-supported role management. No superuser, CREATEDB, CREATEROLE, schema ownership or inherited owner membership. Review PUBLIC/default/schema privileges and role inheritance. Apply the public writer grants from the EOI handover only after reviewing their actual table operations; 007 configures admin grants, not the intake role. Avoid broad default grants to future auth/management tables.
+5. Create independent non-owner public-intake and admin runtime roles using SQL, not Neon's Console/API/CLI role creation (those grant neon_superuser membership). Use LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS with independently generated passwords supplied privately. No schema ownership or inherited owner membership. Review PUBLIC/default/schema privileges and role inheritance. Apply the public writer grants from the EOI handover only after reviewing their actual table operations; 007 configures admin grants, not the intake role. Avoid broad default grants to future auth/management tables.
 6. Connect separately using each actual runtime credential and execute the matrix below. SET ROLE by an owner alone is insufficient evidence of runtime connection identity. Keep source fixtures and expected results synthetic; roll back destructive negative probes. Recheck source rows and audit after tests.
 
 ## Required live permission matrix
 
-All rows currently **BLOCKED — not testable without configuration/credentials**.
+Current executed results are in c07-acceptance.md. Actual Neon credential, source/audit denial, reviewer DAL, concurrency and audit rollback probes passed. Browser/admin MFA and mail delivery parts of this matrix remain BLOCKED; do not infer them from database checks.
 
 | Principal | Positive operation | Required denial / invariant |
 | --- | --- | --- |

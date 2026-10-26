@@ -1,5 +1,63 @@
 # C07 acceptance evidence and operating checklist
 
+## Current Neon result — 26 October 2026, after operator authentication
+
+**Database integration success criterion achieved. Protected website/email acceptance remains BLOCKED; production NO-GO.** This section supersedes the earlier unauthenticated attempt and historical 25 October evidence below. No deployment or merge occurred.
+
+| Check | Result and evidence |
+| --- | --- |
+| Project / organisation / region | PASS — actual Neon staging. Authenticated API verified `bloomshield-app001b-staging`, `long-bar-21726499`, `org-jolly-moon-22982519`, London `aws-eu-west-2`, PostgreSQL 18. |
+| Branch / database identity | PASS — actual Neon staging. Default branch `br-hidden-violet-zaboc8g7`, named `production`, is used exclusively for synthetic staging. SQL verified `neondb`, `current_user=session_user=neondb_owner`. Owner URI obtained for that exact project/branch, held only in memory, TLS verify-full. |
+| Pre-migration emptiness | PASS — actual Neon staging. Independent pg_class/pg_proc inspection returned zero non-system relations/functions. Rechecked immediately before writes at 2026-10-26T03:25:14.979Z. |
+| Reviewed migrations | PASS — actual Neon staging. 001–007 committed individually at 03:25:15Z. All seven SHA-256 values matched c07-database.md. 007 executed its unchanged SQL body with the fixed admin role substituted for the psql variable; no psql client installed. See c07-neon-staging.md for the register. |
+| Runtime setup | PASS — actual Neon staging. SQL-created `bloomshield_intake_staging` and `bloomshield_admin_staging`, separate random passwords, no privileged flags/inherited roles/object ownership/schema CREATE. Independent actual credential connections verified. Public schema CREATE revoked from PUBLIC. |
+| Ignored configuration | PASS — local/simulated only. Root `.env.local` contains `VCSE_EOI_DATABASE_URL`; `admin/.env.local` contains `ADMIN_DATABASE_URL`. Exclusive file writes; owner credential never stored. Both apps remain closed; no Vercel environment writes. |
+| Expected source, Better Auth and admin schema | PASS — actual Neon staging. All 15 expected tables present, including Better Auth user/session/account/verification/twoFactor/rateLimit; no managed authentication added. |
+| Fictional UK persistence / admin retrieval | PASS — actual Neon staging. Receipt `2875d61f-ad7b-41a5-a366-47398f6977ee`; existing validateApplication/signing/persist code with real Neon HTTP transport; existing records/saveRecord DAL with real Better Auth reviewer session and admin runtime. |
+| Fictional international persistence / admin retrieval | PASS — actual Neon staging. Nigeria fixture receipt `682353c5-a5a2-42e9-b787-d7ab2e6b5b12`; route-specific structured funding/declaration data retained. |
+| Deduplication / source-management separation | PASS — actual Neon staging. Same submission returned same receipt and exactly two outbox jobs; owner-controlled trigger created one management row. Intake denied management/auth/audit access; admin denied source INSERT/UPDATE/DELETE/TRUNCATE. Intake limited to fingerprint UPDATE required by deduplication, not payload UPDATE. |
+| Authorisation | PASS — actual Neon staging. Real password login through existing Better Auth, anonymous and unassigned reads denied, assigned reviewer reads allowed, reviewer selection/reassignment rejected. No mocked principal or database transport. Synthetic reviewer disabled and sessions deleted in cleanup. This does not establish HTTPS/browser or administrator MFA acceptance. |
+| Management / audit transactions | PASS — actual Neon staging. Two committed management/audit updates per fixture; actor/action/field metadata verified without notes in audit. Same-version race had exactly one winner and one 409. Temporarily revoking audit INSERT caused management rollback; grant restored in finally. Source rows remained byte-for-value unchanged. Both runtimes denied audit mutation/truncation and schema CREATE. |
+| Persistence across connections | PASS — actual Neon staging. Fresh independent admin connection retrieved both committed source rows. |
+| Live database test | PASS — actual Neon staging. `C07_RUN_LIVE=long-bar-21726499 node --test tests/c07-neon-integration.cjs`: 1/1 integration test passed; no skipped tests, duration 30.690s. Final rerun using unmodified application database/authentication factories also passed 1/1 in 22.948s; latest UK receipt `ba1f4d43-6267-44ee-864b-9bdae101e1ec`, international receipt `791e7d4c-156c-4d81-abec-36e65f4c4d66`. Both successful runs retained as fictional evidence. |
+| First live test attempt | FAIL, corrected. Expected-table assertion omitted the existing Better Auth verification table. Database migration was correct; assertion fixed. Failure occurred before EOI fixtures were inserted. Final rerun above passed. |
+| No email sent | PASS — actual Neon staging. Test invoked persistence without deliver(); no mail API keys supplied. All eight fictional outbox jobs from the two successful runs set suppressed to prevent later worker delivery. Website/Resend acceptance remains BLOCKED. |
+| Local regression suite after integration tooling | PASS — local/simulated only. 22 EOI + 6 dashboard + 12 auth tests = 40/40, zero failed/skipped. Public/admin TypeScript commands exited 0. Final lint/build results follow below. |
+| Vercel / Resend / remote production flags / GitHub update | BLOCKED. No protected deployment or mail integration configured. Remote flags not verified; local/build OPEN/LISTED false. GitHub token invalid, so changes remain local. |
+
+### Final lint/build results after Neon configuration
+
+PASS — local/simulated only. With the ignored Neon runtime configuration present, `pnpm build` and `pnpm build:admin` both exited 0 (`BUILD_RESULTS public=0 admin=0`), generating 57 and six pages respectively. OPEN/LISTED explicitly false; admin staging enable remains false. The existing nested-worktree root-inference warning remains. No application code or dependency change was needed. `pnpm lint` exited 0 alongside the current regression/typecheck run; final test-only cleanup lint and git diff --check rechecks also exited 0 before commit.
+
+## Earlier unauthenticated Neon integration attempt — 26 October 2026 (superseded)
+
+**BLOCKED — staging integration incomplete; production NO-GO.** Work performed in the existing `codex/app-001b-c07-staging` worktree at `e6de7aa`, preserving #7 → #8 → #9 → #10. No migration or external application write was performed. See [exact operator resume commands](c07-neon-staging.md).
+
+| Check | Result and evidence |
+| --- | --- |
+| Reviewed migration dependency order 001–007 | PASS — local/simulated only. 001–004 source/outbox/declarations/structured answers; 005 pinned Better Auth; 006 management/audit and owner-controlled insert trigger; 007 parameterised admin grants. Existing files unchanged. |
+| CLI access | PASS — local/simulated only. `npx --yes neon@latest --help` succeeded after network-enabled retry; downloaded Neon 8.11.4. Initial sandbox attempts failed with registry EACCES. |
+| Authenticated Neon access | BLOCKED. `neon --no-analytics me` exited 1: DEFAULT profile has no stored credential. No NEON_API_KEY or database environment variable names were present. Operator browser authentication requested. |
+| Database identity, organisation, branch ID, endpoint and region | BLOCKED. Supplied target `long-bar-21726499`, `org-jolly-moon-22982519`, `neondb`, branch name `production` is not yet independently verified. |
+| Empty application schema and migration privileges | BLOCKED. No SQL connection established; no independent schema inspection possible. |
+| Migrations 001–007 applied to Neon | BLOCKED. None ran against Neon. |
+| Runtime credentials / environment variables | BLOCKED. Existing expected names confirmed: root `VCSE_EOI_DATABASE_URL`, admin `ADMIN_DATABASE_URL`; ignored local files verified with git check-ignore. No values written. SQL-created restricted roles required; provider-created roles inherit neon_superuser. |
+| Neon init/deploy suitability | PASS — local/simulated only. Documentation/CLI review: unnecessary tooling/config/service application and environment refresh for the existing two-app architecture. Neither command run; existing Better Auth retained. |
+| Automated EOI tests | PASS — local/simulated only. `pnpm test:vcse`: 22/22, zero failed/skipped. Embedded PGlite and stubbed mail. |
+| Automated dashboard tests | PASS — local/simulated only. `pnpm test:admin`: 6/6, zero failed/skipped. |
+| Auth/database integration tests | PASS — local/simulated only. `pnpm test:auth`: 12/12, zero failed/skipped, including UK/international production SQL/DAL integration, transactional audit/concurrency and mutation grant denials in embedded PostgreSQL. |
+| TypeScript public/admin | PASS — local/simulated only. `pnpm typecheck` and `pnpm typecheck:admin` both exit 0. |
+| ESLint | PASS — local/simulated only. `pnpm lint` exit 0. |
+| Initial public production build | FAIL. Sandbox blocked Google Fonts downloads (EACCES); build exited 1. Network-enabled retry recorded below. |
+| Public production build retry | PASS — local/simulated only. Network-enabled `pnpm build` exit 0; 57 pages generated, OPEN/LISTED explicitly false. Nested-worktree root-inference warning remains; no deployment performed. |
+| Admin production build | PASS — local/simulated only. Network-enabled `pnpm build:admin` exit 0; six pages generated. Combined command reported `BUILD_RESULTS public=0 admin=0`. |
+| Actual Neon runtime connections, source protection and management/audit persistence | BLOCKED. Embedded PostgreSQL results do not verify real Neon credentials, inherited grants or connectivity. |
+| Fictional UK/international EOI persisted in Neon and retrieved through authorised admin DAL | BLOCKED. Success criterion not achieved against Neon. |
+| Live website/email acceptance | BLOCKED. Vercel and Resend not connected; no website/email acceptance claimed. |
+| Remote PR #10 update | BLOCKED. `gh auth status` reports invalid BloomShield token. Local documentation changes only; no merge. |
+
+No actual Neon staging PASS is recorded. No APP-001A access, production applicant data, real emails, DNS/deployment change, authentication service activation, billing change or merge occurred. Production OPEN/LISTED remain false in repository defaults and build process; remote production settings remain unverified.
+
 25 October 2026. **Staging NO-GO. Production NO-GO.** The success criterion has not been achieved against protected live services. No actual-staging-service PASS is recorded. Existing C06 screenshots are historical local evidence, not C07 live acceptance.
 
 ## Result vocabulary
