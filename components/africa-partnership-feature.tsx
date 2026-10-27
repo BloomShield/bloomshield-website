@@ -19,6 +19,9 @@ export function AfricaPartnershipFeature() {
         <p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-200">Research &amp; Innovation | Africa</p>
         <h2 id="africa-feature-title" className="mt-5 max-w-3xl font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">ACCEPT SIMS™ —<br/>In Partnership for Stronger Cervical Cancer Care <span className="text-emerald-300">Across Africa</span></h2>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-100">{africaDescription}</p>
+        <div className="relative mt-8 aspect-[3/2] w-full overflow-hidden rounded-2xl lg:hidden">
+          <Image src="/images/accept-sims-africa-clinic.webp" alt="Illustrative scene of African healthcare professionals and a community participant reviewing a tablet together in a clinic." fill sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 64px), 1px" className="object-cover object-center" />
+        </div>
         <div className="mt-8 max-w-4xl"><AfricaCountryPanels /></div>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Link href={africaPartnershipPath} className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-emerald-300 px-6 py-3 text-sm font-bold text-[#071f34] transition hover:bg-emerald-200">Explore the Partnership <ArrowRight aria-hidden="true" size={18}/></Link>
