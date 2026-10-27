@@ -93,7 +93,7 @@ export const localLensSeries = {
   image: "/images/insights/local-lens-medway-card.png" as const,
   imageAlt: "BloomShield Local Lens Medway and Kent edition: cancer screening statistics for breast, bowel and cervical screening alongside a Medway and Kent map and local community scene.",
   seoTitle: "BloomShield Local Lens | Local Cancer Data and Health Equity",
-  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action through editions on cancer screening in Medway and Kent, Liverpool, Devon, Cornwall and the Isles of Scilly, West London, and Greater Manchester.",
+  seoDescription: "BloomShield Local Lens connects local cancer data, inequality gaps, community voices and practical action through editions on cancer screening in Medway and Kent, Liverpool, Devon, Cornwall and the Isles of Scilly, West London, Greater Manchester, and Havering, East London.",
   canonicalUrl: "/insights/local-lens",
   socialImage: "/images/insights/local-lens-medway-card.png",
   socialImageAlt: "BloomShield Local Lens Medway and Kent edition exploring what local cancer screening data tells us.",
@@ -112,6 +112,59 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+{
+  "slug": "havering-east-london",
+  "href": "/insights/local-lens/havering-east-london",
+  "title": "Local Lens: Havering, East London",
+  "shortTitle": "What happens when we stop waiting for non-responders?",
+  "area": "Local Lens",
+  "crossTags": [
+    "Cancer Screening",
+    "Health Inequalities",
+    "Primary Care"
+  ],
+  "status": "published",
+  "description": "In Havering, a GP-led bowel screening initiative reported an extraordinary increase in participation. But its most important lesson may be how primary care used information it already held to identify people who had not completed screening — and reach them differently.",
+  "image": "/images/insights/local-lens-havering-card.png",
+  "imageAlt": "BloomShield Local Lens LL-006: Havering, East London, community members and an illustrative NHS bowel screening FIT kit; reported Havering North PCN uptake from 65.5% in November 2021 to 96.6% in December 2021.",
+  "publishedAt": "27 October 2026",
+  "publishedAtIso": "2026-10-27",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Local Lens",
+    "Havering",
+    "East London",
+    "Bowel Screening",
+    "Health Inequalities",
+    "Primary Care"
+  ],
+  "ccpeLens": [
+    "Understand",
+    "Validate",
+    "Implement",
+    "Evaluate"
+  ],
+  "engagementContactLabel": "Share local insight",
+  "seoTitle": "Local Lens: Havering, East London",
+  "seoDescription": "BloomShield Local Lens examines how Havering North PCN identified bowel-screening non-responders, tailored community outreach and reported a rise in screening participation from 65.5% to 96.6% during 2021.",
+  "canonicalUrl": "/insights/local-lens/havering-east-london",
+  "socialImage": "/images/insights/local-lens-havering-hero.png",
+  "socialImageAlt": "BloomShield Local Lens Edition 06: Havering, East London — historical Havering North PCN bowel screening participation, November–December 2021.",
+  "socialImageWidth": 1672,
+  "socialImageHeight": 941,
+  "socialImageType": "image/png",
+  "keywords": [
+    "Local Lens",
+    "Havering North PCN",
+    "Bowel Screening",
+    "Non-responders",
+    "Health Inequalities"
+  ],
+  "datePublished": "2026-10-27",
+  "dateModified": "2026-10-27"
+},
 {
   "slug": "from-gaps-to-the-360-journey",
   "href": "/insights/series-collections/from-gaps-to-the-360-journey",
