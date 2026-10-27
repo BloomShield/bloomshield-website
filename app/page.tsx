@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AfricaPartnershipFeature } from "@/components/africa-partnership-feature";
 import { ArrowRight, BrainCircuit, Globe2, GraduationCap, HandHeart, HeartHandshake, Hospital, Lightbulb, Microscope, Network, ShieldCheck, Users, UsersRound } from "lucide-react";
 import { CTA } from "@/components/cta";
 import { CampaignArtwork, CampaignSpotlight } from "@/components/screensmart-campaign";
@@ -41,6 +42,7 @@ export default function Home() {
       </div>
     </section>
     <CampaignSpotlight />
+    <AfricaPartnershipFeature />
     <section aria-label="BloomShield experience and partnerships" className="border-y border-teal-900/10 bg-white">
       <div className="container-page grid md:grid-cols-3">
         {proofPoints.map(({ icon: Icon, title, text }, index) => (

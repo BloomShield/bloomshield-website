@@ -79,6 +79,7 @@ export default function Research() {
               {["Cervical cancer screening", "Operational screening registry", "Navigation intelligence"].map((tag) => <li key={tag} className="rounded-full bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-800">{tag}</li>)}
             </ul>
             <Link href="/research/accept" className="button-primary mt-7">Explore ACCEPT SIMS <ArrowRight aria-hidden="true" size={17} /></Link>
+            <Link href="/research-innovation/accept-sims-africa-partnerships" className="mt-5 block font-bold text-teal-700 underline underline-offset-4">Explore African Research Partnerships →</Link>
           </article>
         </div>
       </section>

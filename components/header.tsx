@@ -67,7 +67,7 @@ export function Header() {
               : href === "/consultancy"
                 ? pathname === href || pathname === "/faith-community-funding-development"
               : href === "/research-innovation"
-                ? pathname === href || pathname.startsWith("/research/")
+                ? pathname === href || pathname.startsWith("/research-innovation/") || pathname.startsWith("/research/")
                 : pathname === href;
           return <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`text-sm font-semibold transition hover:text-teal-600 ${active ? "text-teal-600" : "text-slate-700"}`}>{label}</Link>;
         })}

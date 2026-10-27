@@ -89,6 +89,7 @@ export default function AcceptResearchPage() {
       <div className="mt-10 grid gap-6 md:grid-cols-2">{audiences.map(([title, copy]) => <article key={title} className="rounded-3xl border border-teal-900/10 bg-white p-7"><h3 className="font-display text-2xl font-semibold">{title}</h3><p className="mt-4 leading-7 text-slate-600">{copy}</p></article>)}</div>
     </div></section>
     <section className="section-space bg-mist"><div className="container-page">
+      <Link href="/research-innovation/accept-sims-africa-partnerships" className="button-secondary mb-8">African Research Partnerships <ArrowRight aria-hidden="true" size={17}/></Link>
       <SectionHeading title="A platform for consortium-based African implementation research" intro="ACCEPT SIMS™ is being developed with the expectation that cervical screening research increasingly requires collaboration across academic institutions, implementation organisations, public-health agencies and technology partners." />
       <p className="mt-6 leading-7 text-slate-600">The platform could support multi-site research questions including:</p><ResearchList items={consortiumQuestions} />
       <p className="mt-8 max-w-4xl leading-7 text-slate-600">The long-term ambition is not to impose one screening model across African settings, but to provide a common research and information architecture that allows different programmes to generate comparable, governed and locally meaningful evidence.</p>
