@@ -169,8 +169,10 @@ export function AnalyticsConsent() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || DEFAULT_GA_MEASUREMENT_ID;
   const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
+  const pathname = usePathname();
+  const sensitivePage = pathname.startsWith("/research/vcse-digital-workspace");
   const analyticsEnabled = process.env.NODE_ENV === "production" && Boolean(measurementId);
-  const clarityEnabled = process.env.NODE_ENV === "production" && Boolean(clarityProjectId);
+  const clarityEnabled = process.env.NODE_ENV === "production" && Boolean(clarityProjectId) && !sensitivePage;
 
   useEffect(() => {
     const saved = window.localStorage.getItem(CONSENT_KEY);
