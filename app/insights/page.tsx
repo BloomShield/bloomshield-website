@@ -31,6 +31,7 @@ const areaPresentation = [
 ] as const;
 
 export default function InsightsPage() {
+  const screenConnectArticle = insights.find(item => item.slug === "screenconnect-digital-research-demonstrator")!;
   const hpvArticle = insights.find(item => item.slug === "hpv-self-testing-screening-gap")!;
   const australiaArticle = insights.find(item => item.slug === "australia-world-eliminating-cervical-cancer")!;
   const conversationArticle = insights.find(item => item.slug === "from-diagnostics-to-access-africa")!;
@@ -44,7 +45,7 @@ export default function InsightsPage() {
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: "From Gaps to the 360° Journey", url: "/insights/series-collections/from-gaps-to-the-360-journey" }, { name: "Breast Screening Gaps: What Are We Actually Seeing?", url: "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing" }, { name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: westLondonArticle.title, url: westLondonArticle.href! }, { name: greaterManchesterArticle.title, url: greaterManchesterArticle.href! }, { name: haveringArticle.title, url: haveringArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: screenConnectArticle.title, url: screenConnectArticle.href! }, { name: "From Gaps to the 360° Journey", url: "/insights/series-collections/from-gaps-to-the-360-journey" }, { name: "Breast Screening Gaps: What Are We Actually Seeing?", url: "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing" }, { name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: westLondonArticle.title, url: westLondonArticle.href! }, { name: greaterManchesterArticle.title, url: greaterManchesterArticle.href! }, { name: haveringArticle.title, url: haveringArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
@@ -217,7 +218,10 @@ export default function InsightsPage() {
           <CircleDotDashed className="text-[#9b7125]" aria-hidden="true" />
           <h2 className="mt-7 font-display text-3xl font-semibold">{item.title}</h2>
           <p className="mt-4 max-w-xl text-lg leading-8 text-slate-600">{item.copy}</p>
-          <p className="mt-8 text-sm font-bold uppercase tracking-[.16em] text-teal-700">The collection will grow here</p>
+          <Link href={screenConnectArticle.href!} className="group mt-8 block overflow-hidden rounded-2xl border border-teal-900/10 bg-[#f7f5ef]">
+            <Image src={screenConnectArticle.image!} alt={screenConnectArticle.imageAlt!} width={1448} height={1086} sizes="(min-width: 1024px) 50vw, 100vw" className="h-auto w-full object-contain" />
+            <div className="p-6"><p className="text-xs font-bold uppercase tracking-widest text-teal-700">Research &amp; Innovation · <time dateTime="2026-11-01">1 November 2026</time></p><h3 className="mt-4 font-display text-2xl font-semibold">{screenConnectArticle.title}</h3><p className="mt-4 leading-7 text-slate-600">{screenConnectArticle.description}</p><span className="mt-5 inline-flex items-center gap-2 font-bold text-teal-700">Read the unveiling <ArrowRight aria-hidden="true" size={19}/></span></div>
+          </Link>
         </article>)}
       </div>
     </section>

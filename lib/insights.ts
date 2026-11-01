@@ -113,6 +113,40 @@ export const partnershipPlaybook = {
 
 export const insights: InsightRecord[] = [
 {
+  "slug": "screenconnect-digital-research-demonstrator",
+  "href": "/insights/innovation-in-practice/screenconnect-digital-research-demonstrator",
+  "title": "ScreenConnect Digital™: From Concept to Working Research Demonstrator",
+  "area": "Innovation in Practice",
+  "crossTags": [
+    "Research & Innovation"
+  ],
+  "status": "published",
+  "description": "Introducing ScreenConnect Digital™, BloomShield's working synthetic-data research demonstrator exploring 360° cancer screening journeys, pathway continuity, barriers, interventions and outcomes.",
+  "image": "/images/insights/screenconnect-digital-unveiling-card.png",
+  "imageAlt": "Unveiling ScreenConnect Digital™: The 360° Cancer Screening Journey.",
+  "publishedAt": "1 November 2026",
+  "publishedAtIso": "2026-11-01",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Research & Innovation",
+    "ScreenConnect Digital™",
+    "Synthetic data",
+    "Screening pathways",
+    "Implementation research"
+  ],
+  "canonicalUrl": "/insights/innovation-in-practice/screenconnect-digital-research-demonstrator",
+  "socialImage": "/images/insights/screenconnect-digital-unveiling-card.png",
+  "socialImageAlt": "Unveiling ScreenConnect Digital™: The 360° Cancer Screening Journey.",
+  "socialImageWidth": 1448,
+  "socialImageHeight": 1086,
+  "socialImageType": "image/png",
+  "seoDescription": "Introducing ScreenConnect Digital™, BloomShield's working synthetic-data research demonstrator exploring 360° cancer screening journeys, pathway continuity, barriers, interventions and outcomes.",
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01"
+},
+{
   "slug": "havering-east-london",
   "href": "/insights/local-lens/havering-east-london",
   "title": "Local Lens: Havering, East London",
