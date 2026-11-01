@@ -4,13 +4,30 @@ import { featuredCampaign, tlcCampaign, tlcDisclaimer, tlcSteps } from "@/lib/sc
 
 export function CampaignArtwork({ priority = false, permanent = false }: { priority?: boolean; permanent?: boolean }) {
   const campaign = permanent ? tlcCampaign : featuredCampaign;
-  return <Image src={campaign.image} alt={campaign.imageAlt} width={campaign.imageWidth} height={campaign.imageHeight} priority={priority} sizes="(min-width: 1024px) 520px, (min-width: 640px) 600px, 100vw" className="mx-auto h-auto w-full max-w-[600px] rounded-3xl shadow-soft" />;
+  const artwork = <Image src={campaign.image} alt={campaign.imageAlt} width={campaign.imageWidth} height={campaign.imageHeight} priority={priority} sizes="(min-width: 1024px) 520px, (min-width: 640px) 600px, 100vw" className="mx-auto h-auto w-full max-w-[600px] rounded-3xl shadow-soft" />;
+  return permanent ? artwork : <Link href={campaign.href} className="block rounded-3xl focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-teal-700">{artwork}</Link>;
 }
 
 export function CampaignSpotlight() {
   const campaign = featuredCampaign;
   const theme = campaign.accent === "pink" ? "border-pink-200 bg-pink-50" : "border-emerald-200 bg-emerald-50";
-  return <section aria-labelledby="campaign-spotlight-title" className="py-8"><div className="container-page"><div className={`grid gap-6 rounded-3xl border p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center ${theme}`}><div><div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold uppercase tracking-widest"><p className="text-teal-800">{campaign.programme} Spotlight</p><p className={campaign.accent === "pink" ? "text-pink-800" : "text-emerald-800"}>{campaign.kicker}</p></div><h2 id="campaign-spotlight-title" className="mt-4 font-display text-2xl font-semibold text-teal-950 sm:text-3xl">{campaign.title}</h2><p className="mt-3 max-w-3xl leading-7 text-slate-700">{campaign.description}</p><p className="mt-2 font-semibold text-teal-900">{campaign.line}</p></div><Link href={campaign.href} className="button-primary text-center">{campaign.cta}</Link></div></div></section>;
+  return <section aria-labelledby="campaign-spotlight-title" className="py-8">
+    <div className="container-page">
+      <div className={`grid gap-6 rounded-3xl border p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center ${theme}`}>
+        <Link href="/insights/series-collections/lung-cancer-awareness-month-2026" aria-label="Explore the November 2026 Lung Cancer Awareness Month Insights Series" className="grid min-w-0 items-center gap-6 rounded-2xl focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-teal-700 md:grid-cols-[180px_minmax(0,1fr)]">
+          <Image src="/images/campaigns/lung-cancer-awareness-november-2026-portrait.jpg" alt="BloomShield Lung Cancer Awareness Month: Know the signs. Act early. Protect your lungs. Symptom checklist and advice to speak to your GP." width={1122} height={1402} sizes="(min-width: 768px) 180px, 260px" className="mx-auto h-auto w-full max-w-[260px] rounded-2xl object-contain md:max-w-none" />
+          <div className="min-w-0">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold uppercase tracking-widest"><p className="text-teal-800">{campaign.programme} Spotlight</p><p className={campaign.accent === "pink" ? "text-pink-800" : "text-emerald-800"}>{campaign.kicker}</p></div>
+            <h2 id="campaign-spotlight-title" className="mt-4 font-display text-2xl font-semibold text-teal-950 sm:text-3xl">{campaign.title}</h2>
+            <p className="mt-3 max-w-3xl leading-7 text-slate-700">{campaign.description}</p>
+            <p className="mt-2 font-semibold text-teal-900">{campaign.line}</p>
+            <span className="mt-4 inline-block font-bold text-teal-700">Explore the November Insights Series →</span>
+          </div>
+        </Link>
+        <Link href={campaign.href} className="button-primary text-center focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-teal-700">{campaign.cta}</Link>
+      </div>
+    </div>
+  </section>;
 }
 
 export function TLCSteps() {

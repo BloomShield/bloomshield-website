@@ -1,3 +1,4 @@
+import { LungCancerAwarenessCollection } from "@/components/lung-cancer-awareness-collection";
 import { BreastCancerAwarenessCollection } from "@/components/breast-cancer-awareness-collection";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -72,7 +73,7 @@ export default function InsightsPage() {
           <p className="max-w-2xl text-lg leading-8 text-slate-600">Our collections connect evidence and lived experience over time—building practical understanding across people, partnerships, systems, innovation, equity and impact.</p>
         </div>
 
-        <BreastCancerAwarenessCollection />
+        <LungCancerAwarenessCollection /><BreastCancerAwarenessCollection />
         <article className="mt-12 overflow-hidden rounded-[2.5rem] bg-[#082f36] text-white shadow-soft">
           <div className="w-full border-b border-white/10 bg-[#052b31]">
             <div className="relative mx-auto aspect-[16/9] w-full">

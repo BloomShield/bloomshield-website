@@ -53,6 +53,7 @@ export const insightPublisher = {
 } as const;
 
 export const insightAuthors: Record<string, InsightAuthor> = {
+  "bloomshield-cic": { id: "bloomshield-cic", type: "organisation", name: "BloomShield CIC", biography: "BloomShield CIC connects evidence, communities and implementation to advance equitable cancer prevention and earlier diagnosis." },
   "femi-olaleye": {
     id: "femi-olaleye",
     type: "person",
@@ -112,6 +113,42 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+{
+  "slug": "know-the-signs-act-early",
+  "href": "/insights/series-collections/know-the-signs-act-early",
+  "title": "Lung Cancer Awareness Month: Know the Signs. Act Early.",
+  "area": "Series & Collections",
+  "collection": "Lung Cancer Awareness Month 2026",
+  "seriesPosition": 1,
+  "crossTags": [
+    "Lung Cancer",
+    "Earlier Diagnosis"
+  ],
+  "status": "published",
+  "description": "Recognising symptoms matters. Acting on them matters too. But knowing when and how to seek help is just as important.",
+  "image": "/images/campaigns/lung-cancer-awareness-november-2026-portrait.jpg",
+  "imageAlt": "BloomShield Lung Cancer Awareness Month: Know the signs. Act early. Protect your lungs. Symptom checklist and advice to speak to your GP.",
+  "publishedAt": "1 November 2026",
+  "publishedAtIso": "2026-11-01",
+  "authorIds": [
+    "bloomshield-cic"
+  ],
+  "tags": [
+    "Lung Cancer",
+    "Symptoms",
+    "Earlier Diagnosis"
+  ],
+  "seoTitle": "Know the Signs. Act Early. | BloomShield",
+  "seoDescription": "Recognise possible lung cancer symptoms, learn when to seek medical advice, and explore BloomShield's November Lung Cancer Awareness Month campaign.",
+  "canonicalUrl": "/insights/series-collections/know-the-signs-act-early",
+  "socialImage": "/images/campaigns/lung-cancer-awareness-november-2026-landscape.jpg",
+  "socialImageAlt": "BloomShield November Lung Cancer Awareness Month: Know the signs. Act early. Protect your lungs.",
+  "socialImageWidth": 1536,
+  "socialImageHeight": 658,
+  "socialImageType": "image/jpeg",
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01"
+},
 {
   "slug": "screenconnect-digital-research-demonstrator",
   "href": "/insights/innovation-in-practice/screenconnect-digital-research-demonstrator",
