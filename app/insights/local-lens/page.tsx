@@ -53,7 +53,7 @@ export default function LocalLensPage() {
       <div className="container-page">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div><p className="eyebrow">Editions</p><h2 id="editions" className="heading">Local insight, edition by edition.</h2></div>
-          <div className="flex items-center gap-3 text-sm font-bold text-teal-800"><MapPinned aria-hidden="true" size={19}/> Edition 01 → Edition 06</div>
+          <div className="flex items-center gap-3 text-sm font-bold text-teal-800"><MapPinned aria-hidden="true" size={19}/> Edition 01 → Edition {String(insights.filter(item => item.area === "Local Lens" && item.status === "published").length).padStart(2, "0")}</div>
         </div>
         <article className="mt-10 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-white shadow-soft">
           <Link href={medwayArticle.href!} className="group block">
