@@ -50,6 +50,7 @@ export default function Research() {
       <section className="section-space bg-[#eef9f6]">
         <div className="container-page">
           <SectionHeading eyebrow="Active research" title="A growing portfolio of applied research." intro="Explore the studies and demonstrators shaping our research in community capacity, digital health and person-centred pathways." />
+          {process.env.VCSE_EOI_LISTED === "true" && <article className="mt-8 rounded-3xl border border-teal-900/10 bg-white p-8"><p className="eyebrow">Selective early-adopter programme</p><h2 className="text-2xl font-bold">VCSE Digital Workspace</h2><p className="mt-4 leading-7 text-slate-600">Free workflow discovery for UK VCSE organisations exploring funding, tasks, documents and opportunities.</p><a className="button-primary mt-6" href="/research/vcse-digital-workspace">Explore workflow discovery</a></article>}
           <div className="mt-10 grid overflow-hidden rounded-[2rem] border border-teal-900/10 bg-white shadow-soft lg:grid-cols-[.72fr_1.28fr]">
             <div className="bg-[#0c4038] p-8 text-white sm:p-10">
               <p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-300">Active research project</p>
