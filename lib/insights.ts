@@ -114,6 +114,50 @@ export const partnershipPlaybook = {
 
 export const insights: InsightRecord[] = [
 {
+  "slug": "bedford",
+  "href": "/insights/local-lens/bedford",
+  "title": "What Happens When Cervical Screening Adapts to the People It Serves?",
+  "shortTitle": "Local Lens 007 — Bedford",
+  "area": "Local Lens",
+  "crossTags": [
+    "Cervical Screening",
+    "Primary Care"
+  ],
+  "status": "published",
+  "description": "At one Bedford GP practice, cervical screening uptake rose following a programme of service improvements. The results raise a wider question: should screening services adapt more deliberately to the people they are trying to reach?",
+  "image": "/images/insights/local-lens-bedford-card.png",
+  "imageAlt": "Bedford, Cauldwell Medical Centre: reported cervical screening uptake, June 2022–March 2023; ages 25–49: 54% to 69%; ages 50–64: 62% to 72%. Source: Santos et al., BMJ Open Quality, 2025. People shown are illustrative.",
+  "publishedAt": "3 November 2026",
+  "publishedAtIso": "2026-11-03",
+  "authorIds": [
+    "femi-olaleye"
+  ],
+  "tags": [
+    "Local Lens",
+    "Bedford",
+    "Cervical Screening",
+    "Implementation research"
+  ],
+  "ccpeLens": [
+    "Understand",
+    "Validate",
+    "Implement",
+    "Evaluate",
+    "Scale"
+  ],
+  "engagementContactLabel": "Research and implementation collaboration",
+  "seoTitle": "Local Lens: Bedford — Cervical Screening and Service Adaptation | BloomShield",
+  "seoDescription": "At a Bedford GP practice, cervical screening uptake rose across two age groups following quality-improvement interventions. BloomShield examines the evidence and implementation questions.",
+  "canonicalUrl": "/insights/local-lens/bedford",
+  "socialImage": "/images/insights/local-lens-bedford-card.png",
+  "socialImageAlt": "Bedford, Cauldwell Medical Centre: reported cervical screening uptake, June 2022–March 2023; ages 25–49: 54% to 69%; ages 50–64: 62% to 72%. Source: Santos et al., BMJ Open Quality, 2025. People shown are illustrative.",
+  "socialImageWidth": 1199,
+  "socialImageHeight": 1312,
+  "socialImageType": "image/png",
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03"
+},
+{
   "slug": "know-the-signs-act-early",
   "href": "/insights/series-collections/know-the-signs-act-early",
   "title": "Lung Cancer Awareness Month: Know the Signs. Act Early.",
