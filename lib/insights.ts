@@ -113,6 +113,32 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+  {
+    slug: "england-diagnosing-more-cancer-are-we-catching-it-earlier",
+    href: "/insights/evidence-policy/england-diagnosing-more-cancer-are-we-catching-it-earlier",
+    title: "England Is Diagnosing More Cancer. Are We Catching It Earlier?",
+    area: "Evidence & Policy",
+    collection: "Cancer Diagnosis and Treatment in England",
+    seriesPosition: 1,
+    crossTags: ["Early Diagnosis"],
+    status: "published",
+    description: "New NHS data record 373,574 cancer diagnoses in England in 2024. BloomShield examines reported progress in earlier diagnosis, with 56.7% of first new cancers diagnosed at stages 1–2.",
+    image: "/images/insights/england-cancer-diagnosis-square.png",
+    imageAlt: "BloomShield Insights Part 1 artwork showing an illustrative clinical team and England’s 2024 cancer diagnosis figures.",
+    publishedAt: "5 November 2026",
+    publishedAtIso: "2026-11-05",
+    authorIds: ["femi-olaleye"],
+    tags: ["Early Diagnosis","Cancer Screening","Health Equity"],
+    linkedinDiscussionUrl: "https://www.linkedin.com/pulse/england-diagnosing-more-cancer-we-catching-earlier-dr-femi-si7ve",
+    seoTitle: "England Is Diagnosing More Cancer. Are We Catching It Earlier? | BloomShield",
+    seoDescription: "New NHS data record 373,574 cancer diagnoses in England in 2024. BloomShield examines reported progress in earlier diagnosis, with 56.7% of first new cancers diagnosed at stages 1–2.",
+    canonicalUrl: "/insights/evidence-policy/england-diagnosing-more-cancer-are-we-catching-it-earlier",
+    socialImage: "/images/insights/england-cancer-diagnosis-square.png",
+    socialImageAlt: "BloomShield Insights Part 1 artwork showing an illustrative clinical team and England’s 2024 cancer diagnosis figures.",
+    socialImageWidth: 1254,
+    socialImageHeight: 1254,
+    datePublished: "2026-11-05",
+  },
 {
   "slug": "bedford",
   "href": "/insights/local-lens/bedford",

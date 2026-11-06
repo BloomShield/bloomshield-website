@@ -18,8 +18,8 @@ type InsightArticleProps = {
   authors: InsightAuthor[];
   publisher: string;
   standfirst: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
   heroClassName?: string;
   heroImageClassName?: string;
   domains: string[];
@@ -32,20 +32,21 @@ type InsightArticleProps = {
   linkedinDiscussionLinkLabel?: string;
   linkedinDiscussionCard?: boolean;
   linkedinDiscussionImage?: string;
+  linkedinDiscussionImageClassName?: string;
   linkedinBeforeContact?: boolean;
   engagementContactLabel?: string;
   children: React.ReactNode;
   interactionsAfterManuscript?: boolean;
   supportingEditorial?: React.ReactNode;
   relatedContent?: React.ReactNode;
-  implementationLesson: React.ReactNode;
-  references?: { label: string; href: string; source: string }[];
+  implementationLesson?: React.ReactNode;
+  references?: { label: string; href: string; source: string; citation?: React.ReactNode }[];
   referencesHeading?: string;
   previous?: { label: string; href: string };
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, subtitle, articleSlug, date, dateIso, readTime, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, linkedinDiscussionCard = false, linkedinDiscussionImage = "/images/insights/local-lens-greater-manchester-card-v2.png", linkedinBeforeContact = false, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, subtitle, articleSlug, date, dateIso, readTime, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, linkedinDiscussionCard = false, linkedinDiscussionImage = "/images/insights/local-lens-greater-manchester-card-v2.png", linkedinDiscussionImageClassName = "object-cover", linkedinBeforeContact = false, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -64,7 +65,7 @@ export function InsightArticle({ category, crossTag, title, subtitle, articleSlu
             <p className="mt-4 text-xs font-bold uppercase tracking-[.14em] text-teal-700">Published by {publisher}</p>
           </div>
         </div>
-        <div className="container-page pb-12 md:pb-16"><div className={`relative ${heroClassName} overflow-hidden rounded-[1.5rem] bg-teal-900`}><Image src={image} alt={imageAlt} fill sizes="(min-width: 1240px) 1150px, 100vw" className={heroImageClassName} priority /></div></div>
+        {image ? <div className="container-page pb-12 md:pb-16"><div className={`relative ${heroClassName} overflow-hidden rounded-[1.5rem] bg-teal-900`}><Image src={image} alt={imageAlt ?? ""} fill sizes="(min-width: 1240px) 1150px, 100vw" className={heroImageClassName} priority /></div></div> : null}
       </header>
 
       <div className="container-page grid gap-12 py-16 lg:grid-cols-[minmax(0,1fr)_15.5rem] lg:py-24">
@@ -75,7 +76,7 @@ export function InsightArticle({ category, crossTag, title, subtitle, articleSlu
           {references?.length ? <section className="insight-article-end-section" aria-labelledby="references">
             <h2 id="references">{referencesHeading}</h2>
             <ol className="mt-6 space-y-5">
-              {references.map(reference => <li key={reference.href} className="pl-2"><a href={reference.href} target="_blank" rel="noopener noreferrer" className="font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4 hover:decoration-teal-700">{reference.label}</a><span className="mt-1 block text-sm text-slate-500">{reference.source}</span></li>)}
+              {references.map(reference => <li key={reference.href} className="pl-2"><a href={reference.href} target="_blank" rel="noopener noreferrer" className="font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4 hover:decoration-teal-700">{reference.citation ?? reference.label}</a>{reference.citation ? null : <span className="mt-1 block text-sm text-slate-500">{reference.source}</span>}</li>)}
             </ol>
           </section> : null}
           <section className="insight-article-end-section" aria-labelledby="about-the-author">
@@ -98,7 +99,7 @@ export function InsightArticle({ category, crossTag, title, subtitle, articleSlu
             {!interactionsAfterManuscript ? <InsightsArticleInteractions articleTitle={title} articleSlug={articleSlug} contentSection={category} /> : null}
             {linkedinBeforeContact && linkedinDiscussionUrl ? <div className="border-b border-teal-900/10 py-5" aria-label="Continue the conversation">
               <a href={linkedinDiscussionUrl} target="_blank" rel="noopener noreferrer" aria-label="Join the conversation about this article on LinkedIn (opens in a new tab)" data-insights-event="insights_linkedin_click" className={linkedinDiscussionCard ? "group -mx-3 flex min-h-11 items-center gap-4 rounded-2xl border border-teal-900/10 bg-white p-3 text-ink shadow-[0_12px_30px_rgba(7,59,59,0.08)] transition hover:-translate-y-0.5 hover:border-teal-900/20 hover:shadow-[0_16px_36px_rgba(7,59,59,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:gap-5 sm:p-4" : "group -mx-3 flex min-h-11 items-start justify-between gap-5 rounded-lg px-3 py-5 text-ink transition hover:bg-teal-50/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 sm:items-center"}>
-                {linkedinDiscussionCard ? <span className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-teal-900 sm:h-24 sm:w-32"><Image src={linkedinDiscussionImage} alt="" fill sizes="128px" className="object-cover" /></span> : null}
+                {linkedinDiscussionCard ? <span className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-teal-900 sm:h-24 sm:w-32"><Image src={linkedinDiscussionImage} alt="" fill sizes="128px" className={linkedinDiscussionImageClassName} /></span> : null}
                 <span className="min-w-0 flex-1"><span className="flex items-center gap-2 font-display text-lg font-semibold text-teal-900 sm:text-xl"><span aria-hidden="true" className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-sm bg-[#0a66c2] font-sans text-[.68rem] font-extrabold leading-none text-white sm:h-6 sm:w-6 sm:text-[.75rem]">in</span>{linkedinDiscussionTitle}</span><span className="mt-1.5 block text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">{linkedinDiscussionDescription}</span>{linkedinDiscussionLinkLabel ? <span className="mt-2 inline-flex items-center gap-1 text-sm font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">{linkedinDiscussionLinkLabel}<ArrowUpRight aria-hidden="true" size={15} /></span> : null}</span><ArrowUpRight aria-hidden="true" className="shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" size={21} />
               </a>
             </div> : null}
@@ -133,11 +134,11 @@ export function InsightArticle({ category, crossTag, title, subtitle, articleSlu
                 </div>
               </div>
             </div>
-            <aside className="mt-8 border-l-[3px] border-[#b9892f] bg-[#f5eedf] px-6 py-7 sm:px-8" aria-labelledby="implementation-lesson">
+            {implementationLesson ? <aside className="mt-8 border-l-[3px] border-[#b9892f] bg-[#f5eedf] px-6 py-7 sm:px-8" aria-labelledby="implementation-lesson">
               <BookOpenCheck aria-hidden="true" className="text-[#75551b]" />
               <h2 id="implementation-lesson" className="mt-4 !text-2xl">Implementation Lesson</h2>
               <div className="mt-3 text-[1.0625rem] leading-8 text-slate-700">{implementationLesson}</div>
-            </aside>
+            </aside> : null}
           </section>
           {relatedContent}
         </div>
