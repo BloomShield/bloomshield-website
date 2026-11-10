@@ -89,10 +89,13 @@ export default function KirkleesLocalLensPage() {
       standfirst={article.description}
       domains={["People", "Partnerships", "Systems", "Equity", "Impact"]}
       tags={article.tags}
-      linkedinDiscussionUrl={article.linkedinDiscussionUrl}
+      linkedinDiscussionUrl="https://lnkd.in/p/dstQTCy4"
+      linkedinDiscussionTitle="Join the discussion on LinkedIn"
+      linkedinDiscussionDescription="Continue the conversation on community-based screening, accessibility and what service adaptation can change."
       linkedinBeforeContact
       linkedinDiscussionCard
       linkedinDiscussionImage={socialImage}
+      linkedinDiscussionImageClassName="object-contain"
       references={references}
       interactionsAfterManuscript
       previous={{ label: "LL-007 · Local Lens: Bedford", href: "/insights/local-lens/bedford" }}
