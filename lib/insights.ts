@@ -717,7 +717,7 @@ export const insights: InsightRecord[] = [
     authorIds: ["femi-olaleye"],
     tags: ["Breast Cancer", "Cancer Screening", "Health Inequalities", "Health Equity", "Screening Pathways", "Implementation Science", "ScreenConnect Digital"],
     ccpeLens: ["Understand", "Validate", "Implement", "Evaluate"],
-    // Set linkedinDiscussionUrl here once the discussion post is published.
+    linkedinDiscussionUrl: "https://lnkd.in/p/daF5BPbe",
     seoTitle: "From Inequality to Pathway Intelligence | BloomShield Insights",
     seoDescription: "A new England breast cancer study shows inequalities across screening, diagnosis and treatment. BloomShield explores why understanding the full pathway matters.",
     canonicalUrl: "/insights/evidence-policy/from-inequality-to-pathway-intelligence",

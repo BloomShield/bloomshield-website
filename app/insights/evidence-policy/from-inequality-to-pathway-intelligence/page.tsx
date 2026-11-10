@@ -75,6 +75,8 @@ export default function PathwayIntelligenceInsightPage() {
       ccpeLens={article.ccpeLens}
       tags={article.tags}
       linkedinDiscussionUrl={article.linkedinDiscussionUrl}
+      linkedinDiscussionTitle="Join the discussion on LinkedIn"
+      linkedinDiscussionDescription="Continue the conversation on the evidence, pathway inequalities and what better pathway intelligence could enable."
       references={references}
       referencesHeading="Sources & further reading"
       contextualCta={<section className="insight-article-end-section" aria-labelledby="research-collaboration">
