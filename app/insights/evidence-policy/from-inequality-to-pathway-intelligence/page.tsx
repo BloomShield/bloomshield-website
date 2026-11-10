@@ -74,6 +74,10 @@ export default function PathwayIntelligenceInsightPage() {
       domains={["People", "Partnerships", "Systems", "Innovation", "Equity", "Impact"]}
       ccpeLens={article.ccpeLens}
       tags={article.tags}
+      linkedinBeforeContact
+      linkedinDiscussionCard
+      linkedinDiscussionImage={socialImage}
+      linkedinDiscussionImageClassName="object-contain"
       linkedinDiscussionUrl={article.linkedinDiscussionUrl}
       linkedinDiscussionTitle="Join the discussion on LinkedIn"
       linkedinDiscussionDescription="Continue the conversation on the evidence, pathway inequalities and what better pathway intelligence could enable."
