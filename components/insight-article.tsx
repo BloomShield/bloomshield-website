@@ -38,6 +38,7 @@ type InsightArticleProps = {
   children: React.ReactNode;
   interactionsAfterManuscript?: boolean;
   supportingEditorial?: React.ReactNode;
+  contextualCta?: React.ReactNode;
   relatedContent?: React.ReactNode;
   implementationLesson?: React.ReactNode;
   references?: { label: string; href: string; source: string; citation?: React.ReactNode }[];
@@ -46,7 +47,7 @@ type InsightArticleProps = {
   next?: { label: string; href: string };
 };
 
-export function InsightArticle({ category, crossTag, title, subtitle, articleSlug, date, dateIso, readTime, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, linkedinDiscussionCard = false, linkedinDiscussionImage = "/images/insights/local-lens-greater-manchester-card-v2.png", linkedinDiscussionImageClassName = "object-cover", linkedinBeforeContact = false, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
+export function InsightArticle({ category, crossTag, title, subtitle, articleSlug, date, dateIso, readTime, authors, publisher, standfirst, image, imageAlt, heroClassName = "aspect-[16/9]", heroImageClassName = "object-cover", domains, ccpeLens, tags, reflectionQuestion, linkedinDiscussionUrl, linkedinDiscussionTitle = "Join the conversation on LinkedIn", linkedinDiscussionDescription = "Share your perspective and tag BloomShield CIC.", linkedinDiscussionLinkLabel, linkedinDiscussionCard = false, linkedinDiscussionImage = "/images/insights/local-lens-greater-manchester-card-v2.png", linkedinDiscussionImageClassName = "object-cover", linkedinBeforeContact = false, engagementContactLabel = "Contact BloomShield", children, interactionsAfterManuscript = false, supportingEditorial, contextualCta, relatedContent, implementationLesson, references, referencesHeading = "References and source links", previous, next }: InsightArticleProps) {
   return <InsightsShell>
     <InsightsAnalytics articleTitle={title} articleSlug={articleSlug} contentSection={category} trackArticle />
     <article data-insights-article>
@@ -119,6 +120,7 @@ export function InsightArticle({ category, crossTag, title, subtitle, articleSlu
               <span><span className="block font-display text-lg font-semibold text-teal-900 sm:text-xl">{linkedinDiscussionTitle}</span><span className="mt-1.5 block text-base leading-7 text-slate-600">{linkedinDiscussionDescription}</span>{linkedinDiscussionLinkLabel ? <span className="mt-2 block text-sm font-bold text-teal-700 underline decoration-teal-700/30 underline-offset-4">{linkedinDiscussionLinkLabel}</span> : null}</span><ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-[#85601e] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:mt-0" size={21} />
             </a>
           </section> : null}
+          {contextualCta}
           <section className="insight-article-end-section" aria-labelledby="ccpe-lens">
             <div className="rounded-[1.5rem] bg-[#073b3b] p-7 text-white sm:p-9">
               <p className="!mt-0 text-xs font-bold uppercase tracking-[.2em] text-[#e7bd68]">Cancer Care Partnership Ecosystem</p>
