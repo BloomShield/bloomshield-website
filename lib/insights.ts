@@ -114,6 +114,39 @@ export const partnershipPlaybook = {
 
 export const insights: InsightRecord[] = [
   {
+    "slug": "kirklees-mobile-cervical-screening",
+    "href": "/insights/local-lens/kirklees-mobile-cervical-screening",
+    "title": "When Screening Moves Closer to Communities",
+    "shortTitle": "What Kirklees’ mobile cervical screening approach tells us about accessibility, trust and adapting services around people.",
+    "area": "Local Lens",
+    "crossTags": [
+      "Kirklees",
+      "Cervical Screening",
+      "Screening Access"
+    ],
+    "status": "published",
+    "description": "Kirklees brought cervical screening into community settings through a mobile drop-in service. BloomShield Local Lens examines what service adaptation can mean for access and participation.",
+    "image": "/images/insights/local-lens-kirklees-card.png",
+    "imageAlt": "BloomShield Local Lens LL08: When screening moves closer to communities in Kirklees.",
+    "publishedAt": "10 November 2026",
+    "publishedAtIso": "2026-11-10",
+    "authorIds": [
+      "bloomshield-cic"
+    ],
+    "tags": [
+      "Kirklees",
+      "Cervical screening",
+      "Community delivery",
+      "Screening access"
+    ],
+    "canonicalUrl": "/insights/local-lens/kirklees-mobile-cervical-screening",
+    "socialImage": "/images/insights/local-lens-kirklees-card.png",
+    "socialImageAlt": "BloomShield Local Lens LL08: When screening moves closer to communities in Kirklees.",
+    "socialImageWidth": 1254,
+    "socialImageHeight": 1254,
+    "socialImageType": "image/png"
+  },
+  {
     slug: "england-diagnosing-more-cancer-are-we-catching-it-earlier",
     href: "/insights/evidence-policy/england-diagnosing-more-cancer-are-we-catching-it-earlier",
     title: "England Is Diagnosing More Cancer. Are We Catching It Earlier?",
