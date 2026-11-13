@@ -113,6 +113,43 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+{
+  "slug": "lung-cancer-awareness-month-part-2-screening",
+  "href": "/insights/series-collections/lung-cancer-awareness-month-part-2-screening",
+  "title": "Lung screening: what is the test — and who is eligible?",
+  "area": "Series & Collections",
+  "collection": "Lung Cancer Awareness Month 2026",
+  "seriesPosition": 2,
+  "crossTags": [
+    "Lung Cancer",
+    "Earlier Diagnosis"
+  ],
+  "status": "published",
+  "description": "Lung cancer screening in England is targeted at people who are at higher risk — particularly because lung cancer can develop before symptoms appear.",
+  "image": "/images/campaigns/lung-cancer-awareness-november-2026-part-2.png",
+  "imageAlt": "BloomShield Lung Cancer Awareness Month, Part 2 of 4. Two adults beside a scene showing a CT scanner and a healthcare professional.",
+  "publishedAt": "13 November 2026",
+  "publishedAtIso": "2026-11-13",
+  "authorIds": [
+    "bloomshield-cic"
+  ],
+  "tags": [
+    "Lung Cancer",
+    "Screening",
+    "Earlier Diagnosis"
+  ],
+  "linkedinDiscussionUrl": "https://www.linkedin.com/feed/update/urn:li:share:7526856307870470144?actorCompanyId=136127344&openCollaboratorList=false",
+  "seoTitle": "Lung Cancer Screening: Who Is Eligible and What Test Is Used? | BloomShield",
+  "seoDescription": "Who is eligible for NHS lung cancer screening in England, and what test is used? BloomShield explains the lung health check and low-dose CT pathway.",
+  "canonicalUrl": "/insights/series-collections/lung-cancer-awareness-month-part-2-screening",
+  "socialImage": "/images/campaigns/lung-cancer-awareness-november-2026-part-2.png",
+  "socialImageAlt": "BloomShield Lung Cancer Awareness Month, Part 2 of 4. Two adults beside a scene showing a CT scanner and a healthcare professional.",
+  "socialImageWidth": 1254,
+  "socialImageHeight": 1254,
+  "socialImageType": "image/png",
+  "datePublished": "2026-11-13",
+  "dateModified": "2026-11-13"
+},
   {
     "slug": "kirklees-mobile-cervical-screening",
     "href": "/insights/local-lens/kirklees-mobile-cervical-screening",
