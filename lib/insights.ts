@@ -113,6 +113,40 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+  {
+    "slug": "diagnosed-how-long-until-cancer-treatment-begins",
+    "href": "/insights/evidence-policy/diagnosed-how-long-until-cancer-treatment-begins",
+    "title": "Diagnosed — How Long Until Cancer Treatment Begins?",
+    "area": "Evidence & Policy",
+    "collection": "Cancer Diagnosis and Treatment in England",
+    "seriesPosition": 2,
+    "crossTags": [
+      "Cancer Waiting Times"
+    ],
+    "status": "published",
+    "description": "England is diagnosing more cancer earlier. But earlier diagnosis only delivers its full value if patients can move into treatment quickly enough.",
+    "image": "/images/insights/england-cancer-treatment-waiting-gap-card.png",
+    "imageAlt": "BloomShield Insights graphic showing September results of 76.2% for 28 days, 91.5% for 31 days and 70.7% for 62 days, and the 56.2% quarterly diagnosis result.",
+    "publishedAt": "14 November 2026",
+    "publishedAtIso": "2026-11-14",
+    "datePublished": "2026-11-14",
+    "authorIds": [
+      "femi-olaleye"
+    ],
+    "tags": [
+      "Early Diagnosis",
+      "Cancer Waiting Times",
+      "Cancer Treatment"
+    ],
+    "canonicalUrl": "/insights/evidence-policy/diagnosed-how-long-until-cancer-treatment-begins",
+    "seoTitle": "Diagnosed — How Long Until Cancer Treatment Begins? | BloomShield Insights",
+    "seoDescription": "England is diagnosing more cancer earlier, but are patients moving into treatment quickly enough? BloomShield examines the latest NHS England 28-day, 31-day and 62-day cancer waiting-time results.",
+    "socialImage": "/images/insights/england-cancer-treatment-waiting-gap-card.png",
+    "socialImageAlt": "BloomShield Insights graphic showing September results of 76.2% for 28 days, 91.5% for 31 days and 70.7% for 62 days, and the 56.2% quarterly diagnosis result.",
+    "socialImageWidth": 1254,
+    "socialImageHeight": 1254,
+    "socialImageType": "image/png"
+  },
 {
   "slug": "lung-cancer-awareness-month-part-2-screening",
   "href": "/insights/series-collections/lung-cancer-awareness-month-part-2-screening",

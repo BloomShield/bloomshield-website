@@ -33,6 +33,7 @@ const areaPresentation = [
 
 export default function InsightsPage() {
   const screenConnectArticle = insights.find(item => item.slug === "screenconnect-digital-research-demonstrator")!;
+  const cancerTreatmentArticle = insights.find(item => item.slug === "diagnosed-how-long-until-cancer-treatment-begins")!;
   const cancerDiagnosisArticle = insights.find(item => item.slug === "england-diagnosing-more-cancer-are-we-catching-it-earlier")!;
   const hpvArticle = insights.find(item => item.slug === "hpv-self-testing-screening-gap")!;
   const pathwayArticle = insights.find(item => item.slug === "from-inequality-to-pathway-intelligence")!;
@@ -50,7 +51,7 @@ export default function InsightsPage() {
   const hpvAuthors = getInsightAuthors(hpvArticle);
   return <InsightsShell>
     <InsightsAnalytics contentSection="Insights overview" />
-    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: screenConnectArticle.title, url: screenConnectArticle.href! }, { name: "From Gaps to the 360° Journey", url: "/insights/series-collections/from-gaps-to-the-360-journey" }, { name: "Breast Screening Gaps: What Are We Actually Seeing?", url: "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing" }, { name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: westLondonArticle.title, url: westLondonArticle.href! }, { name: greaterManchesterArticle.title, url: greaterManchesterArticle.href! }, { name: haveringArticle.title, url: haveringArticle.href! }, { name: bedfordArticle.title, url: bedfordArticle.href! }, { name: kirkleesArticle.title, url: kirkleesArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: cancerDiagnosisArticle.title, url: cancerDiagnosisArticle.href! }, { name: pathwayArticle.shortTitle!, url: pathwayArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
+    <InsightsCollectionStructuredData title="BloomShield Insights" description={description} path="/insights" image="/images/insights/overview-hero-banner.png" keywords={overviewKeywords} items={[{ name: screenConnectArticle.title, url: screenConnectArticle.href! }, { name: "From Gaps to the 360° Journey", url: "/insights/series-collections/from-gaps-to-the-360-journey" }, { name: "Breast Screening Gaps: What Are We Actually Seeing?", url: "/insights/series-collections/breast-screening-gaps-what-are-we-actually-seeing" }, { name: "Before We Talk About the Gaps", url: "/insights/series-collections/before-we-talk-about-the-gaps" }, { name: localLensSeries.title, url: localLensSeries.href }, { name: localLensArticle.title, url: localLensArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: westLondonArticle.title, url: westLondonArticle.href! }, { name: greaterManchesterArticle.title, url: greaterManchesterArticle.href! }, { name: haveringArticle.title, url: haveringArticle.href! }, { name: bedfordArticle.title, url: bedfordArticle.href! }, { name: kirkleesArticle.title, url: kirkleesArticle.href! }, { name: implementationArticle.title, url: implementationArticle.href! }, { name: conversationsSeries.title, url: conversationsSeries.href }, { name: conversationArticle.title, url: conversationArticle.href! }, { name: cancerDiagnosisArticle.title, url: cancerDiagnosisArticle.href! }, { name: cancerTreatmentArticle.title, url: cancerTreatmentArticle.href! }, { name: pathwayArticle.shortTitle!, url: pathwayArticle.href! }, { name: australiaArticle.title, url: australiaArticle.href! }, { name: hpvArticle.title, url: hpvArticle.href! }]} />
     <section className="bg-[#021827]" aria-label="BloomShield Insights overview masthead">
       <h1 className="sr-only">BloomShield Insights: Ideas and evidence for equitable cancer care</h1>
       <Image src="/images/insights/overview-hero-banner.png" alt="BloomShield Insights institutional publishing masthead: Ideas, evidence and conversations advancing equitable cancer care, with the themes Ideas, Evidence, Policy, Implementation and Impact." width={1672} height={941} sizes="100vw" className="mx-auto block h-auto w-full max-w-[1672px] object-contain object-center" priority />
@@ -215,6 +216,18 @@ export default function InsightsPage() {
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[.14em] text-teal-700"><span>Part 1 of 2</span><span aria-hidden="true">·</span><time dateTime={cancerDiagnosisArticle.publishedAtIso}>{cancerDiagnosisArticle.publishedAt}</time></div>
               <h3 className="mt-5 font-display text-3xl font-semibold leading-tight tracking-[-.025em] group-hover:text-teal-700">{cancerDiagnosisArticle.title}</h3>
               <p className="mt-5 text-lg leading-8 text-slate-600">{cancerDiagnosisArticle.description}</p>
+              <p className="mt-5 text-sm font-semibold text-slate-600">By Dr Femi Olaleye</p>
+              <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Read the Insight <ArrowRight aria-hidden="true" size={19} /></span>
+            </div>
+          </Link>
+        </article>
+        <article className="mt-8 overflow-hidden rounded-[2rem] border border-teal-900/10 bg-[#f7f5ef]">
+          <Link href={cancerTreatmentArticle.href!} className="group grid items-center sm:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
+            <div className="relative aspect-square bg-[#021827]"><Image src={cancerTreatmentArticle.image!} alt={cancerTreatmentArticle.imageAlt!} fill sizes="(min-width: 640px) 40vw, 100vw" className="object-contain" /></div>
+            <div className="min-w-0 p-7 sm:p-9">
+              <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[.14em] text-teal-700"><span>Part 2 of 2</span><span aria-hidden="true">·</span><time dateTime={cancerTreatmentArticle.publishedAtIso}>{cancerTreatmentArticle.publishedAt}</time></div>
+              <h3 className="mt-5 font-display text-3xl font-semibold leading-tight tracking-[-.025em] group-hover:text-teal-700">{cancerTreatmentArticle.title}</h3>
+              <p className="mt-5 text-lg leading-8 text-slate-600">{cancerTreatmentArticle.description}</p>
               <p className="mt-5 text-sm font-semibold text-slate-600">By Dr Femi Olaleye</p>
               <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Read the Insight <ArrowRight aria-hidden="true" size={19} /></span>
             </div>
