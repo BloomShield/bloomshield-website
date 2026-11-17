@@ -109,6 +109,7 @@ export default function SouthYorkshireLocalLensPage() {
       domains={["People", "Partnerships", "Systems", "Equity", "Impact"]}
       tags={article.tags}
       linkedinDiscussionUrl={article.linkedinDiscussionUrl}
+      linkedinDiscussionTitle="Join the discussion on LinkedIn"
       linkedinBeforeContact
       linkedinDiscussionCard
       linkedinDiscussionImage={socialImage}

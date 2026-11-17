@@ -115,6 +115,7 @@ export const partnershipPlaybook = {
 export const insights: InsightRecord[] = [
 {
   "slug": "south-yorkshire-cancer-screening-gap",
+  "linkedinDiscussionUrl": "https://lnkd.in/p/dB_9mf_U",
   "href": "/insights/local-lens/south-yorkshire-cancer-screening-gap",
   "title": "South Yorkshire's Cancer Screening Gap: The Last Mile Between Invitation and Action",
   "area": "Local Lens",
