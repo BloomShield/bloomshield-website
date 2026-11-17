@@ -113,6 +113,40 @@ export const partnershipPlaybook = {
 };
 
 export const insights: InsightRecord[] = [
+{
+  "slug": "south-yorkshire-cancer-screening-gap",
+  "href": "/insights/local-lens/south-yorkshire-cancer-screening-gap",
+  "title": "South Yorkshire's Cancer Screening Gap: The Last Mile Between Invitation and Action",
+  "area": "Local Lens",
+  "crossTags": [
+    "Early Diagnosis & Prevention"
+  ],
+  "status": "published",
+  "description": "Cancer screening saves lives, but an invitation is not the same as participation.",
+  "image": "/images/insights/local-lens-ll09-south-yorkshire-card.png",
+  "imageAlt": "BloomShield Local Lens graphic highlighting South Yorkshire and Bassetlaw screening inequalities, including lower bowel screening uptake among younger adults and more deprived communities.",
+  "publishedAt": "17 November 2026",
+  "publishedAtIso": "2026-11-17",
+  "authorIds": [
+    "bloomshield-cic"
+  ],
+  "tags": [
+    "South Yorkshire & Bassetlaw",
+    "Dinnington",
+    "Cancer Screening",
+    "Early Diagnosis & Prevention"
+  ],
+  "seoTitle": "South Yorkshire’s Cancer Screening Gap | BloomShield Local Lens",
+  "seoDescription": "South Yorkshire and Bassetlaw show substantial differences in bowel screening participation by age and deprivation. BloomShield Local Lens examines the last mile between invitation and action.",
+  "canonicalUrl": "/insights/local-lens/south-yorkshire-cancer-screening-gap",
+  "socialImage": "/images/insights/local-lens-ll09-south-yorkshire-card.png",
+  "socialImageAlt": "BloomShield Local Lens graphic highlighting South Yorkshire and Bassetlaw screening inequalities, including lower bowel screening uptake among younger adults and more deprived communities.",
+  "socialImageWidth": 1491,
+  "socialImageHeight": 1055,
+  "socialImageType": "image/png",
+  "datePublished": "2026-11-17",
+  "dateModified": "2026-11-17"
+},
   {
     "slug": "diagnosed-how-long-until-cancer-treatment-begins",
     "href": "/insights/evidence-policy/diagnosed-how-long-until-cancer-treatment-begins",

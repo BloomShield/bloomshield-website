@@ -21,6 +21,7 @@ export const metadata: Metadata = createInsightMetadata({
 
 export default function LocalLensPage() {
   const medwayArticle = insights.find(item => item.slug === "medway-kent")!;
+  const southYorkshireArticle = insights.find(item => item.slug === "south-yorkshire-cancer-screening-gap")!;
   const kirkleesArticle = insights.find(item => item.slug === "kirklees-mobile-cervical-screening")!;
   const bedfordArticle = insights.find(item => item.slug === "bedford")!;
   const haveringArticle = insights.find(item => item.slug === "havering-east-london")!;
@@ -31,7 +32,7 @@ export default function LocalLensPage() {
 
   return <InsightsShell>
     <InsightsAnalytics contentSection="Local Lens" />
-    <InsightsCollectionStructuredData title={localLensSeries.title} description={localLensSeries.seoDescription} path={localLensSeries.canonicalUrl} image={localLensSeries.socialImage} keywords={localLensSeries.keywords} items={[{ name: medwayArticle.title, url: medwayArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: westLondonArticle.title, url: westLondonArticle.href! }, { name: greaterManchesterArticle.title, url: greaterManchesterArticle.href! }, { name: haveringArticle.title, url: haveringArticle.href! }, { name: bedfordArticle.title, url: bedfordArticle.href! }, { name: kirkleesArticle.title, url: kirkleesArticle.href! }]} />
+    <InsightsCollectionStructuredData title={localLensSeries.title} description={localLensSeries.seoDescription} path={localLensSeries.canonicalUrl} image={localLensSeries.socialImage} keywords={localLensSeries.keywords} items={[{ name: medwayArticle.title, url: medwayArticle.href! }, { name: liverpoolArticle.title, url: liverpoolArticle.href! }, { name: devonArticle.title, url: devonArticle.href! }, { name: westLondonArticle.title, url: westLondonArticle.href! }, { name: greaterManchesterArticle.title, url: greaterManchesterArticle.href! }, { name: haveringArticle.title, url: haveringArticle.href! }, { name: bedfordArticle.title, url: bedfordArticle.href! }, { name: kirkleesArticle.title, url: kirkleesArticle.href! }, { name: southYorkshireArticle.title, url: southYorkshireArticle.href! }]} />
     <header className="relative overflow-hidden bg-[#062f2f] text-white">
       <div aria-hidden="true" className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_70%_35%,rgba(86,199,176,.2),transparent_58%)]" />
       <div className="container-page relative py-16 md:py-24">
@@ -195,6 +196,24 @@ export default function LocalLensPage() {
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{kirkleesArticle.title}</h3>
                 <p className="mt-5 text-lg leading-8 text-slate-600">{kirkleesArticle.description}</p>
+                <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Read the full article <ArrowRight aria-hidden="true" size={19}/></span>
+              </div>
+            </div>
+          </Link>
+        </article>
+        <article className="mt-8 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-white shadow-soft">
+          <Link href={southYorkshireArticle.href!} className="group block">
+            <div className="relative aspect-[1491/1055] w-full overflow-hidden bg-[#062f2f]">
+              <Image src={southYorkshireArticle.image!} alt={southYorkshireArticle.imageAlt!} fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center " />
+            </div>
+            <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
+              <div>
+                <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 09 · South Yorkshire &amp; Bassetlaw</p>
+              </div>
+              <div>
+                <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{southYorkshireArticle.title}</h3>
+                <p className="mt-5 text-lg leading-8 text-slate-600">{southYorkshireArticle.description}</p>
                 <span className="mt-7 inline-flex items-center gap-2 font-bold text-teal-700">Read the full article <ArrowRight aria-hidden="true" size={19}/></span>
               </div>
             </div>
