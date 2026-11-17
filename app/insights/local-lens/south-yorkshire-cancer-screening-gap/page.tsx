@@ -89,7 +89,7 @@ export default function SouthYorkshireLocalLensPage() {
     inLanguage: "en-GB",
   };
 
-  return <>
+  return <div className="ll09-article-typography">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\u003c") }} />
     <InsightArticle
       category={article.area}
@@ -165,5 +165,5 @@ export default function SouthYorkshireLocalLensPage() {
 <p><strong>Local data. Local voices. Local action.</strong></p>
 <p><em>BloomShield Local Lens provides independent, evidence-led analysis of cancer prevention, screening inequalities and opportunities for community-based health improvement. This article is not commissioned by or affiliated with the Cancer Alliance or Weston Park Cancer Charity.</em></p>
     </InsightArticle>
-  </>;
+  </div>;
 }

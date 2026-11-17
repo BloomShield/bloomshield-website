@@ -52,6 +52,20 @@ a, button, input, textarea, select { @apply focus-visible:outline-none focus-vis
   background-color: rgb(15 118 110 / .3);
 }
 .insight-prose h3 { @apply mt-10 max-w-[40rem] font-display text-[1.4rem] font-semibold leading-[1.25] tracking-[-.015em] text-ink sm:text-[1.65rem]; }
+/* LL09 keeps section dividers within the gap, without adding heading padding. */
+.ll09-article-typography .insight-manuscript > h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+  padding-top: 0;
+}
+.ll09-article-typography .insight-manuscript > h2::before { top: -.75rem; }
+.ll09-article-typography .insight-manuscript > h2 + p { margin-top: 0; }
+@media (min-width: 640px) {
+  .ll09-article-typography .insight-manuscript > h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+}
 .insight-prose p { @apply mt-6; }
 .insight-prose ul, .insight-prose ol { @apply mt-6 space-y-4 pl-6; }
 .insight-prose ul { @apply list-disc; }
