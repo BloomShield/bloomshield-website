@@ -183,6 +183,42 @@ export const insights: InsightRecord[] = [
     "socialImageType": "image/png"
   },
 {
+  "slug": "lung-cancer-awareness-month-part-3-invitation-participation",
+  "href": "/insights/series-collections/lung-cancer-awareness-month-part-3-invitation-participation",
+  "title": "Lung cancer screening: invitation is not the same as participation",
+  "area": "Series & Collections",
+  "collection": "Lung Cancer Awareness Month 2026",
+  "seriesPosition": 3,
+  "crossTags": [
+    "Lung Cancer",
+    "Earlier Diagnosis"
+  ],
+  "status": "published",
+  "description": "After the invitation arrives, what happens next?",
+  "image": "/images/insights/lung-cancer-awareness-month-part-3-invitation-participation-hero.png",
+  "imageAlt": "BloomShield Lung Cancer Awareness Month Part 3 graphic showing mature adults discussing a lung health check invitation with a healthcare professional, highlighting the steps from understanding an invitation to completing follow-up.",
+  "publishedAt": "18 November 2026",
+  "publishedAtIso": "2026-11-18",
+  "authorIds": [
+    "bloomshield-cic"
+  ],
+  "tags": [
+    "Lung Cancer",
+    "Screening",
+    "Earlier Diagnosis"
+  ],
+  "seoTitle": "Lung Cancer Screening: Invitation ≠ Participation | BloomShield",
+  "seoDescription": "An invitation to lung cancer screening does not automatically become participation. BloomShield examines the barriers between eligibility, invitation, Lung Health Checks and screening.",
+  "canonicalUrl": "/insights/series-collections/lung-cancer-awareness-month-part-3-invitation-participation",
+  "socialImage": "/images/insights/lung-cancer-awareness-month-part-3-invitation-participation-hero.png",
+  "socialImageAlt": "BloomShield Lung Cancer Awareness Month Part 3 graphic showing mature adults discussing a lung health check invitation with a healthcare professional, highlighting the steps from understanding an invitation to completing follow-up.",
+  "socialImageWidth": 1672,
+  "socialImageHeight": 941,
+  "socialImageType": "image/png",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18"
+},
+{
   "slug": "lung-cancer-awareness-month-part-2-screening",
   "href": "/insights/series-collections/lung-cancer-awareness-month-part-2-screening",
   "title": "Lung screening: what is the test — and who is eligible?",
