@@ -184,6 +184,7 @@ export const insights: InsightRecord[] = [
   },
 {
   "slug": "lung-cancer-awareness-month-part-3-invitation-participation",
+  "linkedinDiscussionUrl": "https://lnkd.in/p/ei5m48mN",
   "href": "/insights/series-collections/lung-cancer-awareness-month-part-3-invitation-participation",
   "title": "Lung cancer screening: invitation is not the same as participation",
   "area": "Series & Collections",
