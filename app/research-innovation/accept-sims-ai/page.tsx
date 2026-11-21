@@ -102,7 +102,7 @@ export default function AcceptSimsAIResearchPage() {
             <Image src="/images/accept-sims-ai-community-pathways.png" alt="The woman speaking with a community health navigator and clinician." width={1672} height={941} sizes="(max-width: 1199px) 1100px, 1px" />
           </div>
           <nav className={styles.actions} aria-label="Explore ACCEPT SIMS AI">
-            <a className={styles.primary} href={demonstrator} target="_blank" rel="noopener noreferrer"><span>Explore AI Demonstrator</span><span className="sr-only"> (opens in a new tab)</span></a>
+            <a className={styles.primary} aria-label="Explore AI Demonstrator (opens in a new tab)" href={demonstrator} target="_blank" rel="noopener noreferrer"><span>Explore AI Demonstrator</span></a>
             <a className={styles.secondary} href="#technology"><span>Understand the Technology</span></a>
           </nav>
           <ul className={styles.capabilities} aria-label="Six connected capabilities">
