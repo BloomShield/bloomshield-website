@@ -95,11 +95,11 @@ export default function AcceptSimsAIResearchPage() {
               <p>It was developed to investigate how programmes can better understand where women may be lost between screening, referral and follow-up.</p>
             </div>
           </div>
-          <Image src="/images/accept-sims-ai-community-pathways.png"
+          <Image src="/images/accept-sims-ai-community-pathways.webp"
             alt="A woman, community health navigator and clinician share a conversation in a soft teal landscape, connected by six gold-accented pathway icons."
-            width={1672} height={941} sizes="100vw" priority className={styles.artwork} />
+            width={1672} height={941} sizes="100vw" priority unoptimized className={styles.artwork} />
           <div className={styles.mobileScene}>
-            <Image src="/images/accept-sims-ai-community-pathways.png" alt="The woman speaking with a community health navigator and clinician." width={1672} height={941} sizes="(max-width: 1199px) 1100px, 1px" />
+            <Image src="/images/accept-sims-ai-community-pathways.webp" alt="The woman speaking with a community health navigator and clinician." width={1672} height={941} sizes="(max-width: 1199px) 1100px, 1px" unoptimized />
           </div>
           <nav className={styles.actions} aria-label="Explore ACCEPT SIMS AI">
             <a className={styles.primary} aria-label="Explore AI Demonstrator (opens in a new tab)" href={demonstrator} target="_blank" rel="noopener noreferrer"><span>Explore AI Demonstrator</span></a>
