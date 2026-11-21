@@ -25,6 +25,13 @@ export const metadata = createMetadata({
   title: "ACCEPT SIMS AI™ | Screening intelligence and navigation",
   description,
   path,
+  socialImage: {
+    url: "/images/accept-sims-ai-social-card.png",
+    width: 1200,
+    height: 630,
+    alt: "ACCEPT SIMS AI™ — From Screening to Follow-up, illustrated with a woman, community navigator and clinician in a connected care pathway.",
+    type: "image/png",
+  },
 });
 
 const capabilities = [
