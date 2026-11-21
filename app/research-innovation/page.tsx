@@ -82,10 +82,8 @@ export default function Research() {
             <Link href="/research-innovation/accept-sims-africa-partnerships" className="mt-5 block font-bold text-teal-700 underline underline-offset-4">Explore African Research Partnerships →</Link>
           </article>
           <Link
-            href="https://acceptsimsai.bloomshield.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Explore the ACCEPT SIMS AI independent research demonstrator"
+            href="/research-innovation/accept-sims-ai"
+            aria-label="Learn about ACCEPT SIMS AI technology and research demonstrator"
             className="group mt-6 flex flex-col gap-5 rounded-[2rem] border border-teal-900/10 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-teal-600/30 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700 sm:flex-row sm:items-center sm:justify-between sm:p-7"
           >
             <div className="min-w-0">
@@ -102,7 +100,7 @@ export default function Research() {
               <p className="mt-3 text-xs font-medium text-slate-500">Research demonstration only · Synthetic data · Not for clinical use · Independently developed by BloomShield’s founder</p>
             </div>
             <span className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-teal-700 px-5 py-3 text-sm font-bold text-white transition group-hover:bg-teal-800 sm:self-center">
-              Explore AI demonstrator <ArrowRight aria-hidden="true" size={17} />
+              Discover the technology <ArrowRight aria-hidden="true" size={17} />
             </span>
           </Link>
         </div>
