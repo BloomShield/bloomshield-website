@@ -1,4 +1,5 @@
 import Image from "next/image";
+import styles from "./hero.module.css";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -7,7 +8,7 @@ import {
   ClipboardList,
   HeartHandshake,
   MapPinned,
-  Network,
+
   ShieldCheck,
   Sparkles,
   UsersRound,
@@ -27,42 +28,12 @@ export const metadata = createMetadata({
 });
 
 const capabilities = [
-  {
-    icon: UsersRound,
-    name: "Screening registry",
-    detail: "Explore fictional participants, screening encounters and longitudinal histories across five simulated sites.",
-    tag: "Demonstrated",
-  },
-  {
-    icon: Sparkles,
-    name: "Referral-time risk",
-    detail: "Inspect Model A's exploratory, 60-day referral prediction alongside evidence, uncertainty and historical cutoffs.",
-    tag: "Synthetic model only",
-  },
-  {
-    icon: Network,
-    name: "Referral intelligence",
-    detail: "Trace referral events, missed appointments and pathways that remain unresolved at a selected observation date.",
-    tag: "Demonstrated",
-  },
-  {
-    icon: MapPinned,
-    name: "Navigation support",
-    detail: "Review simulated proposals against local transport, staffing and appointment constraints, with no automatic action.",
-    tag: "Mock mode",
-  },
-  {
-    icon: CalendarCheck2,
-    name: "Follow-up visibility",
-    detail: "Compare screening, diagnosis, attendance and documented pathway outcomes over time.",
-    tag: "Demonstrated",
-  },
-  {
-    icon: BarChart3,
-    name: "Programme insights",
-    detail: "Explore simulated site activity, referral backlogs, barriers and capacity assumptions for research discussion.",
-    tag: "Synthetic data",
-  },
+  { icon: UsersRound, name: "Screening visibility", detail: "Explore fictional participants, screening encounters and longitudinal histories across five simulated sites.", tag: "Demonstrated" },
+  { icon: Sparkles, name: "Referral intelligence", detail: "Trace unresolved referrals and inspect Model A’s exploratory 60-day referral prediction alongside evidence, uncertainty and historical cutoffs.", tag: "Synthetic model only" },
+  { icon: MapPinned, name: "Navigation support", detail: "Review simulated proposals against local transport, staffing and appointment constraints, with no automatic action.", tag: "Mock mode" },
+  { icon: CalendarCheck2, name: "Follow-up tracking", detail: "Compare screening, diagnosis, attendance and documented pathway outcomes over time using fictional records.", tag: "Demonstrated" },
+  { icon: ShieldCheck, name: "Human review", detail: "Inspect proposals and illustrated in-browser review decisions. This is not a durable clinical audit system or autonomous care workflow.", tag: "Simulated review" },
+  { icon: BarChart3, name: "Programme insights", detail: "Explore simulated site activity, referral backlogs, barriers and capacity assumptions for research discussion.", tag: "Synthetic data" },
 ];
 
 const users = [
@@ -98,7 +69,7 @@ function DemonstratorLink({ dark = false }: { dark?: boolean }) {
       rel="noopener noreferrer"
       className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${dark ? "bg-white text-teal-950 hover:bg-teal-50 focus-visible:outline-white" : "bg-teal-800 text-white hover:bg-teal-900 focus-visible:outline-teal-800"}`}
     >
-      Explore AI demonstrator <ArrowRight aria-hidden="true" size={18} />
+      Explore AI Demonstrator <ArrowRight aria-hidden="true" size={18} />
     </a>
   );
 }
@@ -113,32 +84,31 @@ export default function AcceptSimsAIResearchPage() {
         breadcrumb="ACCEPT SIMS AI™"
         parentBreadcrumb={{ name: "Research & Innovation", path: "/research-innovation" }}
       />
-      <section className="overflow-hidden bg-gradient-to-br from-[#f2faf8] via-white to-[#e4f5f2]">
-        <div className="container-page grid gap-10 py-12 lg:grid-cols-[.97fr_1.03fr] lg:items-center lg:gap-12 lg:py-20">
-          <div>
-            <Link className="text-sm font-semibold text-teal-800 underline underline-offset-4" href="/research-innovation">Research &amp; Innovation</Link>
-            <p className="mt-8 inline-flex rounded-full border border-teal-700/25 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[.15em] text-teal-900">Founder-built research demonstrator</p>
-            <h1 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight text-[#073c44] sm:text-5xl lg:text-6xl">ACCEPT SIMS <span className="text-[#c89418]">AI™</span></h1>
-            <p className="mt-5 max-w-xl text-xl font-semibold leading-8 text-slate-900">From screening to follow-up. More visible pathways. Better-informed human action.</p>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-slate-700">Exploring AI-supported screening intelligence and human-supervised navigation in resource-constrained health systems—without treating a screening result as the end of the care journey.</p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <DemonstratorLink />
-              <a href="#technology" className="inline-flex min-h-12 items-center gap-2 text-sm font-bold text-teal-800 underline underline-offset-4">Understand the technology <ArrowRight aria-hidden="true" size={17}/></a>
+      <section className={styles.hero} aria-labelledby="accept-sims-ai-title">
+        <div className={styles.composition}>
+          <div className={styles.copy}>
+            <p className={styles.eyebrow}>RESEARCH &amp; INNOVATION</p>
+            <h1 id="accept-sims-ai-title">ACCEPT SIMS <span>AI™</span></h1>
+            <p className={styles.subtitle}>From screening to follow-up. More visible pathways. Better-informed human action.</p>
+            <div className={styles.narrative}>
+              <p>ACCEPT SIMS AI™ explores AI-supported screening intelligence, referral visibility and human-supervised navigation in resource-constrained health systems.</p>
+              <p>It was developed to investigate how programmes can better understand where women may be lost between screening, referral and follow-up.</p>
             </div>
-            <p className="mt-6 max-w-xl border-l-4 border-[#d5a332] pl-4 text-sm leading-6 text-slate-600">Research demonstrator · Synthetic data only · Simulated Mock mode · Not for clinical use. Independently developed by BloomShield CIC’s founder.</p>
           </div>
-          <figure className="overflow-hidden rounded-[2rem] border border-teal-900/10 bg-[#d9f3ed] shadow-xl">
-            <Image
-              src="/images/accept-sims-ai-human-care-hero.webp"
-              alt="Illustration of a woman speaking with a community health navigator and clinician, with a connected pathway of follow-up support icons."
-              width={1200}
-              height={675}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-              className="h-auto w-full"
-            />
-            <figcaption className="px-5 py-3 text-xs leading-5 text-slate-700">Illustrative human-centred concept artwork. It does not depict real programme participants or clinical performance.</figcaption>
-          </figure>
+          <Image src="/images/accept-sims-ai-community-pathways.png"
+            alt="A woman, community health navigator and clinician share a conversation in a soft teal landscape, connected by six gold-accented pathway icons."
+            width={1672} height={941} sizes="100vw" priority className={styles.artwork} />
+          <div className={styles.mobileScene}>
+            <Image src="/images/accept-sims-ai-community-pathways.png" alt="The woman speaking with a community health navigator and clinician." width={1672} height={941} sizes="(max-width: 1199px) 1100px, 1px" />
+          </div>
+          <nav className={styles.actions} aria-label="Explore ACCEPT SIMS AI">
+            <a className={styles.primary} href={demonstrator} target="_blank" rel="noopener noreferrer"><span>Explore AI Demonstrator</span><span className="sr-only"> (opens in a new tab)</span></a>
+            <a className={styles.secondary} href="#technology"><span>Understand the Technology</span></a>
+          </nav>
+          <ul className={styles.capabilities} aria-label="Six connected capabilities">
+            {capabilities.map(({ icon: Icon, name }) => <li key={name}><Icon aria-hidden="true" size={30} /><span>{name}</span></li>)}
+          </ul>
+          <p className={styles.disclosure}>Synthetic data only · Mock mode · Not for clinical use</p>
         </div>
       </section>
 
@@ -226,7 +196,7 @@ export default function AcceptSimsAIResearchPage() {
           <article className="rounded-[1.75rem] border border-teal-900/10 p-8 sm:p-10">
             <ShieldCheck className="h-9 w-9 text-teal-700" aria-hidden="true"/>
             <h2 className="mt-5 font-display text-2xl font-bold text-slate-900">What it can—and cannot—show today</h2>
-            <p className="mt-4 leading-8 text-slate-700">The current research build uses fictional participant records, a synthetic five-site programme, a limited exploratory prediction model and simulated navigation responses. Human review is illustrated in-browser; it is not a durable clinical audit system.</p>
+            <p className="mt-4 leading-8 text-slate-700">The current research build uses synthetic participant records, a synthetic five-site programme, a limited exploratory prediction model and simulated navigation responses. Human review is illustrated in-browser; it is not a durable clinical audit system.</p>
             <p className="mt-4 leading-8 text-slate-700">The demonstrator has not been clinically validated, is not a regulated medical device or live health-system integration, and cannot establish effectiveness, safety or equity in practice. Real-world evaluation would require local leadership, approvals, safeguards and prospective evidence.</p>
           </article>
           <div className="flex flex-col justify-center rounded-[1.75rem] bg-[#073c44] p-8 text-white sm:p-10">

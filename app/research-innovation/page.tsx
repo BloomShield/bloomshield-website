@@ -88,7 +88,7 @@ export default function Research() {
           >
             <div className="min-w-0">
               <span className="inline-flex rounded-full border border-teal-700/20 bg-teal-50 px-4 py-1.5 text-xs font-bold uppercase tracking-[.1em] text-teal-800">
-                Independent founder-built research demonstrator
+                Synthetic-data research demonstrator
               </span>
               <h2 className="mt-4 font-display text-2xl font-semibold text-slate-900">ACCEPT SIMS AI™</h2>
               <p className="mt-2 max-w-3xl leading-7 text-slate-600">
