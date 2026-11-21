@@ -20,10 +20,10 @@
   .narrative { margin-top: 20px; padding-left: 18px; border-left: 4px solid #cf970e; font-size: 1rem; line-height: 1.75; }
   .narrative p + p { margin-top: 12px; }
   .mobileScene { display: block; position: relative; overflow: hidden; aspect-ratio: 2.2; margin-top: 24px; border-radius: 24px; }
-  .mobileScene img { position: absolute; width: 150%; max-width: none; height: auto; left: -44%; top: -16%; }
+  .mobileScene img { position: absolute; width: 185%; max-width: none; height: auto; left: -72%; top: -20%; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
   .actions a { position: static; display: flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; padding: 12px 18px; text-align: center; font-size: 1rem; font-weight: 700; }
-  .actions a span { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
+  .actions a > span:not(.sr-only) { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
   .primary { background: #006b70; color: white; }
   .secondary { border: 2px solid #006b70; background: white; }
   .capabilities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 28px; list-style: none; }
