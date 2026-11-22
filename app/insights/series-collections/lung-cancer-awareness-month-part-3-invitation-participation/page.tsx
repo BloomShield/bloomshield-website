@@ -84,7 +84,8 @@ export default function LungScreeningArticle() {
         linkedinDiscussionTitle="Join the discussion on LinkedIn"
         linkedinDiscussionDescription="Continue the conversation on lung cancer screening, eligibility and why earlier detection matters."
         previous={{ label: "Part 2 — Know the screening offer", href: "/insights/series-collections/lung-cancer-awareness-month-part-2-screening" }}
-        contextualCta={<section className="insight-article-end-section" aria-label="Lung Cancer Awareness Month series"><h2>Lung Cancer Awareness Month 2026</h2><ol><li><Link href="/insights/series-collections/know-the-signs-act-early">Part 1 — Know the signs</Link></li><li><Link href="/insights/series-collections/lung-cancer-awareness-month-part-2-screening">Part 2 — Know the screening offer</Link></li><li aria-current="page">Part 3 — Invitation is not the same as participation</li><li>Part 4 — From screening to pathway (upcoming)</li></ol><Link href={collection}>Explore the four-part series</Link></section>}
+        next={{ label: "Part 4 — From screening to pathway", href: "/insights/series-collections/lung-cancer-awareness-month-part-4-from-screening-to-pathway" }}
+        contextualCta={<section className="insight-article-end-section" aria-label="Lung Cancer Awareness Month series"><h2>Lung Cancer Awareness Month 2026</h2><ol><li><Link href="/insights/series-collections/know-the-signs-act-early">Part 1 — Know the signs</Link></li><li><Link href="/insights/series-collections/lung-cancer-awareness-month-part-2-screening">Part 2 — Know the screening offer</Link></li><li aria-current="page">Part 3 — Invitation is not the same as participation</li><li><Link href="/insights/series-collections/lung-cancer-awareness-month-part-4-from-screening-to-pathway">Part 4 — From screening to pathway</Link></li></ol><Link href={collection}>Explore the four-part series</Link></section>}
         relatedContent={<section className="insight-article-end-section"><h2>Related content</h2><Link href="/cancer-prevention-screening/lung-health-checks">Lung cancer prevention and screening FAQs</Link></section>}
       >
 <p><strong>Lung Cancer Awareness Month | Part 3 of 4</strong></p>
@@ -154,7 +155,7 @@ export default function LungScreeningArticle() {
 <p>The screening test matters.</p>
 <p>And so does everything that happens between them.</p>
 <blockquote><p><strong>Invitation ≠ Participation.</strong></p></blockquote>
-<p><strong>Next in the series — Part 4:</strong> <em>From screening to pathway: what happens after something is found?</em></p>
+<p><strong>Next in the series — Part 4:</strong> <Link href="/insights/series-collections/lung-cancer-awareness-month-part-4-from-screening-to-pathway"><em>From screening to pathway: what happens next matters too.</em></Link></p>
       </InsightArticle>
     </>
   );
