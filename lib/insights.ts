@@ -114,6 +114,45 @@ export const partnershipPlaybook = {
 
 export const insights: InsightRecord[] = [
 {
+  "slug": "lung-cancer-awareness-month-part-4-from-screening-to-pathway",
+  "href": "/insights/series-collections/lung-cancer-awareness-month-part-4-from-screening-to-pathway",
+  "title": "From Screening to Pathway: What Happens Next Matters Too",
+  "area": "Series & Collections",
+  "collection": "Lung Cancer Awareness Month 2026",
+  "seriesPosition": 4,
+  "crossTags": [
+    "Lung Cancer",
+    "Earlier Diagnosis",
+    "Cancer Pathway"
+  ],
+  "status": "published",
+  "description": "Screening is not the endpoint. What happens next matters too.",
+  "image": "/images/insights/lung-cancer-awareness-month-part-4-from-screening-to-pathway-hero.jpg",
+  "imageAlt": "BloomShield Lung Cancer Awareness Month Part 4 graphic showing a person moving from low-dose CT screening through results, next steps and support.",
+  "publishedAt": "22 November 2026",
+  "publishedAtIso": "2026-11-22",
+  "authorIds": [
+    "bloomshield-cic"
+  ],
+  "tags": [
+    "Lung Cancer",
+    "Screening",
+    "Cancer Pathway",
+    "Earlier Diagnosis",
+    "ScreenConnect Digital"
+  ],
+  "seoTitle": "From Screening to Pathway: What Happens Next Matters Too | BloomShield",
+  "seoDescription": "The final Lung Cancer Awareness Month instalment follows the journey beyond screening and introduces BloomShield’s ScreenConnect Digital research demonstrator.",
+  "canonicalUrl": "/insights/series-collections/lung-cancer-awareness-month-part-4-from-screening-to-pathway",
+  "socialImage": "/images/insights/lung-cancer-awareness-month-part-4-from-screening-to-pathway-hero.jpg",
+  "socialImageAlt": "BloomShield Lung Cancer Awareness Month Part 4 graphic showing screening, results, next steps and support across the lung cancer pathway.",
+  "socialImageWidth": 1400,
+  "socialImageHeight": 788,
+  "socialImageType": "image/jpeg",
+  "datePublished": "2026-11-22",
+  "dateModified": "2026-11-22"
+},
+{
   "slug": "south-yorkshire-cancer-screening-gap",
   "linkedinDiscussionUrl": "https://lnkd.in/p/dB_9mf_U",
   "href": "/insights/local-lens/south-yorkshire-cancer-screening-gap",
