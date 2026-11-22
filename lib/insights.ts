@@ -115,6 +115,7 @@ export const partnershipPlaybook = {
 export const insights: InsightRecord[] = [
 {
   "slug": "lung-cancer-awareness-month-part-4-from-screening-to-pathway",
+  "linkedinDiscussionUrl": "https://www.linkedin.com/feed/update/urn:li:share:7530281593547083777?actorCompanyId=136127344&openCollaboratorList=false",
   "href": "/insights/series-collections/lung-cancer-awareness-month-part-4-from-screening-to-pathway",
   "title": "From Screening to Pathway: What Happens Next Matters Too",
   "area": "Series & Collections",
