@@ -67,7 +67,7 @@ export default function LungScreeningPathwayArticle() {
         standfirst="Finding cancer earlier matters. But what happens next matters too."
         image={article.image!}
         imageAlt={article.imageAlt!}
-        heroClassName="aspect-[1400/788]"
+        heroClassName="aspect-[16/9]"
         heroImageClassName="object-contain object-center"
         domains={["People", "Systems", "Innovation", "Equity", "Impact"]}
         tags={article.tags}
@@ -76,7 +76,7 @@ export default function LungScreeningPathwayArticle() {
         implementationLesson={null}
         linkedinBeforeContact
         linkedinDiscussionCard
-        linkedinDiscussionImage="/images/insights/lung-cancer-awareness-month-part-4-from-screening-to-pathway-square.jpg"
+        linkedinDiscussionImage="/images/campaigns/lung-cancer-awareness-november-2026-landscape.jpg"
         linkedinDiscussionImageClassName="object-contain"
         linkedinDiscussionUrl={article.linkedinDiscussionUrl}
         linkedinDiscussionTitle="Join the discussion on LinkedIn"
@@ -95,7 +95,7 @@ export default function LungScreeningPathwayArticle() {
         <p><strong>Invitation → Participation → Screening → Results → Investigation → Diagnosis → Treatment → Follow-up</strong></p>
         <p>Every transition matters. Earlier detection creates its greatest value when people can move through the next steps without unnecessary delay, uncertainty or loss of continuity.</p>
 
-        <figure className="my-10"><Image src="/images/insights/lung-cancer-awareness-month-part-4-from-screening-to-pathway-square.jpg" alt="BloomShield Lung Cancer Awareness Month Part 4 graphic showing the pathway from screening through results and next steps to support." width={1000} height={1000} sizes="(min-width: 1024px) 800px, 100vw" className="h-auto w-full rounded-2xl object-contain" /></figure>
+
 
         <h2>From pathway gaps to ScreenConnect Digital™</h2>
         <p>This is also the question behind <strong>ScreenConnect Digital™</strong>, BloomShield’s person-centred longitudinal research demonstrator.</p>
