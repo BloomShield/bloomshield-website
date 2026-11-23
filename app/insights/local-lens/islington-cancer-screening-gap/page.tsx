@@ -81,7 +81,7 @@ export default function IslingtonLocalLensPage() {
   };
 
   return (
-    <div className="ll10-article-typography">
+    <div className="local-lens-article-typography">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <InsightArticle
         category={article.area}
@@ -136,7 +136,7 @@ export default function IslingtonLocalLensPage() {
         <p>Among women aged <strong>50–64</strong>, cervical screening coverage was <strong>70%</strong>, compared with <strong>74%</strong> nationally.</p>
         <p>Different programmes use different reporting periods and age groups, so the measures should not be treated as directly interchangeable.</p>
         <p>But the direction is difficult to ignore.</p>
-        <p>Across breast, bowel and cervical screening, Islington is consistently behind national participation levels.</p>
+        <p className="insight-pull-statement">Across breast, bowel and cervical screening, Islington is consistently behind national participation levels.</p>
 
         <figure>
           <Image
