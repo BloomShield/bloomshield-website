@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { InsightArticle } from "@/components/insight-article";
 import { getInsightAuthors, insights } from "@/lib/insights";
@@ -67,7 +66,7 @@ export default function LungScreeningPathwayArticle() {
         standfirst="Finding cancer earlier matters. But what happens next matters too."
         image={article.image!}
         imageAlt={article.imageAlt!}
-        heroClassName="aspect-[16/9]"
+        heroClassName="aspect-[1672/941]"
         heroImageClassName="object-contain object-center"
         domains={["People", "Systems", "Innovation", "Equity", "Impact"]}
         tags={article.tags}
@@ -76,7 +75,7 @@ export default function LungScreeningPathwayArticle() {
         implementationLesson={null}
         linkedinBeforeContact
         linkedinDiscussionCard
-        linkedinDiscussionImage="/images/campaigns/lung-cancer-awareness-november-2026-landscape.jpg"
+        linkedinDiscussionImage="/images/insights/lung-cancer-awareness-month-part-4-from-screening-to-pathway-square.jpg"
         linkedinDiscussionImageClassName="object-contain"
         linkedinDiscussionUrl={article.linkedinDiscussionUrl}
         linkedinDiscussionTitle="Join the discussion on LinkedIn"
