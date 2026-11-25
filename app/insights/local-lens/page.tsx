@@ -56,7 +56,7 @@ export default function LocalLensPage() {
       <div className="container-page">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div><p className="eyebrow">Editions</p><h2 id="editions" className="heading">Local insight, edition by edition.</h2></div>
-          <div className="flex items-center gap-3 text-sm font-bold text-teal-800"><MapPinned aria-hidden="true" size={19}/> Edition 01 â†’ Edition {String(insights.filter(item => item.area === "Local Lens" && item.status === "published").length).padStart(2, "0")}</div>
+          <div className="flex items-center gap-3 text-sm font-bold text-teal-800"><MapPinned aria-hidden="true" size={19}/> Edition 01 → Edition {String(insights.filter(item => item.area === "Local Lens" && item.status === "published").length).padStart(2, "0")}</div>
         </div>
         <article className="mt-10 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-white shadow-soft">
           <Link href={medwayArticle.href!} className="group block">
@@ -84,7 +84,7 @@ export default function LocalLensPage() {
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 02 Â· Liverpool</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 02 · Liverpool</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{liverpoolArticle.title}</h3>
@@ -102,7 +102,7 @@ export default function LocalLensPage() {
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 03 Â· Devon, Cornwall &amp; the Isles of Scilly</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 03 · Devon, Cornwall &amp; the Isles of Scilly</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{devonArticle.title}</h3>
@@ -120,7 +120,7 @@ export default function LocalLensPage() {
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 04 Â· West London</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 04 · West London</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{westLondonArticle.title}</h3>
@@ -138,7 +138,7 @@ export default function LocalLensPage() {
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 05 Â· Greater Manchester</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 05 · Greater Manchester</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{greaterManchesterArticle.title}</h3>
@@ -151,12 +151,12 @@ export default function LocalLensPage() {
         <article className="mt-8 overflow-hidden rounded-[2.25rem] border border-teal-900/10 bg-white shadow-soft">
           <Link href={haveringArticle.href!} className="group block">
             <div className="relative aspect-square w-full overflow-hidden bg-[#062f2f]">
-              <Image src="/images/insights/local-lens-havering-card.png" alt="BloomShield Local Lens LL-006: Havering, East London, historical Novemberâ€“December 2021 bowel screening participation." fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center " />
+              <Image src="/images/insights/local-lens-havering-card.png" alt="BloomShield Local Lens LL-006: Havering, East London, historical November–December 2021 bowel screening participation." fill sizes="(min-width: 1240px) 1150px, 100vw" className="object-contain object-center " />
             </div>
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 06 Â· Havering, East London</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 06 · Havering, East London</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{haveringArticle.title}</h3>
@@ -174,7 +174,7 @@ export default function LocalLensPage() {
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 07 Â· Bedford, England</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 07 · Bedford, England</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{bedfordArticle.title}</h3>
@@ -192,7 +192,7 @@ export default function LocalLensPage() {
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 08 Â· Kirklees, West Yorkshire</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 08 · Kirklees, West Yorkshire</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{kirkleesArticle.title}</h3>
@@ -210,7 +210,7 @@ export default function LocalLensPage() {
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 09 Â· South Yorkshire &amp; Bassetlaw</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 09 · South Yorkshire &amp; Bassetlaw</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{southYorkshireArticle.title}</h3>
@@ -228,7 +228,7 @@ export default function LocalLensPage() {
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[.7fr_1.3fr] lg:items-start lg:p-12">
               <div>
                 <span className="inline-flex rounded-full bg-[#d9eee7] px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-[#075548]">Published</span>
-                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 10 Â· Islington, London</p>
+                <p className="mt-6 text-sm font-bold uppercase tracking-[.16em] text-teal-700">Edition 10 · Islington, London</p>
               </div>
               <div>
                 <h3 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">{islingtonArticle.title}</h3>
@@ -245,7 +245,7 @@ export default function LocalLensPage() {
     <section className="border-t border-teal-900/10 bg-white py-14 sm:py-16" aria-labelledby="series-method">
       <div className="container-page grid gap-8 lg:grid-cols-[.72fr_1.28fr]">
         <div><p className="eyebrow">Series method</p><h2 id="series-method" className="heading">A repeatable local lens.</h2></div>
-        <p className="max-w-3xl text-lg leading-8 text-slate-600">Local data â†’ inequality gap â†’ what is already being done â†’ who is being missed â†’ community and system response â†’ local voices â†’ action</p>
+        <p className="max-w-3xl text-lg leading-8 text-slate-600">Local data → inequality gap → what is already being done → who is being missed → community and system response → local voices → action</p>
       </div>
     </section>
   </InsightsShell>;
