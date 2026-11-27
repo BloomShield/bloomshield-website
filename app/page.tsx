@@ -1,3 +1,4 @@
+import { ScreenSmartKentFunding } from "@/components/screensmart-kent-funding";
 import Link from "next/link";
 import Image from "next/image";
 import { tlcCampaign } from "@/lib/screensmart-campaign";
@@ -41,6 +42,12 @@ export default function Home() {
       <div className="container-page grid min-h-[720px] items-center gap-12 py-20 lg:grid-cols-[1.08fr_.92fr]">
         <div><p className="eyebrow">Cancer prevention, powered by communities</p><h1 className="display max-w-3xl">Protect lives.<br/>Prevent cancer.<br/><span className="text-teal-600">Empower communities.</span></h1><p className="lead mt-7 max-w-xl">BloomShield combines community insight, implementation science and evidence-informed partnerships to advance equitable cancer prevention across diverse communities and health systems.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/programmes" className="button-primary">Explore our programmes <ArrowRight size={17}/></Link><Link href="/partnerships" className="button-secondary">Partner with us</Link></div></div>
         <div className="relative">
+          <section aria-label="ScreenSmart Communities™ Kent funding announcement" className="mb-6">
+            <Link href="/programmes/screensmart-communities/kent" aria-label="Explore the Programme: ScreenSmart Communities Kent, funded by The National Lottery Community Fund" className="mx-auto block max-w-[600px] rounded-2xl focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-teal-700">
+              <Image src="/images/programmes/screensmart-kent-home.png" alt="BloomShield ScreenSmart Communities™ Kent. Funded by The National Lottery Community Fund. Community members gathered together. Explore the Programme." width={1752} height={897} sizes="(min-width: 1024px) 520px, (min-width: 640px) 600px, 100vw" priority className="h-auto w-full rounded-2xl" />
+            </Link>
+            <details className="mx-auto mt-3 max-w-[600px] rounded-2xl border border-teal-900/10 bg-white"><summary className="cursor-pointer rounded-2xl px-5 py-4 text-base font-semibold text-teal-800 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-teal-700">Funding acknowledgement</summary><ScreenSmartKentFunding /></details>
+          </section>
           <CampaignArtwork priority />
           <Link href={tlcCampaign.href} className="mx-auto mt-6 flex max-w-[600px] items-center gap-4 rounded-2xl border border-teal-900/10 bg-white p-4 shadow-soft transition hover:border-teal-700 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-teal-700">
             <Image src={tlcCampaign.image} alt={tlcCampaign.imageAlt} width={1254} height={1254} sizes="(min-width: 640px) 160px, 128px" className="h-auto w-32 shrink-0 rounded-xl sm:w-40" />

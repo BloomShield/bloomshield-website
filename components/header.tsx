@@ -14,6 +14,7 @@ const links = [
 const programmeLinks = [
   ["All Programmes", "/programmes", "border-slate-400"],
   ["ScreenSmart Communities™", "/programmes/screensmart-communities", "border-emerald-600"],
+  ["ScreenSmart Communities™ — Kent", "/programmes/screensmart-communities/kent", "border-emerald-600"],
   ["ScreenAccess™", "/programmes/screenaccess", "border-[#c55a3d]"],
   ["ScreenConnect™", "/programmes/screenconnect", "border-[#4051b5]"],
 ] as const;
